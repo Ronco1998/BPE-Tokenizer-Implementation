@@ -17,11 +17,13 @@ class BaseTokenizer(ABC):
         self.special_tokens = {
             "[PAD]": 0,
             "[UNK]": 1,
-            "[BOS]": 2,
-            "[EOS]": 3,
+            "[BOS]": 2, # Beginning of sequence
+            "[EOS]": 3, # End of sequence
         }
         
         # Initialize special tokens in the mappings
+        # For first domain may be: '@', '#', ':)', '(:', ':(', '):'
+
         for token, token_id in self.special_tokens.items():
             self.token_to_id[token] = token_id
             self.id_to_token[token_id] = token

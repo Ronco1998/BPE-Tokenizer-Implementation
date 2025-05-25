@@ -1,7 +1,7 @@
 import argparse
 import os
 from typing import List
-from example_bpe_tokenizer import BPETokenizer #TODO: change this to your tokenizer
+from bpe_tokenizer import BPETokenizer 
 
 
 def read_text_file(file_path: str) -> List[str]:
@@ -37,7 +37,7 @@ def train_tokenizer(domain_file: str, output_dir: str, vocab_size: int = 10000):
     
     # Initialize and train tokenizer
     print(f"Training BPE tokenizer with vocab size {vocab_size}")
-    tokenizer = BPETokenizer(vocab_size=vocab_size) #TODO: change this to your tokenizer
+    tokenizer = BPETokenizer(vocab_size=vocab_size)
     tokenizer.train(texts)
     
     # Save the tokenizer

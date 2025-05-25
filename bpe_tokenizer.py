@@ -3,11 +3,13 @@ from collections import Counter, defaultdict
 import re
 from base_tokenizer import BaseTokenizer
 
+#TODO: Actually do this
+
 class BPETokenizer(BaseTokenizer):
     def __init__(self, vocab_size: int = 5000):
         """
         Initialize the BPE tokenizer
-        
+
         Args:
             vocab_size: Maximum size of the vocabulary
         """
