@@ -1,7 +1,7 @@
 import argparse
 import os
 from typing import List
-from bpe_tokenizer import Dom1Tokenizer, Dom2TOKENIZER, UnkTokenizer
+from bpe_tokenizer import BPETokenizer
 
 
 def read_text_file(file_path: str) -> List[str]:
@@ -39,11 +39,11 @@ def train_tokenizer(domain_file: str, output_dir: str, vocab_size: int = 10000):
     print(f"Training BPE tokenizer with vocab size {vocab_size}")
 
     if '1' in domain_file:
-        tokenizer = Dom1Tokenizer(vocab_size = vocab_size)
+        tokenizer = BPETokenizer(vocab_size = vocab_size, domain='twitter')
     elif '2' in domain_file:
-        tokenizer = Dom2Tokenizer(vocab_size = vocab_size)
+        tokenizer = BPETokenizer(vocab_size = vocab_size, domain='news')
     else:
-        tokenizer = UnkTokenizer(vocab_size = vocab_size)
+        tokenizer = BPETokenizer(vocab_size = vocab_size, domain='unknown')
     tokenizer.train(texts)
     
     # Save the tokenizer

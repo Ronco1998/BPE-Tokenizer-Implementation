@@ -26,7 +26,7 @@ class NERDataset(Dataset):
             self.space_token_id = tokenizer.token_to_id[tokenizer.space_token]
 
         # Process all texts with optimized alignment
-        for text, text_labels in tqdm(zip(texts, labels), desc="Processing texts"):
+        for text, text_labels in tqdm(list(zip(texts, labels)), desc="Processing texts"):
             result = self._process_text_optimized(text, text_labels)
             if result:
                 self.encoded_texts.append(result['token_ids'])
@@ -38,7 +38,8 @@ class NERDataset(Dataset):
         """Optimized version of text processing"""
         words = text.split()
         if not words:
-            return None
+            # return None
+            return {}
 
         # Fast word span calculation using regex
         word_spans = self._get_word_spans_fast(text, words)

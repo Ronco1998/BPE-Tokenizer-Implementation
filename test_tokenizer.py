@@ -8,7 +8,7 @@ import pickle
 from base_tokenizer import BaseTokenizer
 
 
-def measure_encoding_speed(tokenizer: BaseTokenizer, texts: List[str], repeats: int = 5) -> float:
+def measure_encoding_speed(tokenizer: BaseTokenizer, texts: List[str], repeats: int = 5) -> tuple[float, float, int]:
     """
     Measure tokenizer encoding speed in tokens per second
     Also returns total time and total tokens for the test set (no repeats)
