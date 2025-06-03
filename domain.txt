@@ -1,0 +1,3 @@
+Twitter: Unicode normalization, lowercasing, Twitter token replacements, punctuation separation, and whitespace collapsing.
+News: Unicode normalization, punctuation separation, whitespace collapsing, and case preservation.
+Unknown: Unicode normalization, punctuation separation, and whitespace collapsing.
