@@ -18,6 +18,7 @@ class BPETokenizer(BaseTokenizer):
         self.merges = {}  # Store the learned BPE merges
         self.word_frequencies = Counter()  # Store word frequencies during training
         self.domain = domain
+        self.pair_stats = {}  # New attribute to store pair statistics
 
         # Add Twitter-specific special tokens if domain is twitter
         if self.domain == 'twitter':
@@ -35,22 +36,58 @@ class BPETokenizer(BaseTokenizer):
 
 
     def _get_stats(self, words: List[str]) -> Dict[Tuple[str, str], int]:
-        """x
-        Count frequency of adjacent pairs in the words
-        
+        """
+        Count frequency of adjacent pairs in the words and save them as an attribute.
+
         Args:
             words: List of words to count pairs from
-            
         Returns:
-            Dictionary mapping pairs to their frequency
+            Dictionary of pairs and their frequencies
         """
         pairs = defaultdict(int)
         for word in words:
             symbols = word.split()
             for i in range(len(symbols) - 1):
-                pairs[symbols[i], symbols[i + 1]] += 1
-        return pairs
-    
+                pair = (symbols[i], symbols[i + 1])
+                pairs[pair] += 1
+        self.pair_stats = dict(pairs)
+        return self.pair_stats
+
+    def _update_stats(self, words: List[str], last_pair: Tuple[str, str]) -> None:
+        """
+        Update only pairs adjacent to the merged token in the saved pair statistics.
+
+        Args:
+            words: List of words after the merge
+            last_pair: The last merged pair (e.g. ('a', 'b'))
+
+        This method updates self.pair_stats in-place. It only increments the counts for pairs
+        that are adjacent to the newly merged token (i.e., pairs that could have changed due to the merge).
+        It also removes the merged pair from the stats, as it no longer exists as a pair.
+        """
+        merged_token = ''.join(last_pair)
+        # For each word, look for occurrences of the merged token
+        for word in words:
+            tokens = word.split()
+            if merged_token not in tokens:
+                continue
+            # For each occurrence of the merged token in the word
+            for idx, token in enumerate(tokens):
+                if token != merged_token:
+                    continue
+                # If there is a token to the left, update the left pair count
+                if idx - 1 >= 0:
+                    left_pair = (tokens[idx - 1], merged_token)
+                    # Increment the count for this left pair
+                    self.pair_stats[left_pair] = self.pair_stats.get(left_pair, 0) + 1
+                # If there is a token to the right, update the right pair count
+                if idx + 1 < len(tokens):
+                    right_pair = (merged_token, tokens[idx + 1])
+                    self.pair_stats[right_pair] = self.pair_stats.get(right_pair, 0) + 1
+        # Remove the old merged pair from the stats, as it no longer exists
+        if last_pair in self.pair_stats:
+            del self.pair_stats[last_pair]
+
     def _merge_pair(self, pair: Tuple[str, str], words: List[str]) -> List[str]:
         """
         Merge all occurrences of the pair in the words
@@ -141,7 +178,7 @@ class BPETokenizer(BaseTokenizer):
         # Initialize vocabulary with characters
         words = []
         for text in texts:
-            self._preprocess(text)
+            text = self._preprocess(text)
             # Split text into words and add special tokens
             text_words = text.split()
             for word in text_words:
@@ -149,18 +186,19 @@ class BPETokenizer(BaseTokenizer):
                 word = ' '.join(list(word))
                 words.append(word)
                 self.word_frequencies[word] += 1
-        
+        print("[BPE] Finished preprocessing and collecting initial words.")
+
         # Initialize vocabulary with characters
         vocab = set()
         for word in words:
             vocab.update(word.split())
-        
+        print(f"[BPE] Initial vocabulary built with {len(vocab)} unique tokens.")
+
         # Add special tokens to vocabulary
         for token in self.special_tokens:
             vocab.add(token)
+        print(f"[BPE] Added {len(self.special_tokens)} special tokens to vocabulary.")
 
-        #TODO: add special tokens according to the domain we're in rn!
-        
         # Convert vocabulary to token_to_id mappings
         for token in vocab:
             if token not in self.token_to_id:
@@ -178,14 +216,14 @@ class BPETokenizer(BaseTokenizer):
 
         num_merges = int(domain_merge_factor * (self.vocab_size - len(self.token_to_id))) # how many merges we need to perform :) (this is the k we talked about)
 
+        self._get_stats(words)  # Save stats in self.pair_stats
         for i in range(num_merges):
-            pairs = self._get_stats(words)
-            if not pairs:
+            if not self.pair_stats:
                 break
 
             # Find the most frequent pair
-            best_pair = max(pairs.items(), key=lambda x: x[1])[0]
-            freq = pairs[best_pair]
+            best_pair = max(self.pair_stats.items(), key=lambda x: x[1])[0]
+            freq = self.pair_stats[best_pair]
 
             # Merge the pair in all words
             words = self._merge_pair(best_pair, words)
@@ -202,8 +240,10 @@ class BPETokenizer(BaseTokenizer):
                 self.token_to_id[merged_token] = token_id
                 self.id_to_token[token_id] = merged_token
 
+            self._update_stats(words, best_pair)
+
             # Print the new bigram and its frequency after every 20 merges
-            if (i + 1) % 20 == 0:
+            if i % 20 == 0:
                 print(f"Merged bigram: {best_pair} (frequency: {freq}) after {i+1} merges")
 
         # Check for at least one bigram (character pair) merge
@@ -291,7 +331,7 @@ class BPETokenizer(BaseTokenizer):
             
             # Apply BPE merges
             while True:
-                pairs = self._get_stats([current_word]) # pairs possible within the current word
+                pairs = self._get_stats([current_word])  # pairs possible within the current word
                 if not pairs:
                     break
                     
