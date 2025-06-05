@@ -4,6 +4,7 @@ import re
 from base_tokenizer import BaseTokenizer
 import unicodedata
 from tqdm import tqdm
+import heapq
 
 class BPETokenizer(BaseTokenizer):
     def __init__(self, vocab_size: int = 5000, domain: str = ""):
@@ -20,6 +21,7 @@ class BPETokenizer(BaseTokenizer):
         self.word_frequencies = Counter()  # Store word frequencies during training
         self.domain = domain
         self.pair_stats = {}  # New attribute to store pair statistics
+        self._heap: list[tuple[int, tuple[str, str]]] = []
 
         # Add Twitter-specific special tokens if domain is twitter
         if self.domain == 'twitter':
@@ -36,90 +38,97 @@ class BPETokenizer(BaseTokenizer):
             raise ValueError(f"Unsupported domain {self.domain}")
 
 
-    def _get_stats(self, words: List[List[str]]) -> Dict[Tuple[str, str], int]:
+    def _get_stats(self, words: List[List[str]], freqs: Counter) -> Dict[Tuple[str, str], int]:
         """
-        Count frequency of adjacent pairs in the words and save them as an attribute.
+        Count bigrams, weighted by word frequency.
 
         Args:
-            words: List of words (as lists of tokens) to count pairs from
-        Returns:
-            Dictionary of pairs and their frequencies
-        """
-        pairs = defaultdict(int)
-        for word in words:
-            for i in range(len(word) - 1):
-                # Skip pairs if either token is a special token
-                if word[i] in self.special_tokens or word[i + 1] in self.special_tokens:
-                    continue
-                pairs[(word[i], word[i + 1])] += 1
-        self.pair_stats = dict(pairs)
-        return self.pair_stats
+            words: List of words (as lists of tokens) to count pairs from.
+            freqs: Word frequencies as a Counter object.
 
-    def _update_stats(self, words: List[List[str]], last_pair: Tuple[str, str]) -> None:
+        Returns:
+            Dictionary of pairs and their weighted frequencies.
+        """
+        pair_counts = defaultdict(int)
+        for tokens in words:  # tokens is a *list*, no split()
+            w_freq = freqs[tuple(tokens)]
+            for a, b in zip(tokens, tokens[1:]):
+                pair_counts[(a, b)] += w_freq
+        return pair_counts
+
+    def _update_stats(self, words: List[List[str]], last_pair: Tuple[str, str]) -> Tuple[Counter, Counter]:
         """
         Update only pairs adjacent to the merged token in the saved pair statistics.
+        Subtract counts for pairs that vanish, so fewer full rebuilds are needed.
 
         Args:
             words: List of words (as lists of tokens) after the merge
             last_pair: The last merged pair (e.g. ('a', 'b'))
 
-        This method updates self.pair_stats in-place. It only increments the counts for pairs
-        that are adjacent to the newly merged token (i.e., pairs that could have changed due to the merge).
-        It also removes the merged pair from the stats, as it no longer exists as a pair.
+        This method updates self.pair_stats in-place. It increments counts for new pairs
+        and subtracts counts for pairs that vanish due to the merge.
         """
         merged_token = last_pair[0] + last_pair[1]
-        # For each word, look for occurrences of the merged token
+        # Track pairs that vanish due to the merge
+        vanished_pairs = Counter()
+        appeared_pairs = Counter()
+
         for word in words:
+            prev = None
             for idx, token in enumerate(word):
-                if token != merged_token:
-                    continue
-                # If there is a token to the left, update the left pair count
-                if idx - 1 >= 0:
-                    left_pair = (word[idx - 1], merged_token)
-                    # Increment the count for this left pair
-                    self.pair_stats[left_pair] = self.pair_stats.get(left_pair, 0) + 1
-                # If there is a token to the right, update the right pair count
-                if idx + 1 < len(word):
-                    right_pair = (merged_token, word[idx + 1])
-                    self.pair_stats[right_pair] = self.pair_stats.get(right_pair, 0) + 1
-        # Remove the old merged pair from the stats, as it no longer exists
-        if last_pair in self.pair_stats:
-            del self.pair_stats[last_pair]
+                if token == merged_token:
+                    # The merged token replaces last_pair, so last_pair vanishes
+                    vanished_pairs[last_pair] += 1
+                    # New pairs may appear to the left and right
+                    if idx - 1 >= 0:
+                        left_pair = (word[idx - 1], merged_token)
+                        appeared_pairs[left_pair] += 1
+                    if idx + 1 < len(word):
+                        right_pair = (merged_token, word[idx + 1])
+                        appeared_pairs[right_pair] += 1
+                # Track pairs that vanish due to the merge
+                if prev is not None:
+                    pair = (prev, token)
+                    if pair == last_pair:
+                        vanished_pairs[pair] += 1
+                prev = token
+        return vanished_pairs, appeared_pairs
+
+        # Subtract vanished pairs
+        for pair, count in vanished_pairs.items():
+            if pair in self.pair_stats:
+                self.pair_stats[pair] -= count
+                if self.pair_stats[pair] <= 0:
+                    del self.pair_stats[pair]
+        # Add appeared pairs
+        for pair, count in appeared_pairs.items():
+            self.pair_stats[pair] = self.pair_stats.get(pair, 0) + count
 
     def _merge_pair(self, pair: Tuple[str, str], words: List[List[str]]) -> List[List[str]]:
         """
-        Merge all occurrences of the pair in the words (token lists)
-        
+        Merge pair in-place and return the modified list-of-lists.
+
         Args:
-            pair: The pair to merge
-            words: List of words (as lists of tokens) to merge the pair in
-            
+            pair: The pair to merge.
+            words: List of words (as lists of tokens) to merge the pair in.
+
         Returns:
-            List of words (as lists of tokens) with the pair merged
+            List of words (as lists of tokens) with the pair merged.
         """
+        p0, p1 = pair
+        repl = p0 + p1
         new_words = []
-        for word in words:
+        for tokens in words:
             i = 0
-            new_word = []
-            while i < len(word):
-                # Prevent merging inside special tokens
-                if word[i] in self.special_tokens:
-                    new_word.append(word[i])
-                    i += 1
-                    continue
-                if (
-                    i < len(word) - 1
-                    and word[i] == pair[0]
-                    and word[i + 1] == pair[1]
-                    and word[i] not in self.special_tokens
-                    and word[i + 1] not in self.special_tokens
-                ):
-                    new_word.append(word[i] + word[i + 1])
+            out = []
+            while i < len(tokens):
+                if i < len(tokens) - 1 and tokens[i] == p0 and tokens[i + 1] == p1:
+                    out.append(repl)
                     i += 2
                 else:
-                    new_word.append(word[i])
+                    out.append(tokens[i])
                     i += 1
-            new_words.append(new_word)
+            new_words.append(out)
         return new_words
     
     def _preprocess_twitter(self, text: str) -> str:
@@ -176,6 +185,27 @@ class BPETokenizer(BaseTokenizer):
         else:
             return text  # Fallback to returning the original text
 
+    def _split_once(self, word_str: str) -> List[str]:
+        """
+        Cache the split result instead of calling .split() multiple times.
+        """
+        return word_str.split()
+
+    def _word_to_list(self, word_str: str) -> List[str]:
+        """
+        Keep word as a list of symbols from the beginning.
+        """
+        return list(word_str)
+
+    def _rebuild_freqs(self, words: List[List[str]]) -> Counter:
+        """
+        Rebuild the word frequencies from the list of words.
+        """
+        freqs = Counter()
+        for w in words:
+            freqs[tuple(w)] += 1
+        return freqs
+
     def train(self, texts: List[str]) -> None:
         """
         Train the BPE tokenizer on the given texts
@@ -186,19 +216,11 @@ class BPETokenizer(BaseTokenizer):
         # Initialize vocabulary with characters
         words = []
         for text in texts:
-            text = self._preprocess(text)
-            # Split text into words and add special tokens
-            text_words = text.split()
-            for word in text_words:
-                # If the word is a special token, add as a single token
-                if word in self.special_tokens:
-                    words.append([word])
-                    self.word_frequencies[word] += 1
-                else:
-                    # Splitting to individual letters here:
-                    word_chars = list(word)
-                    words.append(word_chars)
-                    self.word_frequencies[''.join(word_chars)] += 1
+            text = self._preprocess(text)  # Bug fix: keep the return value
+            for w in text.split():
+                token_list = self._word_to_list(w)  # ['_', 'h', 'u', 'g']
+                words.append(token_list)
+                self.word_frequencies[tuple(token_list)] += 1  # Use tuple as key
         print("[BPE] Finished preprocessing and collecting initial words.")
 
         # Initialize vocabulary with characters
@@ -225,43 +247,57 @@ class BPETokenizer(BaseTokenizer):
             'unknown': 1.0,
         }.get(self.domain, 1.0)
 
-        # Perform BPE merges
-        num_merges = int(domain_merge_factor * (self.vocab_size - len(self.token_to_id))) # how many merges we need to perform :) (this is the k we talked about)
+        # Calculate number of merges based on vocab size and domain factor
+        num_merges = int((self.vocab_size - len(self.token_to_id)) * domain_merge_factor)
 
-        self._get_stats(words)  # Save stats in self.pair_stats
+        # Initialize variables before merge loop
         new_pairs_this_block = []
-        for i in tqdm(range(num_merges), desc="BPE Merges"):  # tqdm progress bar
-            if not self.pair_stats:
-                break
+        pair_stats = self._get_stats(words, self.word_frequencies)
+        self.pair_stats = dict(pair_stats)
 
-            # Find the most frequent pair
-            best_pair = max(self.pair_stats.items(), key=lambda x: x[1])[0]
-            freq = self.pair_stats[best_pair]
+        # Build a max-heap for pair frequencies (negate freq for max-heap)
+        heap = [(-freq, pair) for pair, freq in pair_stats.items()]
+        heapq.heapify(heap)
+        pair_latest_freq = dict(pair_stats)  # Track latest freq for each pair
 
-            # Merge the pair in all words
+        for i in tqdm(range(num_merges), desc="BPE"):
+            # Pop max, skip stale
+            while heap:
+                neg_freq, best_pair = heapq.heappop(heap)
+                freq = -neg_freq
+                # Only accept if this is the latest freq for this pair
+                if pair_latest_freq.get(best_pair, 0) == freq and freq > 0:
+                    break
+            else:
+                break  # Heap empty
+
+            
             words = self._merge_pair(best_pair, words)
 
-            # Add the merge to our merges dictionary
-            self.merges[best_pair] = best_pair[0] + best_pair[1]
+            vanished_pairs, appeared_pairs = self._update_stats(words, best_pair)
             new_pairs_this_block.append((best_pair, freq))
 
-            # Add the merged token to vocabulary if not already present
-            merged_token = best_pair[0] + best_pair[1]
-            if merged_token not in self.token_to_id:
-                if len(self.token_to_id) >= self.vocab_size:
-                    break  # Stop if vocab size limit reached
-                token_id = len(self.token_to_id)
-                self.token_to_id[merged_token] = token_id
-                self.id_to_token[token_id] = merged_token
+            for pair in set(vanished_pairs) | set(appeared_pairs):
+                new_freq = self.pair_stats.get(pair, 0)   # already updated inside _update_stats
+                pair_latest_freq[pair] = new_freq
+                if new_freq > 0:
+                    heapq.heappush(heap, (-new_freq, pair))
 
-            self._update_stats(words, best_pair)
 
-            # Print the new bigram and its frequency after every 20 merges
+            # Print every 20 iterations the merged pairs made
             if (i + 1) % 20 == 0 or i == num_merges - 1:
-                print(f"\nMerged bigrams for merges {i-18 if i-18>0 else 1} to {i+1}:")
+                print(f"[BPE] Merges for iterations {i-18 if i-18>0 else 1} to {i+1}:")
                 for idx, (pair, freq) in enumerate(new_pairs_this_block[-20:], start=1):
                     print(f"  {idx}. {pair} (frequency: {freq})")
                 new_pairs_this_block = []
+
+            # Rebuild frequencies and heap every 1000 merges
+            if (i + 1) % 1000 == 0:
+                self.word_frequencies = self._rebuild_freqs(words)
+                pair_stats = self._get_stats(words, self.word_frequencies)
+                heap = [(-freq, pair) for pair, freq in pair_stats.items()]
+                heapq.heapify(heap)
+                pair_latest_freq = dict(pair_stats)
         # Check for at least one bigram (character pair) merge
         bigram_count = sum(1 for pair in self.merges if len(pair[0]) == 1 and len(pair[1]) == 1)
         if bigram_count > 0:
@@ -277,10 +313,20 @@ class BPETokenizer(BaseTokenizer):
                 max_id = max(self.id_to_token.keys())
                 del_token = self.id_to_token.pop(max_id)
                 self.token_to_id.pop(del_token)
-    
-        # For reporting, convert words back to string for stats
+
+        # Re-join tokens into strings for saving the vocabulary
+        final_vocab = set(''.join(word) for word in words)  # Ensure unique tokens
+        try:
+            with open("final_vocab.txt", "w", encoding="utf-8") as f:
+                for token in sorted(final_vocab):  # Sort for consistent output
+                    f.write(f"{token}\n")
+            print("[BPE] Final vocabulary saved to 'final_vocab.txt'.")
+        except Exception as e:
+            print(f"[BPE] Could not save final vocabulary: {e}")
+
+        # Remove duplicate bigram frequency calculation
         str_words = self._words_to_strings(words)
-        bigram_freqs = self._get_stats([w.split() for w in str_words])
+        bigram_freqs = self._get_stats([list(w) for w in str_words], self.word_frequencies)
         if bigram_freqs:
             sorted_bigrams = sorted(bigram_freqs.items(), key=lambda x: x[1], reverse=True)
             top5 = sorted_bigrams[:5]
@@ -302,7 +348,7 @@ class BPETokenizer(BaseTokenizer):
                         f.write(f"  {bigram}: {freq}\n")
             except Exception as e:
                 print(f"Could not save bigram stats: {e}")
-        bigram_freqs = self._get_stats([w.split() for w in str_words])
+        bigram_freqs = self._get_stats([w.split() for w in str_words], self.word_frequencies)
         if bigram_freqs:
             sorted_bigrams = sorted(bigram_freqs.items(), key=lambda x: x[1], reverse=True)
             top5 = sorted_bigrams[:5]
@@ -338,7 +384,7 @@ class BPETokenizer(BaseTokenizer):
             current_word = list(word)
             # Apply BPE merges
             while True:
-                pairs = self._get_stats([current_word])  # pairs possible within the current word
+                pairs = self._get_stats([current_word], Counter({tuple(current_word): 1}))  # pairs possible within the current word
                 if not pairs:
                     break
                 best_pair = None
