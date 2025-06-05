@@ -23,7 +23,7 @@ class BPETokenizer(BaseTokenizer):
 
         # Add Twitter-specific special tokens if domain is twitter
         if self.domain == 'twitter':
-            special_token_list = ['[HASHTAG]', '[MENTION]', '[URL]', '[EMOJI]']
+            special_token_list = ['HASHTAG_TOKEN', 'MENTION_TOKEN', 'URL_TOKEN', 'EMOJI_TOKEN']
             for idx, token in enumerate(special_token_list, start=-10):
                 if token not in self.special_tokens:
                     self.special_tokens[token] = idx
@@ -48,8 +48,10 @@ class BPETokenizer(BaseTokenizer):
         pairs = defaultdict(int)
         for word in words:
             for i in range(len(word) - 1):
-                pair = (word[i], word[i + 1])
-                pairs[pair] += 1
+                # Skip pairs if either token is a special token
+                if word[i] in self.special_tokens or word[i + 1] in self.special_tokens:
+                    continue
+                pairs[(word[i], word[i + 1])] += 1
         self.pair_stats = dict(pairs)
         return self.pair_stats
 
@@ -100,7 +102,18 @@ class BPETokenizer(BaseTokenizer):
             i = 0
             new_word = []
             while i < len(word):
-                if i < len(word) - 1 and word[i] == pair[0] and word[i + 1] == pair[1]:
+                # Prevent merging inside special tokens
+                if word[i] in self.special_tokens:
+                    new_word.append(word[i])
+                    i += 1
+                    continue
+                if (
+                    i < len(word) - 1
+                    and word[i] == pair[0]
+                    and word[i + 1] == pair[1]
+                    and word[i] not in self.special_tokens
+                    and word[i + 1] not in self.special_tokens
+                ):
                     new_word.append(word[i] + word[i + 1])
                     i += 2
                 else:
@@ -117,19 +130,20 @@ class BPETokenizer(BaseTokenizer):
         text = unicodedata.normalize('NFKC', text)
         # Lowercase
         text = text.lower()
-        # Replace URLs with [URL]
-        text = re.sub(r'https?://\S+|www\.\S+', ' [URL] ', text)
-        # Replace mentions with [MENTION]
-        text = re.sub(r'@[\w_]+', ' [MENTION] ', text)
-        # Replace hashtags with [HASHTAG]
-        text = re.sub(r'#[\w_]+', ' [HASHTAG] ', text)
-        # Replace emojis with [EMOJI] (simple unicode emoji range)
+        # Replace URLs with URL_TOKEN
+        text = re.sub(r'https?://\S+|www\.\S+', ' URL_TOKEN ', text)
+        # Replace mentions with MENTION_TOKEN
+        text = re.sub(r'@[\w_]+', ' MENTION_TOKEN ', text)
+        # Replace hashtags with HASHTAG_TOKEN
+        text = re.sub(r'#[\w_]+', ' HASHTAG_TOKEN ', text)
+        # Replace emojis with EMOJI_TOKEN (simple unicode emoji range)
         emoji_pattern = re.compile(r"[\U0001F600-\U0001F64F\U0001F300-\U0001F5FF\U0001F680-\U0001F6FF\U0001F1E0-\U0001F1FF]+", flags=re.UNICODE)
-        text = emoji_pattern.sub(' [EMOJI] ', text)
+        text = emoji_pattern.sub(' EMOJI_TOKEN ', text)
         # Separate punctuation as in news
         text = re.sub(r'([,.;:!?()\[\]«»"“”‘’])', r' \1 ', text)
         # Collapse runs of whitespace
         text = re.sub(r'\s{2,}', ' ', text).strip()
+        # No need to fix case for special tokens anymore
         return text
 
     def _preprocess_news(self, text: str) -> str:
@@ -181,10 +195,10 @@ class BPETokenizer(BaseTokenizer):
                     words.append([word])
                     self.word_frequencies[word] += 1
                 else:
-                    # Add word boundary markers
-                    word = list(word)
-                    words.append(word)
-                    self.word_frequencies[word] += 1
+                    # Splitting to individual letters here:
+                    word_chars = list(word)
+                    words.append(word_chars)
+                    self.word_frequencies[''.join(word_chars)] += 1
         print("[BPE] Finished preprocessing and collecting initial words.")
 
         # Initialize vocabulary with characters
@@ -215,6 +229,7 @@ class BPETokenizer(BaseTokenizer):
         num_merges = int(domain_merge_factor * (self.vocab_size - len(self.token_to_id))) # how many merges we need to perform :) (this is the k we talked about)
 
         self._get_stats(words)  # Save stats in self.pair_stats
+        new_pairs_this_block = []
         for i in tqdm(range(num_merges), desc="BPE Merges"):  # tqdm progress bar
             if not self.pair_stats:
                 break
@@ -228,6 +243,7 @@ class BPETokenizer(BaseTokenizer):
 
             # Add the merge to our merges dictionary
             self.merges[best_pair] = best_pair[0] + best_pair[1]
+            new_pairs_this_block.append((best_pair, freq))
 
             # Add the merged token to vocabulary if not already present
             merged_token = best_pair[0] + best_pair[1]
@@ -241,9 +257,11 @@ class BPETokenizer(BaseTokenizer):
             self._update_stats(words, best_pair)
 
             # Print the new bigram and its frequency after every 20 merges
-            if i % 20 == 0:
-                print(f"Merged bigram: {best_pair} (frequency: {freq}) after {i+1} merges")
-
+            if (i + 1) % 20 == 0 or i == num_merges - 1:
+                print(f"\nMerged bigrams for merges {i-18 if i-18>0 else 1} to {i+1}:")
+                for idx, (pair, freq) in enumerate(new_pairs_this_block[-20:], start=1):
+                    print(f"  {idx}. {pair} (frequency: {freq})")
+                new_pairs_this_block = []
         # Check for at least one bigram (character pair) merge
         bigram_count = sum(1 for pair in self.merges if len(pair[0]) == 1 and len(pair[1]) == 1)
         if bigram_count > 0:
@@ -316,7 +334,7 @@ class BPETokenizer(BaseTokenizer):
             if word in self.special_tokens:
                 token_ids.append(self.token_to_id[word])
                 continue
-            # Split word into characters (as list)
+            # Splitting to individual letters here:
             current_word = list(word)
             # Apply BPE merges
             while True:
