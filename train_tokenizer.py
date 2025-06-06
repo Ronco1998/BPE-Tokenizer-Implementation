@@ -54,12 +54,7 @@ def train_tokenizer(domain_file: str, output_dir: str, vocab_size: int = 10000):
     tokenizer.save(output_path)
     print(f"Tokenizer trained with {tokenizer.get_vocab_size()} tokens")
 
-    # Print summary: vocab size, first few merges, sample encode/decode
-    print("\n==== Tokenizer Summary ====")
-    print(f"Vocabulary size: {tokenizer.get_vocab_size()}")
-    print("First 10 merges:")
-    for i, (pair, merged) in enumerate(list(tokenizer.merges.items())[:10]):
-        print(f"  {i+1}: {pair} -> {merged}")
+    # Test the tokenizer on a sample
     if texts:
         sample_text = texts[0].strip()
         print("\nSample encode/decode:")
