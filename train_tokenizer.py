@@ -18,7 +18,7 @@ def read_text_file(file_path: str) -> List[str]:
         return f.readlines()
 
 
-def train_tokenizer(domain_file: str, output_dir: str, vocab_size: int = 10000):
+def train_tokenizer(domain_file: str, output_dir: str, vocab_size: int = 10000, train: bool = True) -> None:
     """
     Train a tokenizer on domain data and save it
     
@@ -43,16 +43,26 @@ def train_tokenizer(domain_file: str, output_dir: str, vocab_size: int = 10000):
     elif 'domain_2' in base:
         domain = 'news'
 
-    # Initialize and train tokenizer
-    print(f"Training BPE tokenizer with vocab size {vocab_size} for domain '{domain}'")
-    tokenizer = BPETokenizer(vocab_size=vocab_size, domain=domain)
-    tokenizer.train(texts)
-    
-    # Save the tokenizer
-    output_path = os.path.join(output_dir, "tokenizer.pkl")
-    print(f"Saving tokenizer to {output_path}")
-    tokenizer.save(output_path)
-    print(f"Tokenizer trained with {tokenizer.get_vocab_size()} tokens")
+    if train:
+        # Initialize and train tokenizer
+        print(f"Training BPE tokenizer with vocab size {vocab_size} for domain '{domain}'")
+        tokenizer = BPETokenizer(vocab_size=vocab_size, domain=domain)
+        tokenizer.train(texts)
+        print("Tokenizer training complete")
+
+
+        # Save the tokenizer
+        output_path = os.path.join(output_dir, "tokenizer.pkl")
+        print(f"Saving tokenizer to {output_path}")
+        tokenizer.save(output_path)
+        print(f"Tokenizer trained with {tokenizer.get_vocab_size()} tokens")
+    else:
+        output_path = os.path.join(output_dir, "tokenizer.pkl")
+        if not os.path.exists(output_path):
+            print(f"Tokenizer file {output_path} does not exist. Please train the tokenizer first.")
+            return
+        print(f"Loading existing tokenizer from {output_path}")
+        tokenizer = BPETokenizer.load(output_path)
 
     # Test the tokenizer on a sample
     if texts:
@@ -70,11 +80,12 @@ if __name__ == "__main__":
     parser.add_argument("--domain_file", type=str, required=True, help="Path to the domain data file")
     parser.add_argument("--output_dir", type=str, default="tokenizers", help="Directory to save the tokenizer")
     parser.add_argument("--vocab_size", type=int, default=10000, help="Maximum vocabulary size")
+    parser.add_argument("--train", action="store_true", help="Whether to train the tokenizer")
     parser.add_argument("--test_sentences", type=str, nargs="*", help="Sentences to manually encode/decode (optional)")
     
     args = parser.parse_args()
-    
-    train_tokenizer(args.domain_file, args.output_dir, args.vocab_size)
+
+    train_tokenizer(args.domain_file, args.output_dir, args.vocab_size, args.train)
 
     # Automated manual encode/decode test
     if args.test_sentences:

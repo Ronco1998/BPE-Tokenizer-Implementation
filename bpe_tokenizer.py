@@ -1,4 +1,3 @@
-
 from __future__ import annotations
 
 import heapq, re, logging
@@ -13,9 +12,11 @@ from tqdm.auto import tqdm
 # ────────────────────────────────────────────────────────────────────────────
 _TW_USER  = re.compile(r"@[A-Za-z0-9_]{1,15}")  # Twitter @handle
 _TW_URL   = re.compile(r"https?://\S+")         # http(s) URLs
-_TW_HASH  = re.compile(r"#[\w\d_]+")           # #hashtag
+_TW_HASH  = re.compile(r"#[\w]+")           # #hashtag
 _NEWS_PUN = re.compile(r"([,.;:!?()\"'])")     # punct splitter
 _REGEX_CACHE: Dict[Tuple[str, str], re.Pattern] = {}
+
+END_WORD_MARK = "</w>"
 
 
 
@@ -35,11 +36,25 @@ class BPETokenizer(BaseTokenizer):
         logger: Optional[logging.Logger] = None,
     ) -> None:
         super().__init__()
+        self.special_tokens.update({
+            "<URL>":  len(self.special_tokens),
+            "<USER>": len(self.special_tokens) + 1,
+            "<HASHTAG>": len(self.special_tokens) + 2,
+        })
+        
+        if END_WORD_MARK not in self.token_to_id:
+            wid = len(self.special_tokens)
+            self.token_to_id[END_WORD_MARK] = wid
+            self.id_to_token[wid] = END_WORD_MARK
+
         self.vocab_size   = vocab_size
         self.log_every    = log_every
         self.domain       = domain
         self.special_toks = special_tokens or []
 
+        self.token_to_id.update(self.special_tokens)
+        self.id_to_token = {i: t for t, i in self.token_to_id.items()}
+        
         # basic logger (prints to stdout if none provided)
         if logger is None:
             logging.basicConfig(level=logging.INFO, format="%(message)s")
@@ -62,7 +77,7 @@ class BPETokenizer(BaseTokenizer):
             text = text.lower()
             text = _TW_USER.sub("<USER>", text)
             text = _TW_URL.sub("<URL>",  text)
-            text = _TW_HASH.sub(lambda m: m.group(0).lower(), text)
+            text = _TW_HASH.sub("<HASHTAG>", text)
             return text
 
         if domain == "news":
@@ -86,10 +101,17 @@ class BPETokenizer(BaseTokenizer):
 
         # lock‑in special tokens
         for tok in self.special_toks:
-            self.word_freqs[(tok, "</w>")] = 10**9  # massive count so they never merge away
+            self.word_freqs[(tok, END_WORD_MARK)] = 10**9  # massive count so they never merge away
 
         self.pair_stats  = self._get_stats(words, self.word_freqs)
         self._rebuild_heap()
+
+        # 1️⃣ initialize token-to-id mapping
+        for ch in {c for w in words for c in w if c != END_WORD_MARK}:
+            if ch not in self.token_to_id:
+                idx = len(self.token_to_id)
+                self.token_to_id[ch] = idx
+                self.id_to_token[idx] = ch
 
         merges_done, print_buf = 0, []
         pbar = tqdm(total=self.vocab_size, desc=f"BPE:{domain}", unit="merge")
@@ -112,6 +134,12 @@ class BPETokenizer(BaseTokenizer):
             # 3️⃣ bookkeeping
             self.merges_by_domain[domain].append(best_pair)
             self.ranks_by_domain[domain][best_pair] = merges_done
+            merged_sym = "".join(best_pair)
+            if merged_sym not in self.token_to_id:
+                idx = len(self.token_to_id)
+                self.token_to_id[merged_sym] = idx
+                self.id_to_token[idx] = merged_sym
+
             print_buf.append((best_pair, freq))
             merges_done += 1
             pbar.update(1)
@@ -126,7 +154,7 @@ class BPETokenizer(BaseTokenizer):
                 print_buf = []
 
             # 5️⃣ safety rebuild every 1000 merges
-            if merges_done % 1000 == 0:
+            if merges_done % 50 == 0:
                 self.word_freqs = self._rebuild_freqs(words)
                 self.pair_stats = self._get_stats(words, self.word_freqs)
                 self._rebuild_heap()
@@ -144,18 +172,22 @@ class BPETokenizer(BaseTokenizer):
     def encode(self, text: str) -> List[int]:
         """
         BPE-encode *text* → list[int] where each int is a vocabulary id.
-        Raises:
-            RuntimeError – if tokenizer not trained for this domain
-            ValueError   – if a produced sub-token is missing from the vocab
+        Gracefully maps unknown tokens to [UNK] and prints all unknowns.
         """
         merges = self.merges_by_domain.get(self.domain)
         if not merges:
             raise RuntimeError(
                 f"Tokenizer for domain '{self.domain}' has not been trained yet."
             )
-
-        # 1️⃣ run BPE merges (identical logic, just broken out into helper here)
-        tokens: List[str] = list(self._preprocess(text, self.domain)) + ["</w>"]
+        # Preprocess text to emit special tokens as one token
+        preprocessed = self._preprocess(text, self.domain)
+        tokens: List[str] = []
+        for raw in preprocessed.split():
+            if raw in self.special_tokens:
+                tokens.append(raw)
+            else:
+                tokens.extend(list(raw))
+            tokens.append(END_WORD_MARK)
         merge_rank = self.ranks_by_domain[self.domain]
         while True:
             best_pair, best_rank, best_idx = None, 1e9, -1
@@ -167,19 +199,20 @@ class BPETokenizer(BaseTokenizer):
                 break
             tokens[best_idx : best_idx + 2] = ["".join(best_pair)]
 
-        if tokens and tokens[-1] == "</w>":  # drop sentence end marker
-            tokens.pop()
 
-        # 2️⃣ map to ids – failure here is *very* informative
+        unk_id = self.token_to_id.get("[UNK]")
+        if unk_id is None:
+            print(f"[BPE:{self.domain}] Warning: [UNK] token not in vocabulary. Unknowns will be mapped to -1.")
+            unk_id = -1
         ids: List[int] = []
+        unknowns: List[str] = []
         for tok in tokens:
-            try:
-                ids.append(self.token_to_id[tok])
-            except KeyError as e:
-                raise ValueError(
-                    f"Sub-token '{tok}' is not in vocabulary "
-                    f"(domain='{self.domain}'). Did you forget to train / load?"
-                ) from e
+            tok_id = self.token_to_id.get(tok, unk_id)
+            ids.append(tok_id)
+            if tok_id == unk_id and tok != "[UNK]":
+                unknowns.append(tok)
+        if unknowns:
+            print(f"[BPE:{self.domain}] Unknown tokens mapped to [UNK]: {set(unknowns)}")
         return ids
 
 
@@ -199,8 +232,8 @@ class BPETokenizer(BaseTokenizer):
                 raise ValueError(f"Unknown token-id {i} (vocab size={len(self.id_to_token)})")
             if tok in self.special_tokens:
                 continue                                # skip [PAD]/[BOS]/[EOS]/[UNK]
-            if tok.endswith("</w>"):
-                current.append(tok[:-4])                # strip suffix
+            if tok.endswith(END_WORD_MARK):
+                current.append(tok[:-len(END_WORD_MARK)])  # strip suffix
                 words.append("".join(current))
                 current = []
             else:
@@ -215,15 +248,20 @@ class BPETokenizer(BaseTokenizer):
     # Internals
     # ────────────────────────────────────────────────────────────────────
     def _tokenize_texts(self, texts: Iterable[str], domain: str) -> List[List[str]]:
+        """Tokenize *texts* into sub-word tokens for the given *domain*. Skips special tokens as indivisible units."""
         out: List[List[str]] = []
         for txt in texts:
             txt = self._preprocess(txt, domain)
             for raw in txt.split():
-                out.append(list(raw) + ["</w>"])
+                if raw in self.special_tokens:
+                    out.append([raw, END_WORD_MARK])
+                    continue
+                out.append(list(raw) + [END_WORD_MARK])
         return out
 
     @staticmethod
     def _rebuild_freqs(words: List[List[str]]) -> Dict[Tuple[str, ...], int]:
+        """Rebuild frequency dictionary from tokenized words."""
         freq: Dict[Tuple[str, ...], int] = defaultdict(int)
         for w in words:
             freq[tuple(w)] += 1
@@ -234,6 +272,8 @@ class BPETokenizer(BaseTokenizer):
         words: List[List[str]],
         word_freqs: Dict[Tuple[str, ...], int],
     ) -> Dict[Tuple[str, str], int]:
+        """ Calculate pair statistics for BPE merges.
+            This counts how often each adjacent pair of characters appears"""
         stats: Dict[Tuple[str, str], int] = defaultdict(int)
         for word, f in word_freqs.items():
             for i in range(len(word)-1):
@@ -265,7 +305,7 @@ class BPETokenizer(BaseTokenizer):
         new_words, cur = [], []
         for tok in flat:
             cur.append(tok)
-            if tok == "</w>":          # word boundary marker
+            if tok == END_WORD_MARK:          # word boundary marker
                 new_words.append(cur)
                 cur = []
         return new_words
@@ -274,6 +314,7 @@ class BPETokenizer(BaseTokenizer):
         words: List[List[str]],
         merged_pair: Tuple[str, str],
     ) -> Set[Tuple[str, str]]:
+        """Update pair statistics after merging *merged_pair* in *words*."""
         affected: Set[Tuple[str, str]] = set()
         merged_tok = merged_pair[0] + merged_pair[1]
         for w in words:
@@ -307,7 +348,7 @@ class BPETokenizer(BaseTokenizer):
 
         It walks over the final `self.word_freqs` dictionary, which
         should already reflect the last merge state (remember we
-        rebuild it every 1000 merges and once more at the very end).
+        rebuild it every 50 merges and once more at the very end).
         """
         if not self.word_freqs:
             raise RuntimeError("Call this only after `train()` finished.")
@@ -316,7 +357,7 @@ class BPETokenizer(BaseTokenizer):
         token_freq: Dict[str, int] = defaultdict(int)
         for word, f in self.word_freqs.items():              # :contentReference[oaicite:0]{index=0}
             for tok in word:
-                if tok == "</w>":            # sentence-ending marker ≠ real vocab
+                if tok == END_WORD_MARK:            # sentence-ending marker ≠ real vocab
                     continue
                 token_freq[tok] += f
 
