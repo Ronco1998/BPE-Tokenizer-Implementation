@@ -18,6 +18,17 @@ _REGEX_CACHE: Dict[Tuple[str, str], re.Pattern] = {}
 
 END_WORD_MARK = "</w>"
 
+# One coarse emoji detector (covers all BMP + supplementary planes)
+_EMOJI = re.compile(
+    r"[\U0001F1E6-\U0001F1FF]|"      # flags
+    r"[\U0001F300-\U0001F5FF]|"      # symbols & pictographs
+    r"[\U0001F600-\U0001F64F]|"      # emoticons
+    r"[\U0001F680-\U0001F6FF]|"      # transport & map
+    r"[\u2600-\u26FF]|"              # misc symbols
+    r"[\u2700-\u27BF]"               # dingbats
+)
+# 32 printable ASCII punctuation + ‘…’ (unicode ellipsis)
+_PUNCT_CHARS = list(r"""!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~""") + ["…"]
 
 
 
@@ -41,7 +52,14 @@ class BPETokenizer(BaseTokenizer):
             "<USER>": len(self.special_tokens) + 1,
             "<HASHTAG>": len(self.special_tokens) + 2,
         })
-        
+        self.special_tokens["<EMOJI>"] = len(self.special_tokens)
+        # preload punctuation so they can never be OOV
+        for ch in _PUNCT_CHARS:
+            if ch not in self.token_to_id:
+                idx = len(self.token_to_id)
+                self.token_to_id[ch] = idx
+                self.id_to_token[idx] = ch
+
         if END_WORD_MARK not in self.token_to_id:
             wid = len(self.special_tokens)
             self.token_to_id[END_WORD_MARK] = wid
@@ -78,6 +96,11 @@ class BPETokenizer(BaseTokenizer):
             text = _TW_USER.sub("<USER>", text)
             text = _TW_URL.sub("<URL>",  text)
             text = _TW_HASH.sub("<HASHTAG>", text)
+            # Give the quote its own “word” so it is not glued to neighbours
+            text = text.replace('"', ' " ')
+            # Collapse every single emoji code-point to one placeholder
+            text = _EMOJI.sub('<EMOJI>', text)
+            # -----------------------------------------------------
             return text
 
         if domain == "news":
@@ -154,7 +177,7 @@ class BPETokenizer(BaseTokenizer):
                 print_buf = []
 
             # 5️⃣ safety rebuild every 1000 merges
-            if merges_done % 50 == 0:
+            if merges_done % 100 == 0:
                 self.word_freqs = self._rebuild_freqs(words)
                 self.pair_stats = self._get_stats(words, self.word_freqs)
                 self._rebuild_heap()
@@ -184,10 +207,11 @@ class BPETokenizer(BaseTokenizer):
         tokens: List[str] = []
         for raw in preprocessed.split():
             if raw in self.special_tokens:
-                tokens.append(raw)
+    # treat the whole placeholder *including* the boundary as 1 token
+                tokens.append(raw + END_WORD_MARK)
             else:
                 tokens.extend(list(raw))
-            tokens.append(END_WORD_MARK)
+                tokens.append(END_WORD_MARK)
         merge_rank = self.ranks_by_domain[self.domain]
         while True:
             best_pair, best_rank, best_idx = None, 1e9, -1
@@ -200,19 +224,15 @@ class BPETokenizer(BaseTokenizer):
             tokens[best_idx : best_idx + 2] = ["".join(best_pair)]
 
 
-        unk_id = self.token_to_id.get("[UNK]")
-        if unk_id is None:
-            print(f"[BPE:{self.domain}] Warning: [UNK] token not in vocabulary. Unknowns will be mapped to -1.")
-            unk_id = -1
-        ids: List[int] = []
-        unknowns: List[str] = []
+        # Efficient mapping to [UNK] with warning if unknown
+        ids = []
+        unknown_tokens = []
         for tok in tokens:
-            tok_id = self.token_to_id.get(tok, unk_id)
-            ids.append(tok_id)
-            if tok_id == unk_id and tok != "[UNK]":
-                unknowns.append(tok)
-        if unknowns:
-            print(f"[BPE:{self.domain}] Unknown tokens mapped to [UNK]: {set(unknowns)}")
+            if tok not in self.token_to_id:
+                unknown_tokens.append(tok)
+            ids.append(self.token_to_id.get(tok, self.token_to_id["[UNK]"]))
+        if unknown_tokens:
+            print(f"[BPE:{self.domain}] Warning: Unknown token(s) mapped to [UNK]: {unknown_tokens}")
         return ids
 
 
@@ -228,6 +248,8 @@ class BPETokenizer(BaseTokenizer):
         words, current = [], []
         for i in token_ids:
             tok = self.id_to_token.get(i)
+            if tok == END_WORD_MARK:
+                continue
             if tok is None:
                 raise ValueError(f"Unknown token-id {i} (vocab size={len(self.id_to_token)})")
             if tok in self.special_tokens:
@@ -282,33 +304,28 @@ class BPETokenizer(BaseTokenizer):
 
 
 
-    # … and overwrite the existing _merge_pair:
     @staticmethod
-    def _merge_pair(pair: Tuple[str, str], words: List[List[str]]) -> List[List[str]]:
+    def _merge_pair(
+        pair: Tuple[str, str],
+        words: List[List[str]],
+    ) -> List[List[str]]:
+        """In-place O(total_tokens) merge – no regex, no giant strings."""
         first, second = pair
         merged = first + second
 
-        # 1️⃣ compile / reuse regex  (word chars separated by single spaces)
-        pat = _REGEX_CACHE.get(pair)
-        if pat is None:
-            pat = re.compile(
-                rf"(?:(?<=\s)|^){re.escape(first)} {re.escape(second)}(?=\s)"
-            )
-            _REGEX_CACHE[pair] = pat
+        for w in words:
+            i = 0
+            # in-place scan; we do **not** create new lists
+            while i < len(w) - 1:
+                if w[i] == first and w[i + 1] == second:
+                    w[i : i + 2] = [merged]      # splice-replace
+                    # stay on same index – merged token may merge again
+                    if i > 0:
+                        i -= 1
+                else:
+                    i += 1
+        return words               # the list object is reused → zero alloc
 
-        # 2️⃣ flatten → replace → rebuild
-        joined = " ".join(" ".join(w) for w in words)
-        joined = pat.sub(merged, joined)
-
-        # 3️⃣ split back into nested list structure
-        flat = joined.split(" ")
-        new_words, cur = [], []
-        for tok in flat:
-            cur.append(tok)
-            if tok == END_WORD_MARK:          # word boundary marker
-                new_words.append(cur)
-                cur = []
-        return new_words
     def _update_stats(
         self,
         words: List[List[str]],
