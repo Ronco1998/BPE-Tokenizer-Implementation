@@ -18,14 +18,14 @@ def read_text_file(file_path: str) -> List[str]:
         return f.readlines()
 
 
-def train_tokenizer(domain_file: str, output_dir: str, vocab_size: int = 10000, train: bool = True) -> None:
+def train_tokenizer(domain_file: str, output_dir: str, num_merges: int = 10000, train: bool = True) -> None:
     """
     Train a tokenizer on domain data and save it
     
     Args:
         domain_file: Path to the domain training data file
         output_dir: Directory where to save the trained tokenizer
-        vocab_size: Maximum vocabulary size
+        num_merges: Number of BPE merge operations
     """
     # Create output directory if it doesn't exist
     os.makedirs(output_dir, exist_ok=True)
@@ -45,8 +45,8 @@ def train_tokenizer(domain_file: str, output_dir: str, vocab_size: int = 10000, 
 
     if train:
         # Initialize and train tokenizer
-        print(f"Training BPE tokenizer with vocab size {vocab_size} for domain '{domain}'")
-        tokenizer = BPETokenizer(vocab_size=vocab_size, domain=domain)
+        print(f"Training BPE tokenizer with {num_merges} merges for domain '{domain}'")
+        tokenizer = BPETokenizer(num_merges=num_merges, domain=domain)
         tokenizer.train(texts)
         print("Tokenizer training complete")
 
@@ -79,13 +79,13 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Train a BPE tokenizer on domain data")
     parser.add_argument("--domain_file", type=str, required=True, help="Path to the domain data file")
     parser.add_argument("--output_dir", type=str, default="tokenizers", help="Directory to save the tokenizer")
-    parser.add_argument("--vocab_size", type=int, default=10000, help="Maximum vocabulary size")
+    parser.add_argument("--num_merges", type=int, default=10000, help="Number of BPE merge operations")
     parser.add_argument("--train", action="store_true", help="Whether to train the tokenizer")
     parser.add_argument("--test_sentences", type=str, nargs="*", help="Sentences to manually encode/decode (optional)")
     
     args = parser.parse_args()
 
-    train_tokenizer(args.domain_file, args.output_dir, args.vocab_size, args.train)
+    train_tokenizer(args.domain_file, args.output_dir, args.num_merges, args.train)
 
     # Automated manual encode/decode test
     if args.test_sentences:
@@ -95,7 +95,7 @@ if __name__ == "__main__":
             domain = 'twitter'
         elif 'domain_2' in base:
             domain = 'news'
-        tokenizer = BPETokenizer(vocab_size=args.vocab_size, domain=domain)
+        tokenizer = BPETokenizer(num_merges=args.num_merges, domain=domain)
         # Use the same file for training for demonstration
         texts = read_text_file(args.domain_file)
         tokenizer.train(texts)

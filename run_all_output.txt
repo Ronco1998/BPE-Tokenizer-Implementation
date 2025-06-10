@@ -1,0 +1,10 @@
+Select domain:
+1. Domain 1 (Twitter)
+2. Domain 2 (News)
+3. Unknown domain
+Selected domain: domain_1
+
+Do you want to train a new tokenizer or load an existing one?
+1. Train new tokenizer
+2. Load existing tokenizer
+Training tokenizer for domain_1...

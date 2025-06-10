@@ -1,0 +1,411 @@
+Using device: cuda
+Loading tokenizer from trained_tokenizers/domain_1/tokenizer.pkl
+Loading training data from data/ner_data/train_1_binary.tagged
+Loading dev data from data/ner_data/dev_1_binary.tagged
+Creating datasets
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"', '"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"', '"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"', '"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"', '"', '"', '"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"', '"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"', '"', '"', '"', '"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"', '"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"', '"', '"', '"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"', '"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"', '"', '"', '"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"', '"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['😂']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['😀', '😀', '😀', '😗', '😘', '😭', '😭', '😭']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['💙', '💙', '💙']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['😂', '😂']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['😊', '😊']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['😩', '😫']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['😂', '😂', '😂']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['😂']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['❤', '✨']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['😂', '👍']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['😊']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['😂', '😂']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['🔊', '🎧', '🎵']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['♥']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['😁']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['😂', '😂', '😂']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '’', '’', '”']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['❤', '😍']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['😉', '😉', '😉', '😉']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['😂']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"', '😂']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['😂', '😂', '😂']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['😂', '😂']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['😅', '❤', '❤', '😅']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['😂']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['❤']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['😊']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['😂', '✨']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['❤', '️', '❤', '️']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['❤', '❤', '❤']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['😌']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['😁', '💕']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['😜']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['✔']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"', '"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"', '"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['👍', '😂', '😂', '🔥']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['😂', '😂', '😂']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"', '"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['😀', '😀']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['😂', '😂']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['😂', '😂', '😂', '😂', '😂', '😂', '😂']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['💜', '💜', '💜', '💜', '💜', '💜', '💜', '💜']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['🌎']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['😂']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['🙏']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['😅', '😘']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['💖']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['😂', '😂']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['😊']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['😀', '😀']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['…']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"', '😂']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['👍', '👍']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['😂', '😂', '😂']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['😑']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['😃']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['😆']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['😥', '😀']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['👐', '👏']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['🔥', '🔥', '🔥', '🔥', '🔥']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['😥', '😥']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['☺', '️', '🙆']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"', '😂', '😂', '😂', '😂']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['😂']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['😂', '😂', '😂', '💙']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['\u200b']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"', '😳']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['❤', '️']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['"', '"']
+[BPE:twitter] Warning: Unknown token(s) mapped to [UNK]: ['\ufeff']
+Initializing model
+Starting training for 20 epochs
+Epoch 1/20:
+  Train loss: 0.1999
+  Dev accuracy: 0.9208
+  Dev precision: 0.4516
+  Dev recall: 0.0113
+  Dev F1: 0.0220
+  Saved new best model with F1: 0.0220
+Epoch 2/20:
+  Train loss: 0.1562
+  Dev accuracy: 0.9186
+  Dev precision: 0.4264
+  Dev recall: 0.0885
+  Dev F1: 0.1466
+  Saved new best model with F1: 0.1466
+Epoch 3/20:
+  Train loss: 0.1344
+  Dev accuracy: 0.9205
+  Dev precision: 0.4718
+  Dev recall: 0.0539
+  Dev F1: 0.0968
+Epoch 4/20:
+  Train loss: 0.1097
+  Dev accuracy: 0.9184
+  Dev precision: 0.4000
+  Dev recall: 0.0660
+  Dev F1: 0.1133
+Epoch 5/20:
+  Train loss: 0.0824
+  Dev accuracy: 0.9141
+  Dev precision: 0.3312
+  Dev recall: 0.0853
+  Dev F1: 0.1356
+Epoch 6/20:
+  Train loss: 0.0677
+  Dev accuracy: 0.9159
+  Dev precision: 0.3974
+  Dev recall: 0.1247
+  Dev F1: 0.1898
+  Saved new best model with F1: 0.1898
+Epoch 7/20:
+  Train loss: 0.0541
+  Dev accuracy: 0.9137
+  Dev precision: 0.3666
+  Dev recall: 0.1271
+  Dev F1: 0.1888
+Epoch 8/20:
+  Train loss: 0.0409
+  Dev accuracy: 0.9096
+  Dev precision: 0.3370
+  Dev recall: 0.1496
+  Dev F1: 0.2072
+  Saved new best model with F1: 0.2072
+Epoch 9/20:
+  Train loss: 0.0428
+  Dev accuracy: 0.9085
+  Dev precision: 0.3115
+  Dev recall: 0.1303
+  Dev F1: 0.1838
+Epoch 10/20:
+  Train loss: 0.0415
+  Dev accuracy: 0.9103
+  Dev precision: 0.3385
+  Dev recall: 0.1416
+  Dev F1: 0.1997
+Epoch 11/20:
+  Train loss: 0.0441
+  Dev accuracy: 0.9127
+  Dev precision: 0.3414
+  Dev recall: 0.1134
+  Dev F1: 0.1703
+Epoch 12/20:
+  Train loss: 0.0351
+  Dev accuracy: 0.9139
+  Dev precision: 0.3647
+  Dev recall: 0.1215
+  Dev F1: 0.1823
+Epoch 13/20:
+  Train loss: 0.0288
+  Dev accuracy: 0.9136
+  Dev precision: 0.3333
+  Dev recall: 0.0933
+  Dev F1: 0.1458
+Epoch 14/20:
+  Train loss: 0.0343
+  Dev accuracy: 0.9164
+  Dev precision: 0.3897
+  Dev recall: 0.1038
+  Dev F1: 0.1639
+Epoch 15/20:
+  Train loss: 0.0400
+  Dev accuracy: 0.9134
+  Dev precision: 0.3405
+  Dev recall: 0.1022
+  Dev F1: 0.1572
+Epoch 16/20:
+  Train loss: 0.0470
+  Dev accuracy: 0.9139
+  Dev precision: 0.3551
+  Dev recall: 0.1094
+  Dev F1: 0.1673
+Epoch 17/20:
+  Train loss: 0.0418
+  Dev accuracy: 0.9137
+  Dev precision: 0.3623
+  Dev recall: 0.1207
+  Dev F1: 0.1811
+Epoch 18/20:
+  Train loss: 0.0425
+  Dev accuracy: 0.9125
+  Dev precision: 0.3358
+  Dev recall: 0.1102
+  Dev F1: 0.1660
+Epoch 19/20:
+  Train loss: 0.0391
+  Dev accuracy: 0.9068
+  Dev precision: 0.3140
+  Dev recall: 0.1521
+  Dev F1: 0.2049
+Epoch 20/20:
+  Train loss: 0.0363
+  Dev accuracy: 0.9091
+  Dev precision: 0.3259
+  Dev recall: 0.1408
+  Dev F1: 0.1966
+Training complete. Best F1: 0.2072

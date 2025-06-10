@@ -1,22 +1,21 @@
 from __future__ import annotations
 
-import heapq, re, logging
+import heapq
+import re
 from collections import defaultdict
 from typing import Dict, List, Tuple, Set, Iterable, Optional
-from base_tokenizer import BaseTokenizer
+
 from tqdm.auto import tqdm
 
+from base_tokenizer import BaseTokenizer
 
 # ────────────────────────────────────────────────────────────────────────────
-# Helper regexes for domain‑specific preprocessing
+# Helper regexes & constants (shared for every domain)
 # ────────────────────────────────────────────────────────────────────────────
 _TW_USER  = re.compile(r"@[A-Za-z0-9_]{1,15}")  # Twitter @handle
-_TW_URL   = re.compile(r"https?://\S+")         # http(s) URLs
-_TW_HASH  = re.compile(r"#[\w]+")           # #hashtag
-_NEWS_PUN = re.compile(r"([,.;:!?()\"'])")     # punct splitter
-_REGEX_CACHE: Dict[Tuple[str, str], re.Pattern] = {}
-
-END_WORD_MARK = "</w>"
+_TW_URL   = re.compile(r"https?://\S+")        # http(s) URLs
+_TW_HASH  = re.compile(r"#[\w]+")              # #hashtag
+_NEWS_PUN = re.compile(r"([,.;:!?()\"'])")    # punctuation splitter
 
 # One coarse emoji detector (covers all BMP + supplementary planes)
 _EMOJI = re.compile(
@@ -27,9 +26,11 @@ _EMOJI = re.compile(
     r"[\u2600-\u26FF]|"              # misc symbols
     r"[\u2700-\u27BF]"               # dingbats
 )
-# 32 printable ASCII punctuation + ‘…’ (unicode ellipsis)
-_PUNCT_CHARS = list(r"""!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~""") + ["…"]
 
+# Printable ASCII punctuation + ‘…’ (unicode ellipsis)
+_PUNCT_CHARS = list(r"""!\"#$%&'()*+,-./:;<=>?@[\]^_`{|}~""") + ["…"]
+
+END_WORD_MARK = "</w>"
 
 
 # ────────────────────────────────────────────────────────────────────────────
@@ -40,123 +41,126 @@ class BPETokenizer(BaseTokenizer):
 
     def __init__(
         self,
-        vocab_size: int = 5_000,
+        num_merges: int = 1_000,
         log_every: int = 20,
         domain: str = "generic",
         special_tokens: Optional[List[str]] = None,
-        logger: Optional[logging.Logger] = None,
+        vocab_out_path: Optional[str] = None,
     ) -> None:
         super().__init__()
-        self.special_tokens.update({
-            "<URL>":  len(self.special_tokens),
-            "<USER>": len(self.special_tokens) + 1,
-            "<HASHTAG>": len(self.special_tokens) + 2,
-        })
-        self.special_tokens["<EMOJI>"] = len(self.special_tokens)
-        # preload punctuation so they can never be OOV
+
+        self.num_merges   = num_merges
+        self.log_every    = log_every
+        self.domain       = domain.lower()
+        self.vocab_out    = vocab_out_path or f"{self.domain}_vocab.txt"
+
+        # ── 1. Domain‑specific special tokens ─────────────────────────────
+        domain_extras: List[str] = []
+        if self.domain == "twitter":
+            domain_extras = ["<URL>", "<USER>", "<HASHTAG>"]
+        # Generic emoji placeholder is always useful regardless of domain
+        domain_extras.append("<EMOJI>")
+
+        # Merge built‑in + user‑supplied special tokens
+        if special_tokens is None:
+            special_tokens = []
+        self.special_tokens.update({tok: len(self.special_tokens)+i for i, tok in enumerate(domain_extras + special_tokens)})
+
+        # ── 2. Core vocabulary initialisation ─────────────────────────────
+        # Map special tokens first (so they get the lowest ids after PAD/UNK/...)
+        self.token_to_id.update(self.special_tokens)
+        self.id_to_token = {i: t for t, i in self.token_to_id.items()}
+
+        # Pre‑load punctuation so they never become OOV
         for ch in _PUNCT_CHARS:
             if ch not in self.token_to_id:
                 idx = len(self.token_to_id)
                 self.token_to_id[ch] = idx
                 self.id_to_token[idx] = ch
 
+        # Reserve END_WORD_MARK as a real vocabulary symbol (not emitted)
         if END_WORD_MARK not in self.token_to_id:
-            wid = len(self.special_tokens)
+            wid = len(self.token_to_id)
             self.token_to_id[END_WORD_MARK] = wid
             self.id_to_token[wid] = END_WORD_MARK
 
-        self.vocab_size   = vocab_size
-        self.log_every    = log_every
-        self.domain       = domain
-        self.special_toks = special_tokens or []
+        # ── 3. Training artefacts – one per *instance* (i.e. per domain) ──
+        self.merges: List[Tuple[str, str]] = []          # ordered list of merges
+        self.ranks:  Dict[Tuple[str, str], int] = {}     # quick look‑up → rank
 
-        self.token_to_id.update(self.special_tokens)
-        self.id_to_token = {i: t for t, i in self.token_to_id.items()}
-        
-        # basic logger (prints to stdout if none provided)
-        if logger is None:
-            logging.basicConfig(level=logging.INFO, format="%(message)s")
-            logger = logging.getLogger(f"BPE.{domain}")
-        self.logger = logger
-
-        # learned artefacts *per domain*
-        self.merges_by_domain: Dict[str, List[Tuple[str, str]]] = defaultdict(list)
-        self.ranks_by_domain:  Dict[str, Dict[Tuple[str, str], int]] = defaultdict(dict)
-
-        # working state during *current* training session
+        # Working state (used only during `train()`)
         self.word_freqs: Dict[Tuple[str, ...], int] = {}
         self.pair_stats: Dict[Tuple[str, str], int] = {}
         self._heap: List[Tuple[int, Tuple[str, str]]] = []
-    
-    
-    def _preprocess(self, text: str, domain: str) -> str:
-        """Minimal clean‑up that returns a space‑separated string."""
-        if domain == "twitter":
+
+    # ────────────────────────────────────────────────────────────────────
+    # Preprocessing (domain aware)
+    # ────────────────────────────────────────────────────────────────────
+    def _preprocess(self, text: str) -> str:
+        """Return a clean, space‑separated string suitable for tokenisation."""
+        text = _EMOJI.sub('<EMOJI>', text)
+        if self.domain == "twitter":
             text = text.lower()
             text = _TW_USER.sub("<USER>", text)
             text = _TW_URL.sub("<URL>",  text)
             text = _TW_HASH.sub("<HASHTAG>", text)
-            # Give the quote its own “word” so it is not glued to neighbours
             text = text.replace('"', ' " ')
-            # Collapse every single emoji code-point to one placeholder
-            text = _EMOJI.sub('<EMOJI>', text)
-            # -----------------------------------------------------
             return text
 
-        if domain == "news":
+        if self.domain == "news":
             text = _NEWS_PUN.sub(r" \1 ", text)
-            return text.lower()
+            return text
 
-        return text.strip().lower()
+        # Unknown / generic domain – keep original casing
+        return text.strip()
 
     # ────────────────────────────────────────────────────────────────────
-    # Public API
+    # Training
     # ────────────────────────────────────────────────────────────────────
     def train(self, texts: Iterable[str]) -> None:
-        """Learn merges from *texts* belonging to `self.domain`."""
-        domain = self.domain
-        words  = self._tokenize_texts(texts, domain)
-        self.word_freqs  = self._rebuild_freqs(words)
-        if self.merges_by_domain[self.domain]:
-            raise RuntimeError(
-                f"BPETokenizer for domain '{self.domain}' is already trained; "
-                "create a new instance if you need to retrain.")
+        """Learn merges from *texts* belonging to **this** tokenizer's domain."""
+        if self.merges:
+            raise RuntimeError(f"Tokenizer for domain '{self.domain}' is already trained; create a new instance to retrain.")
 
-        # lock‑in special tokens
-        for tok in self.special_toks:
-            self.word_freqs[(tok, END_WORD_MARK)] = 10**9  # massive count so they never merge away
+        # Tokenise + build initial stats
+        tokenised_words = self._tokenize_texts(texts)
+        self.word_freqs = self._rebuild_freqs(tokenised_words)
 
-        self.pair_stats  = self._get_stats(words, self.word_freqs)
+        # Protect user‑supplied special tokens from merging away
+        for tok in self.special_tokens:
+            self.word_freqs[(tok, END_WORD_MARK)] = 10**9
+
+        self.pair_stats = self._get_stats(tokenised_words, self.word_freqs)
         self._rebuild_heap()
 
-        # 1️⃣ initialize token-to-id mapping
-        for ch in {c for w in words for c in w if c != END_WORD_MARK}:
+        # Seed character‑level tokens into the vocab
+        for ch in {c for w in tokenised_words for c in w if c != END_WORD_MARK}:
             if ch not in self.token_to_id:
                 idx = len(self.token_to_id)
                 self.token_to_id[ch] = idx
                 self.id_to_token[idx] = ch
 
         merges_done, print_buf = 0, []
-        pbar = tqdm(total=self.vocab_size, desc=f"BPE:{domain}", unit="merge")
+        pbar = tqdm(total=self.num_merges, desc=f"BPE:{self.domain}", unit="merge")
 
-        while merges_done < self.vocab_size and self._heap:
+        while merges_done < self.num_merges and self._heap:
             freq_neg, best_pair = heapq.heappop(self._heap)
             freq = -freq_neg
             if self.pair_stats.get(best_pair, 0) != freq:  # stale entry
                 continue
 
             # 1️⃣ merge everywhere
-            words = self._merge_pair(best_pair, words)
+            tokenised_words = self._merge_pair(best_pair, tokenised_words)
             self.pair_stats.pop(best_pair, None)
 
             # 2️⃣ update local stats & heap
-            changed = self._update_stats(words, best_pair)
+            changed = self._update_stats(tokenised_words, best_pair)
             for p in changed:
                 heapq.heappush(self._heap, (-self.pair_stats[p], p))
 
             # 3️⃣ bookkeeping
-            self.merges_by_domain[domain].append(best_pair)
-            self.ranks_by_domain[domain][best_pair] = merges_done
+            self.merges.append(best_pair)
+            self.ranks[best_pair] = merges_done
             merged_sym = "".join(best_pair)
             if merged_sym not in self.token_to_id:
                 idx = len(self.token_to_id)
@@ -167,113 +171,104 @@ class BPETokenizer(BaseTokenizer):
             merges_done += 1
             pbar.update(1)
 
-            # 4️⃣ periodic log + print
-            if merges_done % self.log_every == 0 or merges_done == self.vocab_size:
+            # 4️⃣ periodic print to terminal
+            if merges_done % self.log_every == 0 or merges_done == self.num_merges:
                 start = merges_done - len(print_buf) + 1
-                self.logger.info(f"[BPE:{domain}] merges {start}–{merges_done} →")
-                tqdm.write(f"[BPE:{domain}] merges {start}–{merges_done} →")
+                tqdm.write(f"[BPE:{self.domain}] merges {start}–{merges_done} →")
                 for i, (pair, f) in enumerate(print_buf, 1):
-                    self.logger.info(f"  {i}. {pair} (freq {f})")
+                    print(f"  {i}. {pair} (freq {f})")
                 print_buf = []
 
-            # 5️⃣ safety rebuild every 1000 merges
+            # 5️⃣ safety rebuild every 100 merges (keeps stats fresh & heap small)
             if merges_done % 100 == 0:
-                self.word_freqs = self._rebuild_freqs(words)
-                self.pair_stats = self._get_stats(words, self.word_freqs)
+                self.word_freqs = self._rebuild_freqs(tokenised_words)
+                self.pair_stats = self._get_stats(tokenised_words, self.word_freqs)
                 self._rebuild_heap()
 
         pbar.close()
 
+        # Final inventory cleanup (symbols that never merged yet appeared)
         for sym in self._extract_vocab_symbols():
             if sym not in self.token_to_id:
                 idx = len(self.token_to_id)
                 self.token_to_id[sym] = idx
                 self.id_to_token[idx] = sym
 
-    # Convenience encode (uses merges of current domain)
-    # ─── Public API ────────────────────────────────────────────────
+        # 🚀 Export learned vocabulary to textfile
+        self._export_vocab()
+
+    # ────────────────────────────────────────────────────────────────────
+    # Public API – encode / decode
+    # ────────────────────────────────────────────────────────────────────
     def encode(self, text: str) -> List[int]:
-        """
-        BPE-encode *text* → list[int] where each int is a vocabulary id.
-        Gracefully maps unknown tokens to [UNK] and prints all unknowns.
-        """
-        merges = self.merges_by_domain.get(self.domain)
-        if not merges:
-            raise RuntimeError(
-                f"Tokenizer for domain '{self.domain}' has not been trained yet."
-            )
-        # Preprocess text to emit special tokens as one token
-        preprocessed = self._preprocess(text, self.domain)
+        """BPE‑encode *text* → list[int]; unknowns map to [UNK] with a warning."""
+        if not self.merges:
+            raise RuntimeError(f"Tokenizer for domain '{self.domain}' has not been trained yet.")
+
+        # 1️⃣ Pre‑tokenise
+        preprocessed = self._preprocess(text)
         tokens: List[str] = []
         for raw in preprocessed.split():
-            if raw in self.special_tokens:
-    # treat the whole placeholder *including* the boundary as 1 token
+            if raw in self.special_tokens:            # placeholder becomes one token
                 tokens.append(raw + END_WORD_MARK)
             else:
                 tokens.extend(list(raw))
                 tokens.append(END_WORD_MARK)
-        merge_rank = self.ranks_by_domain[self.domain]
+
+        # 2️⃣ Greedy merge loop (uses rank ordering)
         while True:
             best_pair, best_rank, best_idx = None, 1e9, -1
             for i in range(len(tokens) - 1):
-                r = merge_rank.get((tokens[i], tokens[i + 1]))
+                r = self.ranks.get((tokens[i], tokens[i + 1]))
                 if r is not None and r < best_rank:
                     best_pair, best_rank, best_idx = (tokens[i], tokens[i + 1]), r, i
             if best_pair is None:
                 break
             tokens[best_idx : best_idx + 2] = ["".join(best_pair)]
 
-
-        # Efficient mapping to [UNK] with warning if unknown
-        ids = []
-        unknown_tokens = []
+        # 3️⃣ Map to ids (unknown → [UNK])
+        unk_id = self.token_to_id["[UNK]"]
+        ids, unknowns = [], []
         for tok in tokens:
-            if tok not in self.token_to_id:
-                unknown_tokens.append(tok)
-            ids.append(self.token_to_id.get(tok, self.token_to_id["[UNK]"]))
-        if unknown_tokens:
-            print(f"[BPE:{self.domain}] Warning: Unknown token(s) mapped to [UNK]: {unknown_tokens}")
+            tid = self.token_to_id.get(tok)
+            if tid is None:
+                unknowns.append(tok)
+                tid = unk_id
+            ids.append(tid)
+
+        if unknowns:
+            print(f"[BPE:{self.domain}] Warning • mapped to [UNK]: {unknowns}")
         return ids
 
-
     def decode(self, token_ids: List[int]) -> str:
-        """
-        Reverse of `encode`.
-        Raises:
-            ValueError – if an id is unknown
-        """
+        """Reverse of `encode()`.  Raises on truly unknown ids."""
         if not token_ids:
             return ""
 
         words, current = [], []
-        for i in token_ids:
-            tok = self.id_to_token.get(i)
-            if tok == END_WORD_MARK:
+        for tid in token_ids:
+            tok = self.id_to_token.get(tid)
+            if tok == END_WORD_MARK or tok is None:
                 continue
-            if tok is None:
-                raise ValueError(f"Unknown token-id {i} (vocab size={len(self.id_to_token)})")
-            if tok in self.special_tokens:
-                continue                                # skip [PAD]/[BOS]/[EOS]/[UNK]
+            if tok in self.special_tokens:           # skip BOS/EOS/UNK…
+                continue
             if tok.endswith(END_WORD_MARK):
-                current.append(tok[:-len(END_WORD_MARK)])  # strip suffix
+                current.append(tok[:-len(END_WORD_MARK)])
                 words.append("".join(current))
                 current = []
             else:
                 current.append(tok)
-
-        if current:                                    # safety – unterminated last word
+        if current:                                   # unterminated last word
             words.append("".join(current))
         return " ".join(words)
 
-
     # ────────────────────────────────────────────────────────────────────
-    # Internals
+    # Internals (unchanged w.r.t. algorithmic behaviour)
     # ────────────────────────────────────────────────────────────────────
-    def _tokenize_texts(self, texts: Iterable[str], domain: str) -> List[List[str]]:
-        """Tokenize *texts* into sub-word tokens for the given *domain*. Skips special tokens as indivisible units."""
+    def _tokenize_texts(self, texts: Iterable[str]) -> List[List[str]]:
         out: List[List[str]] = []
         for txt in texts:
-            txt = self._preprocess(txt, domain)
+            txt = self._preprocess(txt)
             for raw in txt.split():
                 if raw in self.special_tokens:
                     out.append([raw, END_WORD_MARK])
@@ -283,7 +278,6 @@ class BPETokenizer(BaseTokenizer):
 
     @staticmethod
     def _rebuild_freqs(words: List[List[str]]) -> Dict[Tuple[str, ...], int]:
-        """Rebuild frequency dictionary from tokenized words."""
         freq: Dict[Tuple[str, ...], int] = defaultdict(int)
         for w in words:
             freq[tuple(w)] += 1
@@ -294,46 +288,29 @@ class BPETokenizer(BaseTokenizer):
         words: List[List[str]],
         word_freqs: Dict[Tuple[str, ...], int],
     ) -> Dict[Tuple[str, str], int]:
-        """ Calculate pair statistics for BPE merges.
-            This counts how often each adjacent pair of characters appears"""
         stats: Dict[Tuple[str, str], int] = defaultdict(int)
         for word, f in word_freqs.items():
             for i in range(len(word)-1):
                 stats[(word[i], word[i+1])] += f
         return stats
 
-
-
     @staticmethod
-    def _merge_pair(
-        pair: Tuple[str, str],
-        words: List[List[str]],
-    ) -> List[List[str]]:
-        """In-place O(total_tokens) merge – no regex, no giant strings."""
+    def _merge_pair(pair: Tuple[str, str], words: List[List[str]]) -> List[List[str]]:
         first, second = pair
         merged = first + second
-
         for w in words:
             i = 0
-            # in-place scan; we do **not** create new lists
             while i < len(w) - 1:
                 if w[i] == first and w[i + 1] == second:
-                    w[i : i + 2] = [merged]      # splice-replace
-                    # stay on same index – merged token may merge again
+                    w[i : i + 2] = [merged]
                     if i > 0:
                         i -= 1
                 else:
                     i += 1
-        return words               # the list object is reused → zero alloc
+        return words
 
-    def _update_stats(
-        self,
-        words: List[List[str]],
-        merged_pair: Tuple[str, str],
-    ) -> Set[Tuple[str, str]]:
-        """Update pair statistics after merging *merged_pair* in *words*."""
+    def _update_stats(self, words: List[List[str]], merged_pair: Tuple[str, str]) -> Set[Tuple[str, str]]:
         affected: Set[Tuple[str, str]] = set()
-        merged_tok = merged_pair[0] + merged_pair[1]
         for w in words:
             prev = None
             for tok in w:
@@ -355,33 +332,27 @@ class BPETokenizer(BaseTokenizer):
         self._heap = [(-f, p) for p, f in self.pair_stats.items() if f > 0]
         heapq.heapify(self._heap)
 
-        # ------------------------------------------------------------------
-    # Build final symbol inventory after training
-    # ------------------------------------------------------------------
     def _extract_vocab_symbols(self) -> List[str]:
-        """
-        Return *all* sub-word symbols that survived the BPE merges,
-        sorted by total frequency (high → low).
-
-        It walks over the final `self.word_freqs` dictionary, which
-        should already reflect the last merge state (remember we
-        rebuild it every 50 merges and once more at the very end).
-        """
         if not self.word_freqs:
             raise RuntimeError("Call this only after `train()` finished.")
-
-        # 1️⃣ accumulate token frequencies
         token_freq: Dict[str, int] = defaultdict(int)
-        for word, f in self.word_freqs.items():              # :contentReference[oaicite:0]{index=0}
+        for word, f in self.word_freqs.items():
             for tok in word:
-                if tok == END_WORD_MARK:            # sentence-ending marker ≠ real vocab
+                if tok == END_WORD_MARK:
                     continue
                 token_freq[tok] += f
-
-        # 2️⃣ sort by frequency (desc), then lexicographically (stable)
-        sorted_symbols = sorted(
-            token_freq.items(),
-            key=lambda kv: (-kv[1], kv[0])
-        )
+        sorted_symbols = sorted(token_freq.items(), key=lambda kv: (-kv[1], kv[0]))
         return [sym for sym, _ in sorted_symbols]
 
+    # ────────────────────────────────────────────────────────────────────
+    # Helper: export vocabulary to disk
+    # ────────────────────────────────────────────────────────────────────
+    def _export_vocab(self) -> None:
+        """Write the *full* vocabulary (id order) to `self.vocab_out`."""
+        try:
+            with open(self.vocab_out, "w", encoding="utf-8") as f:
+                for idx in range(len(self.id_to_token)):
+                    f.write(self.id_to_token[idx] + "\n")
+            print(f"[BPE:{self.domain}] Vocabulary exported → {self.vocab_out}")
+        except Exception as exc:
+            print(f"[BPE:{self.domain}] Warning • failed to write vocab: {exc}")
