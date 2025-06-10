@@ -1,0 +1,193 @@
+Select domain:
+1. Domain 1 (Twitter)
+2. Domain 2 (News)
+3. Unknown domain
+Selected domain: domain_1
+
+Do you want to train a new tokenizer or load an existing one?
+1. Train new tokenizer
+2. Load existing tokenizer
+Training tokenizer for domain_1...
+BPE:twitter: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1000/1000 [3:32:15<00:00, 12.74s/merge]
+[BPE:twitter] Vocabulary exported → twitter_vocab.txt
+Tokenizer training complete
+Saving tokenizer to tokenizers/domain_1/tokenizer.pkl
+Tokenizer trained with 1170 tokens
+
+Sample encode/decode:
+Original: Twit twit twit. Time to crean my room till drugs set in... I cut up anothrr shirt!
+Encoded: [130, 255, 180, 130, 255, 180, 510, 188, 480, 272, 121, 323, 189, 276, 1023, 230, 229, 278, 56, 726, 146, 181, 243, 180, 182, 307, 199, 121, 305, 390, 190, 129, 183, 84, 198, 846, 84, 1145]
+Decoded: twit twit twit. time to crean my room till drugs set in... i cut up anothrr shirt!
+
+Testing tokenizer for domain_1...
+Loading tokenizer from tokenizers/domain_1/tokenizer.pkl
+Vocabulary size: 1170
+Loading training texts from data/domain_1_train.txt
+Loading test texts from data/domain_1_dev.txt
+
+Testing encoding speed...
+Encoding speed: 44833.64 tokens/second
+Total encoding time for test set: 84.5192 seconds
+Total tokens used for test set: 3781025
+
+Testing tokenization efficiency...
+Tokens per character: 0.3219
+
+Testing text reconstruction...
+Reconstruction success rate: 10.00%
+
+Sample encoding/decoding:
+Original: @gudi1307  i had that exp yesterday...movie and dinner afteer a long long time...and lemme tell you..its nt that great!!
+Encoded: [174, 199, 483, 375, 444, 290, 1098, 353, 338, 1107, 277, 56, 1066, 279, 655, 216, 279, 211, 861, 861, 632, 338, 277, 234, 79, 283, 1085, 274, 203, 482, 509, 375, 498, 204, 309]
+Decoded: <USER> i had that exp yesterday...movie and dinner afteer a long long time...and lemme tell you..its nt that great!!
+
+Training NER model for domain_1...
+Using device: cuda
+Loading tokenizer from tokenizers/domain_1/tokenizer.pkl
+Loading training data from data/ner_data/train_1_binary.tagged
+Loading dev data from data/ner_data/dev_1_binary.tagged
+Creating datasets
+Processing texts: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 3394/3394 [00:09<00:00, 340.29it/s]
+Processing texts:  18%|████████████████████▊                                                                                                 | 178/1009 [00:00<00:01, 447.51it/s][BPE:twitter] Warning • mapped to [UNK]: ['’', '’', '”']
+Processing texts:  38%|█████████████████████████████████████████████                                                                         | 385/1009 [00:00<00:01, 436.44it/s][BPE:twitter] Warning • mapped to [UNK]: ['️', '️']
+Processing texts:  87%|██████████████████████████████████████████████████████████████████████████████████████████████████████▋               | 878/1009 [00:02<00:00, 404.37it/s][BPE:twitter] Warning • mapped to [UNK]: ['️']
+Processing texts:  92%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████         | 933/1009 [00:02<00:00, 443.46it/s][BPE:twitter] Warning • mapped to [UNK]: ['\u200b']
+Processing texts:  97%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████▍   | 979/1009 [00:02<00:00, 445.96it/s][BPE:twitter] Warning • mapped to [UNK]: ['️']
+[BPE:twitter] Warning • mapped to [UNK]: ['\ufeff']
+Processing texts: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1009/1009 [00:02<00:00, 429.60it/s]
+Initializing model
+Starting training for 20 epochs
+Epoch 1/20:
+  Train loss: 0.2018
+  Dev accuracy: 0.9212
+  Dev precision: 0.4667
+  Dev recall: 0.0056
+  Dev F1: 0.0112
+  Saved new best model with F1: 0.0112
+Epoch 2/20:
+  Train loss: 0.1519
+  Dev accuracy: 0.9198
+  Dev precision: 0.3789
+  Dev recall: 0.0291
+  Dev F1: 0.0540
+  Saved new best model with F1: 0.0540
+Epoch 3/20:
+  Train loss: 0.1284
+  Dev accuracy: 0.9227
+  Dev precision: 0.7018
+  Dev recall: 0.0323
+  Dev F1: 0.0617
+  Saved new best model with F1: 0.0617
+Epoch 4/20:
+  Train loss: 0.1071
+  Dev accuracy: 0.9173
+  Dev precision: 0.3817
+  Dev recall: 0.0807
+  Dev F1: 0.1332
+  Saved new best model with F1: 0.1332
+Epoch 5/20:
+  Train loss: 0.0851
+  Dev accuracy: 0.9167
+  Dev precision: 0.4100
+  Dev recall: 0.1324
+  Dev F1: 0.2001
+  Saved new best model with F1: 0.2001
+Epoch 6/20:
+  Train loss: 0.0698
+  Dev accuracy: 0.9129
+  Dev precision: 0.3325
+  Dev recall: 0.1057
+  Dev F1: 0.1604
+Epoch 7/20:
+  Train loss: 0.0583
+  Dev accuracy: 0.9122
+  Dev precision: 0.3514
+  Dev recall: 0.1364
+  Dev F1: 0.1965
+Epoch 8/20:
+  Train loss: 0.0431
+  Dev accuracy: 0.9068
+  Dev precision: 0.3028
+  Dev recall: 0.1412
+  Dev F1: 0.1926
+Epoch 9/20:
+  Train loss: 0.0330
+  Dev accuracy: 0.9143
+  Dev precision: 0.3909
+  Dev recall: 0.1590
+  Dev F1: 0.2260
+  Saved new best model with F1: 0.2260
+Epoch 10/20:
+  Train loss: 0.0293
+  Dev accuracy: 0.9130
+  Dev precision: 0.3725
+  Dev recall: 0.1533
+  Dev F1: 0.2173
+Epoch 11/20:
+  Train loss: 0.0271
+  Dev accuracy: 0.9057
+  Dev precision: 0.3135
+  Dev recall: 0.1655
+  Dev F1: 0.2166
+Epoch 12/20:
+  Train loss: 0.0239
+  Dev accuracy: 0.9071
+  Dev precision: 0.3313
+  Dev recall: 0.1759
+  Dev F1: 0.2298
+  Saved new best model with F1: 0.2298
+Epoch 13/20:
+  Train loss: 0.0247
+  Dev accuracy: 0.9138
+  Dev precision: 0.3709
+  Dev recall: 0.1356
+  Dev F1: 0.1986
+Epoch 14/20:
+  Train loss: 0.0293
+  Dev accuracy: 0.9115
+  Dev precision: 0.3514
+  Dev recall: 0.1469
+  Dev F1: 0.2072
+Epoch 15/20:
+  Train loss: 0.0323
+  Dev accuracy: 0.8980
+  Dev precision: 0.2855
+  Dev recall: 0.1961
+  Dev F1: 0.2325
+  Saved new best model with F1: 0.2325
+Epoch 16/20:
+  Train loss: 0.0383
+  Dev accuracy: 0.9097
+  Dev precision: 0.3164
+  Dev recall: 0.1259
+  Dev F1: 0.1801
+Epoch 17/20:
+  Train loss: 0.0338
+  Dev accuracy: 0.9142
+  Dev precision: 0.3419
+  Dev recall: 0.0969
+  Dev F1: 0.1509
+Epoch 18/20:
+  Train loss: 0.0315
+  Dev accuracy: 0.9138
+  Dev precision: 0.3541
+  Dev recall: 0.1146
+  Dev F1: 0.1732
+Epoch 19/20:
+  Train loss: 0.0266
+  Dev accuracy: 0.9121
+  Dev precision: 0.3506
+  Dev recall: 0.1364
+  Dev F1: 0.1964
+Epoch 20/20:
+  Train loss: 0.0224
+  Dev accuracy: 0.9140
+  Dev precision: 0.3617
+  Dev recall: 0.1203
+  Dev F1: 0.1805
+Training complete. Best F1: 0.2325
+Testing tokenizer for domain_1...
+
+Training NER model for domain_1...
+
+All steps completed.

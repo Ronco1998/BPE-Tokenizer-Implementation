@@ -19,7 +19,7 @@ REQUIRED_TOKENIZER_FILES = [
     "trained_tokenizer/tokenizer_2.pkl",
     "trained_tokenizer/tokenizer_3.pkl"
 ]
-REQUIRED_COMP_FILES = []  # Add any required comparison files here
+REQUIRED_COMP_FILES = []  # TODO Add any required comparison files here 
 
 DOMAIN_TEST_FILE = "domain_test.txt"  # Should be in the root or specify path
 NER_TRAIN_FILE = "data/ner_data/train.tagged"

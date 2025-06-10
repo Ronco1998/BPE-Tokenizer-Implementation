@@ -78,7 +78,7 @@ def train_tokenizer(domain_file: str, output_dir: str, num_merges: int = 10000, 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Train a BPE tokenizer on domain data")
     parser.add_argument("--domain_file", type=str, required=True, help="Path to the domain data file")
-    parser.add_argument("--output_dir", type=str, default="tokenizers", help="Directory to save the tokenizer")
+    parser.add_argument("--output_dir", type=str, default="trained_tokenizer", help="Directory to save the tokenizer")
     parser.add_argument("--num_merges", type=int, default=10000, help="Number of BPE merge operations")
     parser.add_argument("--train", action="store_true", help="Whether to train the tokenizer")
     parser.add_argument("--test_sentences", type=str, nargs="*", help="Sentences to manually encode/decode (optional)")

@@ -1,0 +1,217 @@
+Select domain:
+1. Domain 1 (Twitter)
+2. Domain 2 (News)
+3. Unknown domain
+Selected domain: domain_2
+
+Do you want to train a new tokenizer or load an existing one?
+1. Train new tokenizer
+2. Load existing tokenizer
+Loading existing tokenizer for domain_2...
+
+Loading tokenizer from tokenizers/domain_2/tokenizer.pkl
+Vocabulary size: 1539
+Loading training texts from data/domain_2_train.txt
+Loading test texts from data/domain_2_dev.txt
+
+Testing encoding speed...
+[BPE:news] Warning • mapped to [UNK]: ['ِ']
+[BPE:news] Warning • mapped to [UNK]: ['\x99', '\x99']
+[BPE:news] Warning • mapped to [UNK]: ['\u202c']
+[BPE:news] Warning • mapped to [UNK]: ['⊙', '︿', '⊙', '◕', '◕', 'ᶘ', 'ᵒ', 'ᴥ', 'ᵒ', 'ᶅ']
+[BPE:news] Warning • mapped to [UNK]: ['🦈']
+[BPE:news] Warning • mapped to [UNK]: ['\u202c']
+[BPE:news] Warning • mapped to [UNK]: ['\x93']
+[BPE:news] Warning • mapped to [UNK]: ['ِ']
+[BPE:news] Warning • mapped to [UNK]: ['\x99', '\x99']
+[BPE:news] Warning • mapped to [UNK]: ['\u202c']
+[BPE:news] Warning • mapped to [UNK]: ['⊙', '︿', '⊙', '◕', '◕', 'ᶘ', 'ᵒ', 'ᴥ', 'ᵒ', 'ᶅ']
+[BPE:news] Warning • mapped to [UNK]: ['🦈']
+[BPE:news] Warning • mapped to [UNK]: ['\u202c']
+[BPE:news] Warning • mapped to [UNK]: ['\x93']
+[BPE:news] Warning • mapped to [UNK]: ['ِ']
+[BPE:news] Warning • mapped to [UNK]: ['\x99', '\x99']
+[BPE:news] Warning • mapped to [UNK]: ['\u202c']
+[BPE:news] Warning • mapped to [UNK]: ['⊙', '︿', '⊙', '◕', '◕', 'ᶘ', 'ᵒ', 'ᴥ', 'ᵒ', 'ᶅ']
+[BPE:news] Warning • mapped to [UNK]: ['🦈']
+[BPE:news] Warning • mapped to [UNK]: ['\u202c']
+[BPE:news] Warning • mapped to [UNK]: ['\x93']
+[BPE:news] Warning • mapped to [UNK]: ['ِ']
+[BPE:news] Warning • mapped to [UNK]: ['\x99', '\x99']
+[BPE:news] Warning • mapped to [UNK]: ['\u202c']
+[BPE:news] Warning • mapped to [UNK]: ['⊙', '︿', '⊙', '◕', '◕', 'ᶘ', 'ᵒ', 'ᴥ', 'ᵒ', 'ᶅ']
+[BPE:news] Warning • mapped to [UNK]: ['🦈']
+[BPE:news] Warning • mapped to [UNK]: ['\u202c']
+[BPE:news] Warning • mapped to [UNK]: ['\x93']
+[BPE:news] Warning • mapped to [UNK]: ['ِ']
+[BPE:news] Warning • mapped to [UNK]: ['\x99', '\x99']
+[BPE:news] Warning • mapped to [UNK]: ['\u202c']
+[BPE:news] Warning • mapped to [UNK]: ['⊙', '︿', '⊙', '◕', '◕', 'ᶘ', 'ᵒ', 'ᴥ', 'ᵒ', 'ᶅ']
+[BPE:news] Warning • mapped to [UNK]: ['🦈']
+[BPE:news] Warning • mapped to [UNK]: ['\u202c']
+[BPE:news] Warning • mapped to [UNK]: ['\x93']
+[BPE:news] Warning • mapped to [UNK]: ['ِ']
+[BPE:news] Warning • mapped to [UNK]: ['\x99', '\x99']
+[BPE:news] Warning • mapped to [UNK]: ['\u202c']
+[BPE:news] Warning • mapped to [UNK]: ['⊙', '︿', '⊙', '◕', '◕', 'ᶘ', 'ᵒ', 'ᴥ', 'ᵒ', 'ᶅ']
+[BPE:news] Warning • mapped to [UNK]: ['🦈']
+[BPE:news] Warning • mapped to [UNK]: ['\u202c']
+[BPE:news] Warning • mapped to [UNK]: ['\x93']
+Encoding speed: 32429.23 tokens/second
+Total encoding time for test set: 45.8280 seconds
+Total tokens used for test set: 1465020
+
+Testing tokenization efficiency...
+[BPE:news] Warning • mapped to [UNK]: ['ِ']
+[BPE:news] Warning • mapped to [UNK]: ['\x99', '\x99']
+[BPE:news] Warning • mapped to [UNK]: ['\u202c']
+[BPE:news] Warning • mapped to [UNK]: ['⊙', '︿', '⊙', '◕', '◕', 'ᶘ', 'ᵒ', 'ᴥ', 'ᵒ', 'ᶅ']
+[BPE:news] Warning • mapped to [UNK]: ['🦈']
+[BPE:news] Warning • mapped to [UNK]: ['\u202c']
+[BPE:news] Warning • mapped to [UNK]: ['\x93']
+Tokens per character: 0.4058
+
+Testing text reconstruction...
+Reconstruction success rate: 100.00%
+
+Sample encoding/decoding:
+Original: Danny's mom, Dina, said the overwhelming support from her community has been helpful. "Like everyone always says, 'It doesn't
+Encoded: [168, 1520, 553, 578, 544, 188, 698, 571, 168, 547, 584, 571, 1053, 640, 76, 657, 396, 1104, 188, 639, 1352, 1251, 840, 703, 1337, 720, 755, 856, 1028, 1104, 374, 1017, 564, 654, 1477, 1537, 757, 572, 1254, 45, 792, 571, 578, 784, 923, 557, 546, 578, 545]
+Decoded: Danny ' s mom , Dina , said the overwhelming support from her community has been helpful . " Like everyone always says , ' It doesn ' t
+
+Training NER model for domain_2...
+Using device: cuda
+Loading tokenizer from tokenizers/domain_2/tokenizer.pkl
+Loading training data from data/ner_data/train_2_binary.tagged
+Loading dev data from data/ner_data/dev_2_binary.tagged
+Creating datasets
+Processing texts: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 14041/14041 [00:39<00:00, 356.76it/s]
+Processing texts: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 3250/3250 [00:10<00:00, 312.97it/s]
+Initializing model
+Starting training for 20 epochs
+Epoch 1/20:
+  Train loss: 0.1100
+  Dev accuracy: 0.9692
+  Dev precision: 0.9089
+  Dev recall: 0.9055
+  Dev F1: 0.9072
+  Saved new best model with F1: 0.9072
+Epoch 2/20:
+  Train loss: 0.0661
+  Dev accuracy: 0.9719
+  Dev precision: 0.9278
+  Dev recall: 0.9015
+  Dev F1: 0.9145
+  Saved new best model with F1: 0.9145
+Epoch 3/20:
+  Train loss: 0.0551
+  Dev accuracy: 0.9727
+  Dev precision: 0.9113
+  Dev recall: 0.9260
+  Dev F1: 0.9186
+  Saved new best model with F1: 0.9186
+Epoch 4/20:
+  Train loss: 0.0774
+  Dev accuracy: 0.9532
+  Dev precision: 0.8816
+  Dev recall: 0.8301
+  Dev F1: 0.8551
+Epoch 5/20:
+  Train loss: 0.1114
+  Dev accuracy: 0.9548
+  Dev precision: 0.8599
+  Dev recall: 0.8703
+  Dev F1: 0.8651
+Epoch 6/20:
+  Train loss: 0.1087
+  Dev accuracy: 0.9537
+  Dev precision: 0.8718
+  Dev recall: 0.8462
+  Dev F1: 0.8588
+Epoch 7/20:
+  Train loss: 0.1082
+  Dev accuracy: 0.9564
+  Dev precision: 0.8807
+  Dev recall: 0.8542
+  Dev F1: 0.8672
+Epoch 8/20:
+  Train loss: 0.1058
+  Dev accuracy: 0.9566
+  Dev precision: 0.8707
+  Dev recall: 0.8680
+  Dev F1: 0.8694
+Epoch 9/20:
+  Train loss: 0.1054
+  Dev accuracy: 0.9568
+  Dev precision: 0.8785
+  Dev recall: 0.8592
+  Dev F1: 0.8688
+Epoch 10/20:
+  Train loss: 0.1037
+  Dev accuracy: 0.9553
+  Dev precision: 0.8696
+  Dev recall: 0.8604
+  Dev F1: 0.8650
+Epoch 11/20:
+  Train loss: 0.1111
+  Dev accuracy: 0.9530
+  Dev precision: 0.8761
+  Dev recall: 0.8357
+  Dev F1: 0.8554
+Epoch 12/20:
+  Train loss: 0.1382
+  Dev accuracy: 0.9338
+  Dev precision: 0.8128
+  Dev recall: 0.7827
+  Dev F1: 0.7975
+Epoch 13/20:
+  Train loss: 0.1899
+  Dev accuracy: 0.9235
+  Dev precision: 0.7714
+  Dev recall: 0.7684
+  Dev F1: 0.7699
+Epoch 14/20:
+  Train loss: 0.1963
+  Dev accuracy: 0.9234
+  Dev precision: 0.8072
+  Dev recall: 0.7098
+  Dev F1: 0.7554
+Epoch 15/20:
+  Train loss: 0.1959
+  Dev accuracy: 0.9217
+  Dev precision: 0.7623
+  Dev recall: 0.7701
+  Dev F1: 0.7662
+Epoch 16/20:
+  Train loss: 0.2001
+  Dev accuracy: 0.9193
+  Dev precision: 0.7835
+  Dev recall: 0.7118
+  Dev F1: 0.7459
+Epoch 17/20:
+  Train loss: 0.2002
+  Dev accuracy: 0.9188
+  Dev precision: 0.7655
+  Dev recall: 0.7387
+  Dev F1: 0.7518
+Epoch 18/20:
+  Train loss: 0.2021
+  Dev accuracy: 0.9186
+  Dev precision: 0.7878
+  Dev recall: 0.6994
+  Dev F1: 0.7410
+Epoch 19/20:
+  Train loss: 0.2046
+  Dev accuracy: 0.9211
+  Dev precision: 0.7829
+  Dev recall: 0.7280
+  Dev F1: 0.7545
+Epoch 20/20:
+  Train loss: 0.2032
+  Dev accuracy: 0.9206
+  Dev precision: 0.7788
+  Dev recall: 0.7311
+  Dev F1: 0.7542
+Training complete. Best F1: 0.9186
+
+All steps completed.
