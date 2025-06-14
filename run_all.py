@@ -52,13 +52,14 @@ def main():
         dual_print(f"Training tokenizer for {domain}...")
         if not num_merges:
             num_merges = "10000"
-        subprocess.run([
-            "python3", "train_tokenizer.py",
-            "--domain_file", train_file,
-            "--output_dir", tokenizer_dir,
-            "--num_merges", num_merges,
-            "--train"
-        ], check=True)
+        with open(output_file, "a") as f:
+            subprocess.run([
+                "python3", "train_tokenizer.py",
+                "--domain_file", train_file,
+                "--output_dir", tokenizer_dir,
+                "--num_merges", num_merges,
+                "--train"
+            ], check=True, stdout=f, stderr=subprocess.STDOUT)
     else:
         dual_print(f"Loading existing tokenizer for {domain}...")
         if not os.path.exists(tokenizer_path):
@@ -67,21 +68,23 @@ def main():
 
     # Test tokenizer
     dual_print(f"\nTesting tokenizer for {domain}...")
-    subprocess.run([
-        "python3", "test_tokenizer.py",
-        "--tokenizer_path", tokenizer_path,
-        "--train_file", train_file,
-        "--test_file", dev_file
-    ], check=True)
+    with open(output_file, "a") as f:
+        subprocess.run([
+            "python3", "test_tokenizer.py",
+            "--tokenizer_path", tokenizer_path,
+            "--train_file", train_file,
+            "--test_file", dev_file
+        ], check=True, stdout=f, stderr=subprocess.STDOUT)
 
     # Train NER model
     dual_print(f"\nTraining NER model for {domain}...")
-    subprocess.run([
-        "python3", "train_ner_model.py",
-        "--tokenizer_path", tokenizer_path,
-        "--train_file", ner_train,
-        "--dev_file", ner_dev
-    ], check=True)
+    with open(output_file, "a") as f:
+        subprocess.run([
+            "python3", "train_ner_model.py",
+            "--tokenizer_path", tokenizer_path,
+            "--train_file", ner_train,
+            "--dev_file", ner_dev
+        ], check=True, stdout=f, stderr=subprocess.STDOUT)
 
     dual_print("\nAll steps completed.")
 

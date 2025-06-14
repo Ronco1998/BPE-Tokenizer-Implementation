@@ -4,7 +4,8 @@ import heapq
 import re
 from collections import defaultdict
 from typing import Dict, List, Tuple, Set, Iterable, Optional
-
+import unicodedata
+from html import unescape
 from tqdm.auto import tqdm
 
 from base_tokenizer import BaseTokenizer
@@ -14,9 +15,11 @@ from base_tokenizer import BaseTokenizer
 # ────────────────────────────────────────────────────────────────────────────
 _TW_USER  = re.compile(r"@[A-Za-z0-9_]{1,15}")  # Twitter @handle
 _TW_URL   = re.compile(r"https?://\S+")        # http(s) URLs
-_TW_HASH  = re.compile(r"#[\w]+")              # #hashtag
+_HASHTAG_RE = re.compile(r"#\w[\w\d_]*")      # #hashtag
 _NEWS_PUN = re.compile(r"([,.;:!?()\"'])")    # punctuation splitter
-
+_NEWS_DATE = re.compile(r'\b\d{4}-\d{2}-\d{2}\b') # dates like 2023-10-05
+REP_CHARS = re.compile(r"(.)\1{2,}")
+PUNCT_PAD = re.compile(r"([,.;:!?()\"'])")
 # One coarse emoji detector (covers all BMP + supplementary planes)
 _EMOJI = re.compile(
     r"[\U0001F1E6-\U0001F1FF]|"      # flags
@@ -27,11 +30,38 @@ _EMOJI = re.compile(
     r"[\u2700-\u27BF]"               # dingbats
 )
 
+EMOTICON_RE = re.compile(
+    r"""
+    (?:
+        [:=;8]               # eyes
+        (?:-|'|~)?           # optional nose
+        [)(DOPp/*\\]         # mouth
+    )
+    |
+    (?:\^{2})               # '^^'
+    """,
+    re.VERBOSE,
+)
+
 # Printable ASCII punctuation + ‘…’ (unicode ellipsis)
 _PUNCT_CHARS = list(r"""!\"#$%&'()*+,-./:;<=>?@[\]^_`{|}~""") + ["…"]
 
+UNICODE_PUNCT_TABLE = str.maketrans({
+    "“": '"',    "”": '"',
+    "‘": "'",    "’": "'",
+    "«": '"',    "»": '"',
+    "—": "-",    "–": "-",
+    "…": "...",
+})
 END_WORD_MARK = "</w>"
 
+def _split_hashtag(match: re.Match) -> str:
+    """
+    Replace '#Word123' → '<HASHTAG> Word123'
+    so the word itself is still visible to NER.
+    """
+    tag_body = match.group()[1:]           # drop the leading '#'
+    return f"<HASHTAG> {tag_body}"
 
 # ────────────────────────────────────────────────────────────────────────────
 # BPETokenizer class
@@ -42,7 +72,7 @@ class BPETokenizer(BaseTokenizer):
     def __init__(
         self,
         num_merges: int = 1_000,
-        log_every: int = 20,
+        log_every: int = 0,
         domain: str = "generic",
         special_tokens: Optional[List[str]] = None,
         vocab_out_path: Optional[str] = None,
@@ -57,7 +87,9 @@ class BPETokenizer(BaseTokenizer):
         # ── 1. Domain‑specific special tokens ─────────────────────────────
         domain_extras: List[str] = []
         if self.domain == "twitter":
-            domain_extras = ["<URL>", "<USER>", "<HASHTAG>"]
+            domain_extras = ["<URL>", "<USER>", "<HASHTAG>", "<EMOTICON>"]
+        elif self.domain == "news": # add more as needed
+            domain_extras = ["[DATE]"]
         # Generic emoji placeholder is always useful regardless of domain
         domain_extras.append("<EMOJI>")
 
@@ -65,6 +97,7 @@ class BPETokenizer(BaseTokenizer):
         if special_tokens is None:
             special_tokens = []
         self.special_tokens.update({tok: len(self.special_tokens)+i for i, tok in enumerate(domain_extras + special_tokens)})
+
 
         # ── 2. Core vocabulary initialisation ─────────────────────────────
         # Map special tokens first (so they get the lowest ids after PAD/UNK/...)
@@ -83,6 +116,9 @@ class BPETokenizer(BaseTokenizer):
             wid = len(self.token_to_id)
             self.token_to_id[END_WORD_MARK] = wid
             self.id_to_token[wid] = END_WORD_MARK
+        
+        self.space_token = END_WORD_MARK
+        self.special_tokens[self.space_token] = len(self.special_tokens)
 
         # ── 3. Training artefacts – one per *instance* (i.e. per domain) ──
         self.merges: List[Tuple[str, str]] = []          # ordered list of merges
@@ -100,16 +136,34 @@ class BPETokenizer(BaseTokenizer):
         """Return a clean, space‑separated string suitable for tokenisation."""
         text = _EMOJI.sub('<EMOJI>', text)
         if self.domain == "twitter":
-            text = text.lower()
-            text = _TW_USER.sub("<USER>", text)
+            text = unicodedata.normalize("NFKC", text)
+            text = unescape(text)
             text = _TW_URL.sub("<URL>",  text)
-            text = _TW_HASH.sub("<HASHTAG>", text)
-            text = text.replace('"', ' " ')
+            text = _TW_USER.sub("<USER>", text)
+            text = _HASHTAG_RE.sub(_split_hashtag, text)
+            text = EMOTICON_RE.sub("<EMOTICON>", text)
+            text = REP_CHARS.sub(r"\1\1", text)
+            text = text.translate(UNICODE_PUNCT_TABLE)
+            text = PUNCT_PAD.sub(r" \1 ", text)
+            text = re.sub(r"\s{2,}", " ", text).strip()
+            def smart_case(tok): # preserve ALLCAPS, lowercase others
+                return tok if tok.isupper() else tok.lower()
+
+            # text = " ".join(smart_case(tok) for tok in text.split())
+            text = " ".join(text.split())
             return text
 
         if self.domain == "news":
             text = _NEWS_PUN.sub(r" \1 ", text)
+            # Replace dates using the new regex constant
+            text = _NEWS_DATE.sub('[DATE]', text)
+            text = unicodedata.normalize("NFKC", text)
             return text
+
+        # Generic cleanup
+        text = text.replace("\uFE0F", "")   # VS-16 (emoji “colour” selector)
+        text = text.replace("\u200B", "")   # zero-width space
+        text = text.replace("\uFEFF", "")   # byte-order mark
 
         # Unknown / generic domain – keep original casing
         return text.strip()

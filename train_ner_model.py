@@ -437,6 +437,19 @@ def train_ner_model(
     train_dataset = NERDataset(train_texts, train_labels, tokenizer)
     dev_dataset = NERDataset(dev_texts, dev_labels, tokenizer)
 
+    # ── DEBUG: are we giving the model any positive examples? ───────────
+    pos_tokens = sum(l == 1 for sent in train_dataset.encoded_labels for l in sent)
+    total_tokens = sum(len(sent) for sent in train_dataset.encoded_labels)
+    print(f"[DBG]  share of positive-label subtokens in train set: "
+        f"{pos_tokens / total_tokens:.4%}")
+
+    # …and how many tokens are mapped to [UNK] ?
+    unk_id = train_dataset.tokenizer.token_to_id["[UNK]"]
+    unk = sum(t == unk_id for sent in train_dataset.encoded_texts for t in sent)
+    tot  = sum(len(sent) for sent in train_dataset.encoded_texts)
+    print(f"[DBG]  share of [UNK] subtokens in train set: {unk / tot:.4%}")
+
+
     # Create dataloaders
     train_dataloader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True, collate_fn=collate_fn)
     dev_dataloader = DataLoader(dev_dataset, batch_size=batch_size, collate_fn=collate_fn)
