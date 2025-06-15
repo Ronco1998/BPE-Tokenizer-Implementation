@@ -72,7 +72,7 @@ class BPETokenizer(BaseTokenizer):
     def __init__(
         self,
         num_merges: int = 1_000,
-        log_every: int = 0,
+        log_every: int = 20,
         domain: str = "generic",
         special_tokens: Optional[List[str]] = None,
         vocab_out_path: Optional[str] = None,
@@ -225,13 +225,13 @@ class BPETokenizer(BaseTokenizer):
             merges_done += 1
             pbar.update(1)
 
-            # 4️⃣ periodic print to terminal
-            if merges_done % self.log_every == 0 or merges_done == self.num_merges:
-                start = merges_done - len(print_buf) + 1
-                tqdm.write(f"[BPE:{self.domain}] merges {start}–{merges_done} →")
-                for i, (pair, f) in enumerate(print_buf, 1):
-                    print(f"  {i}. {pair} (freq {f})")
-                print_buf = []
+            # # 4️⃣ periodic print to terminal
+            # if merges_done % self.log_every == 0 or merges_done == self.num_merges:
+            #     start = merges_done - len(print_buf) + 1
+            #     tqdm.write(f"[BPE:{self.domain}] merges {start}–{merges_done} →")
+            #     for i, (pair, f) in enumerate(print_buf, 1):
+            #         print(f"  {i}. {pair} (freq {f})")
+            #     print_buf = []
 
             # 5️⃣ safety rebuild every 100 merges (keeps stats fresh & heap small)
             if merges_done % 100 == 0:
