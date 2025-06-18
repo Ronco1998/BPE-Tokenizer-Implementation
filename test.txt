@@ -1,0 +1,15 @@
+Reading domain data from check_data.txt
+Read 100 lines of text
+Training BPE tokenizer with 10000 merges for domain 'unknown'
+[BPE:unknown] Vocabulary exported → unknown_vocab.txt
+Tokenizer training complete
+Saving tokenizer to trained_tokenizer/tokenizer.pkl
+Tokenizer trained with 76 tokens
+ Most frequent word-bigrams
+
+ Least frequent word-bigrams
+
+Sample encode/decode:
+Original: I love NLP
+Encoded: [55]
+Decoded: I

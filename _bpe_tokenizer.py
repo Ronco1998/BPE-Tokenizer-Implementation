@@ -97,8 +97,7 @@ class BPETokenizer(BaseTokenizer):
         if special_tokens is None:
             special_tokens = []
         self.special_tokens.update({tok: len(self.special_tokens)+i for i, tok in enumerate(domain_extras + special_tokens)})
-
-
+        
         # ── 2. Core vocabulary initialisation ─────────────────────────────
         # Map special tokens first (so they get the lowest ids after PAD/UNK/...)
         self.token_to_id.update(self.special_tokens)
@@ -134,6 +133,11 @@ class BPETokenizer(BaseTokenizer):
     # ────────────────────────────────────────────────────────────────────
     def _preprocess(self, text: str) -> str:
         """Return a clean, space‑separated string suitable for tokenisation."""
+        # Add BOS and EOS tokens
+        BOS = "[BOS]"
+        EOS = "[EOS]"
+        text = f"{BOS} {text} {EOS}"
+
         text = _EMOJI.sub('<EMOJI>', text)
         if self.domain == "twitter":
             text = unicodedata.normalize("NFKC", text)
@@ -146,10 +150,6 @@ class BPETokenizer(BaseTokenizer):
             text = text.translate(UNICODE_PUNCT_TABLE)
             text = PUNCT_PAD.sub(r" \1 ", text)
             text = re.sub(r"\s{2,}", " ", text).strip()
-            def smart_case(tok): # preserve ALLCAPS, lowercase others
-                return tok if tok.isupper() else tok.lower()
-
-            # text = " ".join(smart_case(tok) for tok in text.split())
             text = " ".join(text.split())
             return text
 
@@ -180,19 +180,18 @@ class BPETokenizer(BaseTokenizer):
         tokenised_words = self._tokenize_texts(texts)
         self.word_freqs = self._rebuild_freqs(tokenised_words)
 
-        # Protect user‑supplied special tokens from merging away
-        for tok in self.special_tokens:
-            self.word_freqs[(tok, END_WORD_MARK)] = 10**9
-
+        # Initial pair stats & heap
         self.pair_stats = self._get_stats(tokenised_words, self.word_freqs)
+        self.pair_stats.pop((END_WORD_MARK, END_WORD_MARK), None) # never merge two boundaries
         self._rebuild_heap()
 
         # Seed character‑level tokens into the vocab
-        for ch in {c for w in tokenised_words for c in w if c != END_WORD_MARK}:
-            if ch not in self.token_to_id:
-                idx = len(self.token_to_id)
-                self.token_to_id[ch] = idx
-                self.id_to_token[idx] = ch
+        for word in tokenised_words:
+            for ch in word:
+                if ch != END_WORD_MARK and ch not in self.token_to_id:
+                    idx = len(self.token_to_id)
+                    self.token_to_id[ch] = idx
+                    self.id_to_token[idx] = ch
 
         merges_done, print_buf = 0, []
         pbar = tqdm(total=self.num_merges, desc=f"BPE:{self.domain}", unit="merge")
@@ -205,14 +204,17 @@ class BPETokenizer(BaseTokenizer):
 
             # 1️⃣ merge everywhere
             tokenised_words = self._merge_pair(best_pair, tokenised_words)
-            self.pair_stats.pop(best_pair, None)
+            
+            # 2️⃣ rebuild frequencies and stats after merge
+            self.word_freqs = self._rebuild_freqs(tokenised_words)
+            old_stats = self.pair_stats.copy()
+            self.pair_stats = self._get_stats(tokenised_words, self.word_freqs)
+            self.pair_stats.pop((END_WORD_MARK, END_WORD_MARK), None)
+            
+            # 3️⃣ rebuild heap with updated stats
+            self._rebuild_heap()
 
-            # 2️⃣ update local stats & heap
-            changed = self._update_stats(tokenised_words, best_pair)
-            for p in changed:
-                heapq.heappush(self._heap, (-self.pair_stats[p], p))
-
-            # 3️⃣ bookkeeping
+            # 4️⃣ bookkeeping
             self.merges.append(best_pair)
             self.ranks[best_pair] = merges_done
             merged_sym = "".join(best_pair)
@@ -224,20 +226,6 @@ class BPETokenizer(BaseTokenizer):
             print_buf.append((best_pair, freq))
             merges_done += 1
             pbar.update(1)
-
-            # # 4️⃣ periodic print to terminal
-            # if merges_done % self.log_every == 0 or merges_done == self.num_merges:
-            #     start = merges_done - len(print_buf) + 1
-            #     tqdm.write(f"[BPE:{self.domain}] merges {start}–{merges_done} →")
-            #     for i, (pair, f) in enumerate(print_buf, 1):
-            #         print(f"  {i}. {pair} (freq {f})")
-            #     print_buf = []
-
-            # 5️⃣ safety rebuild every 100 merges (keeps stats fresh & heap small)
-            if merges_done % 100 == 0:
-                self.word_freqs = self._rebuild_freqs(tokenised_words)
-                self.pair_stats = self._get_stats(tokenised_words, self.word_freqs)
-                self._rebuild_heap()
 
         pbar.close()
 
@@ -261,41 +249,28 @@ class BPETokenizer(BaseTokenizer):
 
         # 1️⃣ Pre‑tokenise
         preprocessed = self._preprocess(text)
-        tokens: List[str] = []
-        for raw in preprocessed.split():
-            if raw in self.special_tokens:            # placeholder becomes one token
-                tokens.append(raw + END_WORD_MARK)
-            else:
-                tokens.extend(list(raw))
-                tokens.append(END_WORD_MARK)
+        tokens = self._tokenize_texts([preprocessed])  # single text → single list of tokens
+        
+        # 2️⃣ Apply all learned merges in order
+        for merge_pair in self.merges:
+            tokens = self._merge_pair(merge_pair, tokens)
 
-        # 2️⃣ Greedy merge loop (uses rank ordering)
-        while True:
-            best_pair, best_rank, best_idx = None, 1e9, -1
-            for i in range(len(tokens) - 1):
-                r = self.ranks.get((tokens[i], tokens[i + 1]))
-                if r is not None and r < best_rank:
-                    best_pair, best_rank, best_idx = (tokens[i], tokens[i + 1]), r, i
-            if best_pair is None:
-                break
-            tokens[best_idx : best_idx + 2] = ["".join(best_pair)]
-
-        # 3️⃣ Map to ids (unknown → [UNK])
+        # 3️⃣ Flatten and map to ids (unknown → [UNK])
         unk_id = self.token_to_id["[UNK]"]
         ids, unknowns = [], []
-        for tok in tokens:
-            tid = self.token_to_id.get(tok)
-            if tid is None:
-                unknowns.append(tok)
-                tid = unk_id
-            ids.append(tid)
+        for word in tokens:
+            for tok in word:
+                tid = self.token_to_id.get(tok)
+                if tid is None:
+                    unknowns.append(tok)
+                    tid = unk_id
+                    print(f"[BPE:{self.domain}] Warning • unknown token: {tok}")
+                ids.append(tid)
 
-        if unknowns:
-            print(f"[BPE:{self.domain}] Warning • mapped to [UNK]: {unknowns}")
         return ids
 
     def decode(self, token_ids: List[int]) -> str:
-        """Reverse of `encode()`.  Raises on truly unknown ids."""
+        """ BPE‑decode list[int] → text string; strips special tokens and joins pieces."""
         if not token_ids:
             return ""
 
@@ -320,18 +295,23 @@ class BPETokenizer(BaseTokenizer):
     # Internals (unchanged w.r.t. algorithmic behaviour)
     # ────────────────────────────────────────────────────────────────────
     def _tokenize_texts(self, texts: Iterable[str]) -> List[List[str]]:
+        """Tokenise each text into words represented as lists of characters + END_WORD_MARK."""
         out: List[List[str]] = []
         for txt in texts:
             txt = self._preprocess(txt)
             for raw in txt.split():
                 if raw in self.special_tokens:
-                    out.append([raw, END_WORD_MARK])
-                    continue
-                out.append(list(raw) + [END_WORD_MARK])
+                    out.append([raw])
+                else:
+                    out.append(list(raw) + [END_WORD_MARK])
         return out
+
 
     @staticmethod
     def _rebuild_freqs(words: List[List[str]]) -> Dict[Tuple[str, ...], int]:
+        """ Count frequencies of tokenised words. 
+        Each word is a list of tokens (strings). 
+        Returns a dict mapping (token1, token2, ..., END_WORD_MARK) → frequency. """
         freq: Dict[Tuple[str, ...], int] = defaultdict(int)
         for w in words:
             freq[tuple(w)] += 1
@@ -342,6 +322,8 @@ class BPETokenizer(BaseTokenizer):
         words: List[List[str]],
         word_freqs: Dict[Tuple[str, ...], int],
     ) -> Dict[Tuple[str, str], int]:
+        """ Count frequencies of adjacent token pairs in the corpus. 
+        Returns a dict mapping (token1, token2) → frequency. """
         stats: Dict[Tuple[str, str], int] = defaultdict(int)
         for word, f in word_freqs.items():
             for i in range(len(word)-1):
@@ -363,30 +345,12 @@ class BPETokenizer(BaseTokenizer):
                     i += 1
         return words
 
-    def _update_stats(self, words: List[List[str]], merged_pair: Tuple[str, str]) -> Set[Tuple[str, str]]:
-        affected: Set[Tuple[str, str]] = set()
-        for w in words:
-            prev = None
-            for tok in w:
-                if prev is not None:
-                    affected.add((prev, tok))
-                prev = tok
-        affected.discard(merged_pair)
-
-        for p in affected:
-            self.pair_stats[p] = 0
-        for word, f in self.word_freqs.items():
-            for i in range(len(word)-1):
-                p = (word[i], word[i+1])
-                if p in affected:
-                    self.pair_stats[p] += f
-        return affected
-
     def _rebuild_heap(self) -> None:
         self._heap = [(-f, p) for p, f in self.pair_stats.items() if f > 0]
         heapq.heapify(self._heap)
 
     def _extract_vocab_symbols(self) -> List[str]:
+        """Extract all unique symbols from the learned word frequencies."""
         if not self.word_freqs:
             raise RuntimeError("Call this only after `train()` finished.")
         token_freq: Dict[str, int] = defaultdict(int)
@@ -406,7 +370,71 @@ class BPETokenizer(BaseTokenizer):
         try:
             with open(self.vocab_out, "w", encoding="utf-8") as f:
                 for idx in range(len(self.id_to_token)):
-                    f.write(self.id_to_token[idx] + "\n")
+                    f.write(self.id_to_token[idx] + " " + str(idx) + "\n")
             print(f"[BPE:{self.domain}] Vocabulary exported → {self.vocab_out}")
         except Exception as exc:
             print(f"[BPE:{self.domain}] Warning • failed to write vocab: {exc}")
+
+    
+    # ────────────────────────────────────────────────────────────────────
+# Reporting helper: bigram tokens (two full words merged into 1 symbol)
+# ────────────────────────────────────────────────────────────────────
+    def report_word_bigrams(
+            self,
+            k: int = 5,
+    ) -> Tuple[
+            List[Tuple[str, int]],   # k most-frequent  →  [( "word1 word2", freq ), …]
+            List[Tuple[str, int]],   # k least-frequent →  [( "word1 word2", freq ), …]
+    ]:
+        """
+        Return **only** those vocabulary symbols that correspond to exactly
+        two words (i.e. they contain exactly *two* END_WORD_MARK markers),
+        ranked by corpus frequency.
+
+        Parameters
+        ----------
+        k : int
+            Number of most/least-common bigrams to return (≤ existing count).
+
+        Notes
+        -----
+        • Call this *after* `train()` – it uses `self.word_freqs`.  
+        • Special tokens and single-word symbols are ignored.
+        """
+        if not self.word_freqs:
+            raise RuntimeError("Call this only after `train()` finished.")
+
+        token_freq: Dict[str, int] = defaultdict(int)
+
+        # 1️⃣  Count *token* occurrences in the final trained corpus
+        for word_sym_sequence, f in self.word_freqs.items():
+            for sym in word_sym_sequence:
+                if sym in self.special_tokens or sym == END_WORD_MARK:
+                    continue
+                token_freq[sym] += f
+
+        # 2️⃣  Keep symbols that encode exactly **two words**
+        bigram_freq: Dict[str, int] = {}
+        for sym, f in token_freq.items():
+            boundary_cnt = sym.count(END_WORD_MARK)
+            # accept:
+            if boundary_cnt == 2 and sym.endswith(END_WORD_MARK) and not sym.startswith(END_WORD_MARK):
+                bigram_freq[sym] = f
+
+        if not bigram_freq:
+            return [], []
+
+        # 3️⃣  Sort by frequency
+        ordered = sorted(bigram_freq.items(), key=lambda kv: kv[1])
+        least  = ordered[:k]
+        most   = ordered[-k:][::-1]               # highest first
+
+        # 4️⃣  Decode symbols to human-readable “word1 word2”
+        def _decode_sym(sym: str) -> str:
+            # return sym.replace(END_WORD_MARK, " ").strip()
+            return sym
+
+        most_decoded   = [(_decode_sym(s), f) for s, f in most]
+        least_decoded  = [(_decode_sym(s), f) for s, f in least]
+
+        return most_decoded, least_decoded

@@ -51,7 +51,7 @@ def main():
         num_merges = input("Enter number of BPE merges (default 10000): ").strip()
         dual_print(f"Training tokenizer for {domain}...")
         if not num_merges:
-            num_merges = "10000"
+            num_merges = "1000"
         with open(output_file, "a") as f:
             subprocess.run([
                 "python3", "train_tokenizer.py",

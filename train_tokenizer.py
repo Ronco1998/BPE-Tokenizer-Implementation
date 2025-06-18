@@ -1,7 +1,7 @@
 import argparse
 import os
 from typing import List
-from bpe_tokenizer import BPETokenizer
+from BPE_tokenizer import BPE_tokenizer as BPETokenizer
 
 
 def read_text_file(file_path: str) -> List[str]:
@@ -56,6 +56,14 @@ def train_tokenizer(domain_file: str, output_dir: str, num_merges: int = 10000, 
         print(f"Saving tokenizer to {output_path}")
         tokenizer.save(output_path)
         print(f"Tokenizer trained with {tokenizer.get_vocab_size()} tokens")
+        # Report word bigrams
+        top5, bottom5 = tokenizer.report_word_bigrams()
+        print(" Most frequent word-bigrams")
+        for bigram, freq in top5:
+            print(f"{bigram:<20}  →  {freq}")
+        print("\n Least frequent word-bigrams")
+        for bigram, freq in bottom5:
+            print(f"{bigram:<20}  →  {freq}")
     else:
         output_path = os.path.join(output_dir, "tokenizer.pkl")
         if not os.path.exists(output_path):
