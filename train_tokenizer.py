@@ -1,7 +1,7 @@
 import argparse
 import os
 from typing import List
-from BPE_tokenizer import BPE_tokenizer as BPETokenizer
+from bpe_tokenizer import BPETokenizer
 
 
 def read_text_file(file_path: str) -> List[str]:
@@ -32,7 +32,7 @@ def train_tokenizer(domain_file: str, output_dir: str, num_merges: int = 10000, 
     
     # Read domain data
     print(f"Reading domain data from {domain_file}")
-    texts = read_text_file(domain_file)
+    texts = read_text_file(domain_file)[:1000]
     print(f"Read {len(texts)} lines of text")
     
     # Determine domain from filename
@@ -50,20 +50,22 @@ def train_tokenizer(domain_file: str, output_dir: str, num_merges: int = 10000, 
         tokenizer.train(texts)
         print("Tokenizer training complete")
 
-
         # Save the tokenizer
         output_path = os.path.join(output_dir, "tokenizer.pkl")
         print(f"Saving tokenizer to {output_path}")
         tokenizer.save(output_path)
         print(f"Tokenizer trained with {tokenizer.get_vocab_size()} tokens")
+        
         # Report word bigrams
         top5, bottom5 = tokenizer.report_word_bigrams()
-        print(" Most frequent word-bigrams")
-        for bigram, freq in top5:
-            print(f"{bigram:<20}  →  {freq}")
-        print("\n Least frequent word-bigrams")
-        for bigram, freq in bottom5:
-            print(f"{bigram:<20}  →  {freq}")
+        if top5:
+            print("\n=== Most frequent word-bigrams ===")
+            for bigram, freq in top5:
+                print(f"'{bigram[0]}' + '{bigram[1]}' → {freq} occurrences")
+        if bottom5:
+            print("\n=== Least frequent word-bigrams ===")
+            for bigram, freq in bottom5:
+                print(f"'{bigram[0]}' + '{bigram[1]}' → {freq} occurrences")
     else:
         output_path = os.path.join(output_dir, "tokenizer.pkl")
         if not os.path.exists(output_path):
@@ -87,7 +89,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Train a BPE tokenizer on domain data")
     parser.add_argument("--domain_file", type=str, required=True, help="Path to the domain data file")
     parser.add_argument("--output_dir", type=str, default="trained_tokenizer", help="Directory to save the tokenizer")
-    parser.add_argument("--num_merges", type=int, default=10000, help="Number of BPE merge operations")
+    parser.add_argument("--num_merges", type=int, default=1000, help="Number of BPE merge operations")
     parser.add_argument("--train", action="store_true", help="Whether to train the tokenizer")
     parser.add_argument("--test_sentences", type=str, nargs="*", help="Sentences to manually encode/decode (optional)")
     

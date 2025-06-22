@@ -1,3193 +1,1114 @@
-[PAD]
-[UNK]
-[BOS]
-[EOS]
-<URL>
-<USER>
-<HASHTAG>
-<EMOTICON>
-<EMOJI>
-!
-\
-"
-#
-$
-%
-&
-'
-(
-)
-*
-+
-,
--
-.
-/
-:
-;
-<
-=
->
-?
-@
-[
-]
-^
-_
-`
-{
-|
-}
-~
-…
-</w>
-S
-â
-æ
-7
-O
-ë
-Í
-×
-Ê
-ê
-ç
-
-P
-f
-U
-
-
-è
-
-
-T
-G
-Ã
-N
-
-̈
-x
-¤
-Ä
-
-£
-
-4
-
-D
-Ï
-ä
-¶
-̄
-u
-Ñ
-r
-Î
-·
-È
-
-Û
-Ë
-1
-H
-i
-Ò
-s
-Ì
-l
-V
-±
-É
-Ç
-c
-í
-R
-C
-¥
-h
-Q
-⁄
-̧
-p
-0
-
-a
-­
-Ð
-w
-n
-ß
-m
-́
-¦
-¢
-Å
-W
-
-Ó
-¡
-°
-L
-t
-g
-ï
-b
-
-
-B
-9
-Â
-
-A
-
-
-©
-3
-Ù
-F
-E
-Ú
-à
-ì
-é
-á
-M
-q
-
-Ø
-5
-8
-¬
-
-
-v
-
-k
-
-å
-2
-
-X
-y
-μ
-ã
-
-o
-6
-Æ
-§
-z
-®
-
-I
-Y
-¿
-
-J
-K
-j
-e
-
-î
-Z
-d
-</w></w>
-<EMOJI></w>
-<EMOTICON></w>
-<HASHTAG></w>
-<URL></w>
-<USER></w>
-[BOS]</w>
-[EOS]</w>
-[PAD]</w>
-[UNK]</w>
-e</w>
-t</w>
-s</w>
-.</w>
-in
-y</w>
-th
-d</w>
-n</w>
-o</w>
-he
-an
-ng
-r</w>
-er
-g</w>
-to
-ou
-re
-ha
-on
-!</w>
-or
-at
-it
-I</w>
-'</w>
-a</w>
-l</w>
-st
-me
-nd
-is
-ll
-ve
-ea
-h</w>
-te
-en
-,</w>
-m</w>
-es
-ee
-ed
-ay
-ar
-ne
-oo
-al
-ho
-ti
-k</w>
-hi
-le
-om
-as
-w</w>
-ow
-no
-so
-ut
-yo
-wa
-u</w>
-se
-et
-lo
-i</w>
-ot
-be
-go
-nt
-da
-fo
-li
-us
-f</w>
-el
-my
-we
-ch
-wi
-ad
-ke
-ri
-ro
-co
-ur
-ly
-il
-ing</w>
-to</w>
-the</w>
-you
-in</w>
-is</w>
-it</w>
-ve</w>
-and</w>
-at</w>
-on</w>
-me</w>
-ou</w>
-my</w>
-p</w>
-?</w>
-day</w>
-for</w>
-an</w>
-ac
-gh
-of</w>
-ca
-ic
-the
-tha
-ke</w>
-er</w>
-th</w>
-bu
-ed</w>
-ht</w>
-ut</w>
-hav
-ck</w>
-out</w>
-up
-so</w>
-ll</w>
-one</w>
-ust</w>
-ig
-now</w>
-rea
-be</w>
-ma
-es</w>
-le</w>
-wor
-ba
-ly</w>
-ch</w>
-with
-thin
-ni
-et</w>
-ce</w>
-ra
-ge
-mor
-kin
-uc
-ld</w>
-re</w>
-all
-do
-ad</w>
-lly</w>
-am
-pl
-ood</w>
-ab
-all</w>
-pp
-was</w>
-ome</w>
-jus
-su
-ter</w>
-not</w>
-ks</w>
-he</w>
-ay</w>
-un
-id
-sa
-wee
-di
-la
-our</w>
-si
-ain
-de
-thi
-oul
-ak
-ver
-fu
-are</w>
-ag
-you</w>
-ght</w>
-that</w>
-have</w>
-but</w>
-with</w>
-just</w>
-up</w>
-this</w>
-st</w>
-can</w>
-get</w>
-king</w>
--</w>
-se</w>
-hat</w>
-nigh
-like</w>
-"</w>
-good</w>
-ir
-go</w>
-ver</w>
-ry</w>
-mo
-wan
-ts</w>
-ould</w>
-ant</w>
-ack</w>
-work</w>
-do</w>
-am</w>
-too</w>
-today</w>
-gh</w>
-no</w>
-your</w>
-ere</w>
-got</w>
-ther</w>
-ting</w>
-here</w>
-time</w>
-bo
-rom</w>
-bac
-:</w>
-fro
-mis
-thing</w>
-whe
-going</w>
-fin
-ther
-2</w>
-love</w>
-x</w>
-as</w>
-ning</w>
-fee
-ast</w>
-ff</w>
-ex
-ill</w>
-hou
-ell</w>
-wha
-nd</w>
-haha
-pe
-how</w>
-ers</w>
-nt</w>
-E</w>
-know</w>
-ha</w>
-we</w>
-end</w>
-sp
-ays</w>
-po
-sh
-ow</w>
-for
-about</w>
-os
-don</w>
-las
-of
-will</w>
-cou
-op
-na</w>
-wit
-tr
-really</w>
-mu
-eep</w>
-ng</w>
-night</w>
-from</w>
-back</w>
-what</w>
-some</w>
-see</w>
-ish</w>
-com
-wat
-more</w>
-loo
-way</w>
-had</w>
-ear
-vi
-ain</w>
-ate</w>
-0</w>
-im</w>
-&</w>
-lea
-ice</w>
-nee
-T</w>
-gu
-red</w>
-its</w>
-wh
-een</w>
-han
-ool</w>
-ough</w>
-anks</w>
-fri
-al</w>
-want</w>
-there</w>
-3</w>
-sl
-ally</w>
-lol</w>
-S</w>
-che
-think</w>
-by</w>
-new</w>
-row</w>
-It</w>
-ter
-(</w>
-ess</w>
-aw
-eed</w>
-thou
-gre
-or</w>
-sed</w>
-home</w>
-)</w>
-still</w>
-b</w>
-con
-ta
-when</w>
-they</w>
-if</w>
-well</w>
-much</w>
-than
-ite</w>
-ty</w>
-read
-fa
-jo
-ic</w>
-bee
-pe</w>
-Th
-ati
-id</w>
-ever
-miss</w>
-ted</w>
-tomor
-ent</w>
-D</w>
-morro
-some
-yea
-last</w>
-her</w>
-L</w>
-ion</w>
-reat</w>
-ine</w>
-rs</w>
-off</w>
-fe
-leep</w>
-pro
-need</w>
-tomorrow</w>
-witter</w>
-ure</w>
-pre
-Ha
-Y</w>
-then</w>
-been</w>
-ds</w>
-come</w>
-has</w>
-happ
-ven</w>
-gs</w>
-qu
-est</w>
-twit
-use</w>
-My</w>
-foll
-right</w>
-ying</w>
-sto
-any
-again</w>
-morning</w>
-um
-feel</w>
-ked</w>
-haha</w>
-A</w>
-lu
-get
-ppy</w>
-tu
-own</w>
-The</w>
-par
-nds</w>
-O</w>
-ching</w>
-great</w>
-af
-ready</w>
-Just</w>
-twee
-sleep</w>
-sor
-every
-fun</w>
-You</w>
-us</w>
-stu
-any</w>
-ick</w>
-dy</w>
-oon</w>
-ound</w>
-orry</w>
-Than
-sad</w>
-dow
-4</w>
-sho
-res
-did
-mi
-would</w>
-LO
-ir</w>
-te</w>
-bet
-app
-though</w>
-ing
-eve
-bad</w>
-star
-ont</w>
-art</w>
-only</w>
-hope</w>
-ving</w>
-z</w>
-hu
-ge</w>
-etting</w>
-very</w>
-his</w>
-tonight</w>
-them</w>
-min
-she</w>
-ru
-mon
-1</w>
-onna</w>
-make</w>
-over</w>
-wish</w>
-other</w>
-gr
-gi
-ard</w>
-ot</w>
-days</w>
-na
-bed</w>
-ys</w>
-thanks</w>
-per
-est
-en</w>
-oh</w>
-ph
-better</w>
-Go
-har
-did</w>
-twitter</w>
-ling</w>
-xt</w>
-br
-ace</w>
-ous</w>
-hone</w>
-gonna</w>
-fe</w>
-lf</w>
-week</w>
-should</w>
-wait</w>
-ar</w>
-could</w>
-getting</w>
-mes</w>
-ation</w>
-chool</w>
-G</w>
-N</w>
-sch
-ful</w>
-ms</w>
-ople</w>
-ps</w>
-bi
-tle</w>
-nice</w>
-c</w>
-cause</w>
-ey</w>
-ci
-peop
-boo
-why</w>
-de</w>
-5</w>
-ny</w>
-sorry</w>
-Lo
-IN
-ga
-feel
-itt
-follow
-down</w>
-him</w>
-ding</w>
-didn</w>
-lit
-fi
-whi
-sing</w>
-ye
-happy</w>
-kend</w>
-ade</w>
-week
-But</w>
-ER
-hea
-And</w>
-sc
-bea
-R</w>
-hate</w>
-kes</w>
-even</w>
-tal
-ur</w>
-mp
-So</w>
-Good</w>
-und
-soon</w>
-nex
-iting</w>
-ive</w>
-pr
-school</w>
-people</w>
-weekend</w>
-hey</w>
-Thanks</w>
-esome</w>
-were</w>
-after</w>
-ft</w>
-hh</w>
-watching</w>
-next</w>
-shi
-say</w>
-*</w>
-gir
-ways</w>
-Oh</w>
-dont</w>
-sid
-ok</w>
-ce
-irst</w>
-ide</w>
-never</w>
-ats</w>
-lat
-il</w>
-ment</w>
-That</w>
-exc
-ons</w>
-soo</w>
-hur
-pic
-fir
-little</w>
-sure</w>
-ff
-HA
-oo</w>
-long</w>
-where</w>
-No</w>
-mer</w>
-M</w>
-awes
-ends</w>
-who</w>
-frie
-take</w>
-rain</w>
-TH
-phone</w>
-wanna</w>
-bl
-cant</w>
-ree</w>
-ide
-wea
-aying</w>
-yes</w>
-chi
-hel
-sick</w>
-movi
-ity</w>
-yeah</w>
-son</w>
-ble</w>
-pa
-tired</w>
-working</w>
-watch</w>
-ely</w>
-being</w>
-cu
-doing</w>
-most</w>
-show</w>
-tion</w>
-than</w>
-cra
-ta</w>
-man</w>
-sup
-friend</w>
-tri
-self</w>
-love
-mme
-comp
-ever</w>
-bro
-best</w>
-v</w>
-ating</w>
-everyone</w>
-tra
-able</w>
-awesome</w>
-first</w>
-friends</w>
-done</w>
-life</w>
-LOL</w>
-already</w>
-having</w>
-till</w>
-plea
-ould
-find</w>
-see
-suc
-ans</w>
-til</w>
-side</w>
-brea
-We</w>
-early</w>
-K</w>
-something</w>
-always</w>
-hed</w>
-zing</w>
-U</w>
-ran
-guys</w>
-made</w>
-P</w>
-let</w>
-C</w>
-won</w>
-inter
-fore</w>
-du
-hours</w>
-ood
-cool</w>
-ki
-yet</w>
-feeling</w>
-sum
-les</w>
-and
-tty</w>
-dis
-ited</w>
-ance</w>
-maz
-because</w>
-chan
-da</w>
-H</w>
-ping</w>
-dr
-ser
-befor
-look</w>
-ya</w>
-cr
-ink</w>
-house</w>
-What</w>
-aybe</w>
-ct</w>
-does
-ber</w>
-ease</w>
-late</w>
-tw
-pi
-away</w>
-old</w>
-<3</w>
-age</w>
-ama
-ww</w>
-ily</w>
-ss</w>
-sha
-ies</w>
-pret
-OU
-sin
-ky</w>
-another</w>
-mmer</w>
-ishe
-ner</w>
-ck
-@</w>
-went</w>
-ond
-bit</w>
-der</w>
-movie</w>
-dea
-W</w>
-ma</w>
-before</w>
-pretty</w>
-ster</w>
-out
-Wh
-sou
-mm</w>
-aww</w>
-list
-por
-book</w>
-Not</w>
-things</w>
-please</w>
-times</w>
-coming</w>
-roo
-bir
-off
-OM
-into</w>
-00</w>
-ws</w>
-wo
-looking</w>
-clo
-ute</w>
-ah</w>
-mar
-Is</w>
-follow</w>
-irth
-mus
-tweet</w>
-while</w>
-left</w>
-enjo
-vis
-8</w>
-year</w>
-ses</w>
-lad</w>
-lled</w>
-ort</w>
-head</w>
-wr
-ls</w>
-thr
-Can</w>
-ew</w>
-6</w>
-ening</w>
-help</w>
-tur
-EA
-summer</w>
-9</w>
-thday</w>
-thought</w>
-start</w>
-sun
-sm
-fun
-blo
-oor</w>
-try</w>
-rain
-ese</w>
-ise</w>
-How</w>
-are
-ight</w>
-play</w>
-zy</w>
-xx</w>
-Twitter</w>
-same</w>
-tho
-Have</w>
-tually</w>
-sucks</w>
-amazing</w>
-lost</w>
-AN
-someone</w>
-;</w>
-ist</w>
-later</w>
-Im</w>
-missed</w>
-many</w>
-got
-hear</w>
-keep</w>
-ester
-guess</w>
-ON
-Now</w>
-actu
-stuff</w>
-live</w>
-trying</w>
-ye</w>
-girl</w>
-res</w>
-1⁄
-weather</w>
-bur
-This</w>
-unch</w>
-kin</w>
-thank</w>
-ken</w>
-doesn</w>
-hot</w>
-song</w>
-ber
-7</w>
-lling</w>
-ned</w>
-ope</w>
-gg
-esterday</w>
-was
-eat</w>
-dam
-hard</w>
-vo
-said</w>
-lot</w>
-Hop
-baby</w>
-bored</w>
-lls</w>
-pt</w>
-weet</w>
-bly</w>
-read</w>
-party</w>
-few</w>
-Li
-wond
-two</w>
-yester
-ved</w>
-cre
-those</w>
-dri
-sun</w>
-ouldn</w>
-cer
-din
-ated</w>
-until</w>
-win
-fam
-uti
-ward</w>
-big</w>
-line</w>
-makes</w>
-B</w>
-swee
-actually</w>
-game</w>
-cor
-car</w>
-since</w>
-around</w>
-tell</w>
-less</w>
-myself</w>
-ears</w>
-ali
-ugh</w>
-can
-ul
-sit
-does</w>
-saw</w>
-excited</w>
-nts</w>
-nothing</w>
-che</w>
-Mor
-might</w>
-pping</w>
-upd
-ished</w>
-F</w>
-world</w>
-ass</w>
-Going</w>
-maybe</w>
-wake</w>
-ream</w>
-pic</w>
-least</w>
-vide
-tes</w>
-yesterday</w>
-clas
-des
-slee
-lie
-On
-pres
-NO
-ING</w>
-luck</w>
-Al
-Hope</w>
-body</w>
-Well</w>
-looks</w>
-Hey</w>
-utiful</w>
-ves</w>
-10</w>
-kay</w>
-birthday</w>
-finally</w>
-mer
-job</w>
-give</w>
-im
-music</w>
-their</w>
-hair</w>
-such</w>
-ile</w>
-waiting</w>
-Wor
-also</w>
-ary</w>
-bus
-St
-></w>
-/</w>
-py</w>
-eve</w>
-cold</w>
-wal
-put</w>
-top</w>
-thats</w>
-call</w>
-kid
-Co
-room</w>
-war
-gone</w>
-cho
-ne</w>
-ble
-beli
-found</w>
-tho</w>
-Happy</w>
-Thank</w>
-fast</w>
-Wat
-Mon
-who
-mem
-talk</w>
-If</w>
-ffe
-tru
-aking</w>
-light</w>
-damn</w>
-fully</w>
-tly</w>
-rong</w>
-glad</w>
-cha
-anything</w>
-mom</w>
-atur
-beauti
-gra
-w/
-ent
-ER</w>
-Why</w>
-pu
-bor
-hurts</w>
-ee</w>
-ence</w>
-leave</w>
-fac
-ue</w>
-mean</w>
-com</w>
-AY</w>
-far</w>
-Mo
-hour</w>
-belie
-At</w>
-making</w>
-haven</w>
-ded</w>
-sig
-food</w>
-lieve</w>
-stop</w>
-He</w>
-beautiful</w>
-wanted</w>
-ings</w>
-Yea
-Its</w>
-set</w>
-ton</w>
-hing</w>
-VE</w>
-To
-land</w>
-cute</w>
-sted</w>
-forward</w>
-au
-man
-iP
-check</w>
-isn</w>
-spe
-must</w>
-ous
-good
-elcome</w>
-gotta</w>
-ched</w>
-ear</w>
-family</w>
-thers</w>
-lunch</w>
-wer</w>
-kn
-tot
-inst
-Ti
-dinner</w>
-followers</w>
-funny</w>
-without</w>
-pho
-hi</w>
-Ro
-coo
-car
-woke</w>
-eah</w>
-US
-mat
-They</w>
-Fri
-rep
-ust
-ley</w>
-wn</w>
-V</w>
-place</w>
-per</w>
-sly</w>
-sounds</w>
-shit</w>
-free</w>
-nding</w>
-Ho
-site</w>
-missing</w>
-fl
-Sorry</w>
-30</w>
-ap
-je
-almost</w>
-um</w>
-led</w>
-sur
-outside</w>
-through</w>
-ates</w>
-¿1⁄
-ï¿
-tea
-yay</w>
-upid</w>
-real</w>
-enough</w>
-sion</w>
-als</w>
-everything</w>
-ones</w>
-bably</w>
-anymore</w>
-believe</w>
-Yeah</w>
-ï¿1⁄
-Love</w>
-ming</w>
-video</w>
-finished</w>
-hen</w>
-playing</w>
-fav
-ering</w>
-weeks</w>
-TI
-may</w>
-which</w>
-AL
-So
-wrong</w>
-port</w>
-thinking</w>
-didnt</w>
-buy</w>
-bs</w>
-hahaha</w>
-Rea
-In</w>
-wonder
-net</w>
-ously</w>
-ets</w>
-De
-ten</w>
-these</w>
-ns</w>
-00
-friday</w>
-tor</w>
-OR
-cour
-ffee</w>
-ei
-llo</w>
-ither</w>
-mine</w>
-pped</w>
-coffe
-head
-ED</w>
-sweet</w>
-On</w>
-tic
-mail</w>
-Loo
-mes
-name</w>
-our
-ahh</w>
-win</w>
-OO
-following</w>
-Got</w>
-came</w>
-MA
-tweets</w>
-ture</w>
-okay</w>
-Still</w>
-money</w>
-ths</w>
-aturday</w>
-Fin
-Morning</w>
-LL</w>
-ought</w>
-says</w>
-remem
-totally</w>
-nite</w>
-bou
-ple</w>
-plan
-anyone</w>
-seen</w>
-poor</w>
-fuc
-every</w>
-sy</w>
-He
-listening</w>
-stay</w>
-member</w>
-heada
-ack
-cked</w>
-face</w>
-under
-rest</w>
-pefully</w>
-ell
-hor
-coffee</w>
-pis
-home
-Day</w>
-probably</w>
-ery</w>
-Re
-ze</w>
-YO
-ugh
-=</w>
-using</w>
-lle
-Watching</w>
-ngr
-happen
-Haha</w>
-el</w>
-ote</w>
-mind</w>
-wow</w>
-Bo
-An
-zz
-part</w>
-class</w>
-OU</w>
-dec
-whole</w>
-ness</w>
-cks</w>
-wants</w>
-used</w>
-ban
-cal</w>
-une</w>
-LY</w>
-load</w>
-busy</w>
-ES
-Aww</w>
-Yes</w>
-idea</w>
-kids</w>
-Sund
-tun
-ie</w>
-ball</w>
-reading</w>
-Jo
-ang</w>
-hehe</w>
-Do
-oot</w>
-dad</w>
-stupid</w>
-Don</w>
-fre
-omg</w>
-+</w>
-enjoy</w>
-ago</w>
-int</w>
-exam</w>
-proble
-ty
-Had</w>
-hit</w>
-pri
-years</w>
-ket</w>
-lovely</w>
-mac
-lease</w>
-yy</w>
-bout</w>
-bye</w>
-seri
-Mis
-ep
-welcome</w>
-eating</w>
-post</w>
-headache</w>
-kinda</w>
-iPhone</w>
-ang
-else</w>
-em</w>
-ened</w>
-test</w>
-dying</w>
-Friday</w>
-cat
-half</w>
-cur
-both</w>
-She</w>
-run
-ead</w>
-YOU</w>
-ction</w>
-meet</w>
-full</w>
-guy</w>
-ker</w>
-tre
-Ma
-Back</w>
-either</w>
-cuz</w>
-Me</w>
-took</w>
-sea
-taking</w>
-lous</w>
-lear
-load
-sy
-news</w>
-low</w>
-New</w>
-beach</w>
-OMG</w>
-run</w>
-town</w>
-play
-wasn</w>
-crazy</w>
-hurt</w>
-cas
-gar
-fr
-IT</w>
-Sunday</w>
-av
-lin
-concer
-boo</w>
-pics</w>
-ress</w>
-forgot</w>
-ummy</w>
-down
-Monday</w>
-uter</w>
-ans
-trip</w>
-compu
-raining</w>
-dog</w>
-tv</w>
-med</w>
-ucky</w>
-Mar
-wed
-ju
-after
-shopping</w>
-esday</w>
-hes</w>
-add</w>
-IN</w>
-str
-cl
-dra
-alone</w>
-ried</w>
-course</w>
-dic
-char
-send</w>
-blog</w>
-remember</w>
-rec
-SO</w>
-hell</w>
-tern
-Fee
-ishing</w>
-gets</w>
-break
-pain</w>
-rible</w>
-cial</w>
-TV</w>
-ters</w>
-All</w>
-space</w>
-started</w>
-ten
-boy</w>
-Che
-Be
-ntly</w>
-ations</w>
-Wi
-Ex
-heard</w>
-once</w>
-computer</w>
-talking</w>
-ï¿1⁄2
-hung
-sing
-ale</w>
-sting</w>
-ME</w>
-dro
-girls</w>
-office</w>
-God</w>
-pen</w>
-cli
-true</w>
-Br
-Lol</w>
-break</w>
-nor
-ici
-anc
-wont</w>
-ES</w>
-kind</w>
-change</w>
-den</w>
-tast
-watched</w>
-heart</w>
-bas
-ger</w>
-RI
-Yay</w>
-air
-twitter
-clu
-seems</w>
-ney</w>
-Dam
-needs</w>
-feels</w>
-sal
-ately</w>
-aw</w>
-fine</w>
-grad
-ows</w>
-couldn</w>
-super</w>
-picture</w>
-seeing</w>
-view</w>
-w/</w>
-pas
-ug
-favor
-tried</w>
-bb
-ams</w>
-cont
-goes</w>
-utes</w>
-AT
-diff
-ging</w>
-sitting</w>
-pm</w>
-REA
-THE</w>
-person</w>
-No
-IS</w>
-reas
-There</w>
-ebook</w>
-suppo
-stuck</w>
-minu
-tw</w>
-yed</w>
-defin
-noon</w>
-ia</w>
-told</w>
-lots</w>
-LOVE</w>
-leaving</w>
-online</w>
-lan
-cle
-gy</w>
-stand</w>
-Wish</w>
-Hi</w>
-quite</w>
-uch</w>
-ils</w>
-]</w>
-band</w>
-care</w>
-minutes</w>
-cry</w>
-Great</w>
-os</w>
-Off</w>
-god</w>
-cut</w>
-asleep</w>
-count</w>
-Good
-photo
-100</w>
-TO</w>
-ped</w>
-tely</w>
-ligh
-Will</w>
-broke</w>
-sk
-Please</w>
-Ar
-nded</w>
-twi
-lad
-sts</w>
-Wow</w>
-awake</w>
-breakfast</w>
-long
-link</w>
-boring</w>
-month</w>
-ask</w>
-called</w>
-walk</w>
-bum</w>
-Ch
-pay</w>
-update</w>
-turn</w>
-Today</w>
-onal</w>
-interest
-bri
-sund
-Tu
-kee
-HO
-Time</w>
-concert</w>
-Ugh</w>
-works</w>
-but
-eting</w>
-loved</w>
-hmm</w>
-ered</w>
-ON</w>
-move</w>
-X</w>
-adi
-pan
-sunny</w>
-adly</w>
-inking</w>
-ssi
-favorite</w>
-hoo</w>
-fig
-gether</w>
-bought</w>
-un</w>
-web
-oud</w>
-OO</w>
-Wa
-frea
-over
-sister</w>
-drea
---</w>
-jea
-key</w>
-Par
-drin
-dar
-train</w>
-meet
-instead</w>
-reply</w>
-itely</w>
-Mi
-Tr
-monday</w>
-fan</w>
-internet</w>
-20</w>
-pos
-hungry</w>
-10
-qui
-la</w>
-sleeping</w>
-hopefully</w>
-drive</w>
-AR
-ayy</w>
-ol
-study</w>
-anno
-Fo
-clea
-secon
-nap</w>
-back
-comple
-afternoon</w>
-EE
-hon
-lap
-list</w>
-lish</w>
-scre
-bit
-cream</w>
-duc
-gy
-lon
-MY</w>
-IT
-NE
-season</w>
-starting</w>
-shower</w>
-eg
-men
-together</w>
-Maybe</w>
-under</w>
-dou
-holi
-tin</w>
-messa
-sen
-ngs</w>
-open</w>
-acti
-~</w>
-igh
-mag
-Some
-12</w>
-Hea
-pac
-dle</w>
-died</w>
-En
-ari
-ld
-ining</w>
-Too</w>
-text</w>
-anyway</w>
-wear</w>
-mid
-aning</w>
-comes</w>
-Getting</w>
-perfe
-llow</w>
-song
-finish</w>
-means</w>
-Damn</w>
-box</w>
-fortun
-vac
-EV
-lar
-ower</w>
-To</w>
-problem</w>
-UC
-lucky</w>
-ments</w>
-day
-write</w>
-sore</w>
-Gu
-Get</w>
-jealous</w>
-dd
-ler</w>
-happened</w>
-NOT</w>
-Chi
-eng
-couple</w>
-ngrats</w>
-bby</w>
-MO
-Un
-exams</w>
-oin
-1st</w>
-bring</w>
-vid</w>
-email</w>
-crap</w>
-count
-pain
-mad</w>
-ird</w>
-die</w>
-appo
-men</w>
-AND</w>
-rela
-owing</w>
-brother</w>
-wonderful</w>
-colle
-Sh
-revis
-xo
-sca
-mom
-pare
-pool</w>
-sunday</w>
-weir
-word</w>
-sn
-zed</w>
-lla</w>
-ana</w>
-kit
-movies</w>
-dude</w>
-11</w>
-ckets</w>
-reali
-via</w>
-gradu
-album</w>
-tick
-usu
-â
-nch</w>
-reci
-running</w>
-ake</w>
-ches</w>
-months</w>
-hear
-homework</w>
-reason</w>
-IS
-happen</w>
-mp</w>
-drink</w>
-gen
-quest
-bar
-Con
-btw</w>
-shine</w>
-seriously</w>
-stra
-tie</w>
-EN
-ppl</w>
-Saturday</w>
-vice</w>
-evening</w>
-store</w>
-shir
-ride</w>
-ins</w>
-fuck</w>
-One</w>
-wing</w>
-fil
-laptop</w>
-Sou
-water</w>
-vin</w>
-sti
-Ever
-ST
-suck</w>
-ries</w>
-songs</w>
-acc
-RO
-chur
-Gr
-eyes</w>
-ring</w>
-ions</w>
-appoin
-definitely</w>
-ind</w>
-dead</w>
-mao</w>
-thro
-Your</w>
-ick
-Ð</w>
-piso
-swi
-sound</w>
-seem</w>
-berry</w>
-close</w>
-fall</w>
-num
-tory</w>
-Twee
-wine</w>
-visit</w>
-Do</w>
-tube</w>
-Da
-Ok</w>
-stor
-boy
-Last</w>
-ess
-boys</w>
-offici
-agree</w>
-dom</w>
-high</w>
-ddy</w>
-possi
-cake</w>
-goin</w>
-yone</w>
-Ju
-differ
-tures</w>
-mit</w>
-mood</w>
-tea</w>
-xo</w>
-pen
-tour</w>
-Nice</w>
-fucking</w>
-dream</w>
-broken</w>
-shop</w>
-J</w>
-ser</w>
-iness</w>
-page</w>
-epis
-ep</w>
-ital</w>
-vers
-cept</w>
-fortunately</w>
-lor
-each</w>
-lma
-ooh</w>
-em
-Really</w>
-hoping</w>
-ele
-meeting</w>
-church</w>
-fore
-tickets</w>
-city</w>
-prom
-gym</w>
-disapp
-bla
-moment</w>
-cking</w>
-uring</w>
-unk</w>
-listen</w>
-cat</w>
-THA
-enjoying</w>
-Bi
-yea</w>
-Up</w>
-weird</w>
-nes</w>
-LA
-sh</w>
-ob
-Every
-sin</w>
-Finally</w>
-RA
-episo
-xing</w>
-hang</w>
-Twit
-sent</w>
-itting</w>
-studying</w>
-Did</w>
---
-don
-sn</w>
-ina</w>
-lil</w>
-hello</w>
-colate</w>
-ner
-ised</w>
-fail</w>
-mou
-choco
-worth</w>
-interesting</w>
-work
-loves</w>
-tor
-ush</w>
-DAY</w>
-writing</w>
-dear</w>
-For</w>
-cele
-When</w>
-date</w>
-ards</w>
-fan
-catch</w>
-second</w>
-ged</w>
-lor</w>
-fly</w>
-squ
-knew</w>
-final</w>
-mi</w>
-uck</w>
-Enjo
-sometimes</w>
-throat</w>
-App
-sive</w>
-WA
-Night</w>
-Pl
-ani
-lli
-Let</w>
-understand</w>
-past</w>
-saying</w>
-Pro
-joy</w>
-In
-od</w>
-Di
-FA
-LI
-blu
-15</w>
-dance</w>
-facebook</w>
-Where</w>
-oog
-30
-Was</w>
-fair</w>
-mil
-parents</w>
-Se
-Then</w>
-real
-act</w>
-supposed</w>
-Si
-June</w>
-let
-Ð3
-Very</w>
-fli
-perfect</w>
-Bu
-fer
-gle</w>
-words</w>
-goodnight</w>
-ages</w>
-HE
-Car
-AM</w>
-point</w>
-vent</w>
-Sp
-story</w>
-cially</w>
-dress</w>
-depres
-ash</w>
-pictures</w>
-sleepy</w>
-aren</w>
-Glad</w>
-bus</w>
-ject</w>
-cted</w>
-lmao</w>
-OME</w>
-ces</w>
-smile</w>
-gave</w>
-account</w>
-pea
-due</w>
-200
-short</w>
-GH
-recor
-%</w>
-forget</w>
-Go</w>
-dreams</w>
-lept</w>
-cti
-wedding</w>
-moving</w>
-longer</w>
-arently</w>
-rock</w>
-cover
-solu
-ens</w>
-ics</w>
-ses
-Only</w>
-Aw
-worst</w>
-chance</w>
-chocolate</w>
-tive</w>
-NO</w>
-lle</w>
-plan</w>
-ore</w>
-att
-CON
-ac</w>
-clean</w>
-|</w>
-easy</w>
-GO
-tweeting</w>
-ult</w>
-woo
-lier</w>
-peri
-ind
-proje
-ship</w>
-xed</w>
-inv
-worse</w>
-iled</w>
-sub
-rather</w>
-pick</w>
-rself</w>
-her
-hand</w>
-ross</w>
-USER
-Sha
-dd</w>
-<US
-slow</w>
-earli
-min</w>
-part
-cro
-gers</w>
-urs
-co</w>
-Ahh</w>
-wouldn</w>
-ray</w>
-cally</w>
-mal</w>
-doesnt</w>
-Bl
-sday</w>
-horrible</w>
-ong</w>
-sme
-<USER
-updates</w>
-s*</w>
-LA</w>
-heading</w>
-ris</w>
-RE
-HA</w>
-cos</w>
-three</w>
-cen
-sunshine</w>
-Are</w>
-upset</w>
-q</w>
-form
-cal
-saturday</w>
-ges</w>
-ided</w>
-grou
-zz</w>
-mum</w>
-EE</w>
-FO
-des</w>
-plans</w>
-spea
-Po
-Ano
-lie</w>
-chat</w>
-fell</w>
-earlier</w>
-Le
-nother</w>
-driving</w>
-hrs</w>
-CA
-spend</w>
-Ð3⁄
-camer
-Qu
-scared</w>
-IC
-flu</w>
-stre
-BA
-youtube</w>
-mas
-els</w>
-cleaning</w>
-college</w>
-llin</w>
-cance
-eri
-produc
-bet</w>
-worry</w>
-deli
-ohh</w>
-Need</w>
-ook</w>
-mate</w>
-ran</w>
-arri
-during</w>
-e-
-ica</w>
-rd</w>
-loving</w>
-tex
-BB
-noo</w>
-shirt</w>
-PL
-Sad</w>
-oogle</w>
-conne
-website</w>
-Trying</w>
-Looking</w>
-case</w>
-grand
-pur
-NOW</w>
-BU
-nah</w>
-mach</w>
-shows</w>
-sa</w>
-Can
-ghh</w>
-issu
-wonder</w>
-Goodnight</w>
-Hello</w>
-YAY</w>
-ja
-arm</w>
-Another</w>
-special</w>
-lying</w>
-ursday</w>
-Who</w>
-flight</w>
-paper</w>
-mother</w>
-Work</w>
-ayed</w>
-earing</w>
-ouldnt</w>
-set
-sters</w>
-Gre
-bot
-air</w>
-elt</w>
-foo
-thinks</w>
-figure</w>
-Fa
-uts</w>
-ALL</w>
-celebr
-AW
-US</w>
-ined</w>
-onas</w>
-team</w>
-Pr
-hum
-drinking</w>
-ishes</w>
-mee</w>
-bli
-ort
-message</w>
-Eng
-zza</w>
-lazy</w>
-vacation</w>
-mon</w>
-xD</w>
-board</w>
-cri
-appreci
-warm</w>
-SE</w>
-bat
-answer</w>
-disappoin
-prof
-books</w>
-fo</w>
-followfriday</w>
-ap</w>
-different</w>
-20
-mo</w>
-vel</w>
-bday</w>
-holiday</w>
-Lon
-ment
-slept</w>
-imp
-myspace</w>
-ren</w>
-Hmm</w>
-See</w>
-SH
-learn</w>
-adio</w>
-beg
-Also</w>
-Hu
-emp
-tom</w>
-too
-expe
-ition</w>
-stomach</w>
-fb</w>
-support</w>
-fans</w>
-mins</w>
-Com
-inside</w>
-lady</w>
-spon
-turned</w>
-looked</w>
-temp
-SA
-cken</w>
-met</w>
-rely</w>
-black</w>
-gor
-con</w>
-ka</w>
-voice</w>
-2nd</w>
-glas
-lets</w>
-UP</w>
-cannot</w>
-meant</w>
-pee
-Mc
-Man</w>
-Q</w>
-join</w>
-Ð1⁄
-Home</w>
-List
-park</w>
-Om
-beer</w>
-whats</w>
-Ah</w>
-dge</w>
-boyfriend</w>
-front</w>
-Per
-Poor</w>
-surpr
-2day</w>
-card</w>
-Star
-fix</w>
-yle</w>
-tm
-wed</w>
-wit</w>
-cus
-Gonna</w>
-doc
-FF</w>
-Wo
-photos</w>
-yo</w>
-havent</w>
-chin</w>
-hosp
-kie</w>
-liked</w>
-Fi
-ab</w>
-beat</w>
-40</w>
-episode</w>
-camera</w>
-Int
-ONE</w>
-tel</w>
-Got
-lar</w>
-solutely</w>
-iling</w>
-number</w>
-forever</w>
-ground</w>
-plac
-cc
-IM</w>
-sus
-cle</w>
-geous</w>
-wards</w>
-ines</w>
-games</w>
-pup
-photo</w>
-fit</w>
-end
-ign</w>
-ties</w>
-Ste
-Feeling</w>
-Birth
-vote</w>
-The
-50</w>
-sis</w>
-safe</w>
-eye</w>
-Or</w>
-eh</w>
-shall</w>
-small</w>
-ga</w>
-shoes</w>
-wondering</w>
-spo
-ors</w>
-utting</w>
-Ð°
-desig
-yourself</w>
-bike</w>
-spent</w>
-sex
-tt</w>
-tummy</w>
-crying</w>
-awards</w>
-ghts</w>
-hy
-ger
-nesday</w>
-dam</w>
-hah</w>
-London</w>
-fever</w>
-addic
-sul
-burn</w>
-airport</w>
-laugh</w>
-Bro
-vy</w>
-ame</w>
-needed</w>
-Ne
-tain
-Birthday</w>
-HAHA
-Z</w>
-ents</w>
-Ðμ
-ach</w>
-ath
-thy</w>
-worked</w>
-sit</w>
-starts</w>
-lies</w>
-kid</w>
-iss</w>
-les
-felt</w>
-kies</w>
-Looks</w>
-keeps</w>
-WI
-hanging</w>
-order</w>
-Pre
-earch</w>
-pod</w>
-Pe
-curre
-Am</w>
-Awesome</w>
-possible</w>
-proud</w>
-WH
-decided</w>
-dies</w>
-rainy</w>
-ST</w>
-alling</w>
-actly</w>
-annoying</w>
-sty</w>
-phi
-iphone</w>
-Come</w>
-officially</w>
-memor
-Af
-ford</w>
-ster
-tic</w>
-fru
-heal
-danc
-AG
-fact</w>
-ced</w>
-Gotta</w>
-enti
-DA
-wishing</w>
-aint</w>
-played</w>
-thes</w>
-j</w>
-Twitter
-mc
-road</w>
-Ñ</w>
-sug
-huge</w>
-ry
-Fran
-kill</w>
-garden</w>
-daugh
-bucks</w>
-ught</w>
-lonely</w>
-bt</w>
-hospital</w>
-tom
-Having</w>
-Working</w>
-ative</w>
-cess</w>
-she
-feet</w>
-power</w>
-MOTI
-buil
-ya
-EMO
-pass</w>
-UN
-project</w>
-sta
-yummy</w>
-near</w>
-Hou
-mming</w>
-<E
-UK</w>
-green</w>
-lose</w>
-packing</w>
-sign</w>
-tastic</w>
-SU
-gging</w>
-hahah</w>
-TICON
-deser
-ord
-unfortunately</w>
-isnt</w>
-With</w>
-taken</w>
-Has</w>
-realized</w>
-woo</w>
-white</w>
-espe
-ican</w>
-nights</w>
-ughter</w>
-TE</w>
-va</w>
-Dis
-OK</w>
-del
-minute</w>
-uni
-Tom
-t-
-Did
-hind</w>
-ummer</w>
-UG
-big
-pizza</w>
-living</w>
-Once</w>
-ï¿1⁄2</w>
-tra</w>
-exciting</w>
-hau
-vie
-<3
-itar</w>
-share</w>
-Boo</w>
-You
-Been</w>
-Sup
-hats</w>
-ece</w>
-tever</w>
-Mic
-babe</w>
-table</w>
-Enjoy</w>
-Hopefully</w>
-save</w>
-beh
-happens</w>
-Miss</w>
-shoot</w>
-Man
-knows</w>
-pers
-clothes</w>
-stan
-Sounds</w>
-pecially</w>
-MOTICON
-<EMOTI
-bra
-bre
-sigh
-GHT</w>
-bro</w>
-question</w>
-kers</w>
-chicken</w>
-Ton
-val</w>
-drunk</w>
-finals</w>
-col
-version</w>
-respon
-DM</w>
-pa</w>
-thin</w>
-along</w>
-Har
-graduation</w>
-poin
-rew</w>
-remin
-fol
-rist
-ada</w>
-jum
-sold</w>
-xoxo</w>
-behind</w>
-â
-Ind
-apparently</w>
-except</w>
-especially</w>
-GOO
-plane</w>
-Inter
-Listening</w>
-idk</w>
-Â</w>
-door</w>
-dio</w>
-lame</w>
-Sta
-english</w>
-Of</w>
-company</w>
-dun
-Life</w>
-Welcome</w>
-cast</w>
-app</w>
-giving</w>
-gorgeous</w>
-net
-As</w>
-First</w>
-by
-Ð3⁄4
-san
-tan
-screen</w>
-sign
-sli
-sel
-vs</w>
-ven
-Du
-burnt</w>
-luv</w>
-Omg</w>
-ots</w>
-ahead</w>
-ane</w>
-service</w>
-Okay</w>
-pes</w>
-PP
-plus</w>
-Stu
-TW
-ava
-cious</w>
-scary</w>
-shame</w>
-videos</w>
-gover</w>
-killing</w>
-loading</w>
-hubby</w>
-imag
-morn
-Fac
-yours</w>
-LLY</w>
-May</w>
-<EMOTICON
-hold</w>
-absolutely</w>
-posted</w>
-About</w>
-ffic</w>
-star</w>
-tweet
-istory</w>
-upload</w>
-Cra
-gotten</w>
-cover</w>
-dow</w>
-wer
-DI
-stri
-ween</w>
-bar</w>
-ller</w>
-wife</w>
-tee
-film</w>
-radio</w>
-For
-business</w>
-ris
-round</w>
-tors</w>
-bed
-congrats</w>
-passed</w>
-exactly</w>
-09</w>
-terrible</w>
-owed</w>
-kic
-wishes</w>
-download</w>
-experi
-mas</w>
-Ja
-hard
-lately</w>
-hun</w>
-asked</w>
-mmed</w>
-GO</w>
-Gir
-Congrats</w>
-Amer
-Like</w>
-Waiting</w>
-bloo
-bag</w>
-comme
-ently</w>
-posit
-trou
-â¥
-vin
-Nothing</w>
-moti
-sol
-touch</w>
-à</w>
-MTV</w>
-fish</w>
-cup</w>
-daughter</w>
-$</w>
-Soo</w>
-his
-form</w>
-ian</w>
-CK</w>
-ouble</w>
-best
-hates</w>
-fres
-fer</w>
-practi
-alright</w>
-hoo
-huh</w>
-Wan
-igh</w>
-yep</w>
-cy
-alot</w>
-sof
-hug</w>
-interview</w>
-storm</w>
-coz</w>
-ngrat
-Aust
-ext</w>
-loody</w>
-Ac
-ET</w>
-arious</w>
-sad
-CH
-dele
-grr</w>
-2mor
-fla
-fire</w>
-shot</w>
-Sho
-smo
-umm</w>
-cakes</w>
-wearing</w>
-sat</w>
-comment</w>
-ipod</w>
-miles</w>
-simp
-sta</w>
-between</w>
-dum
-Mr</w>
-club</w>
-thx</w>
-Lea
-TH</w>
-camp</w>
-gettin</w>
-Ca
-Fre
-free
-guitar</w>
-llen</w>
-mic
-nia</w>
-deal</w>
-gas</w>
-usually</w>
-relaxing</w>
-wom
-Check</w>
-dres
-changed</w>
-ressed</w>
-gies</w>
-ouch</w>
-TO
-moon</w>
-David</w>
-blue</w>
-use
-THAT</w>
-enjoyed</w>
-web</w>
-hil
-single</w>
-ville</w>
-everybody</w>
-others</w>
-<</w>
-dows</w>
-profile</w>
-nel</w>
-revision</w>
-singing</w>
-Be</w>
-Everyone</w>
-logy</w>
-insp
-ast
-Su
-camp
-hn</w>
-hausted</w>
-moved</w>
-tin
-Aw</w>
-Nor
-completely</w>
-jus</w>
-nose</w>
-spi
-recomme
-walking</w>
-iti
-OH</w>
-yr</w>
-ate
-new
-now
-tan</w>
-Ñ
-awful</w>
-cher</w>
-eld</w>
-ski
-thank
+[PAD] 0 
+[UNK] 1 
+[BOS] 2 
+[EOS] 3 
+<URL> 4 
+<USER> 5 
+<HASHTAG> 6 
+<EMOTICON> 7 
+<EMOJI> 8 
+! 9 
+\ 10 
+" 11 
+# 12 
+$ 13 
+% 14 
+& 15 
+' 16 
+( 17 
+) 18 
+* 19 
++ 20 
+, 21 
+- 22 
+. 23 
+/ 24 
+: 25 
+; 26 
+< 27 
+= 28 
+> 29 
+? 30 
+@ 31 
+[ 32 
+] 33 
+^ 34 
+_ 35 
+` 36 
+{ 37 
+| 38 
+} 39 
+~ 40 
+… 41 
+</w> 42 
+v 43 
+4 44 
+V 45 
+Â 46 
+3 47 
+B 48 
+r 49 
+O 50 
+L 51 
+U 52 
+Q 53 
+a 54 
+¡ 55 
+Z 56 
+q 57 
+i 58 
+h 59 
+l 60 
+G 61 
+X 62 
+1 63 
+p 64 
+C 65 
+x 66 
+M 67 
+́ 68 
+t 69 
+b 70 
+E 71 
+P 72 
+g 73 
+j 74 
+K 75 
+e 76 
+W 77 
+9 78 
+J 79 
+A 80 
+F 81 
+I 82 
+y 83 
+k 84 
+D 85 
+Ã 86 
+n 87 
+z 88 
+Y 89 
+d 90 
+£ 91 
+© 92 
+8 93 
+7 94 
+u 95 
+c 96 
+0 97 
+H 98 
+R 99 
+S 100 
+N 101 
+o 102 
+T 103 
+⁄ 104 
+¿ 105 
+w 106 
+6 107 
+5 108 
+f 109 
+s 110 
+ï 111 
+2 112 
+m 113 
+</w></w> 114 
+<EMOJI></w> 115 
+<EMOTICON></w> 116 
+<HASHTAG></w> 117 
+<URL></w> 118 
+<USER></w> 119 
+[BOS]</w> 120 
+[EOS]</w> 121 
+[PAD]</w> 122 
+[UNK]</w> 123 
+e</w> 124 
+t</w> 125 
+s</w> 126 
+.</w> 127 
+in 128 
+y</w> 129 
+th 130 
+d</w> 131 
+o</w> 132 
+he 133 
+n</w> 134 
+an 135 
+ng 136 
+er 137 
+r</w> 138 
+re 139 
+ou 140 
+ha 141 
+g</w> 142 
+!</w> 143 
+to 144 
+on 145 
+it 146 
+or 147 
+at 148 
+is 149 
+st 150 
+ll 151 
+ve 152 
+l</w> 153 
+nd 154 
+a</w> 155 
+me 156 
+ea 157 
+oo 158 
+h</w> 159 
+,</w> 160 
+te 161 
+es 162 
+en 163 
+ee 164 
+al 165 
+I</w> 166 
+ar 167 
+ho 168 
+m</w> 169 
+k</w> 170 
+ay 171 
+ti 172 
+yo 173 
+ne 174 
+as 175 
+le 176 
+om 177 
+ed 178 
+so 179 
+no 180 
+lo 181 
+ow 182 
+hi 183 
+u</w> 184 
+ot 185 
+et 186 
+w</w> 187 
+nt 188 
+ut 189 
+wa 190 
+be 191 
+i</w> 192 
+li 193 
+my 194 
+se 195 
+go 196 
+fo 197 
+da 198 
+ur 199 
+us 200 
+ad 201 
+wi 202 
+ro 203 
+co 204 
+ke 205 
+f</w> 206 
+ch 207 
+ri 208 
+do 209 
+ly 210 
+il 211 
+ni 212 
+we 213 
+ing</w> 214 
+to</w> 215 
+the</w> 216 
+er</w> 217 
+you 218 
+ll</w> 219 
+ve</w> 220 
+is</w> 221 
+in</w> 222 
+my</w> 223 
+ou</w> 224 
+at</w> 225 
+it</w> 226 
+and</w> 227 
+me</w> 228 
+all 229 
+on</w> 230 
+?</w> 231 
+p</w> 232 
+day</w> 233 
+'t</w> 234 
+for</w> 235 
+'s</w> 236 
+ac 237 
+an</w> 238 
+ke</w> 239 
+ver 240 
+gh 241 
+of</w> 242 
+th</w> 243 
+I' 244 
+hav 245 
+ter 246 
+bu 247 
+ca 248 
+ic 249 
+so</w> 250 
+be</w> 251 
+ht</w> 252 
+ly</w> 253 
+ut</w> 254 
+ed</w> 255 
+up 256 
+ther 257 
+rea 258 
+out</w> 259 
+tha 260 
+one</w> 261 
+now</w> 262 
+es</w> 263 
+le</w> 264 
+ck</w> 265 
+ba 266 
+ma 267 
+ust</w> 268 
+was</w> 269 
+ce</w> 270 
+mor 271 
+with 272 
+ld</w> 273 
+re</w> 274 
+'m</w> 275 
+ab 276 
+thin 277 
+pp 278 
+ch</w> 279 
+et</w> 280 
+lly</w> 281 
+uc 282 
+ge 283 
+id 284 
+not</w> 285 
+ome</w> 286 
+la 287 
+ra 288 
+ad</w> 289 
+the 290 
+pl 291 
+are</w> 292 
+di 293 
+ks</w> 294 
+n' 295 
+ood</w> 296 
+wor 297 
+jus 298 
+-</w> 299 
+com 300 
+ow</w> 301 
+ain 302 
+am 303 
+don 304 
+ay</w> 305 
+su 306 
+ag 307 
+fu 308 
+ill 309 
+lik 310 
+our</w> 311 
+Th 312 
+gh</w> 313 
+you</w> 314 
+ght</w> 315 
+have</w> 316 
+that</w> 317 
+with</w> 318 
+ter</w> 319 
+I'm</w> 320 
+all</w> 321 
+up</w> 322 
+just</w> 323 
+ally</w> 324 
+but</w> 325 
+n't</w> 326 
+get</w> 327 
+st</w> 328 
+like</w> 329 
+this</w> 330 
+ver</w> 331 
+wee 332 
+can 333 
+nigh 334 
+hat</w> 335 
+mo 336 
+good</w> 337 
+se</w> 338 
+un 339 
+ack</w> 340 
+ant</w> 341 
+go</w> 342 
+itt 343 
+ry</w> 344 
+as</w> 345 
+ir 346 
+pe</w> 347 
+fin 348 
+haha 349 
+love</w> 350 
+mis 351 
+ning</w> 352 
+ould</w> 353 
+wan 354 
+bac 355 
+for 356 
+got</w> 357 
+ha</w> 358 
+mu 359 
+no</w> 360 
+nt</w> 361 
+sh 362 
+ts</w> 363 
+your</w> 364 
+bo 365 
+do</w> 366 
+fro 367 
+hou 368 
+ast</w> 369 
+can</w> 370 
+ex 371 
+ett 372 
+fa 373 
+tw 374 
+today</w> 375 
+work</w> 376 
+x</w> 377 
+:</w> 378 
+an't</w> 379 
+ays</w> 380 
+king</w> 381 
+las 382 
+rom</w> 383 
+sp 384 
+there</w> 385 
+cou 386 
+had</w> 387 
+here</w> 388 
+its</w> 389 
+know</w> 390 
+of 391 
+fee 392 
+going</w> 393 
+ill</w> 394 
+ing 395 
+op 396 
+pe 397 
+ta 398 
+ther</w> 399 
+time</w> 400 
+wha 401 
+whe 402 
+0</w> 403 
+am</w> 404 
+about</w> 405 
+ff</w> 406 
+nd</w> 407 
+ough</w> 408 
+ting</w> 409 
+thing</w> 410 
+too</w> 411 
+"</w> 412 
+3</w> 413 
+night</w> 414 
+back</w> 415 
+from</w> 416 
+S</w> 417 
+anks</w> 418 
+eep</w> 419 
+ess</w> 420 
+jo 421 
+read 422 
+really</w> 423 
+de 424 
+don't</w> 425 
+how</w> 426 
+ish</w> 427 
+lee 428 
+loo 429 
+can't</w> 430 
+ear 431 
+si 432 
+t's</w> 433 
+ty</w> 434 
+we</w> 435 
+will</w> 436 
+ain</w> 437 
+aw 438 
+im</w> 439 
+ook</w> 440 
+wh 441 
+D</w> 442 
+al</w> 443 
+hy</w> 444 
+more</w> 445 
+morr 446 
+ng</w> 447 
+row</w> 448 
+sl 449 
+tomor 450 
+when</w> 451 
+(</w> 452 
+2</w> 453 
+con 454 
+end</w> 455 
+gre 456 
+her</w> 457 
+ion</w> 458 
+much</w> 459 
+na</w> 460 
+oh</w> 461 
+oooo 462 
+ure</w> 463 
+what</w> 464 
+yea 465 
+Ha 466 
+ady</w> 467 
+ard</w> 468 
+ati 469 
+b</w> 470 
+che 471 
+foll 472 
+happ 473 
+last</w> 474 
+lea 475 
+miss</w> 476 
+par 477 
+pre 478 
+rs</w> 479 
+L</w> 480 
+Than 481 
+The</w> 482 
+come</w> 483 
+if</w> 484 
+ool</w> 485 
+po 486 
+sur 487 
+than 488 
+think</w> 489 
+vi 490 
+wis 491 
+E</w> 492 
+hh 493 
+ive</w> 494 
+itter</w> 495 
+mm 496 
+off</w> 497 
+red</w> 498 
+sa 499 
+some</w> 500 
+soo 501 
+still</w> 502 
+tu 503 
+O</w> 504 
+OO 505 
+T</w> 506 
+af 507 
+did 508 
+ec 509 
+een</w> 510 
+ent</w> 511 
+fri 512 
+gs</w> 513 
+tomorr 514 
+morrow</w> 515 
+ready</w> 516 
+gu 517 
+haha</w> 518 
+mon 519 
+pro 520 
+right</w> 521 
+again</w> 522 
+eed</w> 523 
+ers</w> 524 
+hope</w> 525 
+it's</w> 526 
+lol</w> 527 
+nee 528 
+sto 529 
+see</w> 530 
+tr 531 
+though</w> 532 
+us</w> 533 
+want</w> 534 
+wat 535 
+'re</w> 536 
+LO 537 
+My</w> 538 
+ate</w> 539 
+dow 540 
+est</w> 541 
+ite</w> 542 
+new</w> 543 
+orry</w> 544 
+sor 545 
+sleep</w> 546 
+that 547 
+use</w> 548 
+way</w> 549 
+Y</w> 550 
+ir</w> 551 
+morning</w> 552 
+ur</w> 553 
+wish</w> 554 
+'ll</w> 555 
+)</w> 556 
+any</w> 557 
+ds</w> 558 
+didn't</w> 559 
+en</w> 560 
+fun</w> 561 
+gg 562 
+great</w> 563 
+he</w> 564 
+hone</w> 565 
+has</w> 566 
+home</w> 567 
+ice</w> 568 
+ld 569 
+never</w> 570 
+or</w> 571 
+ound</w> 572 
+ph 573 
+sed</w> 574 
+them</w> 575 
+very</w> 576 
+why</w> 577 
+yone</w> 578 
+&</w> 579 
+But</w> 580 
+I'll</w> 581 
+I've</w> 582 
+N</w> 583 
+Thanks</w> 584 
+any 585 
+bet 586 
+bad</w> 587 
+cu 588 
+dy</w> 589 
+ever 590 
+lin 591 
+old</w> 592 
+other</w> 593 
+only</w> 594 
+pic 595 
+star 596 
+stu 597 
+ted</w> 598 
+then</w> 599 
+very 600 
+you' 601 
+art</w> 602 
+ation</w> 603 
+by</w> 604 
+dont</w> 605 
+esome</w> 606 
+etter</w> 607 
+fe 608 
+happy</w> 609 
+his</w> 610 
+id</w> 611 
+ies</w> 612 
+ink</w> 613 
+tomorrow</w> 614 
+need</w> 615 
+sorry</w> 616 
+better</w> 617 
+ittle</w> 618 
+lis 619 
+lou 620 
+nice</w> 621 
+ps</w> 622 
+sho 623 
+sure</w> 624 
+some 625 
+twitter</w> 626 
+ving</w> 627 
+well</w> 628 
+ying</w> 629 
+#</w> 630 
+'</w> 631 
+4</w> 632 
+A</w> 633 
+M</w> 634 
+You</w> 635 
+ating</w> 636 
+cant</w> 637 
+ching</w> 638 
+did</w> 639 
+ey</w> 640 
+ere</w> 641 
+etting</w> 642 
+fi 643 
+feel</w> 644 
+har 645 
+ind</w> 646 
+ked</w> 647 
+min 648 
+make</w> 649 
+ment</w> 650 
+ok</w> 651 
+ous</w> 652 
+ser 653 
+should</w> 654 
+thanks</w> 655 
+they</w> 656 
+z</w> 657 
+IN 658 
+It's</w> 659 
+Just</w> 660 
+So</w> 661 
+after</w> 662 
+already</w> 663 
+awesome</w> 664 
+been</w> 665 
+bro 666 
+bed</w> 667 
+ci 668 
+cit 669 
+could</w> 670 
+de</w> 671 
+doing</w> 672 
+end 673 
+exc 674 
+follow</w> 675 
+fore</w> 676 
+ga 677 
+ince</w> 678 
+litt 679 
+lad</w> 680 
+mi 681 
+mp 682 
+ope</w> 683 
+over</w> 684 
+per 685 
+phone</w> 686 
+pi 687 
+qu 688 
+sin 689 
+twee 690 
+take</w> 691 
+um 692 
+ways</w> 693 
+weet</w> 694 
+ye 695 
+1</w> 696 
+;</w> 697 
+<3</w> 698 
+K</w> 699 
+What</w> 700 
+app 701 
+able</w> 702 
+bea 703 
+befor 704 
+cha 705 
+call</w> 706 
+days</w> 707 
+down</w> 708 
+fe</w> 709 
+feel 710 
+find</w> 711 
+gett 712 
+gla 713 
+little</w> 714 
+before</w> 715 
+glad</w> 716 
+hea 717 
+kend</w> 718 
+mmer</w> 719 
+na 720 
+peop 721 
+say</w> 722 
+see 723 
+since</w> 724 
+soon</w> 725 
+ta</w> 726 
+tonight</w> 727 
+ven't</w> 728 
+were</w> 729 
+would</w> 730 
+9</w> 731 
+And</w> 732 
+G</w> 733 
+Good</w> 734 
+Tha 735 
+ar</w> 736 
+ade</w> 737 
+always</w> 738 
+ang 739 
+br 740 
+buy</w> 741 
+cause</w> 742 
+chool</w> 743 
+du 744 
+ease</w> 745 
+everyone</w> 746 
+follow 747 
+friend 748 
+getting</w> 749 
+han 750 
+hed</w> 751 
+hit</w> 752 
+lu 753 
+ons</w> 754 
+ople</w> 755 
+pr 756 
+party</w> 757 
+plea 758 
+pret 759 
+ru 760 
+sch 761 
+sing</w> 762 
+ses</w> 763 
+tra 764 
+ten</w> 765 
+that's</w> 766 
+tion</w> 767 
+und 768 
+*</w> 769 
+HA 770 
+Im</w> 771 
+Lo 772 
+We 773 
+aying</w> 774 
+best</w> 775 
+book</w> 776 
+cre 777 
+ding</w> 778 
+dis 779 
+eeee 780 
+excit 781 
+give</w> 782 
+hur 783 
+hat's</w> 784 
+hours</w> 785 
+ic</w> 786 
+irst</w> 787 
+life</w> 788 
+look</w> 789 
+mes</w> 790 
+movi 791 
+oo</w> 792 
+pping</w> 793 
+res 794 
+summ 795 
+tri 796 
+tty</w> 797 
+tired</w> 798 
+wn</w> 799 
+wo 800 
+won 801 
+ws</w> 802 
+wait</w> 803 
+week 804 
+week</w> 805 
+yes</w> 806 
+yet</w> 807 
+you're</w> 808 
+/</w> 809 
+8</w> 810 
+ER 811 
+Go 812 
+Is</w> 813 
+people</w> 814 
+please</w> 815 
+pretty</w> 816 
+school</w> 817 
+weekend</w> 818 
+It</w> 819 
+LOL</w> 820 
+Oh</w> 821 
+RE 822 
+The 823 
+Tw 824 
+That's</w> 825 
+U</w> 826 
+ama 827 
+age</w> 828 
+another</w> 829 
+bi 830 
+brea 831 
+chi 832 
+comp 833 
+does 834 
+early</w> 835 
+ff 836 
+first</w> 837 
+ft</w> 838 
+fav 839 
+friends</w> 840 
+gir 841 
+gon 842 
+guess</w> 843 
+hh</w> 844 
+haven't</w> 845 
+having</w> 846 
+hey</w> 847 
+house</w> 848 
+ick</w> 849 
+ide 850 
+inter 851 
+ings</w> 852 
+iting</w> 853 
+led</w> 854 
+looks</w> 855 
+man</w> 856 
+mil 857 
+nn 858 
+off 859 
+onna</w> 860 
+pa 861 
+ree</w> 862 
+sad</w> 863 
+sting</w> 864 
+start</w> 865 
+summer</w> 866 
+te</w> 867 
+till</w> 868 
+ust 869 
+v</w> 870 
+vid 871 
+ved</w> 872 
+wanna</w> 873 
+who</w> 874 
+year</w> 875 
+'ve</w> 876 
+6</w> 877 
+De 878 
+GH 879 
+H</w> 880 
+Have</w> 881 
+LL</w> 882 
+Mon 883 
+OM 884 
+OU 885 
+W</w> 886 
+Wor 887 
+ah</w> 888 
+ap 889 
+away</w> 890 
+ace</w> 891 
+alk</w> 892 
+alo 893 
+ans</w> 894 
+bl 895 
+because</w> 896 
+ce 897 
+clo 898 
+cool</w> 899 
+done</w> 900 
+e's</w> 901 
+ell 902 
+eve 903 
+ever</w> 904 
+ealou 905 
+eat</w> 906 
+ent 907 
+erst 908 
+esday</w> 909 
+esn't</w> 910 
+fan 911 
+ful</w> 912 
+gr 913 
+to_be 914 
+to_go 915 
+in_the 916 
+for_the 917 
+going_to 918 
+have_to 919 
+to_get 920 
+to_the 921 
+at_the 922 
+I_don't 923 
+I_have 924 
+had_a 925 
+on_the 926 
+so_much 927 
+want_to 928 
+I_can 929 
+and_I 930 
+it_was 931 
+of_my 932 
+a_good 933 
+go_to 934 
+it_is 935 
+of_the 936 
+on_my 937 
+I_can't 938 
+i_love 939 
+i_was 940 
+is_a 941 
+to_do 942 
+with_my 943 
+you_are 944 
+I_am 945 
+I_was 946 
+back_to 947 
+but_i 948 
+have_a 949 
+i_miss 950 
+last_night 951 
+on_a 952 
+to_see 953 
+will_be 954 
+day_of 955 
+get_to 956 
+i_dont 957 
+in_my 958 
+is_so 959 
+need_to 960 
+right_now 961 
+I_guess 962 
+I_just 963 
+I_will 964 
+I'm_so 965 
+Thanks_for 966 
+about_to 967 
+i_can 968 
+i_know 969 
+is_on 970 
+like_a 971 
+off_to 972 
+thank_you 973 
+to_a 974 
+to_bed 975 
+to_buy 976 
+to_work 977 
+when_I 978 
+wish_i 979 
+with_me 980 
+with_the 981 
+Good_morning 982 
+I_could 983 
+I_hope 984 
+I_love 985 
+I_want 986 
+I'm_going 987 
+I've_got 988 
+a_little 989 
+all_the 990 
+are_you 991 
+but_I 992 
+have_the 993 
+i_have 994 
+i_just 995 
+i_think 996 
+miss_you 997 
+that_I 998 
+that_was 999 
+to_me 1000 
+was_a 1001 
+you_know 1002 
+I_didn't 1003 
+I_feel 1004 
+I_got 1005 
+I_had 1006 
+I_hate 1007 
+I_miss 1008 
+I_think 1009 
+I_wish 1010 
+I'm_not 1011 
+Thank_you 1012 
+a_great 1013 
+a_lot 1014 
+all_of 1015 
+and_the 1016 
+at_my 1017 
+be_in 1018 
+dont_know 1019 
+for_a 1020 
+for_me 1021 
+for_my 1022 
+for_you 1023 
+good_day 1024 
+had_to 1025 
+i_need 1026 
+im_not 1027 
+is_the 1028 
+love_you 1029 
+make_it 1030 
+my_life 1031 
+out_with 1032 
+should_be 1033 
+thanks_for 1034 
+this_morning 1035 
+to_sleep 1036 
+to_watch 1037 
+to_you 1038 
+up_and 1039 
+we_are 1040 
+when_you 1041 
+you_have 1042 
+But_I 1043 
+I_cant 1044 
+I_get 1045 
+I_know 1046 
+I_really 1047 
+It_was 1048 
+a_new 1049 
+able_to 1050 
+about_it 1051 
+an_hour 1052 
+and_i 1053 
+are_the 1054 
+as_I 1055 
+at_all 1056 
+at_home 1057 
+be_at 1058 
+but_its 1059 
+come_back 1060 
+don't_have 1061 
+dont_have 1062 
+forward_to 1063 
+get_some 1064 
+got_a 1065 
+got_to 1066 
+having_a 1067 
+i_am 1068 
+i_got 1069 
+i_really 1070 
+i_should 1071 
+i_want 1072 
+if_it 1073 
+in_a 1074 
+is_all 1075 
+is_gone 1076 
+just_had 1077 
+like_my 1078 
+listen_to 1079 
+listening_to 1080 
+look_like 1081 
+looks_like 1082 
+making_my 1083 
+my_mom 1084 
+my_phone 1085 
+not_a 1086 
+not_good 1087 
+now_I 1088 
+of_work 1089 
+so_I 1090 
+so_far 1091 
+the_last 1092 
+the_movie 1093 
+the_sun 1094 
+time_to 1095 
+to_eat 1096 
+to_have 1097 
+to_start 1098 
+trying_to 1099 
+why_i 1100 
+woke_up 1101 
+would_be 1102 
+you_I 1103 
+you_should 1104 
+Have_a 1105 
+I_did 1106 
+I_forgot 1107 
+I_gotta 1108 
+I_like 1109 
+I_would 1110 
+I'll_still 1111 
+I'm_in 1112 
+Is_it 1113 
