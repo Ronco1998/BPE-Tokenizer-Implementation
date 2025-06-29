@@ -1,7 +1,7 @@
 import argparse
 import os
 from typing import List
-from bpe_tokenizer import BPETokenizer
+from BPE_tokenizer import BPETokenizer
 
 
 def read_text_file(file_path: str) -> List[str]:
@@ -32,7 +32,7 @@ def train_tokenizer(domain_file: str, output_dir: str, num_merges: int = 10000, 
     
     # Read domain data
     print(f"Reading domain data from {domain_file}")
-    texts = read_text_file(domain_file)[:1000]
+    texts = read_text_file(domain_file)
     print(f"Read {len(texts)} lines of text")
     
     # Determine domain from filename
@@ -41,7 +41,9 @@ def train_tokenizer(domain_file: str, output_dir: str, num_merges: int = 10000, 
     if 'domain_1' in base:
         domain = 'twitter'
     elif 'domain_2' in base:
-        domain = 'news'
+        domain = 'headlines'
+    elif 'unknown' in base:
+        domain = 'unknown'
 
     if train:
         # Initialize and train tokenizer
@@ -95,16 +97,14 @@ if __name__ == "__main__":
     
     args = parser.parse_args()
 
-    train_tokenizer(args.domain_file, args.output_dir, args.num_merges, args.train)
-
-    # Automated manual encode/decode test
+    train_tokenizer(args.domain_file, args.output_dir, args.num_merges, args.train)    # Automated manual encode/decode test
     if args.test_sentences:
         base = os.path.basename(args.domain_file).lower()
         domain = 'unknown'
         if 'domain_1' in base:
             domain = 'twitter'
         elif 'domain_2' in base:
-            domain = 'news'
+            domain = 'headlines'
         tokenizer = BPETokenizer(num_merges=args.num_merges, domain=domain)
         # Use the same file for training for demonstration
         texts = read_text_file(args.domain_file)

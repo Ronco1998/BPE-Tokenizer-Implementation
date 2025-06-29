@@ -1,4 +1,22 @@
 Select domain:
 1. Domain 1 (Twitter)
-2. Domain 2 (News)
-3. Unknown domain
+2. Domain 2 (Headlines)
+3. Unknown domain (Mixed)
+Selected domain: domain_2
+
+Do you want to train a new tokenizer or load an existing one?
+1. Train new tokenizer
+2. Load existing tokenizer
+Loading existing tokenizer for domain_2...
+
+Training NER model for domain_2...
+Using device: cuda
+Loading tokenizer from tokenizers/domain_2/tokenizer.pkl
+Traceback (most recent call last):
+  File "/home/student/HW2/train_ner_model.py", line 535, in <module>
+    train_ner_model(
+  File "/home/student/HW2/train_ner_model.py", line 431, in train_ner_model
+    tokenizer = BaseTokenizer.load(tokenizer_path)
+  File "/home/student/HW2/base_tokenizer.py", line 123, in load
+    return pickle.load(f) 
+ModuleNotFoundError: No module named 'bpe_tokenizer'

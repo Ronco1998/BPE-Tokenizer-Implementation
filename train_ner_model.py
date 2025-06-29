@@ -19,6 +19,7 @@ class NERDataset(Dataset):
         self.encoded_labels = []
         self.word_to_subtoken = []
         self.subtoken_to_word = []
+        self.original_texts = []  # Store original texts for error analysis
 
         # Check if tokenizer has a space token
         self.space_token_id = None
@@ -33,6 +34,7 @@ class NERDataset(Dataset):
                 self.encoded_labels.append(result['token_labels'])
                 self.word_to_subtoken.append(result['word_to_sub'])
                 self.subtoken_to_word.append(result['sub_to_word'])
+                self.original_texts.append(text)  # Store original text
 
     def _process_text_optimized(self, text: str, text_labels: List[int]) -> Dict:
         """Optimized version of text processing"""
@@ -186,9 +188,7 @@ class NERDataset(Dataset):
             for token_idx, token_id in enumerate(token_ids):
                 if token_id == self.space_token_id:
                     # Don't change sub_to_word here to avoid breaking alignment
-                    pass
-
-        # Assign labels to first token of each word
+                    pass        # Assign labels to first token of each word
         for word_idx, first_token_idx in enumerate(word_to_sub):
             if 0 <= first_token_idx < len(token_labels) and word_idx < len(text_labels):
                 token_labels[first_token_idx] = text_labels[word_idx]
@@ -204,6 +204,7 @@ class NERDataset(Dataset):
             'labels': torch.tensor(self.encoded_labels[idx], dtype=torch.long),
             'word_to_subtoken': self.word_to_subtoken[idx],
             'subtoken_to_word': self.subtoken_to_word[idx],
+            'original_text': self.original_texts[idx],  # Include original text for error analysis
         }
 # Simple NER model
 class NERModel(nn.Module):
@@ -267,8 +268,11 @@ def collate_fn(batch):
     labels = [item['labels'].tolist() for item in batch]
     word_to_subtoken = [item['word_to_subtoken'] for item in batch]
     subtoken_to_word = [item['subtoken_to_word'] for item in batch]
+    original_texts = [item['original_text'] for item in batch]  # Collect original texts
+    
     input_ids, attention_mask = pad_sequences(input_ids, pad_id=0)
     labels, _ = pad_sequences(labels, pad_id=-100)
+    
     # No padding for word_to_subtoken/subtoken_to_word (used only for evaluation, not for loss)
     return {
         'input_ids': torch.tensor(input_ids, dtype=torch.long),
@@ -276,6 +280,7 @@ def collate_fn(batch):
         'labels': torch.tensor(labels, dtype=torch.long),
         'word_to_subtoken': word_to_subtoken,
         'subtoken_to_word': subtoken_to_word,
+        'original_texts': original_texts,  # Include original texts
     }
 
 
