@@ -16,10 +16,8 @@ from base_tokenizer import BaseTokenizer
 _TW_USER  = re.compile(r"@[A-Za-z0-9_]{1,15}")  # Twitter @handle
 _TW_URL   = re.compile(r"https?://\S+")        # http(s) URLs
 _HASHTAG_RE = re.compile(r"#\w[\w\d_]*")      # #hashtag
-_NEWS_PUN = re.compile(r"([,.;:!?()\"'])")    # punctuation splitter #TODO
 _NEWS_DATE = re.compile(r'\b\d{4}-\d{2}-\d{2}\b') # dates like 2023-10-05
-REP_CHARS = re.compile(r"(.)\1{2,}")
-PUNCT_PAD = re.compile(r"([,.;:!?()\"])")
+PUNCT_PAD = re.compile(r"([,.;:!?()\"])") # punctuation splitter
 # One coarse emoji detector (covers all BMP + supplementary planes)
 _EMOJI = re.compile(
     r"[\U0001F1E6-\U0001F1FF]|"      # flags
@@ -240,7 +238,7 @@ class BPETokenizer(BaseTokenizer):
 
     def _preprocess_headlines(self, text: str) -> str:
         """Headlines/news-specific preprocessing."""
-        text = _NEWS_PUN.sub(r" \1 ", text)
+        text = PUNCT_PAD.sub(r" \1 ", text)
         text = _EMOJI.sub('<EMOJI>', text)
         # Replace dates using the new regex constant
         text = _NEWS_DATE.sub('[DATE]', text)
