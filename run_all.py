@@ -53,7 +53,7 @@ def main():
             num_merges = "1000"
         with open(output_file, "a") as f:
             subprocess.run([
-                "python3", "train_tokenizer.py",
+                "python", "train_tokenizer.py",
                 "--domain_file", train_file,
                 "--output_dir", tokenizer_dir,
                 "--num_merges", num_merges,
@@ -70,7 +70,7 @@ def main():
     # dual_print(f"Using tokenizer at {tokenizer_path}")
     # with open(output_file, "a") as f:
     #     subprocess.run([
-    #         "python3", "test_tokenizer.py",
+    #         "python", "test_tokenizer.py",
     #         "--tokenizer_path", tokenizer_path,
     #         "--train_file", train_file,
     #         "--test_file", dev_file
@@ -80,7 +80,7 @@ def main():
     dual_print(f"\nTraining NER model for {domain}...")
     with open(output_file, "a") as f:
         subprocess.run([
-            "python3", "train_ner_model.py",
+            "python", "train_ner_model.py",
             "--tokenizer_path", tokenizer_path,
             "--train_file", ner_train,
             "--dev_file", ner_dev

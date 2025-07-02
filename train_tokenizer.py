@@ -1,7 +1,7 @@
 import argparse
 import os
 from typing import List
-from BPE_tokenizer import BPETokenizer
+from ner_bpe_tokenizer import NERBPETokenizer as BPETokenizer
 
 
 def read_text_file(file_path: str) -> List[str]:
@@ -48,7 +48,7 @@ def train_tokenizer(domain_file: str, output_dir: str, num_merges: int = 10000, 
     if train:
         # Initialize and train tokenizer
         print(f"Training BPE tokenizer with {num_merges} merges for domain '{domain}'")
-        tokenizer = BPETokenizer(num_merges=num_merges, domain=domain)
+        tokenizer = BPETokenizer(vocab_size=num_merges)
         tokenizer.train(texts)
         print("Tokenizer training complete")
 
@@ -58,16 +58,16 @@ def train_tokenizer(domain_file: str, output_dir: str, num_merges: int = 10000, 
         tokenizer.save(output_path)
         print(f"Tokenizer trained with {tokenizer.get_vocab_size()} tokens")
         
-        # Report word bigrams
-        top5, bottom5 = tokenizer.report_word_bigrams()
-        if top5:
-            print("\n=== Most frequent word-bigrams ===")
-            for bigram, freq in top5:
-                print(f"'{bigram[0]}' + '{bigram[1]}' → {freq} occurrences")
-        if bottom5:
-            print("\n=== Least frequent word-bigrams ===")
-            for bigram, freq in bottom5:
-                print(f"'{bigram[0]}' + '{bigram[1]}' → {freq} occurrences")
+        # # Report word bigrams
+        # top5, bottom5 = tokenizer.report_word_bigrams()
+        # if top5:
+        #     print("\n=== Most frequent word-bigrams ===")
+        #     for bigram, freq in top5:
+        #         print(f"'{bigram[0]}' + '{bigram[1]}' → {freq} occurrences")
+        # if bottom5:
+        #     print("\n=== Least frequent word-bigrams ===")
+        #     for bigram, freq in bottom5:
+        #         print(f"'{bigram[0]}' + '{bigram[1]}' → {freq} occurrences")
     else:
         output_path = os.path.join(output_dir, "tokenizer.pkl")
         if not os.path.exists(output_path):
@@ -93,24 +93,7 @@ if __name__ == "__main__":
     parser.add_argument("--output_dir", type=str, default="trained_tokenizer", help="Directory to save the tokenizer")
     parser.add_argument("--num_merges", type=int, default=1000, help="Number of BPE merge operations")
     parser.add_argument("--train", action="store_true", help="Whether to train the tokenizer")
-    parser.add_argument("--test_sentences", type=str, nargs="*", help="Sentences to manually encode/decode (optional)")
     
     args = parser.parse_args()
 
-    train_tokenizer(args.domain_file, args.output_dir, args.num_merges, args.train)    # Automated manual encode/decode test
-    if args.test_sentences:
-        base = os.path.basename(args.domain_file).lower()
-        domain = 'unknown'
-        if 'domain_1' in base:
-            domain = 'twitter'
-        elif 'domain_2' in base:
-            domain = 'headlines'
-        tokenizer = BPETokenizer(num_merges=args.num_merges, domain=domain)
-        # Use the same file for training for demonstration
-        texts = read_text_file(args.domain_file)
-        tokenizer.train(texts)
-        print("\nManual encode/decode test:")
-        for sent in args.test_sentences:
-            enc = tokenizer.encode(sent)
-            dec = tokenizer.decode(enc)
-            print(f"\nOriginal: {sent}\nEncoded: {enc}\nDecoded: {dec}")
+    train_tokenizer(args.domain_file, args.output_dir, args.num_merges, args.train)
