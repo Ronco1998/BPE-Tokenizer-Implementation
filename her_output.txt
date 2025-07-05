@@ -1,0 +1,149 @@
+Select domain:
+1. Domain 1 (Twitter)
+2. Domain 2 (Headlines)
+3. Unknown domain (Mixed)
+Selected domain: domain_1
+
+Do you want to train a new tokenizer or load an existing one?
+1. Train new tokenizer
+2. Load existing tokenizer
+Training tokenizer for domain_1...
+C:\Users\ronic\AppData\Local\Programs\Python\Python313\python.exe
+['C:\\Users\\ronic\\VS_Coding\\NLP\\HW\\HW2', 'C:\\Users\\ronic\\AppData\\Local\\Programs\\Python\\Python313\\python313.zip', 'C:\\Users\\ronic\\AppData\\Local\\Programs\\Python\\Python313\\DLLs', 'C:\\Users\\ronic\\AppData\\Local\\Programs\\Python\\Python313\\Lib', 'C:\\Users\\ronic\\AppData\\Local\\Programs\\Python\\Python313', 'C:\\Users\\ronic\\AppData\\Roaming\\Python\\Python313\\site-packages', 'C:\\Users\\ronic\\AppData\\Roaming\\Python\\Python313\\site-packages\\win32', 'C:\\Users\\ronic\\AppData\\Roaming\\Python\\Python313\\site-packages\\win32\\lib', 'C:\\Users\\ronic\\AppData\\Roaming\\Python\\Python313\\site-packages\\Pythonwin', 'C:\\Users\\ronic\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages']
+Reading domain data from data/domain_1_train.txt
+Read 1280000 lines of text
+Training BPE tokenizer with 100 merges for domain 'twitter'
+Random seed set to: 42 (deterministic tokenizer)
+Starting optimized BPE training (word bigrams limit)...
+Step 1: Analyzing word frequencies...
+Analyzed 4976 unique words from sample
+Step 2: Extracting substrings (up to word bigrams)...
+Processed 10000/50000 texts...
+Processed 20000/50000 texts...
+Processed 30000/50000 texts...
+Processed 40000/50000 texts...
+Processed 50000/50000 texts...
+Extracted 440000 unique substrings (up to word bigrams)
+Step 3: Filtering and scoring substrings...
+Scored 4194 candidate substrings
+Step 4: Initializing vocabulary...
+Added space token with ID: 4
+Initial vocab size: 84
+Space token ID: 4
+Step 5: Adding high-scoring tokens...
+Added 0 direct tokens:
+  - Word bigrams: 0
+  - Cross-word chars: 0
+Running BPE for 16 remaining slots (word bigram limit)...
+BPE merge 0: ' I' (score: 96.0)
+BPE word-bigram-limited merges completed: 16 merges
+Training complete! Final vocab size: 100
+Word bigram tokens: 0
+Space token confirmed: ID 4
+Space encoding test: ' ' -> [] -> ''
+
+=== 5 LONGEST TOKENS ===
+1. 2 words, 4 chars: 't I ' (ID: 93)
+2. 2 words, 4 chars: 'n I ' (ID: 99)
+3. 2 words, 4 chars: 'e I ' (ID: 94)
+4. 2 words, 4 chars: 'd I ' (ID: 95)
+5. 2 words, 4 chars: 'L I ' (ID: 87)
+========================
+
+Building optimized caches...
+Cached 1001 text segmentations
+Tokenizer training complete
+Saving tokenizer to tokenizers/domain_1\tokenizer.pkl
+Tokenizer trained with 100 tokens
+
+Sample encode/decode:
+Original: Twit twit twit. Time to crean my room till drugs set in... I cut up anothrr shirt!
+Encoded: [49, 79, 65, 76, 4, 76, 79, 65, 76, 4, 76, 79, 65, 76, 14, 4, 49, 65, 69, 61, 4, 76, 71, 4, 59, 74, 61, 57, 70, 4, 69, 81, 4, 74, 71, 71, 69, 4, 76, 65, 68, 68, 4, 60, 74, 77, 63, 75, 4, 75, 61, 76, 4, 65, 70, 14, 14, 14, 4, 38, 4, 59, 77, 76, 4, 77, 72, 4, 57, 70, 71, 76, 64, 74, 74, 4, 75, 64, 65, 74, 76, 5]
+Decoded: Twit twit twit. Time to crean my room till drugs set in... I cut up anothrr shirt!
+
+Training NER model for domain_1...
+Using device: cpu
+Loading tokenizer from tokenizers/domain_1/tokenizer.pkl
+C:\Users\ronic\AppData\Local\Programs\Python\Python313\python.exe
+['C:\\Users\\ronic\\VS_Coding\\NLP\\HW\\HW2', 'C:\\Users\\ronic\\AppData\\Local\\Programs\\Python\\Python313\\python313.zip', 'C:\\Users\\ronic\\AppData\\Local\\Programs\\Python\\Python313\\DLLs', 'C:\\Users\\ronic\\AppData\\Local\\Programs\\Python\\Python313\\Lib', 'C:\\Users\\ronic\\AppData\\Local\\Programs\\Python\\Python313', 'C:\\Users\\ronic\\AppData\\Roaming\\Python\\Python313\\site-packages', 'C:\\Users\\ronic\\AppData\\Roaming\\Python\\Python313\\site-packages\\win32', 'C:\\Users\\ronic\\AppData\\Roaming\\Python\\Python313\\site-packages\\win32\\lib', 'C:\\Users\\ronic\\AppData\\Roaming\\Python\\Python313\\site-packages\\Pythonwin', 'C:\\Users\\ronic\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages']
+Loading training data from data/ner_data/train_1_binary.tagged
+Loading dev data from data/ner_data/dev_1_binary.tagged
+Creating datasets
+Processing texts:   0%|          | 0/3394 [00:00<?, ?it/s]Processing texts:   2%|1         | 61/3394 [00:00<00:05, 599.71it/s]Processing texts:   4%|3         | 121/3394 [00:00<00:05, 577.97it/s]Processing texts:   5%|5         | 179/3394 [00:00<00:05, 551.34it/s]Processing texts:   7%|7         | 238/3394 [00:00<00:05, 565.45it/s]Processing texts:   9%|8         | 295/3394 [00:00<00:05, 521.38it/s]Processing texts:  10%|#         | 348/3394 [00:00<00:06, 499.74it/s]Processing texts:  12%|#1        | 399/3394 [00:00<00:05, 502.66it/s]Processing texts:  13%|#3        | 452/3394 [00:00<00:05, 507.13it/s]Processing texts:  15%|#4        | 504/3394 [00:00<00:05, 510.18it/s]Processing texts:  16%|#6        | 557/3394 [00:01<00:05, 514.02it/s]Processing texts:  18%|#7        | 609/3394 [00:01<00:05, 503.72it/s]Processing texts:  19%|#9        | 660/3394 [00:01<00:05, 486.64it/s]Processing texts:  21%|##1       | 716/3394 [00:01<00:05, 506.36it/s]Processing texts:  23%|##2       | 767/3394 [00:01<00:05, 503.23it/s]Processing texts:  24%|##4       | 818/3394 [00:01<00:05, 499.38it/s]Processing texts:  26%|##5       | 871/3394 [00:01<00:04, 507.06it/s]Processing texts:  27%|##7       | 925/3394 [00:01<00:04, 516.39it/s]Processing texts:  29%|##8       | 981/3394 [00:01<00:04, 528.26it/s]Processing texts:  31%|###       | 1039/3394 [00:01<00:04, 542.59it/s]Processing texts:  32%|###2      | 1099/3394 [00:02<00:04, 559.05it/s]Processing texts:  34%|###4      | 1157/3394 [00:02<00:03, 562.47it/s]Processing texts:  36%|###5      | 1214/3394 [00:02<00:03, 559.50it/s]Processing texts:  37%|###7      | 1271/3394 [00:02<00:03, 561.20it/s]Processing texts:  39%|###9      | 1328/3394 [00:02<00:03, 563.18it/s]Processing texts:  41%|####      | 1385/3394 [00:02<00:03, 555.22it/s]Processing texts:  43%|####2     | 1445/3394 [00:02<00:03, 565.26it/s]Processing texts:  44%|####4     | 1502/3394 [00:02<00:03, 550.95it/s]Processing texts:  46%|####6     | 1565/3394 [00:02<00:03, 573.90it/s]Processing texts:  48%|####7     | 1624/3394 [00:03<00:03, 576.75it/s]Processing texts:  50%|####9     | 1682/3394 [00:03<00:03, 567.01it/s]Processing texts:  51%|#####1    | 1739/3394 [00:03<00:02, 562.92it/s]Processing texts:  53%|#####2    | 1796/3394 [00:03<00:02, 543.55it/s]Processing texts:  55%|#####4    | 1851/3394 [00:03<00:02, 521.30it/s]Processing texts:  56%|#####6    | 1904/3394 [00:03<00:02, 515.67it/s]Processing texts:  58%|#####7    | 1956/3394 [00:03<00:02, 516.29it/s]Processing texts:  59%|#####9    | 2008/3394 [00:03<00:02, 512.25it/s]Processing texts:  61%|######    | 2062/3394 [00:03<00:02, 516.85it/s]Processing texts:  62%|######2   | 2118/3394 [00:03<00:02, 527.63it/s]Processing texts:  64%|######3   | 2171/3394 [00:04<00:02, 527.29it/s]Processing texts:  66%|######5   | 2229/3394 [00:04<00:02, 539.22it/s]Processing texts:  67%|######7   | 2283/3394 [00:04<00:02, 536.62it/s]Processing texts:  69%|######8   | 2337/3394 [00:04<00:01, 530.13it/s]Processing texts:  71%|#######   | 2395/3394 [00:04<00:01, 543.85it/s]Processing texts:  72%|#######2  | 2456/3394 [00:04<00:01, 560.89it/s]Processing texts:  74%|#######4  | 2522/3394 [00:04<00:01, 588.40it/s]Processing texts:  76%|#######6  | 2587/3394 [00:04<00:01, 606.05it/s]Processing texts:  78%|#######8  | 2651/3394 [00:04<00:01, 614.29it/s]Processing texts:  80%|########  | 2716/3394 [00:04<00:01, 623.35it/s]Processing texts:  82%|########1 | 2779/3394 [00:05<00:01, 604.78it/s]Processing texts:  84%|########3 | 2844/3394 [00:05<00:00, 616.79it/s]Processing texts:  86%|########5 | 2906/3394 [00:05<00:00, 617.42it/s]Processing texts:  87%|########7 | 2968/3394 [00:05<00:00, 609.88it/s]Processing texts:  89%|########9 | 3030/3394 [00:05<00:00, 609.42it/s]Processing texts:  91%|#########1| 3091/3394 [00:05<00:00, 606.71it/s]Processing texts:  93%|#########2| 3152/3394 [00:05<00:00, 600.92it/s]Processing texts:  95%|#########4| 3213/3394 [00:05<00:00, 587.51it/s]Processing texts:  96%|#########6| 3273/3394 [00:05<00:00, 589.53it/s]Processing texts:  98%|#########8| 3337/3394 [00:06<00:00, 604.22it/s]Processing texts: 100%|##########| 3394/3394 [00:06<00:00, 554.52it/s]
+Processing texts:   0%|          | 0/1009 [00:00<?, ?it/s]Processing texts:   7%|6         | 70/1009 [00:00<00:01, 696.51it/s]Processing texts:  16%|#6        | 162/1009 [00:00<00:01, 812.63it/s]Processing texts:  25%|##5       | 253/1009 [00:00<00:00, 855.66it/s]Processing texts:  34%|###3      | 339/1009 [00:00<00:00, 827.58it/s]Processing texts:  42%|####1     | 422/1009 [00:00<00:00, 747.33it/s]Processing texts:  49%|####9     | 498/1009 [00:00<00:00, 741.67it/s]Processing texts:  58%|#####7    | 581/1009 [00:00<00:00, 766.35it/s]Processing texts:  65%|######5   | 659/1009 [00:00<00:00, 738.29it/s]Processing texts:  73%|#######3  | 740/1009 [00:00<00:00, 755.27it/s]Processing texts:  81%|########1 | 822/1009 [00:01<00:00, 772.46it/s]Processing texts:  89%|########9 | 900/1009 [00:01<00:00, 752.30it/s]Processing texts:  97%|#########7| 980/1009 [00:01<00:00, 760.52it/s]Processing texts: 100%|##########| 1009/1009 [00:01<00:00, 767.09it/s]
+[DBG]  share of positive-label subtokens in train set: 0.9542%
+[DBG]  share of [UNK] subtokens in train set: 0.2029%
+Initializing model
+Starting training for 20 epochs
+Epoch 1/20:
+  Train loss: 0.1476
+  Dev accuracy: 0.9246
+  Dev precision: 0.7857
+  Dev recall: 0.0704
+  Dev F1: 0.1292
+  Saved new best model with F1: 0.1292
+Epoch 2/20:
+  Train loss: 0.1151
+  Dev accuracy: 0.9362
+  Dev precision: 0.7691
+  Dev recall: 0.2824
+  Dev F1: 0.4131
+  Saved new best model with F1: 0.4131
+Epoch 3/20:
+  Train loss: 0.1032
+  Dev accuracy: 0.9347
+  Dev precision: 0.7896
+  Dev recall: 0.2432
+  Dev F1: 0.3719
+Epoch 4/20:
+  Train loss: 0.0901
+  Dev accuracy: 0.9356
+  Dev precision: 0.7970
+  Dev recall: 0.2544
+  Dev F1: 0.3857
+Epoch 5/20:
+  Train loss: 0.0810
+  Dev accuracy: 0.9368
+  Dev precision: 0.7827
+  Dev recall: 0.2824
+  Dev F1: 0.4150
+  Saved new best model with F1: 0.4150
+Traceback (most recent call last):
+  File "C:\Users\ronic\VS_Coding\NLP\HW\HW2\train_ner_model.py", line 535, in <module>
+    train_ner_model(
+    ~~~~~~~~~~~~~~~^
+        args.tokenizer_path,
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+        num_epochs
+        ^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\ronic\VS_Coding\NLP\HW\HW2\train_ner_model.py", line 494, in train_ner_model
+    loss.backward()
+    ~~~~~~~~~~~~~^^
+  File "C:\Users\ronic\AppData\Local\Programs\Python\Python313\Lib\site-packages\torch\_tensor.py", line 626, in backward
+    torch.autograd.backward(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        self, gradient, retain_graph, create_graph, inputs=inputs
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\ronic\AppData\Local\Programs\Python\Python313\Lib\site-packages\torch\autograd\__init__.py", line 347, in backward
+    _engine_run_backward(
+    ~~~~~~~~~~~~~~~~~~~~^
+        tensors,
+        ^^^^^^^^
+    ...<5 lines>...
+        accumulate_grad=True,
+        ^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\ronic\AppData\Local\Programs\Python\Python313\Lib\site-packages\torch\autograd\graph.py", line 823, in _engine_run_backward
+    return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        t_outputs, *args, **kwargs
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )  # Calls into the C++ engine to run the backward pass
+    ^
+KeyboardInterrupt

@@ -1,0 +1,113 @@
+Select domain:
+1. Domain 1 (Twitter)
+2. Domain 2 (Headlines)
+3. Unknown domain (Mixed)
+Selected domain: domain_1
+
+Do you want to train a new tokenizer or load an existing one?
+1. Train new tokenizer
+2. Load existing tokenizer
+Training tokenizer for domain_1...
+Reading domain data from data/domain_1_train.txt
+Read 1280000 lines of text
+Training BPE tokenizer with 100 merges for domain 'twitter'
+Tokenizer training complete
+Saving tokenizer to tokenizers/domain_1\tokenizer.pkl
+Tokenizer trained with 155 tokens
+
+Sample encode/decode:
+Original: Twit twit twit. Time to crean my room till drugs set in... I cut up anothrr shirt!
+Encoded: [5, 6, 7, 5, 4, 5, 6, 7, 5, 4, 5, 6, 7, 5, 8, 4, 5, 7, 9, 10, 4, 5, 11, 4, 12, 13, 10, 14, 15, 4, 9, 16, 4, 13, 11, 11, 9, 4, 5, 7, 17, 17, 4, 18, 13, 19, 20, 21, 4, 21, 10, 5, 4, 154, 8, 8, 8, 4, 7, 4, 12, 19, 5, 4, 19, 22, 4, 14, 15, 11, 5, 23, 13, 13, 4, 21, 23, 7, 13, 5, 24]
+Decoded: twit twit twit. time to crean my room till drugs set in... i cut up anothrr shirt!
+
+Training NER model for domain_1...
+Using device: cpu
+Loading tokenizer from tokenizers/domain_1/tokenizer.pkl
+Loading training data from data/ner_data/train_1_binary.tagged
+Loading dev data from data/ner_data/dev_1_binary.tagged
+Creating datasets
+Processing texts:   0%|          | 0/3394 [00:00<?, ?it/s]Processing texts:   2%|2         | 73/3394 [00:00<00:04, 727.45it/s]Processing texts:   4%|4         | 146/3394 [00:00<00:04, 725.44it/s]Processing texts:   6%|6         | 219/3394 [00:00<00:04, 722.60it/s]Processing texts:   9%|8         | 292/3394 [00:00<00:04, 694.50it/s]Processing texts:  11%|#         | 362/3394 [00:00<00:04, 659.51it/s]Processing texts:  13%|#2        | 431/3394 [00:00<00:04, 668.19it/s]Processing texts:  15%|#4        | 502/3394 [00:00<00:04, 680.08it/s]Processing texts:  17%|#6        | 576/3394 [00:00<00:04, 696.81it/s]Processing texts:  19%|#9        | 646/3394 [00:00<00:04, 686.39it/s]Processing texts:  21%|##1       | 720/3394 [00:01<00:03, 701.85it/s]Processing texts:  23%|##3       | 791/3394 [00:01<00:03, 684.30it/s]Processing texts:  25%|##5       | 860/3394 [00:01<00:03, 672.03it/s]Processing texts:  27%|##7       | 930/3394 [00:01<00:03, 678.84it/s]Processing texts:  30%|##9       | 1007/3394 [00:01<00:03, 704.23it/s]Processing texts:  32%|###1      | 1078/3394 [00:01<00:03, 699.92it/s]Processing texts:  34%|###3      | 1151/3394 [00:01<00:03, 705.77it/s]Processing texts:  36%|###6      | 1223/3394 [00:01<00:03, 706.63it/s]Processing texts:  38%|###8      | 1294/3394 [00:01<00:03, 690.73it/s]Processing texts:  40%|####      | 1364/3394 [00:01<00:02, 680.66it/s]Processing texts:  42%|####2     | 1436/3394 [00:02<00:02, 691.38it/s]Processing texts:  44%|####4     | 1507/3394 [00:02<00:02, 696.82it/s]Processing texts:  47%|####6     | 1583/3394 [00:02<00:02, 713.50it/s]Processing texts:  49%|####8     | 1657/3394 [00:02<00:02, 716.97it/s]Processing texts:  51%|#####     | 1729/3394 [00:02<00:02, 711.91it/s]Processing texts:  53%|#####3    | 1801/3394 [00:02<00:02, 714.28it/s]Processing texts:  55%|#####5    | 1873/3394 [00:02<00:02, 707.92it/s]Processing texts:  57%|#####7    | 1949/3394 [00:02<00:02, 719.89it/s]Processing texts:  60%|#####9    | 2022/3394 [00:02<00:01, 716.62it/s]Processing texts:  62%|######1   | 2099/3394 [00:02<00:01, 729.03it/s]Processing texts:  64%|######3   | 2172/3394 [00:03<00:01, 716.16it/s]Processing texts:  66%|######6   | 2244/3394 [00:03<00:01, 707.86it/s]Processing texts:  68%|######8   | 2315/3394 [00:03<00:01, 689.30it/s]Processing texts:  70%|#######   | 2385/3394 [00:03<00:01, 685.09it/s]Processing texts:  72%|#######2  | 2457/3394 [00:03<00:01, 694.57it/s]Processing texts:  75%|#######4  | 2540/3394 [00:03<00:01, 733.99it/s]Processing texts:  77%|#######7  | 2617/3394 [00:03<00:01, 743.86it/s]Processing texts:  79%|#######9  | 2692/3394 [00:03<00:00, 742.63it/s]Processing texts:  82%|########1 | 2767/3394 [00:03<00:00, 739.56it/s]Processing texts:  84%|########3 | 2846/3394 [00:04<00:00, 753.55it/s]Processing texts:  86%|########6 | 2924/3394 [00:04<00:00, 759.23it/s]Processing texts:  88%|########8 | 3000/3394 [00:04<00:00, 755.17it/s]Processing texts:  91%|######### | 3078/3394 [00:04<00:00, 760.59it/s]Processing texts:  93%|#########2| 3155/3394 [00:04<00:00, 751.95it/s]Processing texts:  95%|#########5| 3231/3394 [00:04<00:00, 748.26it/s]Processing texts:  97%|#########7| 3306/3394 [00:04<00:00, 748.49it/s]Processing texts: 100%|#########9| 3386/3394 [00:04<00:00, 759.82it/s]Processing texts: 100%|##########| 3394/3394 [00:04<00:00, 715.17it/s]
+Processing texts:   0%|          | 0/1009 [00:00<?, ?it/s]Processing texts:  10%|9         | 96/1009 [00:00<00:00, 947.23it/s]Processing texts:  21%|##        | 210/1009 [00:00<00:00, 1056.74it/s]Processing texts:  31%|###1      | 316/1009 [00:00<00:00, 993.86it/s] Processing texts:  41%|####1     | 416/1009 [00:00<00:00, 907.04it/s]Processing texts:  50%|#####     | 508/1009 [00:00<00:00, 898.14it/s]Processing texts:  59%|#####9    | 599/1009 [00:00<00:00, 874.86it/s]Processing texts:  68%|######8   | 687/1009 [00:00<00:00, 842.21it/s]Processing texts:  77%|#######7  | 779/1009 [00:00<00:00, 864.44it/s]Processing texts:  86%|########5 | 866/1009 [00:00<00:00, 862.88it/s]Processing texts:  95%|#########5| 959/1009 [00:01<00:00, 879.45it/s]Processing texts: 100%|##########| 1009/1009 [00:01<00:00, 891.35it/s]
+[DBG]  share of positive-label subtokens in train set: 0.9636%
+[DBG]  share of [UNK] subtokens in train set: 0.1064%
+Initializing model
+Starting training for 20 epochs
+Epoch 1/20:
+  Train loss: 0.1860
+  Dev accuracy: 0.9212
+  Dev precision: 0.5259
+  Dev recall: 0.0569
+  Dev F1: 0.1027
+  Saved new best model with F1: 0.1027
+Epoch 2/20:
+  Train loss: 0.1452
+  Dev accuracy: 0.9220
+  Dev precision: 0.9167
+  Dev recall: 0.0176
+  Dev F1: 0.0346
+Epoch 3/20:
+  Train loss: 0.1320
+  Dev accuracy: 0.9226
+  Dev precision: 0.5466
+  Dev recall: 0.1363
+  Dev F1: 0.2182
+  Saved new best model with F1: 0.2182
+Epoch 4/20:
+  Train loss: 0.1188
+  Dev accuracy: 0.9231
+  Dev precision: 0.6259
+  Dev recall: 0.0738
+  Dev F1: 0.1320
+Epoch 5/20:
+  Train loss: 0.1008
+  Dev accuracy: 0.9246
+  Dev precision: 0.6245
+  Dev recall: 0.1227
+  Dev F1: 0.2051
+Epoch 6/20:
+  Train loss: 0.0905
+  Dev accuracy: 0.9248
+  Dev precision: 0.5741
+  Dev recall: 0.1989
+  Dev F1: 0.2954
+  Saved new best model with F1: 0.2954
+Epoch 7/20:
+  Train loss: 0.0909
+  Dev accuracy: 0.9237
+  Dev precision: 0.5481
+  Dev recall: 0.2101
+  Dev F1: 0.3038
+  Saved new best model with F1: 0.3038
+Traceback (most recent call last):
+  File "C:\Users\ronic\VS_Coding\NLP\HW\HW2\train_ner_model.py", line 535, in <module>
+    train_ner_model(
+    ~~~~~~~~~~~~~~~^
+        args.tokenizer_path,
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+        num_epochs
+        ^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\ronic\VS_Coding\NLP\HW\HW2\train_ner_model.py", line 487, in train_ner_model
+    logits = model(input_ids)
+  File "C:\Users\ronic\AppData\Local\Programs\Python\Python313\Lib\site-packages\torch\nn\modules\module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\ronic\AppData\Local\Programs\Python\Python313\Lib\site-packages\torch\nn\modules\module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "C:\Users\ronic\VS_Coding\NLP\HW\HW2\train_ner_model.py", line 223, in forward
+    lstm_output, _ = self.lstm(embeddings)
+                     ~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\ronic\AppData\Local\Programs\Python\Python313\Lib\site-packages\torch\nn\modules\module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\ronic\AppData\Local\Programs\Python\Python313\Lib\site-packages\torch\nn\modules\module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "C:\Users\ronic\AppData\Local\Programs\Python\Python313\Lib\site-packages\torch\nn\modules\rnn.py", line 1124, in forward
+    result = _VF.lstm(
+        input,
+    ...<7 lines>...
+        self.batch_first,
+    )
+KeyboardInterrupt
