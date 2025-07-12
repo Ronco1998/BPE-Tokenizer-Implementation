@@ -20,6 +20,8 @@ import sys
 import math
 import heapq
 import unicodedata
+import os
+import pickle
 from collections import Counter
 from html import unescape
 from typing import Dict, List, Tuple
@@ -88,13 +90,16 @@ class NERBPETokenizer(BaseTokenizer):
             vocab_size: Maximum vocabulary size (including special tokens)
             domain: Text domain for preprocessing ('twitter', 'headline', or 'unknown')
         """
-        super().__init__()
+        # Initialize without calling super() to avoid unwanted special tokens
+        self.token_to_id = {}
+        self.id_to_token = {}
+        
         self.domain = domain.lower()
         print(f"Initializing NERBPETokenizer for domain: {self.domain}")
         self.vocab_size = vocab_size
         self._bpe_merge_ranks: Dict[Tuple[str, str], int] = {}
 
-        # Add special tokens to vocabulary
+        # Add only the special tokens we need
         for tok in (self.UNK_TOKEN, self.SPACE_TOKEN):
             self._add_token(tok)
         
@@ -117,7 +122,7 @@ class NERBPETokenizer(BaseTokenizer):
         print(f"Added preprocessing tokens for domain '{self.domain}': "
               f"{self.PREPROCESSING_TOKENS.get(self.domain, self.PREPROCESSING_TOKENS['generic'])}")
 
-    def train(self, texts: List[str], *, char_limit: int = 256, bigram_quota: float = 0.3, 
+    def train(self, texts: List[str], *, char_limit: int | None = None, bigram_quota: float = 0.3, 
               min_word_score: float = 15.0, min_bigram_score: float = 30.0) -> None:
         """
         Train the tokenizer on a corpus of texts.
@@ -136,6 +141,13 @@ class NERBPETokenizer(BaseTokenizer):
         4. Add top-scoring tokens respecting bigram quota
         5. Run BPE merges to fill remaining vocabulary slots
         """
+        # Auto-adjust parameters for small vocabularies
+        if char_limit is None:
+            if self.vocab_size <= 1000:
+                char_limit = min(80, self.vocab_size // 4)  # 25% for characters max
+            else:
+                char_limit = 256
+        
         total_steps = 7  # Updated to include analysis
         pbar = tqdm(total=total_steps, desc="Training tokenizer", unit="step")
         
@@ -235,6 +247,32 @@ class NERBPETokenizer(BaseTokenizer):
             Decoded text string
         """
         return "".join(self._id_to_token.get(i, self.UNK_TOKEN) for i in token_ids)
+
+    def save(self, path: str) -> None:
+        """Save the tokenizer to a file."""
+        os.makedirs(os.path.dirname(path), exist_ok=True)
+        data = {
+            'token_to_id': self.token_to_id,
+            'id_to_token': self.id_to_token,
+            'vocab_size': self.vocab_size,
+            'domain': self.domain,
+            'bpe_merge_ranks': self._bpe_merge_ranks
+        }
+        with open(path, 'wb') as f:
+            pickle.dump(data, f)
+
+    @classmethod
+    def load(cls, path: str) -> 'NERBPETokenizer':
+        """Load the tokenizer from a file."""
+        with open(path, 'rb') as f:
+            data = pickle.load(f)
+        
+        # Create new instance
+        tokenizer = cls(data['vocab_size'], domain=data['domain'])
+        tokenizer.token_to_id = data['token_to_id']
+        tokenizer.id_to_token = data['id_to_token']
+        tokenizer._bpe_merge_ranks = data['bpe_merge_ranks']
+        return tokenizer
 
     # -------------------------------------------------------------------------
     # Private Training Methods
@@ -344,20 +382,26 @@ class NERBPETokenizer(BaseTokenizer):
 
     def _run_bpe_merges(self, texts: List[str]) -> None:
         """Run BPE merges to fill remaining vocabulary slots."""
-        # Build word frequency for BPE
+        # Build word frequency for BPE with better sampling
         word_freq = Counter()
-        sample_size = min(100000, len(texts))
+        
+        # Use much smaller sample for small vocabularies to avoid noise
+        if self.vocab_size <= 1000:
+            sample_size = min(5000, len(texts))
+        else:
+            sample_size = min(50000, len(texts))
         
         for text in tqdm(texts[:sample_size], desc="Building word frequencies", leave=False):
             tokens = self._preprocess(text).split()
-            for pos, w in enumerate(tokens):
-                word_freq[tuple(w) + (self.END_MARK,)] += 1
-                if pos > 0:
-                    word_freq[tuple(" " + w) + (self.END_MARK,)] += 1
+            for w in tokens:
+                # Only process words longer than 1 character to avoid noise
+                if len(w) > 1:
+                    word_freq[tuple(w) + (self.END_MARK,)] += 1
         
-        # BPE iteration loop
+        # BPE iteration loop with frequency threshold
         iteration = 0
-        max_iterations = min(self._remaining_slots, 1000)
+        max_iterations = min(self._remaining_slots, 500)  # Reduced max iterations
+        min_pair_frequency = max(2, sample_size // 10000)  # Dynamic threshold
         
         with tqdm(total=max_iterations, desc="BPE merges", leave=False) as pbar:
             while self._remaining_slots > 0 and iteration < max_iterations:
@@ -366,12 +410,26 @@ class NERBPETokenizer(BaseTokenizer):
                 if not best_pair:
                     break
                 
+                # Get frequency for the best pair
+                pair_freq = Counter()
+                for w, f in word_freq.items():
+                    for p in self._bpe_pairs(w):
+                        pair_freq[p] += f
+                best_freq = pair_freq.get(best_pair, 0)
+                
+                if best_freq < min_pair_frequency:
+                    print(f"Stopping BPE: best frequency {best_freq} < threshold {min_pair_frequency}")
+                    break
+                
                 # Apply merge
                 self._perform_merge(best_pair, word_freq)
                 self._bpe_merge_ranks[best_pair] = iteration
                 
                 iteration += 1
                 pbar.update(1)
+                
+                if iteration % 50 == 0:
+                    pbar.set_postfix({"merge": f"'{best_pair[0]}'+''{best_pair[1]}'", "freq": best_freq})
                 
                 if iteration % 100 == 0:
                     pbar.set_postfix({"merge": f"'{best_pair[0]}'+''{best_pair[1]}'"})
