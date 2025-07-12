@@ -1,0 +1,1177 @@
+================================================================================
+NER-AWARE BPE TOKENIZER - TOKEN ANALYSIS REPORT
+================================================================================
+Generated: 2025-07-12 17:52:36
+Domain: twitter
+Vocabulary Size: 1000
+Training Corpus Size: 1280000 texts
+
+PREPROCESSING TOKENS
+------------------------------
+Domain 'twitter' tokens: ['<URL>', '<USER>', '<HASHTAG>', '<EMOJI>']
+Generic tokens: ['<EMOJI>']
+
+SUMMARY STATISTICS
+----------------------------------------
+Special        :     2 tokens (  0.2%)
+Preprocessing  :     3 tokens (  0.3%)
+Characters     :    98 tokens (  9.8%)
+Words          :     0 tokens (  0.0%)
+Bigrams        :     1 tokens (  0.1%)
+Subwords       :     0 tokens (  0.0%)
+Merged_chars   :     0 tokens (  0.0%)
+Total          :  1000 tokens
+
+TOP 50 MOST FREQUENT TOKENS
+----------------------------------------
+Rank  Token                          Freq       Type           
+-----------------------------------------------------------------
+1     ' '                            76482      special        
+2     'e'                            25471      character      
+3     'o'                            21495      character      
+4     't'                            21099      character      
+5     'a'                            18882      character      
+6     'n'                            15898      character      
+7     'i'                            15836      character      
+8     's'                            13985      character      
+9     'h'                            11721      character      
+10    'r'                            11632      character      
+11    'l'                            10192      character      
+12    'd'                            8551       character      
+13    'u'                            7647       character      
+14    'y'                            7358       character      
+15    'm'                            7198       character      
+16    'g'                            6523       character      
+17    '.'                            6085       character      
+18    'w'                            5936       character      
+19    'c'                            5135       character      
+20    'f'                            4184       character      
+21    'p'                            3898       character      
+22    'b'                            3630       character      
+23    'k'                            3510       character      
+24    '!'                            2835       character      
+25    'I'                            2602       character      
+26    '<USER>'                       2512       preprocessing  
+27    'v'                            2366       character      
+28    "'"                            2093       character      
+29    ','                            1448       character      
+30    'T'                            1005       character      
+31    'A'                            822        character      
+32    'S'                            822        character      
+33    '?'                            817        character      
+34    'O'                            758        character      
+35    'M'                            674        character      
+36    'H'                            660        character      
+37    'j'                            594        character      
+38    'L'                            563        character      
+39    'x'                            552        character      
+40    'N'                            540        character      
+41    'E'                            529        character      
+42    '-'                            527        character      
+43    'W'                            517        character      
+44    'B'                            470        character      
+45    'G'                            461        character      
+46    'C'                            430        character      
+47    'D'                            424        character      
+48    'Y'                            361        character      
+49    'R'                            332        character      
+50    'P'                            310        character      
+
+SPECIAL TOKENS
+--------------------------------------------------
+Count: 2
+Top 20 by frequency:
+Rank  Token                               Frequency 
+-------------------------------------------------------
+1     ' '                                 76482     
+2     '[UNK]'                             149       
+
+PREPROCESSING TOKENS
+--------------------------------------------------
+Count: 3
+Top 20 by frequency:
+Rank  Token                               Frequency 
+-------------------------------------------------------
+1     '<USER>'                            2512      
+2     '<URL>'                             230       
+3     '<HASHTAG>'                         173       
+
+CHARACTERS TOKENS
+--------------------------------------------------
+Count: 98
+Top 20 by frequency:
+Rank  Token                               Frequency 
+-------------------------------------------------------
+1     'e'                                 25471     
+2     'o'                                 21495     
+3     't'                                 21099     
+4     'a'                                 18882     
+5     'n'                                 15898     
+6     'i'                                 15836     
+7     's'                                 13985     
+8     'h'                                 11721     
+9     'r'                                 11632     
+10    'l'                                 10192     
+11    'd'                                 8551      
+12    'u'                                 7647      
+13    'y'                                 7358      
+14    'm'                                 7198      
+15    'g'                                 6523      
+16    '.'                                 6085      
+17    'w'                                 5936      
+18    'c'                                 5135      
+19    'f'                                 4184      
+20    'p'                                 3898      
+
+BIGRAMS TOKENS
+--------------------------------------------------
+Count: 1
+Top 20 by frequency:
+Rank  Token                               Frequency 
+-------------------------------------------------------
+1     'Ð ̧Ð1⁄4Ðμ'                         1         
+
+NER-SPECIFIC ANALYSIS
+----------------------------------------
+Capitalized tokens: 29
+Top 15 capitalized tokens:
+   1. 'I' (freq: 2602)
+   2. 'T' (freq: 1005)
+   3. 'A' (freq: 822)
+   4. 'S' (freq: 822)
+   5. 'O' (freq: 758)
+   6. 'M' (freq: 674)
+   7. 'H' (freq: 660)
+   8. 'L' (freq: 563)
+   9. 'N' (freq: 540)
+  10. 'E' (freq: 529)
+  11. 'W' (freq: 517)
+  12. 'B' (freq: 470)
+  13. 'G' (freq: 461)
+  14. 'C' (freq: 430)
+  15. 'D' (freq: 424)
+
+Total bigrams: 1
+Capitalized bigrams: 1
+Top 10 capitalized bigrams:
+   1. "Ð ̧Ð1⁄4Ðμ" (freq: 1)
+
+BPE MERGE ANALYSIS
+------------------------------
+Total BPE merges performed: 626
+Latest 10 BPE merges:
+  'Ñ' + '\x80Ð3⁄4Ð2Ð°Ð1⁄2Ð</w>' -> 'Ñ\x80Ð3⁄4Ð2Ð°Ð1⁄2Ð</w>' (freq: 0)
+  '\x80' + 'Ð3⁄4Ð2Ð°Ð1⁄2Ð</w>' -> '\x80Ð3⁄4Ð2Ð°Ð1⁄2Ð</w>' (freq: 0)
+  ' ' + '́Ð2Ð</w>' -> ' ́Ð2Ð</w>' (freq: 0)
+  '́' + 'Ð2Ð</w>' -> '́Ð2Ð</w>' (freq: 0)
+  ' ' + 'ÐoÐ3⁄4Ñ\x80Ð1⁄4Ð</w>' -> ' ÐoÐ3⁄4Ñ\x80Ð1⁄4Ð</w>' (freq: 0)
+  'Ð' + 'oÐ3⁄4Ñ\x80Ð1⁄4Ð</w>' -> 'ÐoÐ3⁄4Ñ\x80Ð1⁄4Ð</w>' (freq: 0)
+  'o' + 'Ð3⁄4Ñ\x80Ð1⁄4Ð</w>' -> 'oÐ3⁄4Ñ\x80Ð1⁄4Ð</w>' (freq: 0)
+  ' ' + 'Ñ\x80Ð°Ð·Ð1⁄2Ð</w>' -> ' Ñ\x80Ð°Ð·Ð1⁄2Ð</w>' (freq: 0)
+  'Ñ' + '\x80Ð°Ð·Ð1⁄2Ð</w>' -> 'Ñ\x80Ð°Ð·Ð1⁄2Ð</w>' (freq: 0)
+  '\x80' + 'Ð°Ð·Ð1⁄2Ð</w>' -> '\x80Ð°Ð·Ð1⁄2Ð</w>' (freq: 0)
+
+COMPLETE TOKEN VOCABULARY
+--------------------------------------------------
+ID     Token                                    Freq     Type        
+----------------------------------------------------------------------
+0      '[PAD]'                                  0        special     
+1      '[UNK]'                                  149      special     
+2      '[BOS]'                                  0        special     
+3      '[EOS]'                                  0        special     
+4      ' '                                      76482    special     
+5      '<URL>'                                  230      preprocessing
+6      '<USER>'                                 2512     preprocessing
+7      '<HASHTAG>'                              173      preprocessing
+8      '<EMOJI>'                                0        preprocessing
+9      'e'                                      25471    character   
+10     'o'                                      21495    character   
+11     't'                                      21099    character   
+12     'a'                                      18882    character   
+13     'n'                                      15898    character   
+14     'i'                                      15836    character   
+15     's'                                      13985    character   
+16     'h'                                      11721    character   
+17     'r'                                      11632    character   
+18     'l'                                      10192    character   
+19     'y'                                      7358     character   
+20     'd'                                      8551     character   
+21     'u'                                      7647     character   
+22     'g'                                      6523     character   
+23     'm'                                      7198     character   
+24     '.'                                      6085     character   
+25     'w'                                      5936     character   
+26     'c'                                      5135     character   
+27     'f'                                      4184     character   
+28     'S'                                      822      character   
+29     'p'                                      3898     character   
+30     'U'                                      216      character   
+31     '<'                                      75       character   
+32     'R'                                      332      character   
+33     '>'                                      31       character   
+34     'k'                                      3510     character   
+35     'b'                                      3630     character   
+36     'E'                                      529      character   
+37     'v'                                      2366     character   
+38     '!'                                      2835     character   
+39     'I'                                      2602     character   
+40     "'"                                      2093     character   
+41     'T'                                      1005     character   
+42     ','                                      1448     character   
+43     'L'                                      563      character   
+44     'H'                                      660      character   
+45     'A'                                      822      character   
+46     'O'                                      758      character   
+47     '?'                                      817      character   
+48     'G'                                      461      character   
+49     '-'                                      527      character   
+50     'W'                                      517      character   
+51     'M'                                      674      character   
+52     'D'                                      424      character   
+53     '1'                                      257      character   
+54     'x'                                      552      character   
+55     '0'                                      249      character   
+56     'j'                                      594      character   
+57     'B'                                      470      character   
+58     'N'                                      540      character   
+59     'Y'                                      361      character   
+60     'F'                                      288      character   
+61     'P'                                      310      character   
+62     'C'                                      430      character   
+63     '2'                                      295      character   
+64     '3'                                      224      character   
+65     '"'                                      204      character   
+66     'J'                                      242      character   
+67     'K'                                      160      character   
+68     'X'                                      61       character   
+69     '9'                                      65       character   
+70     ':'                                      202      character   
+71     '&'                                      136      character   
+72     'z'                                      249      character   
+73     '6'                                      50       character   
+74     '*'                                      96       character   
+75     'q'                                      115      character   
+76     '4'                                      124      character   
+77     '('                                      119      character   
+78     ')'                                      148      character   
+79     ';'                                      70       character   
+80     '~'                                      32       character   
+81     '5'                                      96       character   
+82     'Z'                                      27       character   
+83     'Q'                                      19       character   
+84     '8'                                      71       character   
+85     'V'                                      152      character   
+86     '#'                                      14       character   
+87     '$'                                      19       character   
+88     '+'                                      23       character   
+89     '/'                                      133      character   
+90     '7'                                      52       character   
+91     '='                                      22       character   
+92     '@'                                      28       character   
+93     '\\'                                     4        character   
+94     ']'                                      9        character   
+95     '^'                                      11       character   
+96     '`'                                      9        character   
+97     '|'                                      4        character   
+98     '¡'                                      3        character   
+99     '£'                                      5        character   
+100    '©'                                      4        character   
+101    '¿'                                      18       character   
+102    'Â'                                      11       character   
+103    'Ã'                                      8        character   
+104    'ï'                                      15       character   
+105    '́'                                      8        character   
+106    '⁄'                                      24       character   
+107    'Ð1⁄2Ðμ Ñ'                               0        bigram      
+108    'Get Â£6'                                0        bigram      
+109    'Ð3Ð ́Ðμ'                                0        bigram      
+110    'Ð ́Ð3⁄4Ð±Ñ\x80Ð3⁄4Ðμ'                   0        bigram      
+111    'Ð1⁄2Ðμ Ð2'                              0        bigram      
+112    'Ð1⁄2Ðμ Ð·Ð1⁄2Ð°Ñ\x8e'                   0        bigram      
+113    'Ñ\x82Ð°Ðo Ñ\x87Ñ\x82Ð3⁄4'               0        bigram      
+114    '*Jessi Ann*<3'                          0        bigram      
+115    '<3Team Edward<3'                        0        bigram      
+116    'T-Mobile G1'                            0        bigram      
+117    'Ð1⁄2Ðμ Ð±Ñ\x83Ð'                        0        bigram      
+118    'Ð1⁄2Ðμ Ð¿Ð'                             0        bigram      
+119    'Ð2Ñ\x80Ð3⁄4Ð ́Ðμ'                       0        bigram      
+120    'Ñ\x82Ð3⁄4Ð¶Ðμ Ñ'                        0        bigram      
+121    'Ñ\x87Ñ\x82Ð3⁄4 Ð1⁄2Ðμ'                  0        bigram      
+122    '̧Ñ\x82Ñ\x8c Ð1⁄2Ðμ'                     0        bigram      
+123    'Airbus A330-200'                        0        bigram      
+124    'Alton F-650'                            0        bigram      
+125    'F-22 Raptor'                            0        bigram      
+126    'G Rossiniï¿1⁄2'                         0        bigram      
+127    'Hï¿1⁄2 N'                               0        bigram      
+128    'Mcfly 7/June/2009'                      0        bigram      
+129    'Olympus E-P1'                           0        bigram      
+130    'Only Â£1'                               0        bigram      
+131    'Only Â£5'                               0        bigram      
+132    'Rossiniï¿1⁄2 But'                       0        bigram      
+133    'Ð ́Ð3⁄4Ñ\x80Ð3⁄4Ð¶Ðμ'                   0        bigram      
+134    'Ð ̧Ð1⁄4Ðμ'                              1        bigram      
+135    'Ð ̧Ð2Ñ\x8bÐμ'                           0        bigram      
+136    'Ð1⁄2Ð ̧Ðμ'                              0        bigram      
+137    'Ð1⁄2Ðμ Ð'                               0        bigram      
+138    'Ð1⁄2Ðμ Ð1⁄2Ð°Ð'                         0        bigram      
+139    'Ð1⁄2Ðμ Ð¿Ð3⁄4Ð'                         0        bigram      
+140    'Ð1⁄2Ðμ Ñ\x82Ð°Ðo'                       0        bigram      
+141    'Ð1⁄2Ñ\x83 Ñ\x82Ð°Ðo'                    0        bigram      
+142    'Ð1⁄4Ð1⁄2Ð3⁄4Ð3Ð ̧Ðμ'                    0        bigram      
+143    'Ð1⁄4Ð1⁄2Ðμ Ñ\x82Ð3⁄4Ð¶Ðμ'               0        bigram      
+144    'Ð1⁄4Ñ\x83 Ðμ'                           0        bigram      
+145    'Ð° Ð1⁄2Ðμ'                              0        bigram      
+146    'Ð¶Ðμ Ð1⁄2Ðμ'                            0        bigram      
+147    'Ð»Ñ\x83Ñ\x87Ñ\x88Ðμ Ð¿Ð3⁄4Ð'            0        bigram      
+148    'Ðμ Ð1⁄2Ð'                               0        bigram      
+149    'Ðμ Ð¿Ð3⁄4Ñ'                             0        bigram      
+150    'Ñ\x80Ð°Ð±Ð3⁄4Ñ\x82Ðμ Ñ'                 0        bigram      
+151    'Ñ\x82Ð3⁄4 Ð1⁄2Ðμ'                       0        bigram      
+152    'Ñ\x82Ð3⁄4Ð¶Ðμ Ð'                        0        bigram      
+153    'Ñ\x82Ð3⁄4Ð¶Ðμ Ð1⁄2Ðμ'                   0        bigram      
+154    'Ñ\x83Ð¶Ðμ Ð\x92Ð3⁄4Ñ\x82'               0        bigram      
+155    'Ñ\x87Ñ\x82Ð3⁄4 Ð1⁄4Ð1⁄2Ðμ'              0        bigram      
+156    '́Ð° Ð1⁄2Ðμ'                             0        bigram      
+157    '̧Ðμ Ð1⁄2Ð°'                             0        bigram      
+158    '-Kynitekia 3Rev20'                      0        bigram      
+159    '-The Beatles<3'                         0        bigram      
+160    '1-Business Intelligence'                0        bigram      
+161    '1-Page Strategic'                       0        bigram      
+162    '1-Spandau Ballet[8]'                    0        bigram      
+163    '10-Ball Championships'                  0        bigram      
+164    '10-Year-Old Girl'                       0        bigram      
+165    '100%Swedish I'                          0        bigram      
+166    '104-Year-Old Who'                       0        bigram      
+167    '18K+ Votes'                             0        bigram      
+168    '2-Disc Special'                         0        bigram      
+169    '2/3Weeks Lef'                           0        bigram      
+170    '20-Twenty Cricket'                      0        bigram      
+171    '22-Secret Life'                         0        bigram      
+172    '24Hr M&S'                               0        bigram      
+173    '2Pac- Just'                             0        bigram      
+174    '3-D Maybe'                              0        bigram      
+175    '3-D Movie'                              0        bigram      
+176    '3D T-Shirts'                            0        bigram      
+177    '3Doors Down-'                           0        bigram      
+178    '3G Sâ\x83£'                             0        bigram      
+179    '4-Day Week'                             0        bigram      
+180    '4-Letter Words'                         0        bigram      
+181    '4-Toy Story'                            0        bigram      
+182    '40-Year-Old Virgin'                     0        bigram      
+183    '5-Star Press'                           0        bigram      
+184    '7-Aaaand I'                             0        bigram      
+185    '8-Day Weekend'                          0        bigram      
+186    '9-Mid Nyc'                              0        bigram      
+187    '90210/The Hills'                        0        bigram      
+188    '<3<3<3Just Woke'                        0        bigram      
+189    '<3Jessica Leigh'                        0        bigram      
+190    '<3Matt<3 Ashton'                        0        bigram      
+191    '<3Pot Pie'                              0        bigram      
+192    'A Post-2'                               0        bigram      
+193    'Agree Â£1'                              0        bigram      
+194    'Air-France A330'                        0        bigram      
+195    'Am S-0-0-0'                             0        bigram      
+196    'An F/1'                                 0        bigram      
+197    'Anime Expoï¿1⁄2'                        0        bigram      
+198    'April 2009-June'                        0        bigram      
+199    'Ares 1-X'                               0        bigram      
+200    'Arghï¿1⁄2 Fantasy'                      0        bigram      
+201    'Argue-1 Kuhn-0'                         0        bigram      
+202    'Asher Roth<3333'                        0        bigram      
+203    'Audition-2 Days'                        0        bigram      
+204    'Automaticï¿1⁄2If You'                   0        bigram      
+205    'Awards<3 Mrs'                           0        bigram      
+206    'Awh<3 I'                                0        bigram      
+207    'Awww<3 I'                               0        bigram      
+208    'Ayo Hi-5'                               0        bigram      
+209    'Because K-9'                            0        bigram      
+210    'Berdua Sajaaaï¿1⁄2'                     0        bigram      
+211    'Beta-2 Released'                        0        bigram      
+212    'Beyoncï¿1⁄2 Now'                        0        bigram      
+213    'Beyoncï¿1⁄2 On'                         0        bigram      
+214    'Blink-182/Panic/Fall Out'               0        bigram      
+215    'Bones Season2&3'                        0        bigram      
+216    'British Formula-1'                      0        bigram      
+217    'Brooklyn 1/2Marathon'                   0        bigram      
+218    'Brothers 3-D'                           0        bigram      
+219    'Bï¿1⁄209 Hat'                           0        bigram      
+220    'C&S Nï¿1⁄288'                           0        bigram      
+221    'C-0] No'                                0        bigram      
+222    'Cafï¿1⁄2 Europa'                        0        bigram      
+223    'Cafï¿1⁄2 Nero'                          0        bigram      
+224    'Cafï¿1⁄2 Series'                        0        bigram      
+225    'Canon 24-70L'                           0        bigram      
+226    'Carnageï¿1⁄2 Dane'                      0        bigram      
+227    'Ch4+1 Because'                          0        bigram      
+228    'Commodore C-64'                         0        bigram      
+229    'Coraline 3-D'                           0        bigram      
+230    'D-5 Before'                             0        bigram      
+231    'Danï¿1⁄2 Cook'                          0        bigram      
+232    'Dead 2/Army'                            0        bigram      
+233    'Dell Mini-10'                           0        bigram      
+234    'Digital 3-D'                            0        bigram      
+235    'Done That~Grateful4Jesus'               0        bigram      
+236    'Dual-Core-Processor T4200'              0        bigram      
+237    'E-3 Sony'                               0        bigram      
+238    'E-P1 Should'                            0        bigram      
+239    'Eis Cafï¿1⁄2'                           0        bigram      
+240    'Enjoy C1/J1'                            0        bigram      
+241    'Evernote Ñ\x82Ð3⁄4'                     0        bigram      
+242    'Extreme Exposï¿1⁄2'                     0        bigram      
+243    'F-14 Tomcat'                            0        bigram      
+244    'Fantasy X-12'                           0        bigram      
+245    'Feb 2007-June'                          0        bigram      
+246    'Feeling Beyoncï¿1⁄2'                    0        bigram      
+247    'Fektive Recordsï¿1⁄2'                   0        bigram      
+248    'Finished Catch-22'                      0        bigram      
+249    'Firstï¿1⁄2 Philippine'                  0        bigram      
+250    'Flickr/Youtube/3D Flash'                0        bigram      
+251    'Flu H1N1-Canada'                        0        bigram      
+252    'For Â£40'                               0        bigram      
+253    'For Â£55'                               0        bigram      
+254    'Formula-1 Grand'                        0        bigram      
+255    'Foxtel 20-Twenty'                       0        bigram      
+256    'From Jupiter<3'                         0        bigram      
+257    'Fuck Ã1⁄4'                              0        bigram      
+258    'Game Baby<33'                           0        bigram      
+259    'Garance Dorï¿1⁄2'                       0        bigram      
+260    'Gibson J-45'                            0        bigram      
+261    'Go On<3'                                0        bigram      
+262    'God Sugï¿1⁄2'                           0        bigram      
+263    'Good Initiativeï¿1⁄2'                   0        bigram      
+264    'Goodluckk<33 Cause'                     0        bigram      
+265    'Goodnight Loves<3'                      0        bigram      
+266    'Goodnight Tweeters<3'                   0        bigram      
+267    'Goodnight/Goodmorning Ily<33'           0        bigram      
+268    'Google Translateï¿1⁄2'                  0        bigram      
+269    'Grades K-5'                             0        bigram      
+270    'Green Day-86'                           0        bigram      
+271    'H1 West/Ewa'                            0        bigram      
+272    'H1N1 -Highly'                           0        bigram      
+273    'Had $8K'                                0        bigram      
+274    'Haha<3 Then'                            0        bigram      
+275    'Hallooooooo~ X3'                        0        bigram      
+276    'Hasselblad 500C/M'                      0        bigram      
+277    'Heroes S1E16-'                          0        bigram      
+278    'Hey Baby<3'                             0        bigram      
+279    'Hey<3 Mrs'                              0        bigram      
+280    'Hi-5 Friend'                            0        bigram      
+281    'Hmmï¿1⁄2 I'                             0        bigram      
+282    'Home Ð¿Ð3⁄4Ñ'                           0        bigram      
+283    'Honor Society<3'                        0        bigram      
+284    'Humans Apartï¿1⁄2'                      0        bigram      
+285    'Hummer Ð¿Ñ\x80Ð3⁄4Ð'                    0        bigram      
+286    'Hï¿1⁄2 L'                               0        bigram      
+287    'I Doï¿1⁄2'                              0        bigram      
+288    'I-25 Next'                              0        bigram      
+289    'I-45 South'                             0        bigram      
+290    'I<3 Lakers'                             0        bigram      
+291    'Idlis+1 Vada+'                          0        bigram      
+292    'In 3-D'                                 0        bigram      
+293    'In Love<33'                             0        bigram      
+294    'Ineffable3-Ruiz Family'                 0        bigram      
+295    'Initiativeï¿1⁄2 I'                      0        bigram      
+296    'Innovation Dayï¿1⁄2'                    0        bigram      
+297    'Is Automaticï¿1⁄2If'                    0        bigram      
+298    'J-5 Suited'                             0        bigram      
+299    'Jake_Rupe_08 I'                         0        bigram      
+300    'Japanï¿1⁄2 I'                           0        bigram      
+301    'Jonas Brothers<33'                      0        bigram      
+302    'Julito77 -You'                          0        bigram      
+303    'July 22-August'                         0        bigram      
+304    'July 31-Aug'                            0        bigram      
+305    'June 18-July'                           0        bigram      
+306    'June 22-Secret'                         0        bigram      
+307    'June 29-July'                           0        bigram      
+308    'June 4-June'                            0        bigram      
+309    'June/26 Is'                             0        bigram      
+310    'K-1 Visa'                               0        bigram      
+311    'Kiboï¿1⁄2 I'                            0        bigram      
+312    'Kris Allen<3333333'                     0        bigram      
+313    'Lakers<3 Wonnnn'                        0        bigram      
+314    'Leo I<3Him'                             0        bigram      
+315    'Leonardo Dicaprio<3'                    0        bigram      
+316    'Lewis=10 Heikki=13'                     0        bigram      
+317    'Linzi Caie<333333'                      0        bigram      
+318    'Listening 2-I'                          0        bigram      
+319    'Love<33 Baby'                           0        bigram      
+320    'Lovee Yaaa<3'                           0        bigram      
+321    'Loveï¿1⁄2 Vintage'                      0        bigram      
+322    'Mac Ð1⁄4Ð1⁄2Ðμ'                         0        bigram      
+323    'Malmï¿1⁄2 Fri-Sat'                      0        bigram      
+324    'May 19-June'                            0        bigram      
+325    'May 21-June'                            0        bigram      
+326    'May 29-June'                            0        bigram      
+327    'Mazda Protegï¿1⁄2'                      0        bigram      
+328    'Michael Bublï¿1⁄2'                      0        bigram      
+329    'Missing T-1'                            0        bigram      
+330    'Montt Mardiï¿1⁄2'                       0        bigram      
+331    'Morocco D-10'                           0        bigram      
+332    'Movieï¿1⁄2 Is'                          0        bigram      
+333    'Muppet*Vision 3-D'                      0        bigram      
+334    'Muse Ð1⁄2Ð°'                            0        bigram      
+335    'Musical3/Hannah Montana'                0        bigram      
+336    'Mustang Mach-1'                         0        bigram      
+337    'My Firstï¿1⁄2'                          0        bigram      
+338    'My Â£35'                                0        bigram      
+339    'My Â£400'                               0        bigram      
+340    'Má»1 Ä'                                 0        bigram      
+341    'Nelson Nguyen<333'                      0        bigram      
+342    'Never Die<3'                            0        bigram      
+343    'New Apartment<3'                        0        bigram      
+344    'New Blink-182'                          0        bigram      
+345    'Nikon D-90'                             0        bigram      
+346    'No 7-Eleven'                            0        bigram      
+347    'No Â£30'                                0        bigram      
+348    'Northbound I-15'                        0        bigram      
+349    'November08/December08/January09 ...'    0        bigram      
+350    'O_0 Jameson'                            0        bigram      
+351    'Olï¿1⁄2 Claudia'                        0        bigram      
+352    'Olï¿1⁄2 Olï¿1⁄2'                        0        bigram      
+353    'Olï¿1⁄2 Ser'                            0        bigram      
+354    'On 106&Park'                            0        bigram      
+355    'On Ch4+1'                               0        bigram      
+356    'On Sunday<|3'                           0        bigram      
+357    'One 512/8Gb'                            0        bigram      
+358    'Only 2/3Weeks'                          0        bigram      
+359    'Only Â£4'                               0        bigram      
+360    'Otay Calvin<3'                          0        bigram      
+361    'P Grandma<3'                            0        bigram      
+362    'P-51 Mustang'                           0        bigram      
+363    'Peavey T-40'                            0        bigram      
+364    'Phï¿1⁄2 Quang'                          0        bigram      
+365    'Pilots Î¶Ï\x89Î1⁄2Ï\x84Î±Î1⁄2Î¬'        0        bigram      
+366    'Plus 8--Except'                         0        bigram      
+367    'Power Ð1⁄2Ð3⁄4Ð1⁄4Ñ\x8bÐ3'              0        bigram      
+368    'Pre-E3 Forcast'                         0        bigram      
+369    'Project 10-Pan'                         0        bigram      
+370    'Psion V34+Fax'                          0        bigram      
+371    'Rainy Skiess<3'                         0        bigram      
+372    'Raised Â£180'                           0        bigram      
+373    'Raised Â£600'                           0        bigram      
+374    'I</w>'                                  0        subword     
+375    ' I</w>'                                 0        subword     
+376    'E</w>'                                  0        subword     
+377    ' E</w>'                                 0        subword     
+378    'T</w>'                                  0        subword     
+379    ' T</w>'                                 0        subword     
+380    '0T</w>'                                 0        subword     
+381    'G0T</w>'                                0        subword     
+382    ' G0T</w>'                               0        subword     
+383    '5T</w>'                                 0        subword     
+384    ' 5T</w>'                                0        subword     
+385    'S</w>'                                  0        subword     
+386    ' S</w>'                                 0        subword     
+387    '2S</w>'                                 0        subword     
+388    ' 2S</w>'                                0        subword     
+389    '⁄2S</w>'                                0        subword     
+390    '1⁄2S</w>'                               0        subword     
+391    '¿1⁄2S</w>'                              0        subword     
+392    'ï¿1⁄2S</w>'                             0        subword     
+393    'Tï¿1⁄2S</w>'                            0        subword     
+394    'ITï¿1⁄2S</w>'                           0        subword     
+395    ' ITï¿1⁄2S</w>'                          0        subword     
+396    '1S</w>'                                 0        subword     
+397    'Y1S</w>'                                0        subword     
+398    'RY1S</w>'                               0        subword     
+399    'ERY1S</w>'                              0        subword     
+400    'VERY1S</w>'                             0        subword     
+401    'EVERY1S</w>'                            0        subword     
+402    ' EVERY1S</w>'                           0        subword     
+403    '3S</w>'                                 0        subword     
+404    ' 3S</w>'                                0        subword     
+405    '5S</w>'                                 0        subword     
+406    '95S</w>'                                0        subword     
+407    ' 95S</w>'                               0        subword     
+408    'D</w>'                                  0        subword     
+409    ' D</w>'                                 0        subword     
+410    '3D</w>'                                 0        subword     
+411    ' 3D</w>'                                0        subword     
+412    '4D</w>'                                 0        subword     
+413    'L4D</w>'                                0        subword     
+414    ' L4D</w>'                               0        subword     
+415    '0D</w>'                                 0        subword     
+416    '2D</w>'                                 0        subword     
+417    ' 2D</w>'                                0        subword     
+418    'B3D</w>'                                0        subword     
+419    'JB3D</w>'                               0        subword     
+420    ' JB3D</w>'                              0        subword     
+421    '40D</w>'                                0        subword     
+422    ' 40D</w>'                               0        subword     
+423    '50D</w>'                                0        subword     
+424    '350D</w>'                               0        subword     
+425    ' 350D</w>'                              0        subword     
+426    '8D</w>'                                 0        subword     
+427    ' 8D</w>'                                0        subword     
+428    '5D</w>'                                 0        subword     
+429    'L</w>'                                  0        subword     
+430    ' L</w>'                                 0        subword     
+431    '0L</w>'                                 0        subword     
+432    ' 0L</w>'                                0        subword     
+433    'o0L</w>'                                0        subword     
+434    'ko0L</w>'                               0        subword     
+435    'sko0L</w>'                              0        subword     
+436    ' sko0L</w>'                             0        subword     
+437    '4L</w>'                                 0        subword     
+438    'L4L</w>'                                0        subword     
+439    ' L4L</w>'                               0        subword     
+440    '5L</w>'                                 0        subword     
+441    ' 5L</w>'                                0        subword     
+442    '1L</w>'                                 0        subword     
+443    ' 1L</w>'                                0        subword     
+444    'Y</w>'                                  0        subword     
+445    ' Y</w>'                                 0        subword     
+446    '2Y</w>'                                 0        subword     
+447    '⁄2Y</w>'                                0        subword     
+448    '1⁄2Y</w>'                               0        subword     
+449    '¿1⁄2Y</w>'                              0        subword     
+450    'ï¿1⁄2Y</w>'                             0        subword     
+451    'Hï¿1⁄2Y</w>'                            0        subword     
+452    ' Hï¿1⁄2Y</w>'                           0        subword     
+453    'O</w>'                                  0        subword     
+454    ' O</w>'                                 0        subword     
+455    '2O</w>'                                 0        subword     
+456    ' 2O</w>'                                0        subword     
+457    'H2O</w>'                                0        subword     
+458    ' H2O</w>'                               0        subword     
+459    '1O</w>'                                 0        subword     
+460    ' 1O</w>'                                0        subword     
+461    '5O</w>'                                 0        subword     
+462    ' 5O</w>'                                0        subword     
+463    'J2O</w>'                                0        subword     
+464    ' J2O</w>'                               0        subword     
+465    '8O</w>'                                 0        subword     
+466    'A</w>'                                  0        subword     
+467    ' A</w>'                                 0        subword     
+468    '2A</w>'                                 0        subword     
+469    '12A</w>'                                0        subword     
+470    ' 12A</w>'                               0        subword     
+471    '-12A</w>'                               0        subword     
+472    '--12A</w>'                              0        subword     
+473    'p--12A</w>'                             0        subword     
+474    'ap--12A</w>'                            0        subword     
+475    'rap--12A</w>'                           0        subword     
+476    'crap--12A</w>'                          0        subword     
+477    ' crap--12A</w>'                         0        subword     
+478    '4A</w>'                                 0        subword     
+479    '24A</w>'                                0        subword     
+480    'W24A</w>'                               0        subword     
+481    ' W24A</w>'                              0        subword     
+482    '3A</w>'                                 0        subword     
+483    '13A</w>'                                0        subword     
+484    ' 13A</w>'                               0        subword     
+485    'G</w>'                                  0        subword     
+486    ' G</w>'                                 0        subword     
+487    '3G</w>'                                 0        subword     
+488    ' 3G</w>'                                0        subword     
+489    '2G</w>'                                 0        subword     
+490    ' 2G</w>'                                0        subword     
+491    '5G</w>'                                 0        subword     
+492    ' 5G</w>'                                0        subword     
+493    '4G</w>'                                 0        subword     
+494    ' 4G</w>'                                0        subword     
+495    '8G</w>'                                 0        subword     
+496    ' 8G</w>'                                0        subword     
+497    '0G</w>'                                 0        subword     
+498    '30G</w>'                                0        subword     
+499    ' 30G</w>'                               0        subword     
+500    'r3G</w>'                                0        subword     
+501    'er3G</w>'                               0        subword     
+502    'ver3G</w>'                              0        subword     
+503    'over3G</w>'                             0        subword     
+504    'Pover3G</w>'                            0        subword     
+505    'IPover3G</w>'                           0        subword     
+506    'oIPover3G</w>'                          0        subword     
+507    'VoIPover3G</w>'                         0        subword     
+508    ' VoIPover3G</w>'                        0        subword     
+509    '45G</w>'                                0        subword     
+510    '945G</w>'                               0        subword     
+511    '2945G</w>'                              0        subword     
+512    '82945G</w>'                             0        subword     
+513    ' 82945G</w>'                            0        subword     
+514    'N</w>'                                  0        subword     
+515    ' N</w>'                                 0        subword     
+516    '0N</w>'                                 0        subword     
+517    ' 0N</w>'                                0        subword     
+518    '2N</w>'                                 0        subword     
+519    '⁄2N</w>'                                0        subword     
+520    '1⁄2N</w>'                               0        subword     
+521    '¿1⁄2N</w>'                              0        subword     
+522    'ï¿1⁄2N</w>'                             0        subword     
+523    'Fï¿1⁄2N</w>'                            0        subword     
+524    'FFï¿1⁄2N</w>'                           0        subword     
+525    '2FFï¿1⁄2N</w>'                          0        subword     
+526    '⁄2FFï¿1⁄2N</w>'                         0        subword     
+527    '1⁄2FFï¿1⁄2N</w>'                        0        subword     
+528    '¿1⁄2FFï¿1⁄2N</w>'                       0        subword     
+529    'ï¿1⁄2FFï¿1⁄2N</w>'                      0        subword     
+530    'Lï¿1⁄2FFï¿1⁄2N</w>'                     0        subword     
+531    ' Lï¿1⁄2FFï¿1⁄2N</w>'                    0        subword     
+532    'W0N</w>'                                0        subword     
+533    ' W0N</w>'                               0        subword     
+534    'R</w>'                                  0        subword     
+535    ' R</w>'                                 0        subword     
+536    '0R</w>'                                 0        subword     
+537    '6R</w>'                                 0        subword     
+538    '36R</w>'                                0        subword     
+539    ' 36R</w>'                               0        subword     
+540    '2R</w>'                                 0        subword     
+541    'R2R</w>'                                0        subword     
+542    'QR2R</w>'                               0        subword     
+543    '1QR2R</w>'                              0        subword     
+544    'C1QR2R</w>'                             0        subword     
+545    'GC1QR2R</w>'                            0        subword     
+546    ' GC1QR2R</w>'                           0        subword     
+547    'F0R</w>'                                0        subword     
+548    ' F0R</w>'                               0        subword     
+549    'f0R</w>'                                0        subword     
+550    ' f0R</w>'                               0        subword     
+551    'M</w>'                                  0        subword     
+552    ' M</w>'                                 0        subword     
+553    '2M</w>'                                 0        subword     
+554    'M2M</w>'                                0        subword     
+555    ' M2M</w>'                               0        subword     
+556    '5M</w>'                                 0        subword     
+557    ' 5M</w>'                                0        subword     
+558    '1M</w>'                                 0        subword     
+559    ' 1M</w>'                                0        subword     
+560    '3M</w>'                                 0        subword     
+561    'OL</w>'                                 0        subword     
+562    ' OL</w>'                                0        subword     
+563    'U</w>'                                  0        subword     
+564    ' U</w>'                                 0        subword     
+565    '0U</w>'                                 0        subword     
+566    'Y0U</w>'                                0        subword     
+567    ' Y0U</w>'                               0        subword     
+568    '4U</w>'                                 0        subword     
+569    ' 4U</w>'                                0        subword     
+570    '2U</w>'                                 0        subword     
+571    '⁄2U</w>'                                0        subword     
+572    '1⁄2U</w>'                               0        subword     
+573    '¿1⁄2U</w>'                              0        subword     
+574    'ï¿1⁄2U</w>'                             0        subword     
+575    ' ï¿1⁄2U</w>'                            0        subword     
+576    '3U</w>'                                 0        subword     
+577    'T3U</w>'                                0        subword     
+578    'LT3U</w>'                               0        subword     
+579    ' LT3U</w>'                              0        subword     
+580    'H</w>'                                  0        subword     
+581    ' H</w>'                                 0        subword     
+582    'P</w>'                                  0        subword     
+583    ' P</w>'                                 0        subword     
+584    '6P</w>'                                 0        subword     
+585    ' 6P</w>'                                0        subword     
+586    '1P</w>'                                 0        subword     
+587    '01P</w>'                                0        subword     
+588    '301P</w>'                               0        subword     
+589    '-301P</w>'                              0        subword     
+590    'R-301P</w>'                             0        subword     
+591    'TR-301P</w>'                            0        subword     
+592    'CTR-301P</w>'                           0        subword     
+593    ' CTR-301P</w>'                          0        subword     
+594    'LOL</w>'                                0        subword     
+595    ' LOL</w>'                               0        subword     
+596    'K</w>'                                  0        subword     
+597    ' K</w>'                                 0        subword     
+598    '0K</w>'                                 0        subword     
+599    '5K</w>'                                 0        subword     
+600    ' 5K</w>'                                0        subword     
+601    '4K</w>'                                 0        subword     
+602    ' 4K</w>'                                0        subword     
+603    '1K</w>'                                 0        subword     
+604    ' 1K</w>'                                0        subword     
+605    '2K</w>'                                 0        subword     
+606    '70K</w>'                                0        subword     
+607    ' 70K</w>'                               0        subword     
+608    '20K</w>'                                0        subword     
+609    ' 20K</w>'                               0        subword     
+610    '10K</w>'                                0        subword     
+611    ' 10K</w>'                               0        subword     
+612    '24K</w>'                                0        subword     
+613    ' 24K</w>'                               0        subword     
+614    '40K</w>'                                0        subword     
+615    '640K</w>'                               0        subword     
+616    ' 640K</w>'                              0        subword     
+617    '$70K</w>'                               0        subword     
+618    ' $70K</w>'                              0        subword     
+619    '7K</w>'                                 0        subword     
+620    '27K</w>'                                0        subword     
+621    '427K</w>'                               0        subword     
+622    ' 427K</w>'                              0        subword     
+623    '$10K</w>'                               0        subword     
+624    ' $10K</w>'                              0        subword     
+625    '12K</w>'                                0        subword     
+626    'r12K</w>'                               0        subword     
+627    'or12K</w>'                              0        subword     
+628    'for12K</w>'                             0        subword     
+629    '2for12K</w>'                            0        subword     
+630    '12for12K</w>'                           0        subword     
+631    ' 12for12K</w>'                          0        subword     
+632    '50K</w>'                                0        subword     
+633    ' 50K</w>'                               0        subword     
+634    '6K</w>'                                 0        subword     
+635    '16K</w>'                                0        subword     
+636    ' 16K</w>'                               0        subword     
+637    'o2K</w>'                                0        subword     
+638    'co2K</w>'                               0        subword     
+639    'sco2K</w>'                              0        subword     
+640    'isco2K</w>'                             0        subword     
+641    'Disco2K</w>'                            0        subword     
+642    ' Disco2K</w>'                           0        subword     
+643    '8K</w>'                                 0        subword     
+644    '18K</w>'                                0        subword     
+645    '318K</w>'                               0        subword     
+646    ' 318K</w>'                              0        subword     
+647    '00K</w>'                                0        subword     
+648    '400K</w>'                               0        subword     
+649    '$400K</w>'                              0        subword     
+650    ' $400K</w>'                             0        subword     
+651    '3K</w>'                                 0        subword     
+652    'T3K</w>'                                0        subword     
+653    'ST3K</w>'                               0        subword     
+654    'MST3K</w>'                              0        subword     
+655    ' MST3K</w>'                             0        subword     
+656    '14K</w>'                                0        subword     
+657    ' 14K</w>'                               0        subword     
+658    '⁄2K</w>'                                0        subword     
+659    '1⁄2K</w>'                               0        subword     
+660    '¿1⁄2K</w>'                              0        subword     
+661    'ï¿1⁄2K</w>'                             0        subword     
+662    '2ï¿1⁄2K</w>'                            0        subword     
+663    '⁄2ï¿1⁄2K</w>'                           0        subword     
+664    '1⁄2ï¿1⁄2K</w>'                          0        subword     
+665    '¿1⁄2ï¿1⁄2K</w>'                         0        subword     
+666    'ï¿1⁄2ï¿1⁄2K</w>'                        0        subword     
+667    'Wï¿1⁄2ï¿1⁄2K</w>'                       0        subword     
+668    ' Wï¿1⁄2ï¿1⁄2K</w>'                      0        subword     
+669    '60K</w>'                                0        subword     
+670    ' 60K</w>'                               0        subword     
+671    'C</w>'                                  0        subword     
+672    ' C</w>'                                 0        subword     
+673    '0C</w>'                                 0        subword     
+674    '2C</w>'                                 0        subword     
+675    '3C</w>'                                 0        subword     
+676    ' 3C</w>'                                0        subword     
+677    '6C</w>'                                 0        subword     
+678    '8C</w>'                                 0        subword     
+679    ' 8C</w>'                                0        subword     
+680    '⁄2C</w>'                                0        subword     
+681    '1⁄2C</w>'                               0        subword     
+682    '¿1⁄2C</w>'                              0        subword     
+683    'ï¿1⁄2C</w>'                             0        subword     
+684    ' ï¿1⁄2C</w>'                            0        subword     
+685    '26C</w>'                                0        subword     
+686    ' 26C</w>'                               0        subword     
+687    '16C</w>'                                0        subword     
+688    ' 16C</w>'                               0        subword     
+689    '10C</w>'                                0        subword     
+690    '210C</w>'                               0        subword     
+691    '-210C</w>'                              0        subword     
+692    'C-210C</w>'                             0        subword     
+693    'FC-210C</w>'                            0        subword     
+694    'MFC-210C</w>'                           0        subword     
+695    ' MFC-210C</w>'                          0        subword     
+696    '4C</w>'                                 0        subword     
+697    '14C</w>'                                0        subword     
+698    ' 14C</w>'                               0        subword     
+699    '22C</w>'                                0        subword     
+700    ' 22C</w>'                               0        subword     
+701    '50C</w>'                                0        subword     
+702    ' 50C</w>'                               0        subword     
+703    '13C</w>'                                0        subword     
+704    ' 13C</w>'                               0        subword     
+705    '2ï¿1⁄2C</w>'                            0        subword     
+706    '32ï¿1⁄2C</w>'                           0        subword     
+707    ' 32ï¿1⁄2C</w>'                          0        subword     
+708    '20C</w>'                                0        subword     
+709    '-20C</w>'                               0        subword     
+710    '5-20C</w>'                              0        subword     
+711    '15-20C</w>'                             0        subword     
+712    ' 15-20C</w>'                            0        subword     
+713    '18C</w>'                                0        subword     
+714    ' 18C</w>'                               0        subword     
+715    'W3C</w>'                                0        subword     
+716    ' W3C</w>'                               0        subword     
+717    'W</w>'                                  0        subword     
+718    ' W</w>'                                 0        subword     
+719    '0W</w>'                                 0        subword     
+720    '9W</w>'                                 0        subword     
+721    '09W</w>'                                0        subword     
+722    '209W</w>'                               0        subword     
+723    '2209W</w>'                              0        subword     
+724    'S2209W</w>'                             0        subword     
+725    ' S2209W</w>'                            0        subword     
+726    'N0W</w>'                                0        subword     
+727    ' N0W</w>'                               0        subword     
+728    'H0W</w>'                                0        subword     
+729    ' H0W</w>'                               0        subword     
+730    'NG</w>'                                 0        subword     
+731    ' NG</w>'                                0        subword     
+732    '1NG</w>'                                0        subword     
+733    'N1NG</w>'                               0        subword     
+734    'RN1NG</w>'                              0        subword     
+735    'ORN1NG</w>'                             0        subword     
+736    'MORN1NG</w>'                            0        subword     
+737    ' MORN1NG</w>'                           0        subword     
+738    'B</w>'                                  0        subword     
+739    ' B</w>'                                 0        subword     
+740    '3B</w>'                                 0        subword     
+741    '13B</w>'                                0        subword     
+742    ' 13B</w>'                               0        subword     
+743    '2B</w>'                                 0        subword     
+744    ' 2B</w>'                                0        subword     
+745    'R13B</w>'                               0        subword     
+746    ' R13B</w>'                              0        subword     
+747    '8B</w>'                                 0        subword     
+748    ' 8B</w>'                                0        subword     
+749    'B2B</w>'                                0        subword     
+750    ' B2B</w>'                               0        subword     
+751    'ING</w>'                                0        subword     
+752    ' ING</w>'                               0        subword     
+753    'F</w>'                                  0        subword     
+754    ' F</w>'                                 0        subword     
+755    '9F</w>'                                 0        subword     
+756    '59F</w>'                                0        subword     
+757    ' 59F</w>'                               0        subword     
+758    '0F</w>'                                 0        subword     
+759    ' 0F</w>'                                0        subword     
+760    'ME</w>'                                 0        subword     
+761    ' ME</w>'                                0        subword     
+762    'AY</w>'                                 0        subword     
+763    ' AY</w>'                                0        subword     
+764    'ER</w>'                                 0        subword     
+765    ' ER</w>'                                0        subword     
+766    'VE</w>'                                 0        subword     
+767    ' VE</w>'                                0        subword     
+768    '0VE</w>'                                0        subword     
+769    'L0VE</w>'                               0        subword     
+770    ' L0VE</w>'                              0        subword     
+771    '3VE</w>'                                0        subword     
+772    '<3VE</w>'                               0        subword     
+773    'L<3VE</w>'                              0        subword     
+774    ' L<3VE</w>'                             0        subword     
+775    'V</w>'                                  0        subword     
+776    ' V</w>'                                 0        subword     
+777    'ED</w>'                                 0        subword     
+778    ' ED</w>'                                0        subword     
+779    'OU</w>'                                 0        subword     
+780    ' OU</w>'                                0        subword     
+781    'YOU</w>'                                0        subword     
+782    ' YOU</w>'                               0        subword     
+783    'OT</w>'                                 0        subword     
+784    ' OT</w>'                                0        subword     
+785    'AT</w>'                                 0        subword     
+786    ' AT</w>'                                0        subword     
+787    'LL</w>'                                 0        subword     
+788    ' LL</w>'                                0        subword     
+789    'OW</w>'                                 0        subword     
+790    'HE</w>'                                 0        subword     
+791    ' HE</w>'                                0        subword     
+792    '0HE</w>'                                0        subword     
+793    '00HE</w>'                               0        subword     
+794    '000HE</w>'                              0        subword     
+795    '1000HE</w>'                             0        subword     
+796    ' 1000HE</w>'                            0        subword     
+797    'SO</w>'                                 0        subword     
+798    ' SO</w>'                                0        subword     
+799    'LY</w>'                                 0        subword     
+800    'RE</w>'                                 0        subword     
+801    ' RE</w>'                                0        subword     
+802    'ND</w>'                                 0        subword     
+803    ' ND</w>'                                0        subword     
+804    '2ND</w>'                                0        subword     
+805    ' 2ND</w>'                               0        subword     
+806    'ST</w>'                                 0        subword     
+807    ' ST</w>'                                0        subword     
+808    '1ST</w>'                                0        subword     
+809    ' 1ST</w>'                               0        subword     
+810    'TV</w>'                                 0        subword     
+811    ' TV</w>'                                0        subword     
+812    'OO</w>'                                 0        subword     
+813    ' OO</w>'                                0        subword     
+814    'THE</w>'                                0        subword     
+815    ' THE</w>'                               0        subword     
+816    'IN</w>'                                 0        subword     
+817    ' IN</w>'                                0        subword     
+818    'MG</w>'                                 0        subword     
+819    ' MG</w>'                                0        subword     
+820    'ES</w>'                                 0        subword     
+821    'OVE</w>'                                0        subword     
+822    'OMG</w>'                                0        subword     
+823    ' OMG</w>'                               0        subword     
+824    'IT</w>'                                 0        subword     
+825    ' IT</w>'                                0        subword     
+826    'ON</w>'                                 0        subword     
+827    ' ON</w>'                                0        subword     
+828    'LOVE</w>'                               0        subword     
+829    ' LOVE</w>'                              0        subword     
+830    'IS</w>'                                 0        subword     
+831    ' IS</w>'                                0        subword     
+832    'TO</w>'                                 0        subword     
+833    ' TO</w>'                                0        subword     
+834    'X</w>'                                  0        subword     
+835    ' X</w>'                                 0        subword     
+836    '0X</w>'                                 0        subword     
+837    '90X</w>'                                0        subword     
+838    'P90X</w>'                               0        subword     
+839    ' P90X</w>'                              0        subword     
+840    '2X</w>'                                 0        subword     
+841    ' 2X</w>'                                0        subword     
+842    '3X</w>'                                 0        subword     
+843    ' 3X</w>'                                0        subword     
+844    '7X</w>'                                 0        subword     
+845    'A7X</w>'                                0        subword     
+846    ' A7X</w>'                               0        subword     
+847    'Ð</w>'                                  0        subword     
+848    ' Ð</w>'                                 0        subword     
+849    '2Ð</w>'                                 0        subword     
+850    '4Ð</w>'                                 0        subword     
+851    '⁄4Ð</w>'                                0        subword     
+852    '⁄2Ð</w>'                                0        subword     
+853    '1⁄2Ð</w>'                               0        subword     
+854    'Ð1⁄2Ð</w>'                              0        subword     
+855    ' Ð1⁄2Ð</w>'                             0        subword     
+856    '3⁄4Ð</w>'                               0        subword     
+857    'Ð3⁄4Ð</w>'                              0        subword     
+858    ' Ð3⁄4Ð</w>'                             0        subword     
+859    'Ð2Ð</w>'                                0        subword     
+860    ' Ð2Ð</w>'                               0        subword     
+861    '1⁄4Ð</w>'                               0        subword     
+862    'Ð1⁄4Ð</w>'                              0        subword     
+863    ' Ð1⁄4Ð</w>'                             0        subword     
+864    '4Ð1⁄2Ð</w>'                             0        subword     
+865    '⁄4Ð1⁄2Ð</w>'                            0        subword     
+866    '3⁄4Ð1⁄2Ð</w>'                           0        subword     
+867    'Ð3⁄4Ð1⁄2Ð</w>'                          0        subword     
+868    ' Ð3⁄4Ð1⁄2Ð</w>'                         0        subword     
+869    '3Ð</w>'                                 0        subword     
+870    'Ð3Ð</w>'                                0        subword     
+871    ' Ð3Ð</w>'                               0        subword     
+872    '°Ð1⁄2Ð</w>'                             0        subword     
+873    'Ð°Ð1⁄2Ð</w>'                            0        subword     
+874    '¿Ð3⁄4Ð</w>'                             0        subword     
+875    'Ð¿Ð3⁄4Ð</w>'                            0        subword     
+876    ' Ð¿Ð3⁄4Ð</w>'                           0        subword     
+877    '\x80Ð3⁄4Ð</w>'                          0        subword     
+878    'Ñ\x80Ð3⁄4Ð</w>'                         0        subword     
+879    ' Ñ\x80Ð3⁄4Ð</w>'                        0        subword     
+880    '°Ð2Ð</w>'                               0        subword     
+881    'Ð°Ð2Ð</w>'                              0        subword     
+882    '4Ð3Ð</w>'                               0        subword     
+883    '⁄4Ð3Ð</w>'                              0        subword     
+884    '3⁄4Ð3Ð</w>'                             0        subword     
+885    'Ð3⁄4Ð3Ð</w>'                            0        subword     
+886    '̧Ð1⁄4Ð</w>'                             0        subword     
+887    ' ̧Ð1⁄4Ð</w>'                            0        subword     
+888    '¿Ñ\x80Ð3⁄4Ð</w>'                        0        subword     
+889    'Ð¿Ñ\x80Ð3⁄4Ð</w>'                       0        subword     
+890    ' Ð¿Ñ\x80Ð3⁄4Ð</w>'                      0        subword     
+891    '̧Ð1⁄2Ð</w>'                             0        subword     
+892    ' ̧Ð1⁄2Ð</w>'                            0        subword     
+893    '¿Ð3⁄4Ð1⁄2Ð</w>'                         0        subword     
+894    'Ð¿Ð3⁄4Ð1⁄2Ð</w>'                        0        subword     
+895    ' Ð¿Ð3⁄4Ð1⁄2Ð</w>'                       0        subword     
+896    '\x80Ð1⁄4Ð</w>'                          0        subword     
+897    'Ñ\x80Ð1⁄4Ð</w>'                         0        subword     
+898    '4Ñ\x80Ð1⁄4Ð</w>'                        0        subword     
+899    '⁄4Ñ\x80Ð1⁄4Ð</w>'                       0        subword     
+900    '3⁄4Ñ\x80Ð1⁄4Ð</w>'                      0        subword     
+901    'Ð3⁄4Ñ\x80Ð1⁄4Ð</w>'                     0        subword     
+902    '2Ð°Ð1⁄2Ð</w>'                           0        subword     
+903    'Ð2Ð°Ð1⁄2Ð</w>'                          0        subword     
+904    '4Ð2Ð°Ð1⁄2Ð</w>'                         0        subword     
+905    '⁄4Ð2Ð°Ð1⁄2Ð</w>'                        0        subword     
+906    '3⁄4Ð2Ð°Ð1⁄2Ð</w>'                       0        subword     
+907    'Ð3⁄4Ð2Ð°Ð1⁄2Ð</w>'                      0        subword     
+908    '́Ð1⁄2Ð</w>'                             0        subword     
+909    ' ́Ð1⁄2Ð</w>'                            0        subword     
+910    '1Ð</w>'                                 0        subword     
+911    'Ð1Ð</w>'                                0        subword     
+912    ' Ð1Ð</w>'                               0        subword     
+913    'oÐ3⁄4Ð1⁄2Ð</w>'                         0        subword     
+914    'ÐoÐ3⁄4Ð1⁄2Ð</w>'                        0        subword     
+915    'μÐoÐ3⁄4Ð1⁄2Ð</w>'                       0        subword     
+916    'ÐμÐoÐ3⁄4Ð1⁄2Ð</w>'                      0        subword     
+917    ' ÐμÐoÐ3⁄4Ð1⁄2Ð</w>'                     0        subword     
+918    '\x82Ð°Ð2Ð</w>'                          0        subword     
+919    'Ñ\x82Ð°Ð2Ð</w>'                         0        subword     
+920    ' Ñ\x82Ð°Ð2Ð</w>'                        0        subword     
+921    '2Ð3⁄4Ð3Ð</w>'                           0        subword     
+922    '⁄2Ð3⁄4Ð3Ð</w>'                          0        subword     
+923    '1⁄2Ð3⁄4Ð3Ð</w>'                         0        subword     
+924    'Ð1⁄2Ð3⁄4Ð3Ð</w>'                        0        subword     
+925    '4Ð1⁄2Ð3⁄4Ð3Ð</w>'                       0        subword     
+926    '⁄4Ð1⁄2Ð3⁄4Ð3Ð</w>'                      0        subword     
+927    '1⁄4Ð1⁄2Ð3⁄4Ð3Ð</w>'                     0        subword     
+928    'Ð1⁄4Ð1⁄2Ð3⁄4Ð3Ð</w>'                    0        subword     
+929    ' Ð1⁄4Ð1⁄2Ð3⁄4Ð3Ð</w>'                   0        subword     
+930    '́Ð°Ð1⁄2Ð</w>'                           0        subword     
+931    ' ́Ð°Ð1⁄2Ð</w>'                          0        subword     
+932    '3Ð3⁄4Ð</w>'                             0        subword     
+933    'Ð3Ð3⁄4Ð</w>'                            0        subword     
+934    'μÐ3Ð3⁄4Ð</w>'                           0        subword     
+935    'ÐμÐ3Ð3⁄4Ð</w>'                          0        subword     
+936    ' ÐμÐ3Ð3⁄4Ð</w>'                         0        subword     
+937    'oÐ2Ð</w>'                               0        subword     
+938    'ÐoÐ2Ð</w>'                              0        subword     
+939    ' ÐoÐ2Ð</w>'                             0        subword     
+940    'oÐ3⁄4Ð3Ð</w>'                           0        subword     
+941    'ÐoÐ3⁄4Ð3Ð</w>'                          0        subword     
+942    ' ÐoÐ3⁄4Ð3Ð</w>'                         0        subword     
+943    '°Ð1⁄4Ð</w>'                             0        subword     
+944    'Ð°Ð1⁄4Ð</w>'                            0        subword     
+945    '\x86Ð°Ð1⁄4Ð</w>'                        0        subword     
+946    'Ñ\x86Ð°Ð1⁄4Ð</w>'                       0        subword     
+947    '̧Ñ\x86Ð°Ð1⁄4Ð</w>'                      0        subword     
+948    ' ̧Ñ\x86Ð°Ð1⁄4Ð</w>'                     0        subword     
+949    '\x84Ð3⁄4Ñ\x80Ð1⁄4Ð</w>'                 0        subword     
+950    'Ñ\x84Ð3⁄4Ñ\x80Ð1⁄4Ð</w>'                0        subword     
+951    '°Ñ\x84Ð3⁄4Ñ\x80Ð1⁄4Ð</w>'               0        subword     
+952    'Ð°Ñ\x84Ð3⁄4Ñ\x80Ð1⁄4Ð</w>'              0        subword     
+953    '·Ð°Ñ\x84Ð3⁄4Ñ\x80Ð1⁄4Ð</w>'             0        subword     
+954    'Ð·Ð°Ñ\x84Ð3⁄4Ñ\x80Ð1⁄4Ð</w>'            0        subword     
+955    ' Ð·Ð°Ñ\x84Ð3⁄4Ñ\x80Ð1⁄4Ð</w>'           0        subword     
+956    '3Ð°Ð1⁄2Ð</w>'                           0        subword     
+957    'Ð3Ð°Ð1⁄2Ð</w>'                          0        subword     
+958    '\x80Ð3Ð°Ð1⁄2Ð</w>'                      0        subword     
+959    'Ñ\x80Ð3Ð°Ð1⁄2Ð</w>'                     0        subword     
+960    '4Ñ\x80Ð3Ð°Ð1⁄2Ð</w>'                    0        subword     
+961    '⁄4Ñ\x80Ð3Ð°Ð1⁄2Ð</w>'                   0        subword     
+962    '3⁄4Ñ\x80Ð3Ð°Ð1⁄2Ð</w>'                  0        subword     
+963    'Ð3⁄4Ñ\x80Ð3Ð°Ð1⁄2Ð</w>'                 0        subword     
+964    ' Ð3⁄4Ñ\x80Ð3Ð°Ð1⁄2Ð</w>'                0        subword     
+965    '·Ð3⁄4Ð2Ð°Ð1⁄2Ð</w>'                     0        subword     
+966    'Ð·Ð3⁄4Ð2Ð°Ð1⁄2Ð</w>'                    0        subword     
+967    '\x8cÐ·Ð3⁄4Ð2Ð°Ð1⁄2Ð</w>'                0        subword     
+968    'Ñ\x8cÐ·Ð3⁄4Ð2Ð°Ð1⁄2Ð</w>'               0        subword     
+969    '»Ñ\x8cÐ·Ð3⁄4Ð2Ð°Ð1⁄2Ð</w>'              0        subword     
+970    'Ð»Ñ\x8cÐ·Ð3⁄4Ð2Ð°Ð1⁄2Ð</w>'             0        subword     
+971    '4Ð»Ñ\x8cÐ·Ð3⁄4Ð2Ð°Ð1⁄2Ð</w>'            0        subword     
+972    '⁄4Ð»Ñ\x8cÐ·Ð3⁄4Ð2Ð°Ð1⁄2Ð</w>'           0        subword     
+973    '3⁄4Ð»Ñ\x8cÐ·Ð3⁄4Ð2Ð°Ð1⁄2Ð</w>'          0        subword     
+974    'Ð3⁄4Ð»Ñ\x8cÐ·Ð3⁄4Ð2Ð°Ð1⁄2Ð</w>'         0        subword     
+975    '¿Ð3⁄4Ð»Ñ\x8cÐ·Ð3⁄4Ð2Ð°Ð1⁄2Ð</w>'        0        subword     
+976    'Ð¿Ð3⁄4Ð»Ñ\x8cÐ·Ð3⁄4Ð2Ð°Ð1⁄2Ð</w>'       0        subword     
+977    ' Ð¿Ð3⁄4Ð»Ñ\x8cÐ·Ð3⁄4Ð2Ð°Ð1⁄2Ð</w>'      0        subword     
+978    '4Ð3⁄4Ð</w>'                             0        subword     
+979    '⁄4Ð3⁄4Ð</w>'                            0        subword     
+980    '1⁄4Ð3⁄4Ð</w>'                           0        subword     
+981    'Ð1⁄4Ð3⁄4Ð</w>'                          0        subword     
+982    ' Ð1⁄4Ð3⁄4Ð</w>'                         0        subword     
+983    '2Ð3⁄4Ð</w>'                             0        subword     
+984    'Ð2Ð3⁄4Ð</w>'                            0        subword     
+985    ' Ð2Ð3⁄4Ð</w>'                           0        subword     
+986    '·Ð1⁄2Ð</w>'                             0        subword     
+987    'Ð·Ð1⁄2Ð</w>'                            0        subword     
+988    '°Ð·Ð1⁄2Ð</w>'                           0        subword     
+989    'Ð°Ð·Ð1⁄2Ð</w>'                          0        subword     
+990    '\x80Ð°Ð·Ð1⁄2Ð</w>'                      0        subword     
+991    'Ñ\x80Ð°Ð·Ð1⁄2Ð</w>'                     0        subword     
+992    ' Ñ\x80Ð°Ð·Ð1⁄2Ð</w>'                    0        subword     
+993    'oÐ3⁄4Ñ\x80Ð1⁄4Ð</w>'                    0        subword     
+994    'ÐoÐ3⁄4Ñ\x80Ð1⁄4Ð</w>'                   0        subword     
+995    ' ÐoÐ3⁄4Ñ\x80Ð1⁄4Ð</w>'                  0        subword     
+996    '́Ð2Ð</w>'                               0        subword     
+997    ' ́Ð2Ð</w>'                              0        subword     
+998    '\x80Ð3⁄4Ð2Ð°Ð1⁄2Ð</w>'                  0        subword     
+999    'Ñ\x80Ð3⁄4Ð2Ð°Ð1⁄2Ð</w>'                 0        subword     
