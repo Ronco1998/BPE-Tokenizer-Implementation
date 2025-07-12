@@ -35,15 +35,15 @@ except AttributeError:
 
 # Domain-specific preprocessing patterns
 import re
-_TW_USER = re.compile(r"@[A-Za-z0-9_]{1,15}")
-_TW_URL = re.compile(r"https?://\S+")
-_HASHTAG_RE = re.compile(r"#\w[\w\d_]*")
-_NEWS_DATE = re.compile(r"\b\d{4}-\d{2}-\d{2}\b")
-_PUNCT_PAD = re.compile(r"([,.;:!?()\"'])")
+_TW_USER = re.compile(r"@[A-Za-z0-9_]{1,15}") # Twitter usernames
+_TW_URL = re.compile(r"https?://\S+") # Twitter URLs
+_HASHTAG_RE = re.compile(r"#\w[\w\d_]*") # Twitter hashtags
+_NEWS_DATE = re.compile(r"\b\d{4}-\d{2}-\d{2}\b") # News date
+_PUNCT_PAD = re.compile(r"([,.;:!?()\"'])") # Punctuation padding
 _EMOJI = re.compile(
     r"[\U0001F300-\U0001F5FF]|[\U0001F600-\U0001F64F]|[\U0001F680-\U0001F6FF]|"
     r"[\u2600-\u26FF]|[\u2700-\u27BF]"
-)
+) # Emoji patterns
 
 # Unicode normalization table
 UNICODE_PUNCT_TABLE = str.maketrans({
@@ -115,7 +115,7 @@ class NERBPETokenizer(BaseTokenizer):
                     self._add_token(token)
         
         print(f"Added preprocessing tokens for domain '{self.domain}': "
-              f"{self.PREPROCESSING_TOKENS.get(self.domain, [])} + {self.PREPROCESSING_TOKENS['generic']}")
+              f"{self.PREPROCESSING_TOKENS.get(self.domain, self.PREPROCESSING_TOKENS['generic'])}")
 
     def train(self, texts: List[str], *, char_limit: int = 256, bigram_quota: float = 0.3, 
               min_word_score: float = 15.0, min_bigram_score: float = 30.0) -> None:
@@ -507,6 +507,9 @@ class NERBPETokenizer(BaseTokenizer):
                 ner_bonus += 5
             elif joined == ' ':
                 ner_bonus += 10
+            # Reduce score for punctuation characters
+            elif not joined.isalnum():
+                ner_bonus -= 5
         
         # Word tokens
         elif features['word_count'] == 1:
@@ -547,6 +550,14 @@ class NERBPETokenizer(BaseTokenizer):
             ner_bonus += 10
         if features['has_special_chars']:
             ner_bonus += 8
+        
+        # Penalties for mostly punctuation tokens
+        if features['length'] > 1:
+            punct_ratio = sum(1 for c in joined if not c.isalnum() and c != ' ') / features['length']
+            if punct_ratio > 0.5:  # More than 50% punctuation
+                ner_bonus -= 15
+            elif punct_ratio > 0.3:  # More than 30% punctuation
+                ner_bonus -= 8
         
         return base_score + ner_bonus
 
@@ -598,31 +609,31 @@ class NERBPETokenizer(BaseTokenizer):
 
     def _pre_twitter(self, text: str) -> str:
         """Preprocess Twitter text."""
-        text = unicodedata.normalize("NFKC", text)
+        # text = unicodedata.normalize("NFKC", text)
         text = unescape(text)
         text = _TW_URL.sub("<URL>", text)
         text = _TW_USER.sub("<USER>", text)
         text = _HASHTAG_RE.sub("<HASHTAG>", text)
         text = _EMOJI.sub("<EMOJI>", text)
-        text = text.translate(UNICODE_PUNCT_TABLE)
+        # text = text.translate(UNICODE_PUNCT_TABLE)
         text = _PUNCT_PAD.sub(r" \1 ", text)
         return " ".join(text.split())
 
     def _pre_headline(self, text: str) -> str:
         """Preprocess headline text."""
-        text = unicodedata.normalize("NFKC", text)
+        # text = unicodedata.normalize("NFKC", text)
         text = _NEWS_DATE.sub("<DATE>", text)
         text = _EMOJI.sub("<EMOJI>", text)
-        text = text.translate(UNICODE_PUNCT_TABLE)
+        # text = text.translate(UNICODE_PUNCT_TABLE)
         text = _PUNCT_PAD.sub(r" \1 ", text)
         return " ".join(text.split())
 
     def _pre_generic(self, text: str) -> str:
         """Preprocess generic text."""
-        text = unicodedata.normalize("NFKC", text)
+        # text = unicodedata.normalize("NFKC", text)
         text = unescape(text)
         text = _EMOJI.sub("<EMOJI>", text)
-        text = text.translate(UNICODE_PUNCT_TABLE)
+        # text = text.translate(UNICODE_PUNCT_TABLE)
         text = _PUNCT_PAD.sub(r" \1 ", text)
         return " ".join(text.split())
 
@@ -772,7 +783,7 @@ class NERBPETokenizer(BaseTokenizer):
         
         # Generate analysis report
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        filename = f"c:\\Users\\ronic\\VS_Coding\\NLP\\HW\\HW2\\token_analysis_{timestamp}.txt"
+        filename = f"token_analysis_{timestamp}.txt"
         
         with open(filename, 'w', encoding='utf-8') as f:
             self._write_token_analysis_report(f, token_categories, token_usage, texts)

@@ -1,0 +1,1164 @@
+================================================================================
+NER-AWARE BPE TOKENIZER - TOKEN ANALYSIS REPORT
+================================================================================
+Generated: 2025-07-12 18:39:13
+Domain: twitter
+Vocabulary Size: 1000
+Training Corpus Size: 1280000 texts
+
+PREPROCESSING TOKENS
+------------------------------
+Domain 'twitter' tokens: ['<URL>', '<USER>', '<HASHTAG>', '<EMOJI>']
+Generic tokens: ['<EMOJI>']
+
+SUMMARY STATISTICS
+----------------------------------------
+Special        :     2 tokens (  0.2%)
+Preprocessing  :     3 tokens (  0.3%)
+Characters     :   100 tokens ( 10.0%)
+Words          :     0 tokens (  0.0%)
+Bigrams        :     0 tokens (  0.0%)
+Subwords       :     0 tokens (  0.0%)
+Merged_chars   :     0 tokens (  0.0%)
+Total          :  1000 tokens
+
+TOP 50 MOST FREQUENT TOKENS
+----------------------------------------
+Rank  Token                          Freq       Type           
+-----------------------------------------------------------------
+1     ' '                            76470      special        
+2     'e'                            25471      character      
+3     'o'                            21492      character      
+4     't'                            21099      character      
+5     'a'                            18882      character      
+6     'n'                            15898      character      
+7     'i'                            15836      character      
+8     's'                            13985      character      
+9     'h'                            11721      character      
+10    'r'                            11632      character      
+11    'l'                            10192      character      
+12    'd'                            8551       character      
+13    'u'                            7647       character      
+14    'y'                            7358       character      
+15    'm'                            7198       character      
+16    'g'                            6523       character      
+17    '.'                            6085       character      
+18    'w'                            5936       character      
+19    'c'                            5135       character      
+20    'f'                            4184       character      
+21    'p'                            3898       character      
+22    'b'                            3630       character      
+23    'k'                            3510       character      
+24    '!'                            2835       character      
+25    'I'                            2602       character      
+26    '<USER>'                       2512       preprocessing  
+27    'v'                            2366       character      
+28    "'"                            2093       character      
+29    ','                            1448       character      
+30    'T'                            1005       character      
+31    'A'                            822        character      
+32    'S'                            822        character      
+33    '?'                            817        character      
+34    'O'                            758        character      
+35    'M'                            674        character      
+36    'H'                            660        character      
+37    'j'                            594        character      
+38    'L'                            563        character      
+39    'x'                            552        character      
+40    'N'                            540        character      
+41    'E'                            529        character      
+42    '-'                            527        character      
+43    'W'                            517        character      
+44    'B'                            470        character      
+45    'G'                            461        character      
+46    'C'                            430        character      
+47    'D'                            424        character      
+48    'Y'                            361        character      
+49    'R'                            332        character      
+50    'P'                            310        character      
+
+SPECIAL TOKENS
+--------------------------------------------------
+Count: 2
+Top 20 by frequency:
+Rank  Token                               Frequency 
+-------------------------------------------------------
+1     ' '                                 76470     
+2     '[UNK]'                             163       
+
+PREPROCESSING TOKENS
+--------------------------------------------------
+Count: 3
+Top 20 by frequency:
+Rank  Token                               Frequency 
+-------------------------------------------------------
+1     '<USER>'                            2512      
+2     '<URL>'                             230       
+3     '<HASHTAG>'                         173       
+
+CHARACTERS TOKENS
+--------------------------------------------------
+Count: 100
+Top 20 by frequency:
+Rank  Token                               Frequency 
+-------------------------------------------------------
+1     'e'                                 25471     
+2     'o'                                 21492     
+3     't'                                 21099     
+4     'a'                                 18882     
+5     'n'                                 15898     
+6     'i'                                 15836     
+7     's'                                 13985     
+8     'h'                                 11721     
+9     'r'                                 11632     
+10    'l'                                 10192     
+11    'd'                                 8551      
+12    'u'                                 7647      
+13    'y'                                 7358      
+14    'm'                                 7198      
+15    'g'                                 6523      
+16    '.'                                 6085      
+17    'w'                                 5936      
+18    'c'                                 5135      
+19    'f'                                 4184      
+20    'p'                                 3898      
+
+NER-SPECIFIC ANALYSIS
+----------------------------------------
+Capitalized tokens: 28
+Top 15 capitalized tokens:
+   1. 'I' (freq: 2602)
+   2. 'T' (freq: 1005)
+   3. 'A' (freq: 822)
+   4. 'S' (freq: 822)
+   5. 'O' (freq: 758)
+   6. 'M' (freq: 674)
+   7. 'H' (freq: 660)
+   8. 'L' (freq: 563)
+   9. 'N' (freq: 540)
+  10. 'E' (freq: 529)
+  11. 'W' (freq: 517)
+  12. 'B' (freq: 470)
+  13. 'G' (freq: 461)
+  14. 'C' (freq: 430)
+  15. 'D' (freq: 424)
+
+BPE MERGE ANALYSIS
+------------------------------
+Total BPE merges performed: 624
+Latest 10 BPE merges:
+  ' Institute' + '</w>' -> ' Institute</w>' (freq: 0)
+  ' Institut' + 'e' -> ' Institute' (freq: 0)
+  ' Institu' + 't' -> ' Institut' (freq: 0)
+  ' Instit' + 'u' -> ' Institu' (freq: 0)
+  ' Insti' + 't' -> ' Instit' (freq: 0)
+  ' Inst' + 'i' -> ' Insti' (freq: 0)
+  ' Introduction' + '</w>' -> ' Introduction</w>' (freq: 0)
+  ' Introductio' + 'n' -> ' Introduction' (freq: 0)
+  ' Introducti' + 'o' -> ' Introductio' (freq: 0)
+  ' Introduct' + 'i' -> ' Introducti' (freq: 0)
+
+COMPLETE TOKEN VOCABULARY
+--------------------------------------------------
+ID     Token                                    Freq     Type        
+----------------------------------------------------------------------
+0      '[PAD]'                                  0        special     
+1      '[UNK]'                                  163      special     
+2      '[BOS]'                                  0        special     
+3      '[EOS]'                                  0        special     
+4      ' '                                      76470    special     
+5      '<URL>'                                  230      preprocessing
+6      '<USER>'                                 2512     preprocessing
+7      '<HASHTAG>'                              173      preprocessing
+8      '<EMOJI>'                                0        preprocessing
+9      'e'                                      25471    character   
+10     'o'                                      21492    character   
+11     't'                                      21099    character   
+12     'a'                                      18882    character   
+13     'n'                                      15898    character   
+14     'i'                                      15836    character   
+15     's'                                      13985    character   
+16     'h'                                      11721    character   
+17     'r'                                      11632    character   
+18     'l'                                      10192    character   
+19     'y'                                      7358     character   
+20     'd'                                      8551     character   
+21     'u'                                      7647     character   
+22     'g'                                      6523     character   
+23     'm'                                      7198     character   
+24     '.'                                      6085     character   
+25     'w'                                      5936     character   
+26     'c'                                      5135     character   
+27     'f'                                      4184     character   
+28     'S'                                      822      character   
+29     'p'                                      3898     character   
+30     'U'                                      216      character   
+31     '<'                                      75       character   
+32     'R'                                      332      character   
+33     '>'                                      31       character   
+34     'k'                                      3510     character   
+35     'b'                                      3630     character   
+36     'E'                                      529      character   
+37     'v'                                      2366     character   
+38     '!'                                      2835     character   
+39     'I'                                      2602     character   
+40     "'"                                      2093     character   
+41     'T'                                      1005     character   
+42     ','                                      1448     character   
+43     'L'                                      563      character   
+44     'H'                                      660      character   
+45     'A'                                      822      character   
+46     'O'                                      758      character   
+47     '?'                                      817      character   
+48     'G'                                      461      character   
+49     '-'                                      527      character   
+50     'W'                                      517      character   
+51     'M'                                      674      character   
+52     'D'                                      424      character   
+53     '1'                                      236      character   
+54     'x'                                      552      character   
+55     '0'                                      249      character   
+56     'j'                                      594      character   
+57     'B'                                      470      character   
+58     'N'                                      540      character   
+59     'Y'                                      361      character   
+60     'F'                                      288      character   
+61     'P'                                      310      character   
+62     'C'                                      430      character   
+63     '2'                                      274      character   
+64     '3'                                      217      character   
+65     '"'                                      204      character   
+66     'J'                                      242      character   
+67     'K'                                      160      character   
+68     'X'                                      61       character   
+69     '9'                                      65       character   
+70     ':'                                      202      character   
+71     '&'                                      136      character   
+72     'z'                                      249      character   
+73     '6'                                      50       character   
+74     '*'                                      96       character   
+75     'q'                                      115      character   
+76     '4'                                      118      character   
+77     '('                                      119      character   
+78     ')'                                      148      character   
+79     ';'                                      70       character   
+80     '~'                                      32       character   
+81     '5'                                      96       character   
+82     'Z'                                      27       character   
+83     'Q'                                      19       character   
+84     '8'                                      71       character   
+85     'V'                                      152      character   
+86     '#'                                      14       character   
+87     '$'                                      19       character   
+88     '+'                                      23       character   
+89     '/'                                      133      character   
+90     '7'                                      52       character   
+91     '='                                      22       character   
+92     '@'                                      28       character   
+93     '\\'                                     4        character   
+94     ']'                                      9        character   
+95     '^'                                      11       character   
+96     '`'                                      9        character   
+97     '|'                                      4        character   
+98     '¡'                                      3        character   
+99     '£'                                      5        character   
+100    '©'                                      4        character   
+101    '³'                                      4        character   
+102    '´'                                      8        character   
+103    '¼'                                      4        character   
+104    '½'                                      18       character   
+105    '¿'                                      18       character   
+106    'Â'                                      11       character   
+107    'Ã'                                      8        character   
+108    'ï'                                      15       character   
+109    'Get Â£6'                                0        bigram      
+110    '*Jessi Ann*<3'                          0        bigram      
+111    '<3Team Edward<3'                        0        bigram      
+112    'T-Mobile G1'                            0        bigram      
+113    'Airbus A330-200'                        0        bigram      
+114    'Alton F-650'                            0        bigram      
+115    'F-22 Raptor'                            0        bigram      
+116    'Mcfly 7/June/2009'                      0        bigram      
+117    'Olympus E-P1'                           0        bigram      
+118    'Only Â£1'                               0        bigram      
+119    'Only Â£5'                               0        bigram      
+120    '-Kynitekia 3Rev20'                      0        bigram      
+121    '-The Beatles<3'                         0        bigram      
+122    '1-Business Intelligence'                0        bigram      
+123    '1-Page Strategic'                       0        bigram      
+124    '1-Spandau Ballet[8]'                    0        bigram      
+125    '10-Ball Championships'                  0        bigram      
+126    '10-Year-Old Girl'                       0        bigram      
+127    '100%Swedish I'                          0        bigram      
+128    '104-Year-Old Who'                       0        bigram      
+129    '18K+ Votes'                             0        bigram      
+130    '2-Disc Special'                         0        bigram      
+131    '2/3Weeks Lef'                           0        bigram      
+132    '20-Twenty Cricket'                      0        bigram      
+133    '22-Secret Life'                         0        bigram      
+134    '24Hr M&S'                               0        bigram      
+135    '2Pac- Just'                             0        bigram      
+136    '3-D Maybe'                              0        bigram      
+137    '3-D Movie'                              0        bigram      
+138    '3D T-Shirts'                            0        bigram      
+139    '3Doors Down-'                           0        bigram      
+140    '3G Sâ\x83£'                             0        bigram      
+141    '4-Day Week'                             0        bigram      
+142    '4-Letter Words'                         0        bigram      
+143    '4-Toy Story'                            0        bigram      
+144    '40-Year-Old Virgin'                     0        bigram      
+145    '5-Star Press'                           0        bigram      
+146    '7-Aaaand I'                             0        bigram      
+147    '8-Day Weekend'                          0        bigram      
+148    '9-Mid Nyc'                              0        bigram      
+149    '90210/The Hills'                        0        bigram      
+150    '<3<3<3Just Woke'                        0        bigram      
+151    '<3Jessica Leigh'                        0        bigram      
+152    '<3Matt<3 Ashton'                        0        bigram      
+153    '<3Pot Pie'                              0        bigram      
+154    'A Post-2'                               0        bigram      
+155    'Agree Â£1'                              0        bigram      
+156    'Air-France A330'                        0        bigram      
+157    'Am S-0-0-0'                             0        bigram      
+158    'An F/1'                                 0        bigram      
+159    'April 2009-June'                        0        bigram      
+160    'Ares 1-X'                               0        bigram      
+161    'Argue-1 Kuhn-0'                         0        bigram      
+162    'Asher Roth<3333'                        0        bigram      
+163    'Audition-2 Days'                        0        bigram      
+164    'Awards<3 Mrs'                           0        bigram      
+165    'Awh<3 I'                                0        bigram      
+166    'Awww<3 I'                               0        bigram      
+167    'Ayo Hi-5'                               0        bigram      
+168    'Because K-9'                            0        bigram      
+169    'Beta-2 Released'                        0        bigram      
+170    'Blink-182/Panic/Fall Out'               0        bigram      
+171    'Bones Season2&3'                        0        bigram      
+172    'British Formula-1'                      0        bigram      
+173    'Brooklyn 1/2Marathon'                   0        bigram      
+174    'Brothers 3-D'                           0        bigram      
+175    'Bï¿½09 Hat'                             0        bigram      
+176    'C&S Nï¿½88'                             0        bigram      
+177    'C-0] No'                                0        bigram      
+178    'Canon 24-70L'                           0        bigram      
+179    'Ch4+1 Because'                          0        bigram      
+180    'Commodore C-64'                         0        bigram      
+181    'Coraline 3-D'                           0        bigram      
+182    'D-5 Before'                             0        bigram      
+183    'Dead 2/Army'                            0        bigram      
+184    'Dell Mini-10'                           0        bigram      
+185    'Digital 3-D'                            0        bigram      
+186    'Done That~Grateful4Jesus'               0        bigram      
+187    'Dual-Core-Processor T4200'              0        bigram      
+188    'E-3 Sony'                               0        bigram      
+189    'E-P1 Should'                            0        bigram      
+190    'Enjoy C1/J1'                            0        bigram      
+191    'F-14 Tomcat'                            0        bigram      
+192    'Fantasy X-12'                           0        bigram      
+193    'Feb 2007-June'                          0        bigram      
+194    'Finished Catch-22'                      0        bigram      
+195    'Flickr/Youtube/3D Flash'                0        bigram      
+196    'Flu H1N1-Canada'                        0        bigram      
+197    'For Â£40'                               0        bigram      
+198    'For Â£55'                               0        bigram      
+199    'Formula-1 Grand'                        0        bigram      
+200    'Foxtel 20-Twenty'                       0        bigram      
+201    'From Jupiter<3'                         0        bigram      
+202    'Game Baby<33'                           0        bigram      
+203    'Gibson J-45'                            0        bigram      
+204    'Go On<3'                                0        bigram      
+205    'Goodluckk<33 Cause'                     0        bigram      
+206    'Goodnight Loves<3'                      0        bigram      
+207    'Goodnight Tweeters<3'                   0        bigram      
+208    'Goodnight/Goodmorning Ily<33'           0        bigram      
+209    'Grades K-5'                             0        bigram      
+210    'Green Day-86'                           0        bigram      
+211    'H1 West/Ewa'                            0        bigram      
+212    'H1N1 -Highly'                           0        bigram      
+213    'Had $8K'                                0        bigram      
+214    'Haha<3 Then'                            0        bigram      
+215    'Hallooooooo~ X3'                        0        bigram      
+216    'Hasselblad 500C/M'                      0        bigram      
+217    'Heroes S1E16-'                          0        bigram      
+218    'Hey Baby<3'                             0        bigram      
+219    'Hey<3 Mrs'                              0        bigram      
+220    'Hi-5 Friend'                            0        bigram      
+221    'Honor Society<3'                        0        bigram      
+222    'I-25 Next'                              0        bigram      
+223    'I-45 South'                             0        bigram      
+224    'I<3 Lakers'                             0        bigram      
+225    'Idlis+1 Vada+'                          0        bigram      
+226    'In 3-D'                                 0        bigram      
+227    'In Love<33'                             0        bigram      
+228    'Ineffable3-Ruiz Family'                 0        bigram      
+229    'J-5 Suited'                             0        bigram      
+230    'Jake_Rupe_08 I'                         0        bigram      
+231    'Jonas Brothers<33'                      0        bigram      
+232    'Julito77 -You'                          0        bigram      
+233    'July 22-August'                         0        bigram      
+234    'July 31-Aug'                            0        bigram      
+235    'June 18-July'                           0        bigram      
+236    'June 22-Secret'                         0        bigram      
+237    'June 29-July'                           0        bigram      
+238    'June 4-June'                            0        bigram      
+239    'June/26 Is'                             0        bigram      
+240    'K-1 Visa'                               0        bigram      
+241    'Kris Allen<3333333'                     0        bigram      
+242    'Lakers<3 Wonnnn'                        0        bigram      
+243    'Leo I<3Him'                             0        bigram      
+244    'Leonardo Dicaprio<3'                    0        bigram      
+245    'Lewis=10 Heikki=13'                     0        bigram      
+246    'Linzi Caie<333333'                      0        bigram      
+247    'Listening 2-I'                          0        bigram      
+248    'Love<33 Baby'                           0        bigram      
+249    'Lovee Yaaa<3'                           0        bigram      
+250    'May 19-June'                            0        bigram      
+251    'May 21-June'                            0        bigram      
+252    'May 29-June'                            0        bigram      
+253    'Missing T-1'                            0        bigram      
+254    'Morocco D-10'                           0        bigram      
+255    'Muppet*Vision 3-D'                      0        bigram      
+256    'Musical3/Hannah Montana'                0        bigram      
+257    'Mustang Mach-1'                         0        bigram      
+258    'My Â£35'                                0        bigram      
+259    'My Â£400'                               0        bigram      
+260    'Má»¹ Ä'                                 0        bigram      
+261    'Nelson Nguyen<333'                      0        bigram      
+262    'Never Die<3'                            0        bigram      
+263    'New Apartment<3'                        0        bigram      
+264    'New Blink-182'                          0        bigram      
+265    'Nikon D-90'                             0        bigram      
+266    'No 7-Eleven'                            0        bigram      
+267    'No Â£30'                                0        bigram      
+268    'Northbound I-15'                        0        bigram      
+269    'November08/December08/January09 ...'    0        bigram      
+270    'O_0 Jameson'                            0        bigram      
+271    'On 106&Park'                            0        bigram      
+272    'On Ch4+1'                               0        bigram      
+273    'On Sunday<|3'                           0        bigram      
+274    'One 512/8Gb'                            0        bigram      
+275    'Only 2/3Weeks'                          0        bigram      
+276    'Only Â£4'                               0        bigram      
+277    'Otay Calvin<3'                          0        bigram      
+278    'P Grandma<3'                            0        bigram      
+279    'P-51 Mustang'                           0        bigram      
+280    'Peavey T-40'                            0        bigram      
+281    'Plus 8--Except'                         0        bigram      
+282    'Power Ð½Ð¾Ð¼Ñ\x8bÐ³'                    0        bigram      
+283    'Pre-E3 Forcast'                         0        bigram      
+284    'Project 10-Pan'                         0        bigram      
+285    'Psion V34+Fax'                          0        bigram      
+286    'Rainy Skiess<3'                         0        bigram      
+287    'Raised Â£180'                           0        bigram      
+288    'Raised Â£600'                           0        bigram      
+289    'Re Mac/Win7'                            0        bigram      
+290    'Rebecca<3 It'                           0        bigram      
+291    'Robert Pattinson<3'                     0        bigram      
+292    'Rocky Horror<3'                         0        bigram      
+293    'Roland Fantom-X6'                       0        bigram      
+294    'Russell<3 Greaaat'                      0        bigram      
+295    'Rye Elizabeth<3'                        0        bigram      
+296    'S1E16- Hello'                           0        bigram      
+297    'Said Hey<3'                             0        bigram      
+298    'School Musical3/Hannah'                 0        bigram      
+299    'Scooping Â£27'                          0        bigram      
+300    'Skiess<3 Going'                         0        bigram      
+301    'Sleep<3<3<3 Work'                       0        bigram      
+302    'Society<3 Bets'                         0        bigram      
+303    'Sony D12-11'                            0        bigram      
+304    'Spent Â£112'                            0        bigram      
+305    'Stabilo Write-4-All'                    0        bigram      
+306    'Still Â£440'                            0        bigram      
+307    'Summer<3 College'                       0        bigram      
+308    'Sunday<|3 Pshh'                         0        bigram      
+309    'Sunshine_00 Girl'                       0        bigram      
+310    'T-22 Days'                              0        bigram      
+311    'T-Mobile 3G'                            0        bigram      
+312    'T<3 Me'                                 0        bigram      
+313    'Tampa Tonight-$500'                     0        bigram      
+314    'Thanksz<3 Whutsz'                       0        bigram      
+315    'That Lakers<3'                          0        bigram      
+316    'That Â£5'                               0        bigram      
+317    'The 1Â°'                                0        bigram      
+318    'The Blink-182'                          0        bigram      
+319    'The M-15'                               0        bigram      
+320    'The Â£300'                              0        bigram      
+321    'This F-22'                              0        bigram      
+322    'Titanic=<3 One'                         0        bigram      
+323    'Today 18*C'                             0        bigram      
+324    'Tonight-$500 Rejuva'                    0        bigram      
+325    'Tony Awards<3'                          0        bigram      
+326    'Toshiba A215-S4697'                     0        bigram      
+327    'Tulisa<3 Though'                        0        bigram      
+328    'Tweeter Â£1'                            0        bigram      
+329    'Twilight<3 It'                          0        bigram      
+330    'Untamed Heart<3'                        0        bigram      
+331    'Use 4-Letter'                           0        bigram      
+332    'V34+Fax Gold'                           0        bigram      
+333    'Vectra 3-D'                             0        bigram      
+334    'Via C-7M'                               0        bigram      
+335    'Virtualbox &Win7'                       0        bigram      
+336    'Volvo C30=C30R'                         0        bigram      
+337    'Was Â£200'                              0        bigram      
+338    'Watch 40-Year-Old'                      0        bigram      
+339    'Watching 106&Park'                      0        bigram      
+340    'Watching 16&Pregnant'                   0        bigram      
+341    'With Derek<33'                          0        bigram      
+342    'Work 11-Close'                          0        bigram      
+343    'Works 3-D'                              0        bigram      
+344    'World 10-Ball'                          0        bigram      
+345    'Y-100 Phone'                            0        bigram      
+346    'Y-3 Store'                              0        bigram      
+347    'You Love<3'                             0        bigram      
+348    'Your Call<3'                            0        bigram      
+349    'Yu-Gi-Oh 5D'                            0        bigram      
+350    '[David44567] Hiya'                      0        bigram      
+351    '[I Hope<3'                              0        bigram      
+352    'Â£100 Hudson'                           0        bigram      
+353    'Â£209 Bloody'                           0        bigram      
+354    'Â£30 To'                                0        bigram      
+355    'Â£40 Progress'                          0        bigram      
+356    'Â£421 Orange'                           0        bigram      
+357    'Â£45 Its'                               0        bigram      
+358    'Â£5 Off'                                0        bigram      
+359    'Â£5 Woo'                                0        bigram      
+360    'Â£550 Why'                              0        bigram      
+361    'Â£64 Plus'                              0        bigram      
+362    'Î¼Îµ Ï\x84Î¹'                           0        bigram      
+363    'Ð Ñ\x83Ð³Ð°Ð¹Ñ\x82Ðµ'                   0        bigram      
+364    'Ð\x94Ð¾Ð²Ðµ Ð'                          0        bigram      
+365    'Ð\x98 Ð²Ð¾Ð¾Ð±Ñ\x89Ðµ'                  0        bigram      
+366    'Ð\x9aÐ¾Ð¹ Ñ\x89Ðµ'                      0        bigram      
+367    'Ð\x9bÑ\x8cÐ²Ð¾Ð²Ðµ Ð¿Ð¾Ð´Ð¾Ð±Ð½Ñ\x8bÑ'  0        bigram      
+368    'Ð\x9cÐ¾Ðµ Ð½Ð¾Ð²Ð¾Ðµ'                   0        bigram      
+369    'Ð\xadÑ\x80Ð¼Ð¸Ñ\x82Ð°Ð¶Ðµ Ð²Ñ'          0        bigram      
+370    'Ð¯ Ð²Ð¾Ð¾Ð±Ñ\x89Ðµ'                     0        bigram      
+371    'Ð° Ð³Ð´Ðµ'                              0        bigram      
+372    'Ð°Ð¹Ñ\x84Ð¾Ð½ Ð½Ðµ'                     0        bigram      
+373    'Ð°Ð¹Ñ\x84Ð¾Ð½Ðµ Ð¶Ðµ'                   0        bigram      
+374    'Ð°Ð½Ð´Ñ\x80Ð¾Ð¹Ð´ Ñ\x82Ð¾Ð¶Ðµ'          0        bigram      
+375    'Ð±Ð°Ð½Ðµ Ð²Ñ'                           0        bigram      
+376    ' I'                                     0        word        
+377    ' I</w>'                                 0        subword     
+378    ' It'                                    0        word        
+379    ' It-'                                   0        subword     
+380    ' It-s'                                  0        subword     
+381    ' It-sy'                                 0        subword     
+382    ' It-sys'                                0        subword     
+383    ' It-syst'                               0        subword     
+384    ' It-syste'                              0        subword     
+385    ' It-system'                             0        subword     
+386    ' It-system</w>'                         0        subword     
+387    ' It`'                                   0        subword     
+388    ' It`s'                                  0        subword     
+389    ' It\\'                                  0        subword     
+390    ' It</w>'                                0        subword     
+391    ' It`s</w>'                              0        subword     
+392    ' It\\</w>'                              0        subword     
+393    ' In'                                    0        word        
+394    ' In4'                                   0        word        
+395    ' In4m'                                  0        word        
+396    ' In4me'                                 0        word        
+397    ' In4mer'                                0        word        
+398    ' In4merz'                               0        word        
+399    ' In4merz</w>'                           0        subword     
+400    ' In-'                                   0        subword     
+401    ' In-l'                                  0        subword     
+402    ' In-la'                                 0        subword     
+403    ' In-law'                                0        subword     
+404    ' In-laws'                               0        subword     
+405    ' In-L'                                  0        subword     
+406    ' In-La'                                 0        subword     
+407    ' In-Law'                                0        subword     
+408    ' In-Laws'                               0        subword     
+409    ' In-n'                                  0        subword     
+410    ' In</w>'                                0        subword     
+411    ' In-&'                                  0        subword     
+412    ' In-&-'                                 0        subword     
+413    ' In-&-O'                                0        subword     
+414    ' In-&-Ou'                               0        subword     
+415    ' In-&-Out'                              0        subword     
+416    ' In-&-Out</w>'                          0        subword     
+417    ' In-laws</w>'                           0        subword     
+418    ' In-Laws</w>'                           0        subword     
+419    ' In-n-'                                 0        subword     
+420    ' In-n-o'                                0        subword     
+421    ' In-n-ou'                               0        subword     
+422    ' In-n-out'                              0        subword     
+423    ' In-n-out</w>'                          0        subword     
+424    ' Im'                                    0        word        
+425    ' Im</w>'                                0        subword     
+426    ' If'                                    0        word        
+427    ' If</w>'                                0        subword     
+428    ' Its'                                   0        word        
+429    ' Its</w>'                               0        subword     
+430    ' Is'                                    0        word        
+431    ' Is</w>'                                0        subword     
+432    ' Int'                                   0        word        
+433    ' Int</w>'                               0        subword     
+434    ' Inte'                                  0        word        
+435    ' Inter'                                 0        word        
+436    ' Ir'                                    0        word        
+437    ' Ind'                                   0        word        
+438    ' Ind</w>'                               0        subword     
+439    ' Intern'                                0        word        
+440    ' Id'                                    0        word        
+441    ' Id</w>'                                0        subword     
+442    ' Il'                                    0        word        
+443    ' Il</w>'                                0        subword     
+444    ' Interne'                               0        word        
+445    ' Internet'                              0        word        
+446    ' Internet</w>'                          0        subword     
+447    ' Indi'                                  0        word        
+448    ' Ill'                                   0        word        
+449    ' Ill</w>'                               0        subword     
+450    ' Iv'                                    0        word        
+451    ' Iv</w>'                                0        subword     
+452    ' India'                                 0        word        
+453    ' India</w>'                             0        subword     
+454    ' Ita'                                   0        word        
+455    ' Ic'                                    0        word        
+456    ' Ital'                                  0        word        
+457    ' Ins'                                   0        word        
+458    ' Ive'                                   0        word        
+459    ' Ive</w>'                               0        subword     
+460    ' Ira'                                   0        word        
+461    ' Ira</w>'                               0        subword     
+462    ' Isl'                                   0        word        
+463    ' Ima'                                   0        word        
+464    ' Ima</w>'                               0        subword     
+465    ' Isla'                                  0        word        
+466    ' Isla</w>'                              0        subword     
+467    ' Iran'                                  0        word        
+468    ' Iran</w>'                              0        subword     
+469    ' Ire'                                   0        word        
+470    ' Irel'                                  0        word        
+471    ' Irela'                                 0        word        
+472    ' Irelan'                                0        word        
+473    ' Ireland'                               0        word        
+474    ' Ireland</w>'                           0        subword     
+475    ' Ireland/'                              0        subword     
+476    ' Ireland/B'                             0        subword     
+477    ' Ireland/Be'                            0        subword     
+478    ' Ireland/Bel'                           0        subword     
+479    ' Ireland/Belf'                          0        subword     
+480    ' Ireland/Belfa'                         0        subword     
+481    ' Ireland/Belfas'                        0        subword     
+482    ' Ireland/Belfast'                       0        subword     
+483    ' Ireland/Belfast</w>'                   0        subword     
+484    ' Islan'                                 0        word        
+485    ' Island'                                0        word        
+486    ' Island</w>'                            0        subword     
+487    ' Italy'                                 0        word        
+488    ' Italy</w>'                             0        subword     
+489    ' Ice'                                   0        word        
+490    ' Ice</w>'                               0        subword     
+491    ' Indian'                                0        word        
+492    ' Indian</w>'                            0        subword     
+493    ' Isn'                                   0        word        
+494    ' Isn</w>'                               0        subword     
+495    ' Ip'                                    0        word        
+496    ' Idk'                                   0        word        
+497    ' Idk</w>'                               0        subword     
+498    ' Imm'                                   0        word        
+499    ' Inc'                                   0        word        
+500    ' Inc</w>'                               0        subword     
+501    ' Inst'                                  0        word        
+502    ' Imp'                                   0        word        
+503    ' Imp</w>'                               0        subword     
+504    ' Intere'                                0        word        
+505    ' Interes'                               0        word        
+506    ' Ia'                                    0        word        
+507    ' Ido'                                   0        word        
+508    ' Idol'                                  0        word        
+509    ' Idol</w>'                              0        subword     
+510    ' Inde'                                  0        word        
+511    ' Interest'                              0        word        
+512    ' Interest</w>'                          0        subword     
+513    ' Itali'                                 0        word        
+514    ' Italia'                                0        word        
+515    ' Italian'                               0        word        
+516    ' Italian</w>'                           0        subword     
+517    ' Imma'                                  0        word        
+518    ' Imma</w>'                              0        subword     
+519    ' Indee'                                 0        word        
+520    ' Indeed'                                0        word        
+521    ' Indeed</w>'                            0        subword     
+522    ' Inv'                                   0        word        
+523    ' Iri'                                   0        word        
+524    ' Iris'                                  0        word        
+525    ' Irish'                                 0        word        
+526    ' Irish</w>'                             0        subword     
+527    ' Inf'                                   0        word        
+528    ' Imag'                                  0        word        
+529    ' Interesti'                             0        word        
+530    ' Interestin'                            0        word        
+531    ' Interesting'                           0        word        
+532    ' Interesting</w>'                       0        subword     
+533    ' Iï'                                    0        word        
+534    ' Iï¿'                                   0        subword     
+535    ' Iï¿½'                                  0        subword     
+536    ' Iï¿½m'                                 0        subword     
+537    ' Iï¿½v'                                 0        subword     
+538    ' Iï¿½ve'                                0        subword     
+539    ' Iï¿½m</w>'                             0        subword     
+540    ' Iï¿½ve</w>'                            0        subword     
+541    ' Ipo'                                   0        word        
+542    ' Ipod'                                  0        word        
+543    ' Ipod</w>'                              0        subword     
+544    ' Imagi'                                 0        word        
+545    ' Imagin'                                0        word        
+546    ' Impr'                                  0        word        
+547    ' Iph'                                   0        word        
+548    ' Ipho'                                  0        word        
+549    ' Iphon'                                 0        word        
+550    ' Iphone'                                0        word        
+551    ' Iphone</w>'                            0        subword     
+552    ' Interna'                               0        word        
+553    ' Indo'                                  0        word        
+554    ' Indo-'                                 0        subword     
+555    ' Indo-e'                                0        subword     
+556    ' Indo-er'                               0        subword     
+557    ' Indo-ers'                              0        subword     
+558    ' Indo</w>'                              0        subword     
+559    ' Indo-ers</w>'                          0        subword     
+560    ' Insta'                                 0        word        
+561    ' Ian'                                   0        word        
+562    ' Ian</w>'                               0        subword     
+563    ' Invi'                                  0        word        
+564    ' Internat'                              0        word        
+565    ' Internati'                             0        word        
+566    ' Internatio'                            0        word        
+567    ' Internation'                           0        word        
+568    ' Internationa'                          0        word        
+569    ' International'                         0        word        
+570    ' International</w>'                     0        subword     
+571    ' Ik'                                    0        word        
+572    ' Imagine'                               0        word        
+573    ' Imagine</w>'                           0        subword     
+574    ' Ike'                                   0        word        
+575    ' Ike</w>'                               0        subword     
+576    ' Io'                                    0        word        
+577    ' Ig'                                    0        word        
+578    ' Iâ'                                    0        word        
+579    ' Iâ\x80'                                0        subword     
+580    ' Iâ\x80\x99'                            0        subword     
+581    ' Iâ\x80\x99m'                           0        subword     
+582    ' Iâ\x80\x99m</w>'                       0        subword     
+583    ' Iâ\x80\x99l'                           0        subword     
+584    ' Iâ\x80\x99ll'                          0        subword     
+585    ' Iâ\x80\x99ll</w>'                      0        subword     
+586    ' Insp'                                  0        word        
+587    ' Indiana'                               0        word        
+588    ' Indiana</w>'                           0        subword     
+589    ' Iz'                                    0        word        
+590    ' Iz</w>'                                0        subword     
+591    ' Illu'                                  0        word        
+592    ' Iow'                                   0        word        
+593    ' Iowa'                                  0        word        
+594    ' Iowa</w>'                              0        subword     
+595    ' Inste'                                 0        word        
+596    ' Instea'                                0        word        
+597    ' Instead'                               0        word        
+598    ' Instead</w>'                           0        subword     
+599    ' Inn'                                   0        word        
+600    ' Inn</w>'                               0        subword     
+601    ' Inspi'                                 0        word        
+602    ' Inspir'                                0        word        
+603    ' Iro'                                   0        word        
+604    ' Iron'                                  0        word        
+605    ' Iron/'                                 0        subword     
+606    ' Iron/C'                                0        subword     
+607    ' Iron/Ch'                               0        subword     
+608    ' Iron/Chr'                              0        subword     
+609    ' Iron/Chro'                             0        subword     
+610    ' Iron/Chrom'                            0        subword     
+611    ' Iron/Chrome'                           0        subword     
+612    ' Iron/Chrome</w>'                       0        subword     
+613    ' Iron</w>'                              0        subword     
+614    ' Ivy'                                   0        word        
+615    ' Ivy</w>'                               0        subword     
+616    ' Invit'                                 0        word        
+617    ' Incl'                                  0        word        
+618    ' Indians'                               0        word        
+619    ' Indians</w>'                           0        subword     
+620    ' Indon'                                 0        word        
+621    ' Indone'                                0        word        
+622    ' Indones'                               0        word        
+623    ' Indonesi'                              0        word        
+624    ' Indonesia'                             0        word        
+625    ' Indonesia</w>'                         0        subword     
+626    ' Interv'                                0        word        
+627    ' Ikea'                                  0        word        
+628    ' Ikea</w>'                              0        subword     
+629    ' Illus'                                 0        word        
+630    ' Idi'                                   0        word        
+631    ' Ib'                                    0        word        
+632    ' Ib</w>'                                0        subword     
+633    ' Impre'                                 0        word        
+634    ' Impres'                                0        word        
+635    ' Impress'                               0        word        
+636    ' Impress</w>'                           0        subword     
+637    ' Irv'                                   0        word        
+638    ' Irv</w>'                               0        subword     
+639    ' Isr'                                   0        word        
+640    ' Isra'                                  0        word        
+641    ' Israe'                                 0        word        
+642    ' Israel'                                0        word        
+643    ' Israel</w>'                            0        subword     
+644    ' Instal'                                0        word        
+645    ' Install'                               0        word        
+646    ' Install</w>'                           0        subword     
+647    ' Indy'                                  0        word        
+648    ' Indy</w>'                              0        subword     
+649    ' Inclu'                                 0        word        
+650    ' Includ'                                0        word        
+651    ' Intervi'                               0        word        
+652    ' Intervie'                              0        word        
+653    ' Interview'                             0        word        
+654    ' Interview</w>'                         0        subword     
+655    ' Ida'                                   0        word        
+656    ' Ida</w>'                               0        subword     
+657    ' Irvi'                                  0        word        
+658    ' Irvin'                                 0        word        
+659    ' Intel'                                 0        word        
+660    ' Intel</w>'                             0        subword     
+661    ' Isa'                                   0        word        
+662    ' Info'                                  0        word        
+663    ' Info</w>'                              0        subword     
+664    ' Ick'                                   0        word        
+665    ' Ick-'                                  0        subword     
+666    ' Ick-B'                                 0        subword     
+667    ' Ick-Bo'                                0        subword     
+668    ' Ick-Bob'                               0        subword     
+669    ' Ick</w>'                               0        subword     
+670    ' Ick-Bob</w>'                           0        subword     
+671    ' Ide'                                   0        word        
+672    ' Invite'                                0        word        
+673    ' Invite</w>'                            0        subword     
+674    ' Into'                                  0        word        
+675    ' Into</w>'                              0        subword     
+676    ' Illusi'                                0        word        
+677    ' Illusio'                               0        word        
+678    ' Illusion'                              0        word        
+679    ' Illusion</w>'                          0        subword     
+680    ' Idio'                                  0        word        
+681    ' Impressi'                              0        word        
+682    ' Iced'                                  0        word        
+683    ' Iced</w>'                              0        subword     
+684    ' Image'                                 0        word        
+685    ' Image</w>'                             0        subword     
+686    ' Irvine'                                0        word        
+687    ' Irvine</w>'                            0        subword     
+688    ' Inve'                                  0        word        
+689    ' Izz'                                   0        word        
+690    ' Isab'                                  0        word        
+691    ' Isabe'                                 0        word        
+692    ' Isabel'                                0        word        
+693    ' Isabel</w>'                            0        subword     
+694    ' Inspira'                               0        word        
+695    ' Inspirat'                              0        word        
+696    ' Inspirati'                             0        word        
+697    ' Inspiratio'                            0        word        
+698    ' Inspiration'                           0        word        
+699    ' Inspiration</w>'                       0        subword     
+700    ' Itu'                                   0        word        
+701    ' Itun'                                  0        word        
+702    ' Itune'                                 0        word        
+703    ' Itunes'                                0        word        
+704    ' Itunes</w>'                            0        subword     
+705    ' Iam'                                   0        word        
+706    ' Iam</w>'                               0        subword     
+707    ' Itz'                                   0        word        
+708    ' Itz</w>'                               0        subword     
+709    ' Idea'                                  0        word        
+710    ' Idea</w>'                              0        subword     
+711    ' Islands'                               0        word        
+712    ' Islands</w>'                           0        subword     
+713    ' Iver'                                  0        word        
+714    ' Iver</w>'                              0        subword     
+715    ' Ina'                                   0        word        
+716    ' Idiot'                                 0        word        
+717    ' Idiot</w>'                             0        subword     
+718    ' Inso'                                  0        word        
+719    ' Insom'                                 0        word        
+720    ' Insomn'                                0        word        
+721    ' Insomni'                               0        word        
+722    ' Insomnia'                              0        word        
+723    ' Insomnia</w>'                          0        subword     
+724    ' Impressiv'                             0        word        
+725    ' Impressive'                            0        word        
+726    ' Impressive</w>'                        0        subword     
+727    ' Includi'                               0        word        
+728    ' Includin'                              0        word        
+729    ' Including'                             0        word        
+730    ' Including</w>'                         0        subword     
+731    ' Irani'                                 0        word        
+732    ' Irania'                                0        word        
+733    ' Iranian'                               0        word        
+734    ' Iranian</w>'                           0        subword     
+735    ' Inves'                                 0        word        
+736    ' Invest'                                0        word        
+737    ' Investi'                               0        word        
+738    ' Installe'                              0        word        
+739    ' Infa'                                  0        word        
+740    ' Intell'                                0        word        
+741    ' Indie'                                 0        word        
+742    ' Indie</w>'                             0        subword     
+743    ' Ink'                                   0        word        
+744    ' Ink</w>'                               0        subword     
+745    ' Infi'                                  0        word        
+746    ' Icel'                                  0        word        
+747    ' Icela'                                 0        word        
+748    ' Icelan'                                0        word        
+749    ' Iceland'                               0        word        
+750    ' Iceland</w>'                           0        subword     
+751    ' Ily'                                   0        word        
+752    ' Ily</w>'                               0        subword     
+753    ' Intr'                                  0        word        
+754    ' Intr</w>'                              0        subword     
+755    ' Ign'                                   0        word        
+756    ' Impro'                                 0        word        
+757    ' Improv'                                0        word        
+758    ' Improv</w>'                            0        subword     
+759    ' Ica'                                   0        word        
+760    ' Ine'                                   0        word        
+761    ' Iraq'                                  0        word        
+762    ' Iraq</w>'                              0        subword     
+763    ' Izzy'                                  0        word        
+764    ' Izzy</w>'                              0        subword     
+765    ' Incr'                                  0        word        
+766    ' Incre'                                 0        word        
+767    ' Illi'                                  0        word        
+768    ' Illin'                                 0        word        
+769    ' Illino'                                0        word        
+770    ' Illinoi'                               0        word        
+771    ' Illinois'                              0        word        
+772    ' Illinois</w>'                          0        subword     
+773    ' Iai'                                   0        word        
+774    ' Iain'                                  0        word        
+775    ' Iain</w>'                              0        subword     
+776    ' Ini'                                   0        word        
+777    ' Indu'                                  0        word        
+778    ' Instan'                                0        word        
+779    ' Iw'                                    0        word        
+780    ' Idah'                                  0        word        
+781    ' Idaho'                                 0        word        
+782    ' Idaho</w>'                             0        subword     
+783    ' Investig'                              0        word        
+784    ' Investiga'                             0        word        
+785    ' Investigat'                            0        word        
+786    ' Ih'                                    0        word        
+787    ' Installed'                             0        word        
+788    ' Installed</w>'                         0        subword     
+789    ' Infam'                                 0        word        
+790    ' Infamo'                                0        word        
+791    ' Infamou'                               0        word        
+792    ' Infamous'                              0        word        
+793    ' Infamous</w>'                          0        subword     
+794    ' Igl'                                   0        word        
+795    ' Iglo'                                  0        word        
+796    ' Igloo'                                 0        word        
+797    ' Igloo</w>'                             0        subword     
+798    ' Intelli'                               0        word        
+799    ' Intellig'                              0        word        
+800    ' Intellige'                             0        word        
+801    ' Intelligen'                            0        word        
+802    ' Ing'                                   0        word        
+803    ' Inge'                                  0        word        
+804    ' Inge</w>'                              0        subword     
+805    ' Insu'                                  0        word        
+806    ' Insur'                                 0        word        
+807    ' Insura'                                0        word        
+808    ' Insuran'                               0        word        
+809    ' Insuranc'                              0        word        
+810    ' Insurance'                             0        word        
+811    ' Insurance</w>'                         0        subword     
+812    ' Infin'                                 0        word        
+813    ' Iss'                                   0        word        
+814    ' Issu'                                  0        word        
+815    ' Issue'                                 0        word        
+816    ' Issue</w>'                             0        subword     
+817    ' Invis'                                 0        word        
+818    ' Intro'                                 0        word        
+819    ' Introd'                                0        word        
+820    ' Introdu'                               0        word        
+821    ' Introduc'                              0        word        
+822    ' Introduct'                             0        word        
+823    ' Ironi'                                 0        word        
+824    ' Ich'                                   0        word        
+825    ' Ich</w>'                               0        subword     
+826    ' Igno'                                  0        word        
+827    ' Ignor'                                 0        word        
+828    ' Iner'                                  0        word        
+829    ' Inert'                                 0        word        
+830    ' Inerti'                                0        word        
+831    ' Inertia'                               0        word        
+832    ' Inertia</w>'                           0        subword     
+833    ' Infor'                                 0        word        
+834    ' Incred'                                0        word        
+835    ' Inspire'                               0        word        
+836    ' Inspire</w>'                           0        subword     
+837    ' Isle'                                  0        word        
+838    ' Isle</w>'                              0        subword     
+839    ' Ibi'                                   0        word        
+840    ' Ibiz'                                  0        word        
+841    ' Ibiza'                                 0        word        
+842    ' Ibiza</w>'                             0        subword     
+843    ' Icy'                                   0        word        
+844    ' Icy</w>'                               0        subword     
+845    ' Insa'                                  0        word        
+846    ' Insan'                                 0        word        
+847    ' Insane'                                0        word        
+848    ' Insane</w>'                            0        subword     
+849    ' Invites'                               0        word        
+850    ' Invites</w>'                           0        subword     
+851    ' Inau'                                  0        word        
+852    ' Inaug'                                 0        word        
+853    ' Inaugu'                                0        word        
+854    ' Inaugur'                               0        word        
+855    ' Inaugura'                              0        word        
+856    ' Include'                               0        word        
+857    ' Includes'                              0        word        
+858    ' Includes</w>'                          0        subword     
+859    ' Init'                                  0        word        
+860    ' Init</w>'                              0        subword     
+861    ' Ith'                                   0        word        
+862    ' Itha'                                  0        word        
+863    ' Ithac'                                 0        word        
+864    ' Ithaca'                                0        word        
+865    ' Ithaca</w>'                            0        subword     
+866    ' Indonesian'                            0        word        
+867    ' Indonesian</w>'                        0        subword     
+868    ' Instant'                               0        word        
+869    ' Instant</w>'                           0        subword     
+870    ' Igu'                                   0        word        
+871    ' Igua'                                  0        word        
+872    ' Iy'                                    0        word        
+873    ' Iya'                                   0        word        
+874    ' Iya</w>'                               0        subword     
+875    ' Impu'                                  0        word        
+876    ' Impul'                                 0        word        
+877    ' Impuls'                                0        word        
+878    ' Impulse'                               0        word        
+879    ' Impulse</w>'                           0        subword     
+880    ' Ici'                                   0        word        
+881    ' Icin'                                  0        word        
+882    ' Icing'                                 0        word        
+883    ' Icing</w>'                             0        subword     
+884    ' Inten'                                 0        word        
+885    ' Ico'                                   0        word        
+886    ' Icon'                                  0        word        
+887    ' Icon</w>'                              0        subword     
+888    ' Inch'                                  0        word        
+889    ' Inch</w>'                              0        subword     
+890    ' Illust'                                0        word        
+891    ' Illustr'                               0        word        
+892    ' Illustra'                              0        word        
+893    ' Illustrat'                             0        word        
+894    ' Ij'                                    0        word        
+895    ' Iju'                                   0        word        
+896    ' Ijus'                                  0        word        
+897    ' Ijust'                                 0        word        
+898    ' Ijust</w>'                             0        subword     
+899    ' Interno'                               0        word        
+900    ' Internod'                              0        word        
+901    ' Internode'                             0        word        
+902    ' Internode</w>'                         0        subword     
+903    ' Iha'                                   0        word        
+904    ' Ihad'                                  0        word        
+905    ' Ihad</w>'                              0        subword     
+906    ' Intelligent'                           0        word        
+907    ' Intelligent</w>'                       0        subword     
+908    ' Impe'                                  0        word        
+909    ' Imper'                                 0        word        
+910    ' Incu'                                  0        word        
+911    ' Incub'                                 0        word        
+912    ' Incubu'                                0        word        
+913    ' Incubus'                               0        word        
+914    ' Incubus</w>'                           0        subword     
+915    ' Ist'                                   0        word        
+916    ' Ista'                                  0        word        
+917    ' Istan'                                 0        word        
+918    ' Istanb'                                0        word        
+919    ' Istanbu'                               0        word        
+920    ' Istanbul'                              0        word        
+921    ' Istanbul</w>'                          0        subword     
+922    ' Isabell'                               0        word        
+923    ' Isabella'                              0        word        
+924    ' Isabella</w>'                          0        subword     
+925    ' Investigati'                           0        word        
+926    ' Investigatio'                          0        word        
+927    ' Investigation'                         0        word        
+928    ' Investigation</w>'                     0        subword     
+929    ' Immi'                                  0        word        
+930    ' Islam'                                 0        word        
+931    ' Islami'                                0        word        
+932    ' Inspirationa'                          0        word        
+933    ' Inspirational'                         0        word        
+934    ' Inspirational</w>'                     0        subword     
+935    ' Impa'                                  0        word        
+936    ' InT'                                   0        word        
+937    ' Ille'                                  0        word        
+938    ' Illeg'                                 0        word        
+939    ' Illega'                                0        word        
+940    ' Illegal'                               0        word        
+941    ' Illegal</w>'                           0        subword     
+942    ' Illn'                                  0        word        
+943    ' Illne'                                 0        word        
+944    ' Illnes'                                0        word        
+945    ' Illness'                               0        word        
+946    ' Illness</w>'                           0        subword     
+947    ' Invisi'                                0        word        
+948    ' Invisib'                               0        word        
+949    ' Invisibl'                              0        word        
+950    ' Invisible'                             0        word        
+951    ' Invisible</w>'                         0        subword     
+952    ' Infini'                                0        word        
+953    ' Ironic'                                0        word        
+954    ' Ironica'                               0        word        
+955    ' Ironical'                              0        word        
+956    ' Ironicall'                             0        word        
+957    ' Ironically'                            0        word        
+958    ' Ironically</w>'                        0        subword     
+959    ' Ican'                                  0        word        
+960    ' Ican</w>'                              0        subword     
+961    ' Ignore'                                0        word        
+962    ' Ignore</w>'                            0        subword     
+963    ' Illy'                                  0        word        
+964    ' Illy</w>'                              0        subword     
+965    ' Inform'                                0        word        
+966    ' Iva'                                   0        word        
+967    ' Ivan'                                  0        word        
+968    ' Ivan</w>'                              0        subword     
+969    ' Ilo'                                   0        word        
+970    ' Incredi'                               0        word        
+971    ' Incredib'                              0        word        
+972    ' Incredibl'                             0        word        
+973    ' Incredible'                            0        word        
+974    ' Incredible</w>'                        0        subword     
+975    ' Idr'                                   0        word        
+976    ' Icar'                                  0        word        
+977    ' Indep'                                 0        word        
+978    ' Indepe'                                0        word        
+979    ' Indepen'                               0        word        
+980    ' Independ'                              0        word        
+981    ' Independe'                             0        word        
+982    ' Independen'                            0        word        
+983    ' Independent'                           0        word        
+984    ' Independent</w>'                       0        subword     
+985    ' Interns'                               0        word        
+986    ' Internsh'                              0        word        
+987    ' Internshi'                             0        word        
+988    ' Internship'                            0        word        
+989    ' Internship</w>'                        0        subword     
+990    ' Introducti'                            0        word        
+991    ' Introductio'                           0        word        
+992    ' Introduction'                          0        word        
+993    ' Introduction</w>'                      0        subword     
+994    ' Insti'                                 0        word        
+995    ' Instit'                                0        word        
+996    ' Institu'                               0        word        
+997    ' Institut'                              0        word        
+998    ' Institute'                             0        word        
+999    ' Institute</w>'                         0        subword     
