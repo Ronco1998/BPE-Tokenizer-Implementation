@@ -75,6 +75,9 @@ class NERBPETokenizer(BaseTokenizer):
     SPACE_TOKEN = " "
     END_MARK = "</w>"
     
+    # Compiled regex for problematic characters (better performance)
+    PROBLEMATIC_CHARS_RE = re.compile(r'[ÐÑ\x80⁄μ°½¼¾©³´¿¡£ÂÃï]')
+    
     # Domain-specific preprocessing tokens
     PREPROCESSING_TOKENS = {
         'twitter': ["<URL>", "<USER>", "<HASHTAG>", "<EMOJI>"],
@@ -123,7 +126,7 @@ class NERBPETokenizer(BaseTokenizer):
               f"{self.PREPROCESSING_TOKENS.get(self.domain, self.PREPROCESSING_TOKENS['generic'])}")
 
     def train(self, texts: List[str], *, char_limit: int | None = None, bigram_quota: float = 0.3, 
-              min_word_score: float = 15.0, min_bigram_score: float = 30.0) -> None:
+              min_word_score: float = 20.0, min_bigram_score: float = 25.0, min_frequency: int = 5) -> None:
         """
         Train the tokenizer on a corpus of texts.
 
@@ -133,6 +136,7 @@ class NERBPETokenizer(BaseTokenizer):
             bigram_quota: Fraction of remaining slots reserved for bigrams (0.0-1.0)
             min_word_score: Minimum NER score for word tokens
             min_bigram_score: Minimum NER score for bigram tokens
+            min_frequency: Minimum frequency threshold for words and bigrams (default: 5)
 
         Training Process:
         1. Compute character, word, and bigram frequencies
@@ -163,7 +167,7 @@ class NERBPETokenizer(BaseTokenizer):
         
         # Step 3: Score entities with NER-aware scoring
         pbar.set_description("Scoring entities")
-        entity_scores_heap = self._score_entities(word_freq, bigram_freq, min_word_score, min_bigram_score)
+        entity_scores_heap = self._score_entities(word_freq, bigram_freq, min_word_score, min_bigram_score, min_frequency)
         pbar.update(1)
         
         # Step 4: Add top entities respecting bigram quota
@@ -274,6 +278,10 @@ class NERBPETokenizer(BaseTokenizer):
         tokenizer._bpe_merge_ranks = data['bpe_merge_ranks']
         return tokenizer
 
+    def get_vocab_size(self) -> int:
+        """Get the vocabulary size."""
+        return len(self.token_to_id)
+
     # -------------------------------------------------------------------------
     # Private Training Methods
     # -------------------------------------------------------------------------
@@ -327,24 +335,41 @@ class NERBPETokenizer(BaseTokenizer):
                 break
 
     def _score_entities(self, word_freq: Counter, bigram_freq: Counter, 
-                       min_word_score: float, min_bigram_score: float) -> List:
+                       min_word_score: float, min_bigram_score: float, min_frequency: int = 5) -> List:
         """Score words and bigrams using NER-aware scoring, returning a heap."""
         entity_scores_heap = []
         
-        # Score words
+        # Score words with minimum frequency requirement
         for word, freq in tqdm(word_freq.items(), desc="Scoring words", leave=False):
-            score = self._calc_ner_score((word, ""), freq)
-            if score >= min_word_score:
-                heapq.heappush(entity_scores_heap, (-score, word, freq))
+            # Only consider words with frequency >= min_frequency and proper characters
+            if freq >= min_frequency and len(word) > 1 and not self._has_problematic_chars(word):
+                score = self._calc_ner_score((word, ""), freq)
+                if score >= min_word_score:
+                    heapq.heappush(entity_scores_heap, (-score, word, freq))
         
-        # Score bigrams
+        # Score bigrams with minimum frequency requirement
         for bigram, freq in tqdm(bigram_freq.items(), desc="Scoring bigrams", leave=False):
-            w1, w2 = bigram.split(" ", 1)
-            score = self._calc_ner_score((w1, " " + w2), freq)
-            if score >= min_bigram_score:
-                heapq.heappush(entity_scores_heap, (-score, bigram, freq))
+            # Only consider bigrams with frequency >= min_frequency and proper characters
+            if freq >= min_frequency and not self._has_problematic_chars(bigram):
+                w1, w2 = bigram.split(" ", 1)
+                score = self._calc_ner_score((w1, " " + w2), freq)
+                if score >= min_bigram_score:
+                    heapq.heappush(entity_scores_heap, (-score, bigram, freq))
         
         return entity_scores_heap
+
+    def _has_problematic_chars(self, text: str) -> bool:
+        """Check if text contains problematic Unicode or corrupted characters."""
+        # Use compiled regex for better performance
+        if self.PROBLEMATIC_CHARS_RE.search(text):
+            return True
+        
+        # Check for too many special characters
+        special_char_ratio = sum(1 for c in text if not c.isalnum() and c not in ' .-') / len(text)
+        if special_char_ratio > 0.4:  # More than 40% special chars
+            return True
+            
+        return False
 
     def _add_top_entities(self, entity_scores_heap: List, bigram_quota: float) -> Tuple[int, int]:
         """Add top-scoring entities to vocabulary respecting bigram quota."""
