@@ -1,0 +1,853 @@
+================================================================================
+NER-AWARE BPE TOKENIZER - TOKEN ANALYSIS REPORT
+================================================================================
+Generated: 2025-07-12 19:17:53
+Domain: twitter
+Vocabulary Size: 677
+Training Corpus Size: 1280000 texts
+
+PREPROCESSING TOKENS
+------------------------------
+Domain 'twitter' tokens: ['<URL>', '<USER>', '<HASHTAG>', '<EMOJI>']
+Generic tokens: ['<EMOJI>']
+
+SUMMARY STATISTICS
+----------------------------------------
+Special        :     2 tokens (  0.3%)
+Preprocessing  :     3 tokens (  0.4%)
+Characters     :   100 tokens ( 14.8%)
+Words          :     0 tokens (  0.0%)
+Bigrams        :     4 tokens (  0.6%)
+Subwords       :     0 tokens (  0.0%)
+Merged_chars   :     0 tokens (  0.0%)
+Total          :   677 tokens
+
+TOP 50 MOST FREQUENT TOKENS
+----------------------------------------
+Rank  Token                          Freq       Type           
+-----------------------------------------------------------------
+1     ' '                            76466      special        
+2     'e'                            25467      character      
+3     'o'                            21490      character      
+4     't'                            21099      character      
+5     'a'                            18882      character      
+6     'n'                            15895      character      
+7     'i'                            15835      character      
+8     's'                            13985      character      
+9     'h'                            11721      character      
+10    'r'                            11631      character      
+11    'l'                            10192      character      
+12    'd'                            8550       character      
+13    'u'                            7645       character      
+14    'y'                            7357       character      
+15    'm'                            7198       character      
+16    'g'                            6522       character      
+17    '.'                            6085       character      
+18    'w'                            5936       character      
+19    'c'                            5134       character      
+20    'f'                            4183       character      
+21    'p'                            3898       character      
+22    'b'                            3630       character      
+23    'k'                            3510       character      
+24    '!'                            2835       character      
+25    'I'                            2602       character      
+26    '<USER>'                       2512       preprocessing  
+27    'v'                            2366       character      
+28    "'"                            2093       character      
+29    ','                            1448       character      
+30    'T'                            1005       character      
+31    'S'                            822        character      
+32    'A'                            821        character      
+33    '?'                            817        character      
+34    'O'                            758        character      
+35    'M'                            673        character      
+36    'H'                            660        character      
+37    'j'                            594        character      
+38    'L'                            562        character      
+39    'x'                            552        character      
+40    'N'                            540        character      
+41    'E'                            528        character      
+42    '-'                            527        character      
+43    'W'                            517        character      
+44    'B'                            470        character      
+45    'G'                            460        character      
+46    'C'                            429        character      
+47    'D'                            424        character      
+48    'Y'                            361        character      
+49    'R'                            331        character      
+50    'P'                            310        character      
+
+SPECIAL TOKENS
+--------------------------------------------------
+Count: 2
+Top 20 by frequency:
+Rank  Token                               Frequency 
+-------------------------------------------------------
+1     ' '                                 76466     
+2     '[UNK]'                             163       
+
+PREPROCESSING TOKENS
+--------------------------------------------------
+Count: 3
+Top 20 by frequency:
+Rank  Token                               Frequency 
+-------------------------------------------------------
+1     '<USER>'                            2512      
+2     '<URL>'                             230       
+3     '<HASHTAG>'                         173       
+
+CHARACTERS TOKENS
+--------------------------------------------------
+Count: 100
+Top 20 by frequency:
+Rank  Token                               Frequency 
+-------------------------------------------------------
+1     'e'                                 25467     
+2     'o'                                 21490     
+3     't'                                 21099     
+4     'a'                                 18882     
+5     'n'                                 15895     
+6     'i'                                 15835     
+7     's'                                 13985     
+8     'h'                                 11721     
+9     'r'                                 11631     
+10    'l'                                 10192     
+11    'd'                                 8550      
+12    'u'                                 7645      
+13    'y'                                 7357      
+14    'm'                                 7198      
+15    'g'                                 6522      
+16    '.'                                 6085      
+17    'w'                                 5936      
+18    'c'                                 5134      
+19    'f'                                 4183      
+20    'p'                                 3898      
+
+BIGRAMS TOKENS
+--------------------------------------------------
+Count: 4
+Top 20 by frequency:
+Rank  Token                               Frequency 
+-------------------------------------------------------
+1     'Audi R8'                           1         
+2     '24K Lounge'                        1         
+3     'My G1'                             1         
+4     'E3 Conference'                     1         
+
+NER-SPECIFIC ANALYSIS
+----------------------------------------
+Capitalized tokens: 32
+Top 15 capitalized tokens:
+   1. 'I' (freq: 2602)
+   2. 'T' (freq: 1005)
+   3. 'S' (freq: 822)
+   4. 'A' (freq: 821)
+   5. 'O' (freq: 758)
+   6. 'M' (freq: 673)
+   7. 'H' (freq: 660)
+   8. 'L' (freq: 562)
+   9. 'N' (freq: 540)
+  10. 'E' (freq: 528)
+  11. 'W' (freq: 517)
+  12. 'B' (freq: 470)
+  13. 'G' (freq: 460)
+  14. 'C' (freq: 429)
+  15. 'D' (freq: 424)
+
+Total bigrams: 4
+Capitalized bigrams: 4
+Top 10 capitalized bigrams:
+   1. "Audi R8" (freq: 1)
+   2. "24K Lounge" (freq: 1)
+   3. "My G1" (freq: 1)
+   4. "E3 Conference" (freq: 1)
+
+BPE MERGE ANALYSIS
+------------------------------
+Total BPE merges performed: 3
+Latest 10 BPE merges:
+  'V' + 'E</w>' -> 'VE</w>' (freq: 0)
+  'M' + 'E</w>' -> 'ME</w>' (freq: 0)
+  'E' + '</w>' -> 'E</w>' (freq: 0)
+
+COMPLETE TOKEN VOCABULARY
+--------------------------------------------------
+ID     Token                                    Freq     Type        
+----------------------------------------------------------------------
+0      '[UNK]'                                  163      special     
+1      ' '                                      76466    special     
+2      '<URL>'                                  230      preprocessing
+3      '<USER>'                                 2512     preprocessing
+4      '<HASHTAG>'                              173      preprocessing
+5      '<EMOJI>'                                0        preprocessing
+6      'e'                                      25467    character   
+7      'o'                                      21490    character   
+8      't'                                      21099    character   
+9      'a'                                      18882    character   
+10     'n'                                      15895    character   
+11     'i'                                      15835    character   
+12     's'                                      13985    character   
+13     'h'                                      11721    character   
+14     'r'                                      11631    character   
+15     'l'                                      10192    character   
+16     'y'                                      7357     character   
+17     'd'                                      8550     character   
+18     'u'                                      7645     character   
+19     'g'                                      6522     character   
+20     'm'                                      7198     character   
+21     '.'                                      6085     character   
+22     'w'                                      5936     character   
+23     'c'                                      5134     character   
+24     'f'                                      4183     character   
+25     'S'                                      822      character   
+26     'p'                                      3898     character   
+27     'U'                                      216      character   
+28     '<'                                      75       character   
+29     'R'                                      331      character   
+30     '>'                                      31       character   
+31     'k'                                      3510     character   
+32     'b'                                      3630     character   
+33     'E'                                      528      character   
+34     'v'                                      2366     character   
+35     '!'                                      2835     character   
+36     'I'                                      2602     character   
+37     "'"                                      2093     character   
+38     'T'                                      1005     character   
+39     ','                                      1448     character   
+40     'L'                                      562      character   
+41     'H'                                      660      character   
+42     'A'                                      821      character   
+43     'O'                                      758      character   
+44     '?'                                      817      character   
+45     'G'                                      460      character   
+46     '-'                                      527      character   
+47     'W'                                      517      character   
+48     'M'                                      673      character   
+49     'D'                                      424      character   
+50     '1'                                      235      character   
+51     'x'                                      552      character   
+52     '0'                                      249      character   
+53     'j'                                      594      character   
+54     'B'                                      470      character   
+55     'N'                                      540      character   
+56     'Y'                                      361      character   
+57     'F'                                      288      character   
+58     'P'                                      310      character   
+59     'C'                                      429      character   
+60     '2'                                      273      character   
+61     '3'                                      216      character   
+62     '"'                                      204      character   
+63     'J'                                      242      character   
+64     'K'                                      159      character   
+65     'X'                                      61       character   
+66     '9'                                      65       character   
+67     ':'                                      202      character   
+68     '&'                                      136      character   
+69     'z'                                      249      character   
+70     '6'                                      50       character   
+71     '*'                                      96       character   
+72     'q'                                      115      character   
+73     '4'                                      117      character   
+74     '('                                      119      character   
+75     ')'                                      148      character   
+76     ';'                                      70       character   
+77     '~'                                      32       character   
+78     '5'                                      96       character   
+79     'Z'                                      27       character   
+80     'Q'                                      19       character   
+81     '8'                                      70       character   
+82     'V'                                      152      character   
+83     '#'                                      14       character   
+84     '$'                                      19       character   
+85     '+'                                      23       character   
+86     '/'                                      133      character   
+87     '7'                                      52       character   
+88     '='                                      22       character   
+89     '@'                                      28       character   
+90     '\\'                                     4        character   
+91     ']'                                      9        character   
+92     '^'                                      11       character   
+93     '`'                                      9        character   
+94     '|'                                      4        character   
+95     '¡'                                      3        character   
+96     '£'                                      5        character   
+97     '©'                                      4        character   
+98     '³'                                      4        character   
+99     '´'                                      8        character   
+100    '¼'                                      4        character   
+101    '½'                                      18       character   
+102    '¿'                                      18       character   
+103    'Â'                                      11       character   
+104    'Ã'                                      8        character   
+105    'ï'                                      15       character   
+106    'Get Â£6'                                0        bigram      
+107    '*Jessi Ann*<3'                          0        bigram      
+108    '<3Team Edward<3'                        0        bigram      
+109    'T-Mobile G1'                            0        bigram      
+110    'Airbus A330-200'                        0        bigram      
+111    'Alton F-650'                            0        bigram      
+112    'F-22 Raptor'                            0        bigram      
+113    'Mcfly 7/June/2009'                      0        bigram      
+114    'Olympus E-P1'                           0        bigram      
+115    'Only Â£1'                               0        bigram      
+116    'Only Â£5'                               0        bigram      
+117    '-Kynitekia 3Rev20'                      0        bigram      
+118    '-The Beatles<3'                         0        bigram      
+119    '1-Business Intelligence'                0        bigram      
+120    '1-Page Strategic'                       0        bigram      
+121    '1-Spandau Ballet[8]'                    0        bigram      
+122    '10-Ball Championships'                  0        bigram      
+123    '10-Year-Old Girl'                       0        bigram      
+124    '100%Swedish I'                          0        bigram      
+125    '104-Year-Old Who'                       0        bigram      
+126    '18K+ Votes'                             0        bigram      
+127    '2-Disc Special'                         0        bigram      
+128    '2/3Weeks Lef'                           0        bigram      
+129    '20-Twenty Cricket'                      0        bigram      
+130    '22-Secret Life'                         0        bigram      
+131    '24Hr M&S'                               0        bigram      
+132    '2Pac- Just'                             0        bigram      
+133    '3-D Maybe'                              0        bigram      
+134    '3-D Movie'                              0        bigram      
+135    '3D T-Shirts'                            0        bigram      
+136    '3Doors Down-'                           0        bigram      
+137    '3G Sâ\x83£'                             0        bigram      
+138    '4-Day Week'                             0        bigram      
+139    '4-Letter Words'                         0        bigram      
+140    '4-Toy Story'                            0        bigram      
+141    '40-Year-Old Virgin'                     0        bigram      
+142    '5-Star Press'                           0        bigram      
+143    '7-Aaaand I'                             0        bigram      
+144    '8-Day Weekend'                          0        bigram      
+145    '9-Mid Nyc'                              0        bigram      
+146    '90210/The Hills'                        0        bigram      
+147    '<3<3<3Just Woke'                        0        bigram      
+148    '<3Jessica Leigh'                        0        bigram      
+149    '<3Matt<3 Ashton'                        0        bigram      
+150    '<3Pot Pie'                              0        bigram      
+151    'A Post-2'                               0        bigram      
+152    'Agree Â£1'                              0        bigram      
+153    'Air-France A330'                        0        bigram      
+154    'Am S-0-0-0'                             0        bigram      
+155    'An F/1'                                 0        bigram      
+156    'April 2009-June'                        0        bigram      
+157    'Ares 1-X'                               0        bigram      
+158    'Argue-1 Kuhn-0'                         0        bigram      
+159    'Asher Roth<3333'                        0        bigram      
+160    'Audition-2 Days'                        0        bigram      
+161    'Awards<3 Mrs'                           0        bigram      
+162    'Awh<3 I'                                0        bigram      
+163    'Awww<3 I'                               0        bigram      
+164    'Ayo Hi-5'                               0        bigram      
+165    'Because K-9'                            0        bigram      
+166    'Beta-2 Released'                        0        bigram      
+167    'Blink-182/Panic/Fall Out'               0        bigram      
+168    'Bones Season2&3'                        0        bigram      
+169    'British Formula-1'                      0        bigram      
+170    'Brooklyn 1/2Marathon'                   0        bigram      
+171    'Brothers 3-D'                           0        bigram      
+172    'Bï¿½09 Hat'                             0        bigram      
+173    'C&S Nï¿½88'                             0        bigram      
+174    'C-0] No'                                0        bigram      
+175    'Canon 24-70L'                           0        bigram      
+176    'Ch4+1 Because'                          0        bigram      
+177    'Commodore C-64'                         0        bigram      
+178    'Coraline 3-D'                           0        bigram      
+179    'D-5 Before'                             0        bigram      
+180    'Dead 2/Army'                            0        bigram      
+181    'Dell Mini-10'                           0        bigram      
+182    'Digital 3-D'                            0        bigram      
+183    'Done That~Grateful4Jesus'               0        bigram      
+184    'Dual-Core-Processor T4200'              0        bigram      
+185    'E-3 Sony'                               0        bigram      
+186    'E-P1 Should'                            0        bigram      
+187    'Enjoy C1/J1'                            0        bigram      
+188    'F-14 Tomcat'                            0        bigram      
+189    'Fantasy X-12'                           0        bigram      
+190    'Feb 2007-June'                          0        bigram      
+191    'Finished Catch-22'                      0        bigram      
+192    'Flickr/Youtube/3D Flash'                0        bigram      
+193    'Flu H1N1-Canada'                        0        bigram      
+194    'For Â£40'                               0        bigram      
+195    'For Â£55'                               0        bigram      
+196    'Formula-1 Grand'                        0        bigram      
+197    'Foxtel 20-Twenty'                       0        bigram      
+198    'From Jupiter<3'                         0        bigram      
+199    'Game Baby<33'                           0        bigram      
+200    'Gibson J-45'                            0        bigram      
+201    'Go On<3'                                0        bigram      
+202    'Goodluckk<33 Cause'                     0        bigram      
+203    'Goodnight Loves<3'                      0        bigram      
+204    'Goodnight Tweeters<3'                   0        bigram      
+205    'Goodnight/Goodmorning Ily<33'           0        bigram      
+206    'Grades K-5'                             0        bigram      
+207    'Green Day-86'                           0        bigram      
+208    'H1 West/Ewa'                            0        bigram      
+209    'H1N1 -Highly'                           0        bigram      
+210    'Had $8K'                                0        bigram      
+211    'Haha<3 Then'                            0        bigram      
+212    'Hallooooooo~ X3'                        0        bigram      
+213    'Hasselblad 500C/M'                      0        bigram      
+214    'Heroes S1E16-'                          0        bigram      
+215    'Hey Baby<3'                             0        bigram      
+216    'Hey<3 Mrs'                              0        bigram      
+217    'Hi-5 Friend'                            0        bigram      
+218    'Honor Society<3'                        0        bigram      
+219    'I-25 Next'                              0        bigram      
+220    'I-45 South'                             0        bigram      
+221    'I<3 Lakers'                             0        bigram      
+222    'Idlis+1 Vada+'                          0        bigram      
+223    'In 3-D'                                 0        bigram      
+224    'In Love<33'                             0        bigram      
+225    'Ineffable3-Ruiz Family'                 0        bigram      
+226    'J-5 Suited'                             0        bigram      
+227    'Jake_Rupe_08 I'                         0        bigram      
+228    'Jonas Brothers<33'                      0        bigram      
+229    'Julito77 -You'                          0        bigram      
+230    'July 22-August'                         0        bigram      
+231    'July 31-Aug'                            0        bigram      
+232    'June 18-July'                           0        bigram      
+233    'June 22-Secret'                         0        bigram      
+234    'June 29-July'                           0        bigram      
+235    'June 4-June'                            0        bigram      
+236    'June/26 Is'                             0        bigram      
+237    'K-1 Visa'                               0        bigram      
+238    'Kris Allen<3333333'                     0        bigram      
+239    'Lakers<3 Wonnnn'                        0        bigram      
+240    'Leo I<3Him'                             0        bigram      
+241    'Leonardo Dicaprio<3'                    0        bigram      
+242    'Lewis=10 Heikki=13'                     0        bigram      
+243    'Linzi Caie<333333'                      0        bigram      
+244    'Listening 2-I'                          0        bigram      
+245    'Love<33 Baby'                           0        bigram      
+246    'Lovee Yaaa<3'                           0        bigram      
+247    'May 19-June'                            0        bigram      
+248    'May 21-June'                            0        bigram      
+249    'May 29-June'                            0        bigram      
+250    'Missing T-1'                            0        bigram      
+251    'Morocco D-10'                           0        bigram      
+252    'Muppet*Vision 3-D'                      0        bigram      
+253    'Musical3/Hannah Montana'                0        bigram      
+254    'Mustang Mach-1'                         0        bigram      
+255    'My Â£35'                                0        bigram      
+256    'My Â£400'                               0        bigram      
+257    'Má»¹ Ä'                                 0        bigram      
+258    'Nelson Nguyen<333'                      0        bigram      
+259    'Never Die<3'                            0        bigram      
+260    'New Apartment<3'                        0        bigram      
+261    'New Blink-182'                          0        bigram      
+262    'Nikon D-90'                             0        bigram      
+263    'No 7-Eleven'                            0        bigram      
+264    'No Â£30'                                0        bigram      
+265    'Northbound I-15'                        0        bigram      
+266    'November08/December08/January09 ...'    0        bigram      
+267    'O_0 Jameson'                            0        bigram      
+268    'On 106&Park'                            0        bigram      
+269    'On Ch4+1'                               0        bigram      
+270    'On Sunday<|3'                           0        bigram      
+271    'One 512/8Gb'                            0        bigram      
+272    'Only 2/3Weeks'                          0        bigram      
+273    'Only Â£4'                               0        bigram      
+274    'Otay Calvin<3'                          0        bigram      
+275    'P Grandma<3'                            0        bigram      
+276    'P-51 Mustang'                           0        bigram      
+277    'Peavey T-40'                            0        bigram      
+278    'Plus 8--Except'                         0        bigram      
+279    'Power Ð½Ð¾Ð¼Ñ\x8bÐ³'                    0        bigram      
+280    'Pre-E3 Forcast'                         0        bigram      
+281    'Project 10-Pan'                         0        bigram      
+282    'Psion V34+Fax'                          0        bigram      
+283    'Rainy Skiess<3'                         0        bigram      
+284    'Raised Â£180'                           0        bigram      
+285    'Raised Â£600'                           0        bigram      
+286    'Re Mac/Win7'                            0        bigram      
+287    'Rebecca<3 It'                           0        bigram      
+288    'Robert Pattinson<3'                     0        bigram      
+289    'Rocky Horror<3'                         0        bigram      
+290    'Roland Fantom-X6'                       0        bigram      
+291    'Russell<3 Greaaat'                      0        bigram      
+292    'Rye Elizabeth<3'                        0        bigram      
+293    'S1E16- Hello'                           0        bigram      
+294    'Said Hey<3'                             0        bigram      
+295    'School Musical3/Hannah'                 0        bigram      
+296    'Scooping Â£27'                          0        bigram      
+297    'Skiess<3 Going'                         0        bigram      
+298    'Sleep<3<3<3 Work'                       0        bigram      
+299    'Society<3 Bets'                         0        bigram      
+300    'Sony D12-11'                            0        bigram      
+301    'Spent Â£112'                            0        bigram      
+302    'Stabilo Write-4-All'                    0        bigram      
+303    'Still Â£440'                            0        bigram      
+304    'Summer<3 College'                       0        bigram      
+305    'Sunday<|3 Pshh'                         0        bigram      
+306    'Sunshine_00 Girl'                       0        bigram      
+307    'T-22 Days'                              0        bigram      
+308    'T-Mobile 3G'                            0        bigram      
+309    'T<3 Me'                                 0        bigram      
+310    'Tampa Tonight-$500'                     0        bigram      
+311    'Thanksz<3 Whutsz'                       0        bigram      
+312    'That Lakers<3'                          0        bigram      
+313    'That Â£5'                               0        bigram      
+314    'The 1Â°'                                0        bigram      
+315    'The Blink-182'                          0        bigram      
+316    'The M-15'                               0        bigram      
+317    'The Â£300'                              0        bigram      
+318    'This F-22'                              0        bigram      
+319    'Titanic=<3 One'                         0        bigram      
+320    'Today 18*C'                             0        bigram      
+321    'Tonight-$500 Rejuva'                    0        bigram      
+322    'Tony Awards<3'                          0        bigram      
+323    'Toshiba A215-S4697'                     0        bigram      
+324    'Tulisa<3 Though'                        0        bigram      
+325    'Tweeter Â£1'                            0        bigram      
+326    'Twilight<3 It'                          0        bigram      
+327    'Untamed Heart<3'                        0        bigram      
+328    'Use 4-Letter'                           0        bigram      
+329    'V34+Fax Gold'                           0        bigram      
+330    'Vectra 3-D'                             0        bigram      
+331    'Via C-7M'                               0        bigram      
+332    'Virtualbox &Win7'                       0        bigram      
+333    'Volvo C30=C30R'                         0        bigram      
+334    'Was Â£200'                              0        bigram      
+335    'Watch 40-Year-Old'                      0        bigram      
+336    'Watching 106&Park'                      0        bigram      
+337    'Watching 16&Pregnant'                   0        bigram      
+338    'With Derek<33'                          0        bigram      
+339    'Work 11-Close'                          0        bigram      
+340    'Works 3-D'                              0        bigram      
+341    'World 10-Ball'                          0        bigram      
+342    'Y-100 Phone'                            0        bigram      
+343    'Y-3 Store'                              0        bigram      
+344    'You Love<3'                             0        bigram      
+345    'Your Call<3'                            0        bigram      
+346    'Yu-Gi-Oh 5D'                            0        bigram      
+347    '[David44567] Hiya'                      0        bigram      
+348    '[I Hope<3'                              0        bigram      
+349    'Â£100 Hudson'                           0        bigram      
+350    'Â£209 Bloody'                           0        bigram      
+351    'Â£30 To'                                0        bigram      
+352    'Â£40 Progress'                          0        bigram      
+353    'Â£421 Orange'                           0        bigram      
+354    'Â£45 Its'                               0        bigram      
+355    'Â£5 Off'                                0        bigram      
+356    'Â£5 Woo'                                0        bigram      
+357    'Â£550 Why'                              0        bigram      
+358    'Â£64 Plus'                              0        bigram      
+359    'Î¼Îµ Ï\x84Î¹'                           0        bigram      
+360    'Ð Ñ\x83Ð³Ð°Ð¹Ñ\x82Ðµ'                   0        bigram      
+361    'Ð\x94Ð¾Ð²Ðµ Ð'                          0        bigram      
+362    'Ð\x98 Ð²Ð¾Ð¾Ð±Ñ\x89Ðµ'                  0        bigram      
+363    'Ð\x9aÐ¾Ð¹ Ñ\x89Ðµ'                      0        bigram      
+364    'Ð\x9bÑ\x8cÐ²Ð¾Ð²Ðµ Ð¿Ð¾Ð´Ð¾Ð±Ð½Ñ\x8bÑ'  0        bigram      
+365    'Ð\x9cÐ¾Ðµ Ð½Ð¾Ð²Ð¾Ðµ'                   0        bigram      
+366    'Ð\xadÑ\x80Ð¼Ð¸Ñ\x82Ð°Ð¶Ðµ Ð²Ñ'          0        bigram      
+367    'Ð¯ Ð²Ð¾Ð¾Ð±Ñ\x89Ðµ'                     0        bigram      
+368    'Ð° Ð³Ð´Ðµ'                              0        bigram      
+369    'Ð°Ð¹Ñ\x84Ð¾Ð½ Ð½Ðµ'                     0        bigram      
+370    'Ð°Ð¹Ñ\x84Ð¾Ð½Ðµ Ð¶Ðµ'                   0        bigram      
+371    'Ð°Ð½Ð´Ñ\x80Ð¾Ð¹Ð´ Ñ\x82Ð¾Ð¶Ðµ'          0        bigram      
+372    'Ð±Ð°Ð½Ðµ Ð²Ñ'                           0        bigram      
+373    'Ð±Ð¾Ð»Ñ\x8cÐ½Ð¾Ðµ Ð²Ð¾Ñ'                0        bigram      
+374    'Ð±Ð¾Ð»Ñ\x8cÑ\x88Ðµ Ð²Ñ'                 0        bigram      
+375    'Ð² Ð±Ð°Ð½Ðµ'                            0        bigram      
+376    'Ð² Ð¼Ð°Ñ\x80Ñ\x82Ðµ'                    0        bigram      
+377    'Ð²Ð¶Ðµ Ð¿Ñ\x80Ð¸Ð¹Ð½Ñ'                  0        bigram      
+378    'Ð²Ð¸ Ðµ'                                0        bigram      
+379    'Ð²Ð¾ Ð\x9bÑ\x8cÐ²Ð¾Ð²Ðµ'                0        bigram      
+380    'Ð²Ð¾Ð¾Ð±Ñ\x89Ðµ Ð²Ñ'                    0        bigram      
+381    'Ð²Ð¾Ð¾Ð±Ñ\x89Ðµ Ð½Ðµ'                   0        bigram      
+382    'Ð²Ð¾Ð¾Ð±Ñ\x89Ðµ Ð¾Ð½Ð¸'                 0        bigram      
+383    'Ð²Ñ\x80Ð¾Ð´Ðµ Ð²'                       0        bigram      
+384    'Ð²Ñ\x80Ð¾Ð´Ðµ Ð´Ñ\x83Ñ'                 0        bigram      
+385    'Ð²Ñ\x8bÐ¸Ð³Ñ\x80Ð°Ð» Advanced'          0        bigram      
+386    'Ð²Ñ\x8bÑ Ð¾Ð´Ð½Ñ\x8bÐµ'                 0        bigram      
+387    'Ð³Ð°Ð·Ð¾Ð½Ðµ Ñ'                         0        bigram      
+388    'Ð³Ð´Ðµ Ð¸Ñ'                             0        bigram      
+389    'Ð³Ð´Ðµ Ñ'                               0        bigram      
+390    'Ð³Ð´Ðµ Ñ\x83Ñ'                          0        bigram      
+391    'Ð³Ñ\x80Ð¸Ð»Ðµ Ñ'                        0        bigram      
+392    'Ð´Ð°Ð²Ð½Ð¾ Ð½Ðµ'                        0        bigram      
+393    'Ð´Ð²Ðµ Ñ'                               0        bigram      
+394    'Ðµ Ð³Ð°Ð²Ð½Ð¾'                          0        bigram      
+395    'Ðµ Ð´Ð¾Ð»Ð³Ð¾'                          0        bigram      
+396    'Ðµ Ð¼Ð¾Ð³Ñ\x83'                         0        bigram      
+397    'Ðµ Ð¿Ð¾Ð³Ð¸Ð±Ð»Ð¸'                      0        bigram      
+398    'Ðµ Ñ\x80Ð°Ð²Ð½Ð¾'                       0        bigram      
+399    'Ð¶Ðµ Ð²Ñ\x80Ð¾Ð´Ðµ'                     0        bigram      
+400    'Ð·Ð½Ð°Ñ\x8e Ð³Ð´Ðµ'                     0        bigram      
+401    'Ð¸Ð²Ñ\x8bÐµ Ð½Ð¾Ð²Ñ\x8bÐµ'              0        bigram      
+402    'Ð¸Ð²Ñ\x8bÐµ Ñ'                          0        bigram      
+403    'Ð¸Ð¸ Ð²Ñ\x80Ð¾Ð´Ðµ'                     0        bigram      
+404    'Ð¹Ð´Ðµ Ð´Ð°'                            0        bigram      
+405    'Ð¹Ð¾Ð¼Ñ\x83 Ð½Ðµ'                       0        bigram      
+406    'Ð»Ñ\x83Ñ\x87Ñ\x88Ðµ Ð¿Ð¾Ð´Ð³Ð¾Ñ\x82Ð¾Ð²Ð¸Ñ\x82Ñ\x8cÑ' 0        bigram      
+407    'Ð»Ñ\x83Ñ\x87Ñ\x88Ðµ Ð¿Ð¾Ð¼Ð¾Ð³Ð¸'       0        bigram      
+408    'Ð¼Ð°Ð¹ Ñ\x89Ðµ'                         0        bigram      
+409    'Ð¼Ð½Ðµ Ð³Ð°Ñ\x80Ð»Ð¸Ðº'                 0        bigram      
+410    'Ð¼Ð½Ðµ Ð½Ñ\x80Ð°Ð²Ð¸Ñ\x82Ñ'             0        bigram      
+411    'Ð¼Ð½Ðµ Ð¿Ð¾Ð½Ñ\x80Ð°Ð²Ð¸Ð»Ñ'            0        bigram      
+412    'Ð¼Ð½Ð¾Ð³Ð¸Ðµ Ð·Ð°Ð´Ð°Ð½Ð¸Ñ'             0        bigram      
+413    'Ð½Ð° 2Ðµ'                               0        bigram      
+414    'Ð½Ð° 80-Ñ\x82Ðµ'                        0        bigram      
+415    'Ð½Ð° Ð¢Ð°Ð¹Ð²Ð°Ð½Ðµ'                    0        bigram      
+416    'Ð½Ð° Ð°Ð¹Ñ\x84Ð¾Ð½Ðµ'                   0        bigram      
+417    'Ð½Ð° Ð³Ð°Ð·Ð¾Ð½Ðµ'                      0        bigram      
+418    'Ð½Ð° Ð³Ñ\x80Ð¸Ð»Ðµ'                     0        bigram      
+419    'Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ðµ Ñ'                     0        bigram      
+420    'Ð½Ð°Ñ\x88Ðµ Ð²Ñ'                        0        bigram      
+421    'Ð½Ðµ Ð±Ð°Ñ\x87Ð¸Ð²'                     0        bigram      
+422    'Ð½Ðµ Ð²Ð¸Ð½Ð°Ð³Ð¸'                      0        bigram      
+423    'Ð½Ðµ Ð²Ñ\x96Ð½Ð´Ð¸'                     0        bigram      
+424    'Ð½Ðµ Ð³Ð¸Ð³Ð°Ð½Ñ\x82'                   0        bigram      
+425    'Ð½Ðµ Ð³Ð»Ð°Ð²Ð½Ð°Ñ'                     0        bigram      
+426    'Ð½Ðµ Ð¼Ð¾Ð³Ñ\x83'                       0        bigram      
+427    'Ð½Ðµ Ð¿Ð¾Ð½Ñ\x80Ð°Ð²Ð¸Ð»Ñ'              0        bigram      
+428    'Ð½Ðµ Ð¿Ñ\x80Ð¾Ð±Ð¾Ð²Ð°Ð»Ð°'             0        bigram      
+429    'Ð½Ð¾ Ð³Ð»Ð°Ð²Ð½Ð¾Ðµ'                    0        bigram      
+430    'Ð½Ð¾Ð²Ñ\x8bÐµ Ñ\x82Ð°Ð±Ñ\x8b'           0        bigram      
+431    'Ð¾ Ð\x94Ð¾Ð²Ðµ'                         0        bigram      
+432    'Ð¾Ñ\x82Ñ\x8c Ð³Ð´Ðµ'                    0        bigram      
+433    'Ð¿Ð¸Ð°Ñ\x80Ðµ Ð²Ð¾Ñ\x82'                0        bigram      
+434    'Ð¿Ð¾Ð¼Ð¾Ð³Ð¸ Ð¼Ð½Ðµ'                    0        bigram      
+435    'Ñ\x80Ð°Ð²Ð½Ð¾ Ð´Ð¾Ñ\x80Ð¾Ð¶Ðµ'          0        bigram      
+436    'Ñ\x82Ð°Ðº Ð²Ñ'                          0        bigram      
+437    'Ñ\x82Ðµ Ð½Ñ\x80Ð°Ð²Ñ'                   0        bigram      
+438    'Ñ\x82Ð¸Ð½Ð³ Ð´Ð°Ð¶Ðµ'                   0        bigram      
+439    'Ñ\x82Ð¾ Ð³Ð¾Ñ\x80Ð¾Ð´Ð¾Ðº'              0        bigram      
+440    'Ñ\x82Ð¾Ð²Ð° Ð½Ðµ'                       0        bigram      
+441    'Ñ\x82Ð¾Ð²Ð°Ñ\x80Ð½Ñ\x8bÐ¹ Ð·Ð½Ð°Ðº'     0        bigram      
+442    'Ñ\x82Ð¾Ð¶Ðµ Ð¸Ð·Ð²Ð½Ðµ'                 0        bigram      
+443    'Ñ\x82Ð¾Ð¶Ðµ Ð¿Ð¾Ð½Ñ\x80Ð°Ð²Ð¸Ð»Ð¾Ñ'     0        bigram      
+444    'Ñ\x82Ð¾Ð¹ Ð¶Ðµ'                         0        bigram      
+445    'Ñ\x82Ñ\x83Ð´Ð¸Ð¹ Ð½Ðµ'                  0        bigram      
+446    'Ñ\x82Ñ\x8c 1Mb'                         0        bigram      
+447    'Ñ\x83Ð³Ð°Ð¹Ñ\x82Ðµ Ð½Ð°Ñ'               0        bigram      
+448    'Ñ\x83Ð»Ð¸Ñ\x86Ðµ Ð¿Ñ\x80Ð¾Ð¼Ð¾Ð·Ð³Ð»Ð¾' 0        bigram      
+449    'Ñ\x86Ðµ Ð¼Ð¾Ñ\x97Ð¹'                    0        bigram      
+450    'Ñ\x86Ðµ Ñ\x82Ð¾Ð³Ð¾'                    0        bigram      
+451    'Ñ\x87Ðµ Ð¼Ð°Ð¹'                         0        bigram      
+452    'Ñ\x87Ñ\x82Ð¾ Ð¼Ð½Ð¾Ð³Ð¸Ðµ'              0        bigram      
+453    'Ñ\x87Ñ\x82Ð¾-Ñ\x82Ð¾ Ð²Ñ\x80Ð¾Ð´Ðµ'     0        bigram      
+454    'Ñ\x89Ðµ Ð²Ð¸Ð´Ð¸Ð¼'                     0        bigram      
+455    'Ñ\x8aÐ¼ Ð²Ñ\x8aÑ\x82Ñ\x80Ðµ'            0        bigram      
+456    'Ø§ Ø·Ø§Ø¹Øª'                            0        bigram      
+457    'Ø¹Ù\x86 Ø§Ù\x84Ø³Ø¬Ø§Ø¯Author'          0        bigram      
+458    'Ø¹Ù\x86Ø¯Ù\x8a Microsoft'               0        bigram      
+459    'Brothers 3D'                            0        bigram      
+460    'Nokia E71'                              0        bigram      
+461    '3D Movie'                               0        bigram      
+462    'Nokia N97'                              0        bigram      
+463    '5D Mark'                                0        bigram      
+464    '3D Concert'                             0        bigram      
+465    'Up 3D'                                  0        bigram      
+466    'E3 Conference'                          1        bigram      
+467    'Microsoft E3'                           0        bigram      
+468    'The 3D'                                 0        bigram      
+469    'B96 Summer'                             0        bigram      
+470    'F1 Grand'                               0        bigram      
+471    'My G1'                                  1        bigram      
+472    'Nikon D40'                              0        bigram      
+473    'Nikon D60'                              0        bigram      
+474    'No 3D'                                  0        bigram      
+475    'T20 World'                              0        bigram      
+476    'Coraline 3D'                            0        bigram      
+477    'E3 Press'                               0        bigram      
+478    'France A330'                            0        bigram      
+479    'G1 Android'                             0        bigram      
+480    'Iphone 3G'                              0        bigram      
+481    'Jonas 3D'                               0        bigram      
+482    'My 3G'                                  0        bigram      
+483    'Nikon D5000'                            0        bigram      
+484    'R Gr8'                                  0        bigram      
+485    'The O2'                                 0        bigram      
+486    'Valentine 3D'                           0        bigram      
+487    'Watching F1'                            0        bigram      
+488    'Ð½Ðµ Ð²'                                0        bigram      
+489    'Airbus A330'                            0        bigram      
+490    'Aliens 3D'                              0        bigram      
+491    'Amazon S3'                              0        bigram      
+492    'Audi R8'                                1        bigram      
+493    'British F1'                             0        bigram      
+494    'F1 Qualifying'                          0        bigram      
+495    'Leica M8'                               0        bigram      
+496    'Nintendo E3'                            0        bigram      
+497    'No 3G'                                  0        bigram      
+498    'No H8'                                  0        bigram      
+499    'Nokia N95'                              0        bigram      
+500    'O2 Arena'                               0        bigram      
+501    'O2 Broadband'                           0        bigram      
+502    'Pixelh8 Music'                          0        bigram      
+503    'Watching E3'                            0        bigram      
+504    '1Part 2Sourcehe'                        0        bigram      
+505    '3D Experience'                          0        bigram      
+506    '3D Planets'                             0        bigram      
+507    '3G Ss'                                  0        bigram      
+508    '3G Watchdog'                            0        bigram      
+509    '4Got About'                             0        bigram      
+510    '7Weeks Till'                            0        bigram      
+511    'A330 Air'                               0        bigram      
+512    'Android G1'                             0        bigram      
+513    'Another 7Weeks'                         0        bigram      
+514    'Any1 Know'                              0        bigram      
+515    'Any1 Wanna'                             0        bigram      
+516    'Audi A3'                                0        bigram      
+517    'B93 Birthday'                           0        bigram      
+518    'Beach Girl5'                            0        bigram      
+519    'C3 Church'                              0        bigram      
+520    'Canon 450D'                             0        bigram      
+521    'Canon 5D'                               0        bigram      
+522    'Chinese F1'                             0        bigram      
+523    'Dell E6400'                             0        bigram      
+524    'Dell Mini9'                             0        bigram      
+525    'Digital 3D'                             0        bigram      
+526    'E3 Live'                                0        bigram      
+527    'E3 Microsoft'                           0        bigram      
+528    'Ericsson C905'                          0        bigram      
+529    'Ericsson W715'                          0        bigram      
+530    'F1 Quali'                               0        bigram      
+531    'F21 Spree'                              0        bigram      
+532    'Found 3G'                               0        bigram      
+533    'Geass R2'                               0        bigram      
+534    'Gr8 Weekend'                            0        bigram      
+535    'H1N1 Swine'                             0        bigram      
+536    'Haha L0L'                               0        bigram      
+537    'Have Gr8'                               0        bigram      
+538    'In 3D'                                  0        bigram      
+539    'Leeds 10K'                              0        bigram      
+540    'Lenovo S10'                             0        bigram      
+541    'London O2'                              0        bigram      
+542    'Mac G5'                                 0        bigram      
+543    'Maths P2'                               0        bigram      
+544    'Missing E3'                             0        bigram      
+545    'Morin Every1'                           0        bigram      
+546    'My A380'                                0        bigram      
+547    'My E71'                                 0        bigram      
+548    'My Xbox360'                             0        bigram      
+549    'Nikon D200'                             0        bigram      
+550    'Nikon D90'                              0        bigram      
+551    'No E3'                                  0        bigram      
+552    'No F1'                                  0        bigram      
+553    'Nokia E63'                              0        bigram      
+554    'Nokia N82'                              0        bigram      
+555    'Nokia N96'                              0        bigram      
+556    'Part 1Part'                             0        bigram      
+557    'Press F1'                               0        bigram      
+558    'Sony E3'                                0        bigram      
+559    'Str8 Rippin'                            0        bigram      
+560    'Sunfeast 10K'                           0        bigram      
+561    'T4 On'                                  0        bigram      
+562    'The N97'                                0        bigram      
+563    'These 3D'                               0        bigram      
+564    'Top10 Please'                           0        bigram      
+565    'Touch 2G'                               0        bigram      
+566    'Touch Diamond2'                         0        bigram      
+567    'Turkish F1'                             0        bigram      
+568    'V8 Supercars'                           0        bigram      
+569    'W4M Miami'                              0        bigram      
+570    'Watching T4'                            0        bigram      
+571    'Wind U115'                              0        bigram      
+572    'World Twenty20'                         0        bigram      
+573    'Xbox E3'                                0        bigram      
+574    'Xperia X1'                              0        bigram      
+575    '0L Duratec'                             0        bigram      
+576    '100K Monthly'                           0        bigram      
+577    '103F This'                              0        bigram      
+578    '10K Run'                                0        bigram      
+579    '10Pack Guy'                             0        bigram      
+580    '110V It'                                0        bigram      
+581    '1130Z Overcast'                         0        bigram      
+582    '14K Followers'                          0        bigram      
+583    '16U Summer'                             0        bigram      
+584    '18V Alot'                               0        bigram      
+585    '1C Company'                             0        bigram      
+586    '1Day I'                                 0        bigram      
+587    '1Ds Mk'                                 0        bigram      
+588    '1L It'                                  0        bigram      
+589    '1L Jack'                                0        bigram      
+590    '1Min In'                                0        bigram      
+591    '1Vs100 Coming'                          0        bigram      
+592    '20Diff Pics'                            0        bigram      
+593    '22K Thats'                              0        bigram      
+594    '24K Lounge'                             1        bigram      
+595    '25K On'                                 0        bigram      
+596    '28C Records'                            0        bigram      
+597    '2Bad I'                                 0        bigram      
+598    '2Bad Michael'                           0        bigram      
+599    '2C Heath'                               0        bigram      
+600    '2D Echo'                                0        bigram      
+601    '2D Smashed'                             0        bigram      
+602    '2Day Ugh'                               0        bigram      
+603    '2Day Waz'                               0        bigram      
+604    '2Ft Laud'                               0        bigram      
+605    '2G Jailbreak'                           0        bigram      
+606    '2K Dh'                                  0        bigram      
+607    '2L Marlborough'                         0        bigram      
+608    '2Mag Read'                              0        bigram      
+609    '2Me Just'                               0        bigram      
+610    '2Mo Ni'                                 0        bigram      
+611    '2Months Todayyy'                        0        bigram      
+612    '2Nite She'                              0        bigram      
+613    '2P Professional'                        0        bigram      
+614    '2R Murray'                              0        bigram      
+615    '2Survive When'                          0        bigram      
+616    '2The Chat'                              0        bigram      
+617    '2The Moviez'                            0        bigram      
+618    '2Times A'                               0        bigram      
+619    '2Ðµ Ð²Ñ'                                0        bigram      
+620    '30G Compulsive'                         0        bigram      
+621    '330A Nothing'                           0        bigram      
+622    '33Âº C'                                 0        bigram      
+623    '3Cities 13Stores'                       0        bigram      
+624    '3D Atomic'                              0        bigram      
+625    '3D Avatar'                              0        bigram      
+626    '3D But'                                 0        bigram      
+627    '3D Dept'                                0        bigram      
+628    '3D Desktop'                             0        bigram      
+629    '3D Digital'                             0        bigram      
+630    '3D Drawing'                             0        bigram      
+631    '3D Gaming'                              0        bigram      
+632    '3D Invigorator'                         0        bigram      
+633    '3D Jonas'                               0        bigram      
+634    '3D Made'                                0        bigram      
+635    '3D Mario'                               0        bigram      
+636    '3D Poser'                               0        bigram      
+637    '3D Robot'                               0        bigram      
+638    '3D Wish'                                0        bigram      
+639    '3D With'                                0        bigram      
+640    '3D World'                               0        bigram      
+641    '3D Your'                                0        bigram      
+642    '3G 16Gb'                                0        bigram      
+643    '3G Evolution'                           0        bigram      
+644    '3G Mobile'                              0        bigram      
+645    '3G Moble'                               0        bigram      
+646    '3G Network'                             0        bigram      
+647    '3G Update'                              0        bigram      
+648    '3Gs Have'                               0        bigram      
+649    '3Gs Running'                            0        bigram      
+650    '3Mins Pickin'                           0        bigram      
+651    '3Times Square'                          0        bigram      
+652    '3Way We'                                0        bigram      
+653    '42U Sun'                                0        bigram      
+654    '45M Eur'                                0        bigram      
+655    '4Balley Twitter'                        0        bigram      
+656    '4Bardie Toke'                           0        bigram      
+657    '4Doing The'                             0        bigram      
+658    '4Ev He'                                 0        bigram      
+659    '4Me Oh'                                 0        bigram      
+660    '4Real Y'                                0        bigram      
+661    '500D Cordura'                           0        bigram      
+662    '58A Pagoda'                             0        bigram      
+663    '5920G Baterai'                          0        bigram      
+664    '5D Mk'                                  0        bigram      
+665    '5D Trailer'                             0        bigram      
+666    '5K Mizuno'                              0        bigram      
+667    '5M Camera'                              0        bigram      
+668    '5Âº Celsius'                            0        bigram      
+669    '60K Glad'                               0        bigram      
+670    '60K Sir'                                0        bigram      
+671    '630P God'                               0        bigram      
+672    '65L Primero'                            0        bigram      
+673    '65O Miles'                              0        bigram      
+674    'E</w>'                                  0        subword     
+675    'ME</w>'                                 0        subword     
+676    'VE</w>'                                 0        subword     
