@@ -72,6 +72,13 @@ class NERBPETokenizer(BaseTokenizer):
     UNK_TOKEN = "[UNK]"
     SPACE_TOKEN = " "
     END_MARK = "</w>"
+    
+    # Domain-specific preprocessing tokens
+    PREPROCESSING_TOKENS = {
+        'twitter': ["<URL>", "<USER>", "<HASHTAG>", "<EMOJI>"],
+        'headline': ["<DATE>", "<EMOJI>"],
+        'generic': ["<EMOJI>"]
+    }
 
     def __init__(self, vocab_size: int = 4000, *, domain: str = "unknown") -> None:
         """
@@ -90,6 +97,25 @@ class NERBPETokenizer(BaseTokenizer):
         # Add special tokens to vocabulary
         for tok in (self.UNK_TOKEN, self.SPACE_TOKEN):
             self._add_token(tok)
+        
+        # Add domain-specific preprocessing tokens
+        self._add_preprocessing_tokens()
+
+    def _add_preprocessing_tokens(self) -> None:
+        """Add domain-specific preprocessing tokens to vocabulary."""
+        # Add tokens for current domain
+        if self.domain in self.PREPROCESSING_TOKENS:
+            for token in self.PREPROCESSING_TOKENS[self.domain]:
+                self._add_token(token)
+        
+        else:
+            # Always add generic tokens as fallback
+            for token in self.PREPROCESSING_TOKENS['generic']:
+                if token not in self.token_to_id:
+                    self._add_token(token)
+        
+        print(f"Added preprocessing tokens for domain '{self.domain}': "
+              f"{self.PREPROCESSING_TOKENS.get(self.domain, [])} + {self.PREPROCESSING_TOKENS['generic']}")
 
     def train(self, texts: List[str], *, char_limit: int = 256, bigram_quota: float = 0.3, 
               min_word_score: float = 15.0, min_bigram_score: float = 30.0) -> None:
@@ -389,8 +415,24 @@ class NERBPETokenizer(BaseTokenizer):
         best_match = None
         best_length = 0
         
-        # Try word-level matches first (prefer bigrams)
-        if text[start] != " ":
+        # First priority: Check for preprocessing tokens (longest match first)
+        preprocessing_tokens = []
+        if self.domain in self.PREPROCESSING_TOKENS:
+            preprocessing_tokens.extend(self.PREPROCESSING_TOKENS[self.domain])
+        preprocessing_tokens.extend(self.PREPROCESSING_TOKENS['generic'])
+        
+        # Sort by length (longest first) for proper matching
+        preprocessing_tokens.sort(key=len, reverse=True)
+        
+        for token in preprocessing_tokens:
+            if (start + len(token) <= len(text) and 
+                text[start:start + len(token)] == token):
+                best_match = token
+                best_length = len(token)
+                break
+        
+        # Second priority: Try word-level matches (prefer bigrams)
+        if not best_match and text[start] != " ":
             words = self._extract_words_from_position(text, start)
             
             # Try bigram first
@@ -406,7 +448,7 @@ class NERBPETokenizer(BaseTokenizer):
                     best_match = words[0]
                     best_length = len(words[0])
         
-        # Fallback to character-level longest match
+        # Third priority: Fallback to character-level longest match
         if not best_match:
             max_check = min(30, len(text) - start)
             for length in range(max_check, 0, -1):
@@ -569,7 +611,7 @@ class NERBPETokenizer(BaseTokenizer):
     def _pre_headline(self, text: str) -> str:
         """Preprocess headline text."""
         text = unicodedata.normalize("NFKC", text)
-        text = _NEWS_DATE.sub("[DATE]", text)
+        text = _NEWS_DATE.sub("<DATE>", text)
         text = _EMOJI.sub("<EMOJI>", text)
         text = text.translate(UNICODE_PUNCT_TABLE)
         text = _PUNCT_PAD.sub(r" \1 ", text)
@@ -577,11 +619,11 @@ class NERBPETokenizer(BaseTokenizer):
 
     def _pre_generic(self, text: str) -> str:
         """Preprocess generic text."""
-        # text = unicodedata.normalize("NFKC", text)
-        # text = unescape(text)
-        # text = _EMOJI.sub("<EMOJI>", text)
-        # text = text.translate(UNICODE_PUNCT_TABLE)
-        # text = _PUNCT_PAD.sub(r" \1 ", text)
+        text = unicodedata.normalize("NFKC", text)
+        text = unescape(text)
+        text = _EMOJI.sub("<EMOJI>", text)
+        text = text.translate(UNICODE_PUNCT_TABLE)
+        text = _PUNCT_PAD.sub(r" \1 ", text)
         return " ".join(text.split())
 
     # -------------------------------------------------------------------------
@@ -699,6 +741,7 @@ class NERBPETokenizer(BaseTokenizer):
         # Categorize tokens
         token_categories = {
             'special': [],
+            'preprocessing': [],
             'characters': [],
             'words': [],
             'bigrams': [],
@@ -709,6 +752,8 @@ class NERBPETokenizer(BaseTokenizer):
         for token, freq in token_usage.items():
             if token in [self.UNK_TOKEN, self.SPACE_TOKEN, "[PAD]", "[BOS]", "[EOS]"]:
                 token_categories['special'].append((token, freq))
+            elif any(token in tokens for tokens in self.PREPROCESSING_TOKENS.values()):
+                token_categories['preprocessing'].append((token, freq))
             elif len(token) == 1:
                 token_categories['characters'].append((token, freq))
             elif self._is_bigram(token):
@@ -745,6 +790,14 @@ class NERBPETokenizer(BaseTokenizer):
         f.write(f"Domain: {self.domain}\n")
         f.write(f"Vocabulary Size: {len(self.token_to_id)}\n")
         f.write(f"Training Corpus Size: {len(texts)} texts\n")
+        f.write("\n")
+        
+        # Domain-specific preprocessing tokens info
+        f.write("PREPROCESSING TOKENS\n")
+        f.write("-" * 30 + "\n")
+        if self.domain in self.PREPROCESSING_TOKENS:
+            f.write(f"Domain '{self.domain}' tokens: {self.PREPROCESSING_TOKENS[self.domain]}\n")
+        f.write(f"Generic tokens: {self.PREPROCESSING_TOKENS['generic']}\n")
         f.write("\n")
         
         # Summary statistics
@@ -848,6 +901,9 @@ class NERBPETokenizer(BaseTokenizer):
         """Determine the type of a token for analysis."""
         if token in [self.UNK_TOKEN, self.SPACE_TOKEN, "[PAD]", "[BOS]", "[EOS]"]:
             return "special"
+        # Check if it's a preprocessing token
+        elif any(token in tokens for tokens in self.PREPROCESSING_TOKENS.values()):
+            return "preprocessing"
         elif len(token) == 1:
             return "character"
         elif self._is_bigram(token):
