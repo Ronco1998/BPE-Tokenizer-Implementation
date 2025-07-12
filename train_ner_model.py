@@ -9,6 +9,7 @@ from torch.utils.data import Dataset, DataLoader
 from base_tokenizer import BaseTokenizer
 from tqdm import tqdm
 import regex as re
+from collections import Counter
 
 
 # Dataset class for NER data
@@ -330,7 +331,7 @@ def read_ner_data(file_path: str) -> Tuple[List[str], List[List[int]]]:
     return texts, labels
 
 
-def evaluate_model(model: nn.Module, dataloader: DataLoader, device: torch.device) -> Dict:
+def evaluate_model(model: nn.Module, dataloader: DataLoader, device: torch.device, tokenizer: BaseTokenizer) -> Dict:
     """
     Evaluate the model on a dataset
 
@@ -345,12 +346,17 @@ def evaluate_model(model: nn.Module, dataloader: DataLoader, device: torch.devic
     model.eval()
     all_preds = []
     all_labels = []
+    false_negatives = []
+    false_positives = []
+
     with torch.no_grad():
         for batch in dataloader:
             input_ids = batch['input_ids'].to(device)
             attention_mask = batch['attention_mask'].to(device)
             labels = batch['labels']
             word_to_subtoken = batch['word_to_subtoken']
+            original_texts = batch['original_texts']
+
             # Forward pass
             logits = model(input_ids)
             preds = torch.argmax(logits, dim=-1).cpu().numpy()
@@ -358,6 +364,7 @@ def evaluate_model(model: nn.Module, dataloader: DataLoader, device: torch.devic
 
             # For each sentence in batch
             for i in range(len(preds)):
+                words = original_texts[i].split()
                 # For each word, get prediction from its first subtoken
                 for word_idx, subtoken_idx in enumerate(word_to_subtoken[i]):
                     # Skip if subtoken_idx is out of bounds (due to padding)
@@ -373,6 +380,12 @@ def evaluate_model(model: nn.Module, dataloader: DataLoader, device: torch.devic
                     # Only consider valid labels (skip -100)
                     if gold_label == -100:
                         continue
+
+                    if gold_label == 1 and pred_label == 0:
+                        false_negatives.append(words[word_idx] if word_idx < len(words) else "[WORD_OUT_OF_BOUNDS]")
+                    
+                    if gold_label == 0 and pred_label == 1:
+                        false_positives.append(words[word_idx] if word_idx < len(words) else "[WORD_OUT_OF_BOUNDS]")
 
                     all_preds.append(pred_label)
                     all_labels.append(gold_label)
@@ -394,7 +407,9 @@ def evaluate_model(model: nn.Module, dataloader: DataLoader, device: torch.devic
         'accuracy': accuracy,
         'precision': precision,
         'recall': recall,
-        'f1': f1
+        'f1': f1,
+        'false_negatives': false_negatives,
+        'false_positives': false_positives,
     }
 
 
@@ -497,7 +512,7 @@ def train_ner_model(
             total_loss += loss.item()
 
         # Evaluate on dev set
-        metrics = evaluate_model(model, dev_dataloader, device)
+        metrics = evaluate_model(model, dev_dataloader, device, tokenizer)
 
         print(f"Epoch {epoch+1}/{num_epochs}:")
         print(f"  Train loss: {total_loss / len(train_dataloader):.4f}")
@@ -517,6 +532,9 @@ def train_ner_model(
                 'f1': best_f1
             }, model_path)
             print(f"  Saved new best model with F1: {best_f1:.4f}")
+            print(f"  Top 10 False Negatives: {Counter(metrics['false_negatives']).most_common(10)}")
+            print(f"  Top 10 False Positives: {Counter(metrics['false_positives']).most_common(10)}")
+
 
     print(f"Training complete. Best F1: {best_f1:.4f}")
 

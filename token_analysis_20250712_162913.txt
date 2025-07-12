@@ -1,0 +1,254 @@
+================================================================================
+NER-AWARE BPE TOKENIZER - TOKEN ANALYSIS REPORT
+================================================================================
+Generated: 2025-07-12 16:29:13
+Domain: twitter
+Vocabulary Size: 100
+Training Corpus Size: 1280000 texts
+
+PREPROCESSING TOKENS
+------------------------------
+Domain 'twitter' tokens: ['<URL>', '<USER>', '<HASHTAG>', '<EMOJI>']
+Generic tokens: ['<EMOJI>']
+
+SUMMARY STATISTICS
+----------------------------------------
+Special        :     2 tokens (  2.0%)
+Preprocessing  :     3 tokens (  3.0%)
+Characters     :    91 tokens ( 91.0%)
+Words          :     0 tokens (  0.0%)
+Bigrams        :     0 tokens (  0.0%)
+Subwords       :     0 tokens (  0.0%)
+Merged_chars   :     0 tokens (  0.0%)
+Total          :   100 tokens
+
+TOP 50 MOST FREQUENT TOKENS
+----------------------------------------
+Rank  Token                          Freq       Type           
+-----------------------------------------------------------------
+1     ' '                            76483      special        
+2     'e'                            25471      character      
+3     'o'                            21495      character      
+4     't'                            21099      character      
+5     'a'                            18882      character      
+6     'n'                            15898      character      
+7     'i'                            15836      character      
+8     's'                            13985      character      
+9     'h'                            11721      character      
+10    'r'                            11632      character      
+11    'l'                            10192      character      
+12    'd'                            8551       character      
+13    'u'                            7647       character      
+14    'y'                            7358       character      
+15    'm'                            7198       character      
+16    'g'                            6523       character      
+17    '.'                            6085       character      
+18    'w'                            5936       character      
+19    'c'                            5135       character      
+20    'f'                            4184       character      
+21    'p'                            3898       character      
+22    'b'                            3630       character      
+23    'k'                            3510       character      
+24    '!'                            2835       character      
+25    'I'                            2602       character      
+26    '<USER>'                       2512       preprocessing  
+27    'v'                            2366       character      
+28    "'"                            2093       character      
+29    ','                            1448       character      
+30    'T'                            1005       character      
+31    'A'                            822        character      
+32    'S'                            822        character      
+33    '?'                            817        character      
+34    'O'                            758        character      
+35    'M'                            674        character      
+36    'H'                            660        character      
+37    'j'                            594        character      
+38    'L'                            563        character      
+39    'x'                            552        character      
+40    'N'                            540        character      
+41    'E'                            529        character      
+42    '-'                            527        character      
+43    'W'                            517        character      
+44    'B'                            470        character      
+45    'G'                            461        character      
+46    'C'                            430        character      
+47    'D'                            424        character      
+48    'Y'                            361        character      
+49    'R'                            332        character      
+50    'P'                            310        character      
+
+SPECIAL TOKENS
+--------------------------------------------------
+Count: 2
+Top 20 by frequency:
+Rank  Token                               Frequency 
+-------------------------------------------------------
+1     ' '                                 76483     
+2     '[UNK]'                             243       
+
+PREPROCESSING TOKENS
+--------------------------------------------------
+Count: 3
+Top 20 by frequency:
+Rank  Token                               Frequency 
+-------------------------------------------------------
+1     '<USER>'                            2512      
+2     '<URL>'                             230       
+3     '<HASHTAG>'                         173       
+
+CHARACTERS TOKENS
+--------------------------------------------------
+Count: 91
+Top 20 by frequency:
+Rank  Token                               Frequency 
+-------------------------------------------------------
+1     'e'                                 25471     
+2     'o'                                 21495     
+3     't'                                 21099     
+4     'a'                                 18882     
+5     'n'                                 15898     
+6     'i'                                 15836     
+7     's'                                 13985     
+8     'h'                                 11721     
+9     'r'                                 11632     
+10    'l'                                 10192     
+11    'd'                                 8551      
+12    'u'                                 7647      
+13    'y'                                 7358      
+14    'm'                                 7198      
+15    'g'                                 6523      
+16    '.'                                 6085      
+17    'w'                                 5936      
+18    'c'                                 5135      
+19    'f'                                 4184      
+20    'p'                                 3898      
+
+NER-SPECIFIC ANALYSIS
+----------------------------------------
+Capitalized tokens: 26
+Top 15 capitalized tokens:
+   1. 'I' (freq: 2602)
+   2. 'T' (freq: 1005)
+   3. 'A' (freq: 822)
+   4. 'S' (freq: 822)
+   5. 'O' (freq: 758)
+   6. 'M' (freq: 674)
+   7. 'H' (freq: 660)
+   8. 'L' (freq: 563)
+   9. 'N' (freq: 540)
+  10. 'E' (freq: 529)
+  11. 'W' (freq: 517)
+  12. 'B' (freq: 470)
+  13. 'G' (freq: 461)
+  14. 'C' (freq: 430)
+  15. 'D' (freq: 424)
+
+BPE MERGE ANALYSIS
+------------------------------
+Total BPE merges performed: 0
+Latest 10 BPE merges:
+
+COMPLETE TOKEN VOCABULARY
+--------------------------------------------------
+ID     Token                                    Freq     Type        
+----------------------------------------------------------------------
+0      '[PAD]'                                  0        special     
+1      '[UNK]'                                  243      special     
+2      '[BOS]'                                  0        special     
+3      '[EOS]'                                  0        special     
+4      ' '                                      76483    special     
+5      '<URL>'                                  230      preprocessing
+6      '<USER>'                                 2512     preprocessing
+7      '<HASHTAG>'                              173      preprocessing
+8      '<EMOJI>'                                0        preprocessing
+9      'e'                                      25471    character   
+10     'o'                                      21495    character   
+11     't'                                      21099    character   
+12     'a'                                      18882    character   
+13     'n'                                      15898    character   
+14     'i'                                      15836    character   
+15     's'                                      13985    character   
+16     'h'                                      11721    character   
+17     'r'                                      11632    character   
+18     'l'                                      10192    character   
+19     'y'                                      7358     character   
+20     'd'                                      8551     character   
+21     'u'                                      7647     character   
+22     'g'                                      6523     character   
+23     'm'                                      7198     character   
+24     '.'                                      6085     character   
+25     'w'                                      5936     character   
+26     'c'                                      5135     character   
+27     'f'                                      4184     character   
+28     'S'                                      822      character   
+29     'p'                                      3898     character   
+30     'U'                                      216      character   
+31     '<'                                      75       character   
+32     'R'                                      332      character   
+33     '>'                                      31       character   
+34     'k'                                      3510     character   
+35     'b'                                      3630     character   
+36     'E'                                      529      character   
+37     'v'                                      2366     character   
+38     '!'                                      2835     character   
+39     'I'                                      2602     character   
+40     "'"                                      2093     character   
+41     'T'                                      1005     character   
+42     ','                                      1448     character   
+43     'L'                                      563      character   
+44     'H'                                      660      character   
+45     'A'                                      822      character   
+46     'O'                                      758      character   
+47     '?'                                      817      character   
+48     'G'                                      461      character   
+49     '-'                                      527      character   
+50     'W'                                      517      character   
+51     'M'                                      674      character   
+52     'D'                                      424      character   
+53     '1'                                      258      character   
+54     'x'                                      552      character   
+55     '0'                                      249      character   
+56     'j'                                      594      character   
+57     'B'                                      470      character   
+58     'N'                                      540      character   
+59     'Y'                                      361      character   
+60     'F'                                      288      character   
+61     'P'                                      310      character   
+62     'C'                                      430      character   
+63     '2'                                      295      character   
+64     '3'                                      224      character   
+65     '"'                                      204      character   
+66     'J'                                      242      character   
+67     'K'                                      160      character   
+68     'X'                                      61       character   
+69     '9'                                      65       character   
+70     ':'                                      202      character   
+71     '&'                                      136      character   
+72     'z'                                      249      character   
+73     '6'                                      50       character   
+74     '*'                                      96       character   
+75     'q'                                      115      character   
+76     '4'                                      125      character   
+77     '('                                      119      character   
+78     ')'                                      148      character   
+79     ';'                                      70       character   
+80     '~'                                      32       character   
+81     '5'                                      96       character   
+82     'Z'                                      27       character   
+83     'Q'                                      19       character   
+84     '8'                                      71       character   
+85     'V'                                      152      character   
+86     '#'                                      14       character   
+87     '$'                                      19       character   
+88     '+'                                      23       character   
+89     '/'                                      133      character   
+90     '7'                                      52       character   
+91     '='                                      22       character   
+92     '@'                                      28       character   
+93     '\\'                                     4        character   
+94     ']'                                      9        character   
+95     '^'                                      11       character   
+96     '`'                                      9        character   
+97     '|'                                      4        character   
+98     '¡'                                      3        character   
+99     '£'                                      5        character   
