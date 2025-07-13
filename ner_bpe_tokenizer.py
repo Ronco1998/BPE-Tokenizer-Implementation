@@ -101,6 +101,7 @@ class NERBPETokenizer(BaseTokenizer):
         print(f"Initializing NERBPETokenizer for domain: {self.domain}")
         self.vocab_size = vocab_size
         self._bpe_merge_ranks: Dict[Tuple[str, str], int] = {}
+        self._token_frequencies: Dict[str, int] = {}  # Track token frequencies during training
 
         # Add only the special tokens we need
         for tok in (self.UNK_TOKEN, self.SPACE_TOKEN):
@@ -115,18 +116,20 @@ class NERBPETokenizer(BaseTokenizer):
         if self.domain in self.PREPROCESSING_TOKENS:
             for token in self.PREPROCESSING_TOKENS[self.domain]:
                 self._add_token(token)
+                self._token_frequencies[token] = 0  # Initialize frequency tracking
         
         else:
             # Always add generic tokens as fallback
             for token in self.PREPROCESSING_TOKENS['generic']:
                 if token not in self.token_to_id:
                     self._add_token(token)
+                    self._token_frequencies[token] = 0  # Initialize frequency tracking
         
         print(f"Added preprocessing tokens for domain '{self.domain}': "
               f"{self.PREPROCESSING_TOKENS.get(self.domain, self.PREPROCESSING_TOKENS['generic'])}")
 
     def train(self, texts: List[str], *, char_limit: int | None = None, bigram_quota: float = 0.3, 
-              min_word_score: float = 20.0, min_bigram_score: float = 25.0, min_frequency: int = 5) -> None:
+              min_word_score: float = 15.0, min_bigram_score: float = 20.0, min_frequency: int = 2) -> None:
         """
         Train the tokenizer on a corpus of texts.
 
@@ -136,7 +139,7 @@ class NERBPETokenizer(BaseTokenizer):
             bigram_quota: Fraction of remaining slots reserved for bigrams (0.0-1.0)
             min_word_score: Minimum NER score for word tokens
             min_bigram_score: Minimum NER score for bigram tokens
-            min_frequency: Minimum frequency threshold for words and bigrams (default: 5)
+            min_frequency: Minimum frequency threshold for words and bigrams (default: 2)
 
         Training Process:
         1. Compute character, word, and bigram frequencies
@@ -145,13 +148,22 @@ class NERBPETokenizer(BaseTokenizer):
         4. Add top-scoring tokens respecting bigram quota
         5. Run BPE merges to fill remaining vocabulary slots
         """
-        # Auto-adjust parameters for small vocabularies
+        # Reduce aggressive parameter adjustments that hurt performance
         if char_limit is None:
             if self.vocab_size <= 1000:
-                char_limit = min(80, self.vocab_size // 4)  # 25% for characters max
+                char_limit = min(60, self.vocab_size // 8)  # Less aggressive reduction
+            elif self.vocab_size <= 3000:
+                char_limit = min(120, self.vocab_size // 10)  # Less aggressive reduction
             else:
-                char_limit = 256
+                char_limit = 200
         
+        # Less aggressive parameter changes for small vocabularies
+        if self.vocab_size <= 3000:
+            bigram_quota = max(0.4, bigram_quota)  # Reduced from 0.6
+            min_word_score = max(25.0, min_word_score + 5.0)  # Less aggressive increase
+            min_bigram_score = max(15.0, min_bigram_score - 5.0)  # Actually lower threshold
+            min_frequency = max(2, min_frequency)  # Keep at 2, don't increase
+
         total_steps = 7  # Updated to include analysis
         pbar = tqdm(total=total_steps, desc="Training tokenizer", unit="step")
         
@@ -252,31 +264,6 @@ class NERBPETokenizer(BaseTokenizer):
         """
         return "".join(self._id_to_token.get(i, self.UNK_TOKEN) for i in token_ids)
 
-    def save(self, path: str) -> None:
-        """Save the tokenizer to a file."""
-        os.makedirs(os.path.dirname(path), exist_ok=True)
-        data = {
-            'token_to_id': self.token_to_id,
-            'id_to_token': self.id_to_token,
-            'vocab_size': self.vocab_size,
-            'domain': self.domain,
-            'bpe_merge_ranks': self._bpe_merge_ranks
-        }
-        with open(path, 'wb') as f:
-            pickle.dump(data, f)
-
-    @classmethod
-    def load(cls, path: str) -> 'NERBPETokenizer':
-        """Load the tokenizer from a file."""
-        with open(path, 'rb') as f:
-            data = pickle.load(f)
-        
-        # Create new instance
-        tokenizer = cls(data['vocab_size'], domain=data['domain'])
-        tokenizer.token_to_id = data['token_to_id']
-        tokenizer.id_to_token = data['id_to_token']
-        tokenizer._bpe_merge_ranks = data['bpe_merge_ranks']
-        return tokenizer
 
     def get_vocab_size(self) -> int:
         """Get the vocabulary size."""
@@ -322,20 +309,22 @@ class NERBPETokenizer(BaseTokenizer):
         
         # Add frequent characters first
         added_chars = set()
-        for ch, _ in char_freq.most_common(min(char_limit, len(all_chars))):
+        for ch, freq in char_freq.most_common(min(char_limit, len(all_chars))):
             if self._remaining_slots > 0:
                 self._add_token(ch)
+                self._token_frequencies[ch] = freq  # Store character frequency
                 added_chars.add(ch)
         
         # Add remaining characters in sorted order for deterministic behavior
         for ch in sorted(all_chars - added_chars):
             if self._remaining_slots > 0:
                 self._add_token(ch)
+                self._token_frequencies[ch] = 0  # No frequency data for remaining chars
             else:
                 break
 
     def _score_entities(self, word_freq: Counter, bigram_freq: Counter, 
-                       min_word_score: float, min_bigram_score: float, min_frequency: int = 5) -> List:
+                       min_word_score: float, min_bigram_score: float, min_frequency: int = 2) -> List:
         """Score words and bigrams using NER-aware scoring, returning a heap."""
         entity_scores_heap = []
         
@@ -347,10 +336,11 @@ class NERBPETokenizer(BaseTokenizer):
                 if score >= min_word_score:
                     heapq.heappush(entity_scores_heap, (-score, word, freq))
         
-        # Score bigrams with minimum frequency requirement
+        # Score bigrams with minimum frequency requirement - be more lenient for bigrams
+        bigram_min_freq = max(1, min_frequency - 1)  # Allow bigrams with freq 1 if min_frequency is 2
         for bigram, freq in tqdm(bigram_freq.items(), desc="Scoring bigrams", leave=False):
-            # Only consider bigrams with frequency >= min_frequency and proper characters
-            if freq >= min_frequency and not self._has_problematic_chars(bigram):
+            # Only consider bigrams with frequency >= bigram_min_freq and proper characters
+            if freq >= bigram_min_freq and not self._has_problematic_chars(bigram):
                 w1, w2 = bigram.split(" ", 1)
                 score = self._calc_ner_score((w1, " " + w2), freq)
                 if score >= min_bigram_score:
@@ -375,34 +365,58 @@ class NERBPETokenizer(BaseTokenizer):
         """Add top-scoring entities to vocabulary respecting bigram quota."""
         rest_slots = self._remaining_slots
         bg_slots = int(rest_slots * bigram_quota)
-        word_slots = max(0, rest_slots - bg_slots)
         
-        # Extract candidates
+        # Reserve significant portion for BPE merges
+        bpe_reserve = min(rest_slots // 4, 300)  # Reduced from 1/3 and 500
+        available_slots = rest_slots - bpe_reserve
+        bg_slots = int(available_slots * bigram_quota)
+        word_slots = max(0, available_slots - bg_slots)
+        
+        print(f"Available slots: {rest_slots}, BPE reserved: {bpe_reserve}, Bigram slots: {bg_slots}, Word slots: {word_slots}")
+        
+        # Extract candidates - heap structure is (-score, token, freq)
         all_candidates = []
-        while entity_scores_heap and len(all_candidates) < rest_slots * 2:
+        while entity_scores_heap and len(all_candidates) < available_slots * 2:  # Extract more candidates
             neg_score, token, freq = heapq.heappop(entity_scores_heap)
-            all_candidates.append((token, -neg_score))
+            # Stricter frequency requirement for candidates
+            if freq >= 2:  # Require at least frequency 2
+                all_candidates.append((token, -neg_score, freq))
         
         # Separate bigrams and singles
-        bigrams = [(s, sc) for s, sc in all_candidates if self._is_bigram(s)]
-        singles = [(s, sc) for s, sc in all_candidates if not self._is_bigram(s)]
+        bigrams = [(s, sc, f) for s, sc, f in all_candidates if self._is_bigram(s)]
+        singles = [(s, sc, f) for s, sc, f in all_candidates if not self._is_bigram(s)]
         
-        # Add top bigrams
+        # Sort by score (higher score = better)
+        bigrams.sort(key=lambda x: x[1], reverse=True)
+        singles.sort(key=lambda x: x[1], reverse=True)
+        
+        print(f"Found {len(bigrams)} bigram candidates and {len(singles)} word candidates")
+        
+        # Add top bigrams (already sorted by score)
         added_bigrams = 0
-        for s, score in bigrams[:bg_slots]:
+        for s, score, freq in bigrams[:bg_slots]:
             if len(self._token_to_id) >= self.vocab_size:
                 break
             self._add_token(s)
+            self._token_frequencies[s] = freq
             added_bigrams += 1
         
-        # Add top singles
+        # If we didn't use all bigram slots, convert them to word slots
+        unused_bigram_slots = bg_slots - added_bigrams
+        word_slots += unused_bigram_slots
+        
+        # Add top singles (already sorted by score) - be more selective
         added_singles = 0
-        for s, score in singles[:word_slots]:
+        for s, score, freq in singles[:word_slots]:
             if len(self._token_to_id) >= self.vocab_size:
                 break
-            self._add_token(s)
-            added_singles += 1
+            # Reduce the score threshold
+            if score >= 20.0:  # Reduced from 30.0
+                self._add_token(s)
+                self._token_frequencies[s] = freq
+                added_singles += 1
         
+        print(f"Added {added_bigrams} bigrams and {added_singles} words")
         return added_bigrams, added_singles
 
     def _run_bpe_merges(self, texts: List[str]) -> None:
@@ -410,29 +424,38 @@ class NERBPETokenizer(BaseTokenizer):
         # Build word frequency for BPE with better sampling
         word_freq = Counter()
         
-        # Use much smaller sample for small vocabularies to avoid noise
+        # Use larger sample for BPE to get better statistics
         if self.vocab_size <= 1000:
-            sample_size = min(5000, len(texts))
+            sample_size = min(50000, len(texts))  # Increased sample
+        elif self.vocab_size <= 3000:
+            sample_size = min(200000, len(texts))  # Increased sample
         else:
-            sample_size = min(50000, len(texts))
+            sample_size = min(500000, len(texts))
+        
+        print(f"Building BPE word frequencies from {sample_size} texts...")
         
         for text in tqdm(texts[:sample_size], desc="Building word frequencies", leave=False):
             tokens = self._preprocess(text).split()
             for w in tokens:
-                # Only process words longer than 1 character to avoid noise
-                if len(w) > 1:
+                # Process all words, not just length > 1
+                if w:  # Just check it's not empty
                     word_freq[tuple(w) + (self.END_MARK,)] += 1
         
-        # BPE iteration loop with frequency threshold
-        iteration = 0
-        max_iterations = min(self._remaining_slots, 500)  # Reduced max iterations
-        min_pair_frequency = max(2, sample_size // 10000)  # Dynamic threshold
+        print(f"Created {len(word_freq)} unique words for BPE processing")
         
-        with tqdm(total=max_iterations, desc="BPE merges", leave=False) as pbar:
+        # More aggressive BPE parameters
+        iteration = 0
+        max_iterations = self._remaining_slots * 3  # Allow more iterations
+        min_pair_frequency = 1  # Keep threshold low
+        
+        print(f"Starting BPE with {self._remaining_slots} remaining slots, max iterations: {max_iterations}")
+        
+        with tqdm(total=min(max_iterations, self._remaining_slots), desc="BPE merges", leave=False) as pbar:
             while self._remaining_slots > 0 and iteration < max_iterations:
                 # Find best pair to merge
                 best_pair = self._find_best_bpe_pair(word_freq)
                 if not best_pair:
+                    print(f"No valid pairs found at iteration {iteration}")
                     break
                 
                 # Get frequency for the best pair
@@ -446,21 +469,22 @@ class NERBPETokenizer(BaseTokenizer):
                     print(f"Stopping BPE: best frequency {best_freq} < threshold {min_pair_frequency}")
                     break
                 
-                # Apply merge
+                # Apply merge and track frequency
+                merged_token = "".join(best_pair)
                 self._perform_merge(best_pair, word_freq)
+                self._token_frequencies[merged_token] = best_freq
                 self._bpe_merge_ranks[best_pair] = iteration
                 
                 iteration += 1
                 pbar.update(1)
                 
                 if iteration % 50 == 0:
-                    pbar.set_postfix({"merge": f"'{best_pair[0]}'+''{best_pair[1]}'", "freq": best_freq})
-                
-                if iteration % 100 == 0:
-                    pbar.set_postfix({"merge": f"'{best_pair[0]}'+''{best_pair[1]}'"})
+                    pbar.set_postfix({"merge": f"'{best_pair[0]}'+''{best_pair[1]}'", "freq": best_freq, "remaining": self._remaining_slots})
+        
+        print(f"BPE completed after {iteration} iterations, {self._remaining_slots} slots remaining")
 
     def _find_best_bpe_pair(self, word_freq: Counter) -> Tuple[str, str] | None:
-        """Find the best character pair to merge in BPE."""
+        """Find the best character pair to merge in BPE, prioritizing frequency."""
         # Count all adjacent pairs
         pair_freq = Counter()
         for w, f in word_freq.items():
@@ -470,21 +494,38 @@ class NERBPETokenizer(BaseTokenizer):
         if not pair_freq:
             return None
         
-        # Find best pair with NER scoring and bigram constraint
+        # Find best pair prioritizing frequency first, then useful merges
         best_pair = None
         best_score = -1
         
-        for pair, freq in pair_freq.items():
+        # Sort by frequency first to prioritize high-frequency pairs
+        for pair, freq in pair_freq.most_common():
             merged_token = "".join(pair)
             
             # Check bigram constraint
             if self._violates_bigram_constraint(merged_token):
                 continue
             
-            # Calculate NER score
-            ner_score = self._calc_ner_score(pair, freq)
-            if ner_score > best_score:
-                best_score = ner_score
+            # Skip if merged token already exists
+            if merged_token in self._token_to_id:
+                continue
+            
+            # Heavily prioritize frequency for BPE
+            frequency_score = freq * 20  # Increased weight for frequency
+            
+            # Bonus for useful character combinations
+            char_bonus = 0
+            if len(merged_token) == 2:
+                # Bonus for common character combinations
+                if merged_token.lower() in ['th', 'he', 'in', 'er', 'an', 're', 'ed', 'nd', 'ou', 'ea', 'ti', 'to', 'it', 'st', 'io', 'le', 'is', 'ar', 'as', 'de', 'rt', 'se']:
+                    char_bonus += 50
+                elif merged_token.isalpha():
+                    char_bonus += 10
+            
+            total_score = frequency_score + char_bonus
+            
+            if total_score > best_score:
+                best_score = total_score
                 best_pair = pair
         
         return best_pair
@@ -575,80 +616,80 @@ class NERBPETokenizer(BaseTokenizer):
     def _calc_ner_score(self, pair: Tuple[str, str], frequency: int = 1) -> float:
         """Calculate NER relevance score for a token pair."""
         joined = "".join(pair)
-        base_score = math.log(frequency + 1)
+        base_score = math.log(frequency + 1) * 1.5  # Reduce from 2 to balance with NER features
         features = self._get_ner_indicators(joined)
         
-        # NER-specific bonuses
-        ner_bonus = 0.0
+        # NER-specific bonuses - rebalance to be less aggressive
+        ner_score = 0.0
         
         # Character tokens
         if features['length'] == 1:
-            ner_bonus += 2
+            ner_score += 2
             if joined.isupper():
-                ner_bonus += 3
+                ner_score += 3
             elif joined.isdigit():
-                ner_bonus += 5
+                ner_score += 1
             elif joined == ' ':
-                ner_bonus += 10
-            # Reduce score for punctuation characters
+                ner_score += 10
+            # Less harsh penalty for punctuation
             elif not joined.isalnum():
-                ner_bonus -= 5
+                ner_score -= 2  # Reduced from -5
         
         # Word tokens
-        elif features['word_count'] == 1:
-            ner_bonus += 10
+        elif features['num_words'] == 1:
+            ner_score += 10
             if features['has_uppercase']:
-                ner_bonus += 50  # Title case very important for NER
+                ner_score += 15  # Reduced from 20
+            if features['is_all_caps']:
+                ner_score += 8   # Reduced from 10
+            if features['title_case_ratio']:
+                ner_score += 35  # Reduced from 50
             if features['has_mixed_case']:
-                ner_bonus += 15
+                ner_score += 12  # Reduced from 15
             if features['has_digits']:
-                ner_bonus += 10
+                ner_score += 3
             if features['has_special_chars']:
-                ner_bonus += 8
+                ner_score += 6   # Reduced from 8
         
-        # Bigram tokens (highest priority)
-        elif features['word_count'] == 2:
-            ner_bonus += 25
-            if features['is_capitalized_pair']:
-                ner_bonus += 100  # Both words capitalized - very likely entity
-            elif features['title_case_ratio'] > 0:
-                ner_bonus += 50
+        # Bigram tokens - maintain high priority but be less extreme
+        elif features['num_words'] == 2:
+            ner_score += 30  # Reduced from 40
+            if features['title_case_ratio'] > 0:
+                ner_score += features['title_case_ratio'] * 35  # Reduced from 50
             if features['has_digits']:
-                ner_bonus += 10
+                ner_score += 3
         
         # Cross-word character pairs
         elif features['has_space'] and features['length'] == 2:
-            ner_bonus += 30
+            ner_score += 25  # Reduced from 30
             if pair[0] == ' ' and len(pair[1]) > 0 and pair[1][0].isupper():
-                ner_bonus += 40
-            elif len(pair[0]) > 0 and pair[0][0].isupper() and len(pair[1]) > 0 and pair[1][0].isupper():
-                ner_bonus += 25
+                ner_score += 30  # Reduced from 40
         
-        # Additional bonuses
+        # Additional bonuses - reduce to be less aggressive
         if features['has_space']:
-            ner_bonus += 40
+            ner_score += 12  # Reduced from 15
         if features['has_mixed_case']:
-            ner_bonus += 15
+            ner_score += 15  # Reduced from 20
         if features['has_digits']:
-            ner_bonus += 10
+            ner_score += 3
         if features['has_special_chars']:
-            ner_bonus += 8
+            ner_score += 8   # Reduced from 10
         
-        # Penalties for mostly punctuation tokens
+        # Less harsh punctuation penalty
         if features['length'] > 1:
             punct_ratio = sum(1 for c in joined if not c.isalnum() and c != ' ') / features['length']
-            if punct_ratio > 0.5:  # More than 50% punctuation
-                ner_bonus -= 15
-            elif punct_ratio > 0.3:  # More than 30% punctuation
-                ner_bonus -= 8
+            if punct_ratio > 0.5:
+                ner_score -= 8   # Reduced from -15
+            elif punct_ratio > 0.3:
+                ner_score -= 4   # Reduced from -8
         
-        return base_score + ner_bonus
+        return base_score + ner_score
 
     def _get_ner_indicators(self, token: str) -> Dict[str, float]:
         """Extract NER-relevant features from a token."""
         features = {
             'length': len(token),
-            'word_count': len(token.strip().split()),
+            'num_words': len(token.strip().split()),
             'has_space': 1.0 if ' ' in token else 0.0,
             'has_digits': 1.0 if any(c.isdigit() for c in token) else 0.0,
             'has_uppercase': 1.0 if any(c.isupper() for c in token) else 0.0,
@@ -657,12 +698,17 @@ class NERBPETokenizer(BaseTokenizer):
             'has_special_chars': 1.0 if any(not c.isalnum() and c != ' ' for c in token) else 0.0,
             'title_case_ratio': 0.0,
             'is_word_pair': False,
-            'is_capitalized_pair': False,
+            'is_all_caps': False,
         }
         
         # Mixed case detection
         if features['has_uppercase'] > 0 and features['has_lowercase'] > 0:
             features['has_mixed_case'] = 1.0
+        
+        # All caps detection (alphabetic characters only)
+        alpha_chars = [c for c in token if c.isalpha()]
+        if alpha_chars:
+            features['is_all_caps'] = all(c.isupper() for c in alpha_chars)
         
         # Word-level features
         words = token.strip().split()
@@ -673,7 +719,6 @@ class NERBPETokenizer(BaseTokenizer):
             features['is_word_pair'] = True
             title_case_count = sum(1 for w in words if w and w.istitle())
             features['title_case_ratio'] = title_case_count / 2.0
-            features['is_capitalized_pair'] = title_case_count == 2
         
         return features
 
@@ -682,7 +727,7 @@ class NERBPETokenizer(BaseTokenizer):
     # -------------------------------------------------------------------------
 
     def _preprocess(self, text: str) -> str:
-        """Apply domain-specific preprocessing."""
+        """Apply domain-specific preprocessing and track token usage."""
         if self.domain == "twitter":
             return self._pre_twitter(text)
         elif self.domain in {"headline", "headlines"}:
@@ -691,32 +736,72 @@ class NERBPETokenizer(BaseTokenizer):
             return self._pre_generic(text)
 
     def _pre_twitter(self, text: str) -> str:
-        """Preprocess Twitter text."""
+        """Preprocess Twitter text and track preprocessing token usage."""
         # text = unicodedata.normalize("NFKC", text)
         text = unescape(text)
+        
+        # Track URL replacements
+        url_count = len(_TW_URL.findall(text))
+        if url_count > 0:
+            self._token_frequencies["<URL>"] = self._token_frequencies.get("<URL>", 0) + url_count
         text = _TW_URL.sub("<URL>", text)
+        
+        # Track USER replacements
+        user_count = len(_TW_USER.findall(text))
+        if user_count > 0:
+            self._token_frequencies["<USER>"] = self._token_frequencies.get("<USER>", 0) + user_count
         text = _TW_USER.sub("<USER>", text)
+        
+        # Track HASHTAG replacements
+        hashtag_count = len(_HASHTAG_RE.findall(text))
+        if hashtag_count > 0:
+            self._token_frequencies["<HASHTAG>"] = self._token_frequencies.get("<HASHTAG>", 0) + hashtag_count
         text = _HASHTAG_RE.sub("<HASHTAG>", text)
+        
+        # Track EMOJI replacements
+        emoji_count = len(_EMOJI.findall(text))
+        if emoji_count > 0:
+            self._token_frequencies["<EMOJI>"] = self._token_frequencies.get("<EMOJI>", 0) + emoji_count
         text = _EMOJI.sub("<EMOJI>", text)
+        
         # text = text.translate(UNICODE_PUNCT_TABLE)
         text = _PUNCT_PAD.sub(r" \1 ", text)
         return " ".join(text.split())
 
     def _pre_headline(self, text: str) -> str:
-        """Preprocess headline text."""
+        """Preprocess headline text and track preprocessing token usage."""
         # text = unicodedata.normalize("NFKC", text)
+        
+        # Track DATE replacements
+        date_count = len(_NEWS_DATE.findall(text))
+        if date_count > 0:
+            self._token_frequencies["<DATE>"] = self._token_frequencies.get("<DATE>", 0) + date_count
         text = _NEWS_DATE.sub("<DATE>", text)
+        
+        # Track EMOJI replacements
+        emoji_count = len(_EMOJI.findall(text))
+        if emoji_count > 0:
+            self._token_frequencies["<EMOJI>"] = self._token_frequencies.get("<EMOJI>", 0) + emoji_count
         text = _EMOJI.sub("<EMOJI>", text)
+        
         # text = text.translate(UNICODE_PUNCT_TABLE)
         text = _PUNCT_PAD.sub(r" \1 ", text)
         return " ".join(text.split())
 
     def _pre_generic(self, text: str) -> str:
-        """Preprocess generic text."""
-        # text = unicodedata.normalize("NFKC", text)
+        """Preprocess generic text and track preprocessing token usage."""
+        # Restore proper preprocessing that was disabled
+        text = unicodedata.normalize("NFKC", text)
         text = unescape(text)
+        
+        # Track EMOJI replacements
+        emoji_count = len(_EMOJI.findall(text))
+        if emoji_count > 0:
+            self._token_frequencies["<EMOJI>"] = self._token_frequencies.get("<EMOJI>", 0) + emoji_count
         text = _EMOJI.sub("<EMOJI>", text)
-        # text = text.translate(UNICODE_PUNCT_TABLE)
+        
+        # Restore proper punctuation handling
+        text = text.translate(UNICODE_PUNCT_TABLE)
         text = _PUNCT_PAD.sub(r" \1 ", text)
         return " ".join(text.split())
 
@@ -812,27 +897,16 @@ class NERBPETokenizer(BaseTokenizer):
 
     def _analyze_tokens(self, texts: List[str]) -> None:
         """
-        Analyze trained tokens and output detailed statistics to a text file.
+        Analyze trained tokens from vocabulary and output detailed statistics to a text file.
         
         Creates a comprehensive report including:
-        - Token frequency analysis
-        - Token type distribution
-        - Top tokens by category
+        - Token type distribution from vocabulary
+        - Top/bottom ranked bigrams created during training with their frequencies
         - Detailed token list with rankings
         """
         from datetime import datetime
         
-        # Calculate token frequencies in the corpus
-        token_usage = Counter()
-        sample_texts = texts[:5000]  # Sample for efficiency
-        
-        for text in tqdm(sample_texts, desc="Analyzing token usage", leave=False):
-            token_ids = self.encode(text)
-            for token_id in token_ids:
-                if token_id in self.id_to_token:
-                    token_usage[self.id_to_token[token_id]] += 1
-        
-        # Categorize tokens
+        # Categorize tokens from vocabulary (not from encoding)
         token_categories = {
             'special': [],
             'preprocessing': [],
@@ -843,37 +917,56 @@ class NERBPETokenizer(BaseTokenizer):
             'merged_chars': []
         }
         
-        for token, freq in token_usage.items():
+        # Analyze all tokens in vocabulary
+        for token in self.token_to_id.keys():
             if token in [self.UNK_TOKEN, self.SPACE_TOKEN, "[PAD]", "[BOS]", "[EOS]"]:
-                token_categories['special'].append((token, freq))
+                token_categories['special'].append(token)
             elif any(token in tokens for tokens in self.PREPROCESSING_TOKENS.values()):
-                token_categories['preprocessing'].append((token, freq))
+                token_categories['preprocessing'].append(token)
             elif len(token) == 1:
-                token_categories['characters'].append((token, freq))
+                token_categories['characters'].append(token)
             elif self._is_bigram(token):
-                token_categories['bigrams'].append((token, freq))
+                token_categories['bigrams'].append(token)
             elif len(token.strip().split()) == 1 and len(token) > 1:
                 if ' ' in token or any(not c.isalnum() and c != ' ' for c in token):
-                    token_categories['subwords'].append((token, freq))
+                    token_categories['subwords'].append(token)
                 else:
-                    token_categories['words'].append((token, freq))
+                    token_categories['words'].append(token)
             else:
-                token_categories['merged_chars'].append((token, freq))
+                token_categories['merged_chars'].append(token)
         
-        # Sort categories by frequency
-        for category in token_categories:
-            token_categories[category].sort(key=lambda x: x[1], reverse=True)
+        # Prepare bigram data with frequencies and scores - SORT BY FREQUENCY
+        bigram_data = []
+        for bigram in token_categories['bigrams']:
+            # Get frequency from training (default to 0 if not found)
+            freq = self._token_frequencies.get(bigram, 0)
+            # Calculate score for reference but don't use for sorting
+            score = self._calc_ner_score((bigram.split()[0], " " + bigram.split()[1]), max(1, freq))
+            bigram_data.append((bigram, freq, score))
+        
+        # Sort bigrams by FREQUENCY (highest first), not by score
+        bigram_data.sort(key=lambda x: x[1], reverse=True)
         
         # Generate analysis report
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         filename = f"token_analysis_{timestamp}.txt"
         
         with open(filename, 'w', encoding='utf-8') as f:
-            self._write_token_analysis_report(f, token_categories, token_usage, texts)
+            self._write_token_analysis_report(f, token_categories, bigram_data, texts)
         
         print(f"Token analysis saved to: {filename}")
+        
+        # Also print top/bottom bigrams to console
+        if bigram_data:
+            print("\nTop 5 Ranked Bigrams (by frequency):")
+            for i, (bigram, freq, score) in enumerate(bigram_data[:5], 1):
+                print(f"  {i}. \"{bigram}\" (freq: {freq}, score: {score:.2f})")
+            
+            print("\nBottom 5 Ranked Bigrams (by frequency):")
+            for i, (bigram, freq, score) in enumerate(bigram_data[-5:], len(bigram_data)-4):
+                print(f"  {i}. \"{bigram}\" (freq: {freq}, score: {score:.2f})")
 
-    def _write_token_analysis_report(self, f, token_categories: Dict, token_usage: Counter, texts: List[str]) -> None:
+    def _write_token_analysis_report(self, f, token_categories: Dict, bigram_data: List, texts: List[str]) -> None:
         """Write comprehensive token analysis report to file."""
         from datetime import datetime
         
@@ -906,19 +999,33 @@ class NERBPETokenizer(BaseTokenizer):
         f.write(f"{'Total':15}: {total_tokens:5} tokens\n")
         f.write("\n")
         
-        # Most frequent tokens overall
-        f.write("TOP 50 MOST FREQUENT TOKENS\n")
-        f.write("-" * 40 + "\n")
-        f.write(f"{'Rank':<5} {'Token':<30} {'Freq':<10} {'Type':<15}\n")
-        f.write("-" * 65 + "\n")
+        # Bigram ranking analysis - NOW SORTED BY FREQUENCY
+        f.write("BIGRAM RANKING ANALYSIS (Ranked by Frequency)\n")
+        f.write("-" * 50 + "\n")
+        f.write(f"Total bigrams created: {len(bigram_data)}\n")
         
-        all_tokens_by_freq = sorted(token_usage.items(), key=lambda x: x[1], reverse=True)
-        for rank, (token, freq) in enumerate(all_tokens_by_freq[:50], 1):
-            token_type = self._get_token_type(token)
-            token_repr = repr(token) if len(token) <= 25 else repr(token[:22] + "...")
-            f.write(f"{rank:<5} {token_repr:<30} {freq:<10} {token_type:<15}\n")
-        
-        f.write("\n")
+        if bigram_data:
+            f.write("\n")
+            f.write("TOP 10 RANKED BIGRAMS (by frequency):\n")
+            f.write(f"{'Rank':<5} {'Bigram':<25} {'Frequency':<10} {'NER Score':<12}\n")
+            f.write("-" * 55 + "\n")
+            for rank, (bigram, freq, score) in enumerate(bigram_data[:10], 1):
+                f.write(f"{rank:<5} {repr(bigram):<25} {freq:<10} {score:<12.2f}\n")
+            f.write("\n")
+            
+            f.write("BOTTOM 10 RANKED BIGRAMS (by frequency):\n")
+            f.write(f"{'Rank':<5} {'Bigram':<25} {'Frequency':<10} {'NER Score':<12}\n")
+            f.write("-" * 55 + "\n")
+            for rank, (bigram, freq, score) in enumerate(bigram_data[-10:], len(bigram_data)-9):
+                f.write(f"{rank:<5} {repr(bigram):<25} {freq:<10} {score:<12.2f}\n")
+            f.write("\n")
+        else:
+            f.write("No bigrams were created during training.\n")
+            f.write("This may be due to:\n")
+            f.write("- Small vocabulary size limiting bigram allocation\n")
+            f.write("- High minimum frequency thresholds\n")
+            f.write("- Insufficient bigram quota allocation\n")
+            f.write("\n")
         
         # Detailed category analysis
         for category, tokens in token_categories.items():
@@ -928,68 +1035,29 @@ class NERBPETokenizer(BaseTokenizer):
             f.write(f"{category.upper()} TOKENS\n")
             f.write("-" * 50 + "\n")
             f.write(f"Count: {len(tokens)}\n")
-            f.write(f"Top 20 by frequency:\n")
-            f.write(f"{'Rank':<5} {'Token':<35} {'Frequency':<10}\n")
-            f.write("-" * 55 + "\n")
+            f.write(f"Tokens (up to 20):\n")
             
-            for rank, (token, freq) in enumerate(tokens[:20], 1):
-                token_repr = repr(token) if len(token) <= 30 else repr(token[:27] + "...")
-                f.write(f"{rank:<5} {token_repr:<35} {freq:<10}\n")
+            for i, token in enumerate(tokens[:20], 1):
+                freq = self._token_frequencies.get(token, 0)
+                token_repr = repr(token) if len(token) <= 25 else repr(token[:22] + "...")
+                f.write(f"  {i:2}. {token_repr:<30} (freq: {freq})\n")
             
             f.write("\n")
         
-        # NER-specific analysis
-        f.write("NER-SPECIFIC ANALYSIS\n")
-        f.write("-" * 40 + "\n")
-        
-        # Capitalized tokens
-        capitalized_tokens = [(t, f) for t, f in token_usage.items() 
-                            if len(t.strip().split()) >= 1 and t.strip().split()[0].istitle()]
-        capitalized_tokens.sort(key=lambda x: x[1], reverse=True)
-        
-        f.write(f"Capitalized tokens: {len(capitalized_tokens)}\n")
-        f.write("Top 15 capitalized tokens:\n")
-        for rank, (token, freq) in enumerate(capitalized_tokens[:15], 1):
-            f.write(f"  {rank:2}. {repr(token)} (freq: {freq})\n")
-        f.write("\n")
-        
-        # Bigram analysis
-        bigram_tokens = token_categories['bigrams']
-        if bigram_tokens:
-            capitalized_bigrams = [(t, f) for t, f in bigram_tokens 
-                                 if all(w.istitle() for w in t.split())]
-            f.write(f"Total bigrams: {len(bigram_tokens)}\n")
-            f.write(f"Capitalized bigrams: {len(capitalized_bigrams)}\n")
-            f.write("Top 10 capitalized bigrams:\n")
-            for rank, (token, freq) in enumerate(capitalized_bigrams[:10], 1):
-                f.write(f"  {rank:2}. \"{token}\" (freq: {freq})\n")
-            f.write("\n")
-        
-        # BPE merge analysis
-        f.write("BPE MERGE ANALYSIS\n")
-        f.write("-" * 30 + "\n")
-        f.write(f"Total BPE merges performed: {len(self._bpe_merge_ranks)}\n")
-        f.write("Latest 10 BPE merges:\n")
-        sorted_merges = sorted(self._bpe_merge_ranks.items(), key=lambda x: x[1], reverse=True)
-        for (char1, char2), rank in sorted_merges[:10]:
-            merged = char1 + char2
-            freq = token_usage.get(merged, 0)
-            f.write(f"  {repr(char1)} + {repr(char2)} -> {repr(merged)} (freq: {freq})\n")
-        f.write("\n")
-        
-        # Complete token list
+        # Complete token list (fixed duplicate output)
         f.write("COMPLETE TOKEN VOCABULARY\n")
         f.write("-" * 50 + "\n")
-        f.write(f"{'ID':<6} {'Token':<40} {'Freq':<8} {'Type':<12}\n")
+        f.write(f"{'ID':<6} {'Token':<35} {'Frequency':<10} {'Type':<12}\n")
         f.write("-" * 70 + "\n")
         
         # Sort by token ID for deterministic output
         all_tokens_by_id = sorted(self.token_to_id.items(), key=lambda x: x[1])
+        
         for token, token_id in all_tokens_by_id:
-            freq = token_usage.get(token, 0)
             token_type = self._get_token_type(token)
-            token_repr = repr(token) if len(token) <= 35 else repr(token[:32] + "...")
-            f.write(f"{token_id:<6} {token_repr:<40} {freq:<8} {token_type:<12}\n")
+            freq = self._token_frequencies.get(token, 0)
+            token_repr = repr(token) if len(token) <= 30 else repr(token[:27] + "...")
+            f.write(f"{token_id:<6} {token_repr:<35} {freq:<10} {token_type:<12}\n")
 
     def _get_token_type(self, token: str) -> str:
         """Determine the type of a token for analysis."""
