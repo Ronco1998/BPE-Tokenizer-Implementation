@@ -1,7 +1,7 @@
 import argparse
 import os
 from typing import List
-from ner_bpe_tokenizer import NERBPETokenizer as BPETokenizer
+from ner_bpe_tokenizer import BPETokenizer as BPETokenizer
 
 
 def read_text_file(file_path: str) -> List[str]:
@@ -48,7 +48,7 @@ def train_tokenizer(domain_file: str, output_dir: str, num_merges: int = 10000, 
     if train:
         # Initialize and train tokenizer
         print(f"Training BPE tokenizer with {num_merges} merges for domain '{domain}'")
-        tokenizer = BPETokenizer(vocab_size=num_merges, domain=domain)
+        tokenizer = BPETokenizer(vocab_size=num_merges)
         tokenizer.train(texts)
         print("Tokenizer training complete")
 
