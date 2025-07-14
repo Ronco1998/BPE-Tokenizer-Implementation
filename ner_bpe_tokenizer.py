@@ -77,6 +77,9 @@ class NERBPETokenizer(BaseTokenizer):
     # Compiled regex for problematic characters (better performance)
     PROBLEMATIC_CHARS_RE = re.compile(r'[ÐÑ\x80⁄μ°½¼¾©³´¿¡£ÂÃï]')
     
+    # Stop-word whitelist for NER scoring boost
+    STOP_WORD_WHITELIST = {"and", "or", "but", "if", "because", "i", "you", "me", "my", "your"}
+    
     # Domain-specific preprocessing tokens
     PREPROCESSING_TOKENS = {
         'twitter': ["<URL>", "<USER>", "<HASHTAG>", "<EMOJI>"],
@@ -129,7 +132,7 @@ class NERBPETokenizer(BaseTokenizer):
               f"{self.PREPROCESSING_TOKENS.get(self.domain, self.PREPROCESSING_TOKENS['generic'])}")
 
     def train(self, texts: List[str], *, char_limit: int | None = None, bigram_quota: float = 0.12, 
-              min_word_score: float = 12.0, min_bigram_score: float = 25.0, min_frequency: int = 1) -> None:
+              min_word_score: float = 18.0, min_bigram_score: float = 60.0, min_frequency: int = 1) -> None:
         """
         Train the tokenizer on a corpus of texts.
 
@@ -309,6 +312,8 @@ class NERBPETokenizer(BaseTokenizer):
                        min_word_score: float, min_bigram_score: float, min_frequency: int = 1) -> List:
         """Score words and bigrams using NER-aware scoring, returning a heap."""
         entity_scores_heap = []
+        word_scores = []
+        bigram_scores = []
         
         # Score words with minimum frequency requirement
         for word, freq in tqdm(word_freq.items(), desc="Scoring words", leave=False):
@@ -317,19 +322,33 @@ class NERBPETokenizer(BaseTokenizer):
                 continue
             if freq >= min_frequency:
                 score = self._calc_ner_score((word, ""), freq)
+                word_scores.append(score)
                 if score >= min_word_score:
                     heapq.heappush(entity_scores_heap, (-score, word, freq))
-        
+
         # Score bigrams
         for bigram, freq in tqdm(bigram_freq.items(), desc="Scoring bigrams", leave=False):
             # Filter out invalid tokens before scoring
             if not self._is_valid_token(bigram):
                 continue
-            if freq >= min_frequency:
+            if freq >= 2:
                 w1, w2 = bigram.split(" ", 1)
                 score = self._calc_ner_score((w1, " " + w2), freq)
+                bigram_scores.append(score)
                 if score >= min_bigram_score:
                     heapq.heappush(entity_scores_heap, (-score, bigram, freq))
+        
+        # Print average scores
+        if word_scores:
+            avg_word_score = sum(word_scores) / len(word_scores)
+            print(f"Average word score: {avg_word_score:.2f}")
+        else:
+            print("No valid word scores to average.")
+        if bigram_scores:
+            avg_bigram_score = sum(bigram_scores) / len(bigram_scores)
+            print(f"Average bigram score: {avg_bigram_score:.2f}")
+        else:
+            print("No valid bigram scores to average.")
         
         return entity_scores_heap
 
@@ -338,11 +357,12 @@ class NERBPETokenizer(BaseTokenizer):
         bpe_slots = min (200, self.vocab_size // 4)
         rest_slots = self._remaining_slots - bpe_slots  # Reserve slots for BPE merges
         bg_slots = int(rest_slots * bigram_quota)
-        word_slots = max(0, rest_slots - bg_slots)
+        word_slots = max(0, rest_slots - bg_slots - bpe_slots)
+        print(f"Adding top entities: {bg_slots} bigrams, {word_slots} words (total {rest_slots} slots remaining)")
         
         # Extract candidates - heap structure is (-score, token, freq)
         all_candidates = []
-        while entity_scores_heap and len(all_candidates) < rest_slots * 2:  # Extract more candidates
+        while entity_scores_heap:  # Extract more candidates
             neg_score, token, freq = heapq.heappop(entity_scores_heap)
             all_candidates.append((token, -neg_score, freq))
         
@@ -374,7 +394,7 @@ class NERBPETokenizer(BaseTokenizer):
             if len(self._token_to_id) >= self.vocab_size:
                 break
             # Additional filtering: prioritize higher frequency words
-            if freq >= 1:  # Minimum frequency requirement (reduced from 2)
+            if freq >= 2:  # Minimum frequency requirement (reduced from 2)
                 self._add_token(s)
                 self._token_frequencies[s] = freq
                 added_singles += 1
@@ -546,106 +566,124 @@ class NERBPETokenizer(BaseTokenizer):
     # Scoring and Feature Extraction
     # -------------------------------------------------------------------------
 
-    def _calc_ner_score(self, pair: Tuple[str, str], frequency: int = 1) -> float:
-        """Calculate NER relevance score for a token pair."""
-        joined = "".join(pair)
-        base_score = math.log(frequency + 1)
-        features = self._get_ner_indicators(joined)
-        
-        # NER-specific bonuses - fixed to avoid double-counting
-        ner_score = 0.0
-        
-        # Character tokens
-        if features['length'] == 1:
-            ner_score += 2
-            if joined.isupper():
-                ner_score += 3
-            elif joined.isdigit():
-                ner_score += 5
-            elif joined == ' ':
-                ner_score += 10
-
-        # Word tokens (single words)
-        elif features['num_words'] == 1:
-            ner_score += 10  # Base word bonus
-            
-            # Title case is most important for NER
-            if features['title_case_ratio'] > 0:
-                ner_score += 50  # Strong bonus for title case
-            elif features['has_uppercase']:
-                ner_score += 20  # Moderate bonus for any uppercase
-            
-            # Penalty for all caps (usually not entities)
-            if features['is_all_caps']:
-                ner_score -= 5
-                
-            # Small bonuses for other features
-            if features['has_digits']:
-                ner_score += 10  # Numbers often part of entities
-            if features['has_special_chars']:
-                ner_score += 5   # Punctuation can be part of entities
-        
-        # Bigram tokens (word pairs) - highest priority for NER
-        elif features['num_words'] == 2:
-            ner_score += 40  # Strong base bonus for bigrams
-            
-            # Both words title case - very likely entity
-            if features['title_case_ratio'] == 1.0:
-                ner_score += 100
-            # One word title case - likely entity
-            elif features['title_case_ratio'] > 0:
-                ner_score += 50
-            
-            # Additional bonuses for bigrams
-            if features['has_digits']:
-                ner_score += 10
-            if features['has_special_chars']:
-                ner_score += 5
-        
-        # Cross-word character pairs (e.g., " N" for "New York")
-        elif features['has_space'] and features['length'] == 2:
-            ner_score += 30  # Helps with word boundary alignment
-        
-        # No additional bonuses to avoid double-counting
-        
-        return base_score + ner_score
-
     def _get_ner_indicators(self, token: str) -> Dict[str, float]:
-        """Extract NER-relevant features from a token."""
-        features = {
-            'length': len(token),
-            'num_words': len(token.strip().split()),
-            'has_space': 1.0 if ' ' in token else 0.0,
-            'has_digits': 1.0 if any(c.isdigit() for c in token) else 0.0,
-            'has_uppercase': 1.0 if any(c.isupper() for c in token) else 0.0,
-            'has_lowercase': 1.0 if any(c.islower() for c in token) else 0.0,
-            'has_mixed_case': 0.0,
-            'has_special_chars': 1.0 if any(not c.isalnum() and c != ' ' for c in token) else 0.0,
-            'title_case_ratio': 0.0,
-            'is_word_pair': False,
-            'is_all_caps': False,
+        """
+        Extract orthographic and shape features that proved most predictive
+        for NE tokens in train_1/dev_1.
+        """
+        SPECIAL = set(".,!?;:'`_-")
+        length = len(token)
+        words = token.split()
+
+        # Basic flags
+        has_upper = any(c.isupper() for c in token)
+        has_lower = any(c.islower() for c in token)
+        is_all_caps = token.isupper() and token.isalpha()
+        is_all_lower = token.islower() and token.isalpha()
+        has_mixed_case = has_upper and has_lower and not token.istitle()
+        has_digits = any(c.isdigit() for c in token)
+        has_special = any(c in SPECIAL for c in token)
+        num_words = len(words)
+
+        # Title-case ratio (0, 0.5 or 1.0 for up to two-word merges)
+        if num_words == 1:
+            title_ratio = 1.0 if words[0].istitle() else 0.0
+        elif num_words == 2:
+            title_ratio = sum(w.istitle() for w in words) / 2.0
+        else:
+            title_ratio = 0.0  # we never merge >2 words
+
+        # Check if token is on stop-word whitelist
+        is_stopword = token.lower() in self.STOP_WORD_WHITELIST
+
+        return {
+            "length": length,
+            "num_words": num_words,
+            "title_ratio": title_ratio,
+            "is_all_caps": is_all_caps,
+            "is_all_lower": is_all_lower,
+            "has_mixed_case": has_mixed_case,
+            "has_digits": has_digits,
+            "has_special": has_special,
+            "has_space": " " in token,
+            "is_stopword": is_stopword,
         }
-        
-        # Mixed case detection
-        if features['has_uppercase'] > 0 and features['has_lowercase'] > 0:
-            features['has_mixed_case'] = 1.0
-        
-        # All caps detection (alphabetic characters only)
-        alpha_chars = [c for c in token if c.isalpha()]
-        if alpha_chars:
-            features['is_all_caps'] = all(c.isupper() for c in alpha_chars)
-        
-        # Word-level features
-        words = token.strip().split()
-        
-        if len(words) == 1 and words[0]:
-            features['title_case_ratio'] = 1.0 if words[0].istitle() else 0.0
-        elif len(words) == 2:
-            features['is_word_pair'] = True
-            title_case_count = sum(1 for w in words if w and w.istitle())
-            features['title_case_ratio'] = title_case_count / 2.0
-        
-        return features
+
+    def _calc_ner_score(self, pair: Tuple[str, str], frequency: int = 1) -> float:
+        """
+        Score a candidate pair for how useful it is as a named-entity token.
+        The score is `log(freq) + ner_bonus`.  Weights come from corpus stats
+        (title-case strongest; all-caps & mixed-case useful; pure lowercase rare).
+        """
+        joined = "".join(pair)
+        f = self._get_ner_indicators(joined)
+
+        # Base term from frequency (diminishing returns via log)
+        score = math.log(frequency + 1)
+
+        # Check for stop-word following title-case pattern
+        # Boost for bigrams where the stopword is the first word and the second is title-case (e.g., "the New")
+        if f["is_stopword"] and len(pair) == 2 and pair[1].strip():
+            second_part = pair[1].strip()
+            if second_part and second_part.istitle():
+                score += 8  # Boost for stop words before title-case (e.g., "the New")
+
+        # Check for <UPPER> <digit> pattern
+        if f["num_words"] == 2:
+            words = joined.split()
+            if (len(words) == 2 and 
+                words[0].isupper() and words[0].isalpha() and
+                any(c.isdigit() for c in words[1])):
+                score += 10  # Boost for upper-digit patterns (e.g., "F 22", "GPS 3")
+
+        # ------- single character (kept tiny) -------
+        if f["length"] == 1:
+            if joined.isupper():
+                score += 6          # initials, acronyms ("U")  
+            elif joined.isdigit():
+                score += 3
+
+        # ------- one-word tokens -------
+        elif f["num_words"] == 1:
+            if f["title_ratio"] == 1.0:            # 68 % of corpus NEs
+                score += 60
+            elif f["is_all_caps"]:                 # "USA", "UN"
+                score += 25
+            elif f["has_mixed_case"]:              # "iPhone", "eBay"
+                score += 18
+            elif f["is_all_lower"]:                # seldom true en-mass
+                score -= 5
+
+            # Minor cues - enhanced bonuses when title-case is present
+            if 5 <= f["length"] <= 7:              # modal length bucket
+                score += 5
+            if f["has_special"]:
+                # Give +4 (was +2) for hyphen or apostrophe, but only if at least one letter is title-case
+                if any(c in "-'" for c in joined) and any(c.isupper() for c in joined):
+                    score += 4
+                else:
+                    score += 2  # Keep original bonus otherwise
+
+        # ------- two-word merges / bigrams -------
+        elif f["num_words"] == 2:
+            score += 50                            # bigrams are gold for NER
+            if f["title_ratio"] == 1.0:            # "New York"
+                score += 40
+            elif f["title_ratio"] >= 0.5:          # one title word
+                score += 20
+
+            # Secondary boosts
+            if f["has_digits"]:
+                score += 6                         # "Formula 1"
+            if f["has_special"]:
+                score += 3                         # "AT&T Park"
+
+        # ------- cross-word char-pairs (" N", "Y ") -------
+        elif f["has_space"] and f["length"] == 2:
+            score += 20                            # helps seed bigrams
+
+        return score
+
 
     # -------------------------------------------------------------------------
     # Preprocessing Methods
@@ -664,7 +702,7 @@ class NERBPETokenizer(BaseTokenizer):
         """Preprocess Twitter text and track preprocessing token usage."""
         # Apply gentle Unicode normalization (NFC instead of NFKC)
         # text = unicodedata.normalize("NFC", text)
-        # text = unescape(text)
+        text = unescape(text)
         
         # Remove problematic characters that cause encoding issues
         # text = self.PROBLEMATIC_CHARS_RE.sub('', text)

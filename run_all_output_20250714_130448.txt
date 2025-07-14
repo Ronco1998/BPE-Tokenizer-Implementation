@@ -1,0 +1,158 @@
+Select domain:
+1. Domain 1 (Twitter)
+2. Domain 2 (Headlines)
+3. Unknown domain (Mixed)
+Selected domain: domain_1
+
+Do you want to train a new tokenizer or load an existing one?
+1. Train new tokenizer
+2. Load existing tokenizer
+Loading existing tokenizer for domain_1...
+
+Training NER model for domain_1...
+Using device: cpu
+Loading tokenizer from tokenizers/domain_1/tokenizer.pkl
+Loading training data from data/ner_data/train_1_binary.tagged
+Loading dev data from data/ner_data/dev_1_binary.tagged
+Creating datasets
+Processing texts:   0%|          | 0/3394 [00:00<?, ?it/s]Processing texts:   2%|2         | 69/3394 [00:00<00:04, 688.32it/s]Processing texts:   4%|4         | 138/3394 [00:00<00:04, 666.05it/s]Processing texts:   6%|6         | 207/3394 [00:00<00:04, 676.13it/s]Processing texts:   8%|8         | 286/3394 [00:00<00:04, 716.30it/s]Processing texts:  11%|#         | 358/3394 [00:00<00:04, 700.76it/s]Processing texts:  13%|#2        | 429/3394 [00:00<00:04, 697.36it/s]Processing texts:  15%|#4        | 499/3394 [00:00<00:04, 638.10it/s]Processing texts:  17%|#6        | 564/3394 [00:00<00:04, 614.53it/s]Processing texts:  18%|#8        | 627/3394 [00:00<00:04, 594.65it/s]Processing texts:  20%|##        | 692/3394 [00:01<00:04, 610.25it/s]Processing texts:  22%|##2       | 757/3394 [00:01<00:04, 618.71it/s]Processing texts:  24%|##4       | 820/3394 [00:01<00:04, 610.81it/s]Processing texts:  26%|##5       | 882/3394 [00:01<00:04, 608.82it/s]Processing texts:  28%|##7       | 946/3394 [00:01<00:03, 615.60it/s]Processing texts:  30%|##9       | 1015/3394 [00:01<00:03, 633.42it/s]Processing texts:  32%|###1      | 1079/3394 [00:01<00:03, 626.48it/s]Processing texts:  34%|###3      | 1142/3394 [00:01<00:03, 626.16it/s]Processing texts:  36%|###5      | 1207/3394 [00:01<00:03, 629.60it/s]Processing texts:  38%|###7      | 1274/3394 [00:01<00:03, 640.07it/s]Processing texts:  39%|###9      | 1339/3394 [00:02<00:03, 629.58it/s]Processing texts:  42%|####1     | 1410/3394 [00:02<00:03, 650.88it/s]Processing texts:  44%|####3     | 1480/3394 [00:02<00:02, 663.86it/s]Processing texts:  46%|####5     | 1547/3394 [00:02<00:02, 662.31it/s]Processing texts:  48%|####7     | 1614/3394 [00:02<00:02, 659.31it/s]Processing texts:  49%|####9     | 1680/3394 [00:02<00:02, 639.14it/s]Processing texts:  52%|#####1    | 1748/3394 [00:02<00:02, 649.55it/s]Processing texts:  54%|#####3    | 1821/3394 [00:02<00:02, 671.80it/s]Processing texts:  56%|#####5    | 1889/3394 [00:02<00:02, 658.87it/s]Processing texts:  58%|#####7    | 1956/3394 [00:03<00:02, 660.89it/s]Processing texts:  60%|#####9    | 2023/3394 [00:03<00:02, 646.67it/s]Processing texts:  62%|######1   | 2091/3394 [00:03<00:01, 655.72it/s]Processing texts:  64%|######3   | 2157/3394 [00:03<00:01, 641.42it/s]Processing texts:  65%|######5   | 2222/3394 [00:03<00:01, 637.68it/s]Processing texts:  67%|######7   | 2288/3394 [00:03<00:01, 638.73it/s]Processing texts:  69%|######9   | 2353/3394 [00:03<00:01, 639.24it/s]Processing texts:  71%|#######1  | 2424/3394 [00:03<00:01, 659.95it/s]Processing texts:  74%|#######3  | 2507/3394 [00:03<00:01, 707.09it/s]Processing texts:  76%|#######6  | 2588/3394 [00:03<00:01, 736.24it/s]Processing texts:  79%|#######8  | 2665/3394 [00:04<00:00, 742.67it/s]Processing texts:  81%|########  | 2744/3394 [00:04<00:00, 750.63it/s]Processing texts:  83%|########3 | 2825/3394 [00:04<00:00, 767.52it/s]Processing texts:  86%|########5 | 2911/3394 [00:04<00:00, 792.13it/s]Processing texts:  88%|########8 | 2991/3394 [00:04<00:00, 780.21it/s]Processing texts:  91%|######### | 3074/3394 [00:04<00:00, 793.67it/s]Processing texts:  93%|#########2| 3154/3394 [00:04<00:00, 777.60it/s]Processing texts:  95%|#########5| 3232/3394 [00:04<00:00, 765.88it/s]Processing texts:  98%|#########7| 3313/3394 [00:04<00:00, 775.49it/s]Processing texts: 100%|#########9| 3391/3394 [00:04<00:00, 762.60it/s]Processing texts: 100%|##########| 3394/3394 [00:04<00:00, 679.14it/s]
+Processing texts:   0%|          | 0/1009 [00:00<?, ?it/s]Processing texts:   8%|7         | 76/1009 [00:00<00:01, 748.04it/s]Processing texts:  17%|#7        | 175/1009 [00:00<00:00, 873.05it/s]Processing texts:  27%|##6       | 272/1009 [00:00<00:00, 916.05it/s]Processing texts:  36%|###6      | 364/1009 [00:00<00:00, 875.06it/s]Processing texts:  45%|####4     | 452/1009 [00:00<00:00, 824.52it/s]Processing texts:  53%|#####3    | 535/1009 [00:00<00:00, 820.53it/s]Processing texts:  61%|######1   | 618/1009 [00:00<00:00, 815.94it/s]Processing texts:  69%|######9   | 700/1009 [00:00<00:00, 766.19it/s]Processing texts:  78%|#######8  | 791/1009 [00:00<00:00, 807.58it/s]Processing texts:  87%|########6 | 873/1009 [00:01<00:00, 790.37it/s]Processing texts:  96%|#########5| 964/1009 [00:01<00:00, 824.64it/s]Processing texts: 100%|##########| 1009/1009 [00:01<00:00, 824.77it/s]
+[DBG]  share of positive-label subtokens in train set: 1.2643%
+[DBG]  share of [UNK] subtokens in train set: 0.2012%
+Initializing model
+Starting training for 20 epochs
+Epoch 1/20:
+  Train loss: 0.1834
+  Dev accuracy: 0.9225
+  Dev precision: 0.7439
+  Dev recall: 0.0484
+  Dev F1: 0.0909
+  Saved new best model with F1: 0.0909
+  Top 10 False Negatives: [('Trump', 12), ('the', 11), ('trump', 10), ('and', 8), ('s', 7), ('8', 7), ('The', 7), ('"', 7), ('of', 7), ('.', 7)]
+  Top 10 False Positives: [('Vizsla', 2), ('Stabilized', 1), ('Kids', 1), ('Jailbreak', 1), ('Jjbjnbj', 1), ('Primer', 1), ('Play', 1), ('Manslaughter', 1), ('Bantam', 1), ('Viewers', 1)]
+Epoch 2/20:
+  Train loss: 0.1473
+  Dev accuracy: 0.9258
+  Dev precision: 0.7584
+  Dev recall: 0.1071
+  Dev F1: 0.1878
+  Saved new best model with F1: 0.1878
+  Top 10 False Negatives: [('the', 11), ('trump', 10), ('Trump', 9), ('and', 8), ('s', 7), ('8', 7), ('The', 7), ('"', 7), ('of', 7), ('.', 7)]
+  Top 10 False Positives: [('Happen', 2), ('Vizsla', 2), ('Kremlin', 1), ('KK', 1), ('Gadgets', 1), ('Kids', 1), ('NextToBlow', 1), ('Jailbreak', 1), ('Zora', 1), ('KEKEKEKEKEKEKEKKEKE', 1)]
+Epoch 3/20:
+  Train loss: 0.1351
+  Dev accuracy: 0.9305
+  Dev precision: 0.7677
+  Dev recall: 0.1889
+  Dev F1: 0.3032
+  Saved new best model with F1: 0.3032
+  Top 10 False Negatives: [('the', 11), ('trump', 10), ('and', 8), ('s', 7), ('8', 7), ('of', 7), ('.', 7), ("'", 6), ('"', 6), ('7', 5)]
+  Top 10 False Positives: [('&', 3), ('The', 2), ('#', 2), ('Subscribe', 2), ('Seriously', 2), ('Vizsla', 2), ('Kremlin', 1), ('garbage', 1), ('KK', 1), ('Gadgets', 1)]
+Epoch 4/20:
+  Train loss: 0.1245
+  Dev accuracy: 0.9294
+  Dev precision: 0.7622
+  Dev recall: 0.1730
+  Dev F1: 0.2820
+Epoch 5/20:
+  Train loss: 0.1096
+  Dev accuracy: 0.9300
+  Dev precision: 0.6299
+  Dev recall: 0.3040
+  Dev F1: 0.4101
+  Saved new best model with F1: 0.4101
+  Top 10 False Negatives: [('trump', 10), ('the', 9), ('and', 8), ('8', 7), ('"', 7), ("'", 6), ('s', 6), ('The', 6), ('.', 6), ('7', 5)]
+  Top 10 False Positives: [('Love', 9), ('Lol', 8), ('of', 5), ('.', 4), ('Like', 4), ('#', 4), ('My', 4), ('LOVE', 3), ('&', 3), ('Much', 3)]
+Epoch 6/20:
+  Train loss: 0.0999
+  Dev accuracy: 0.9289
+  Dev precision: 0.6812
+  Dev recall: 0.2103
+  Dev F1: 0.3214
+Epoch 7/20:
+  Train loss: 0.0961
+  Dev accuracy: 0.9275
+  Dev precision: 0.6798
+  Dev recall: 0.1786
+  Dev F1: 0.2828
+Epoch 8/20:
+  Train loss: 0.0878
+  Dev accuracy: 0.9301
+  Dev precision: 0.6667
+  Dev recall: 0.2540
+  Dev F1: 0.3678
+Epoch 9/20:
+  Train loss: 0.0734
+  Dev accuracy: 0.9265
+  Dev precision: 0.6304
+  Dev recall: 0.1976
+  Dev F1: 0.3009
+Epoch 10/20:
+  Train loss: 0.0654
+  Dev accuracy: 0.9288
+  Dev precision: 0.6136
+  Dev recall: 0.3000
+  Dev F1: 0.4030
+Epoch 11/20:
+  Train loss: 0.0601
+  Dev accuracy: 0.9265
+  Dev precision: 0.6268
+  Dev recall: 0.2040
+  Dev F1: 0.3078
+Epoch 12/20:
+  Train loss: 0.0583
+  Dev accuracy: 0.9302
+  Dev precision: 0.6884
+  Dev recall: 0.2349
+  Dev F1: 0.3503
+Epoch 13/20:
+  Train loss: 0.0565
+  Dev accuracy: 0.9261
+  Dev precision: 0.6134
+  Dev recall: 0.2103
+  Dev F1: 0.3132
+Epoch 14/20:
+  Train loss: 0.0615
+  Dev accuracy: 0.9283
+  Dev precision: 0.6375
+  Dev recall: 0.2429
+  Dev F1: 0.3517
+Epoch 15/20:
+  Train loss: 0.0590
+  Dev accuracy: 0.9233
+  Dev precision: 0.5437
+  Dev recall: 0.2619
+  Dev F1: 0.3535
+Epoch 16/20:
+  Train loss: 0.0528
+  Dev accuracy: 0.9258
+  Dev precision: 0.5816
+  Dev recall: 0.2603
+  Dev F1: 0.3596
+Epoch 17/20:
+  Train loss: 0.0501
+  Dev accuracy: 0.9280
+  Dev precision: 0.6460
+  Dev recall: 0.2230
+  Dev F1: 0.3316
+Epoch 18/20:
+  Train loss: 0.0451
+  Dev accuracy: 0.9265
+  Dev precision: 0.6238
+  Dev recall: 0.2079
+  Dev F1: 0.3119
+Epoch 19/20:
+  Train loss: 0.0457
+  Dev accuracy: 0.9270
+  Dev precision: 0.6082
+  Dev recall: 0.2476
+  Dev F1: 0.3519
+Epoch 20/20:
+  Train loss: 0.0468
+  Dev accuracy: 0.9280
+  Dev precision: 0.6182
+  Dev recall: 0.2635
+  Dev F1: 0.3695
+Training complete. Best F1: 0.4101
+
+All steps completed.
