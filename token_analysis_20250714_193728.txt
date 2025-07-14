@@ -1,0 +1,1172 @@
+================================================================================
+NER-AWARE BPE TOKENIZER - TOKEN ANALYSIS REPORT
+================================================================================
+Generated: 2025-07-14 19:37:28
+Domain: unknown
+Vocabulary Size: 1000
+Training Corpus Size: 288000 texts
+
+PREPROCESSING TOKENS
+------------------------------
+Generic tokens: ['<EMOJI>']
+
+SUMMARY STATISTICS
+----------------------------------------
+Special        :     2 tokens (  0.2%)
+Preprocessing  :     1 tokens (  0.1%)
+Characters     :   105 tokens ( 10.5%)
+Words          :   427 tokens ( 42.7%)
+Bigrams        :    83 tokens (  8.3%)
+Subwords       :   382 tokens ( 38.2%)
+Merged_chars   :     0 tokens (  0.0%)
+Total          :  1000 tokens
+
+BIGRAM RANKING ANALYSIS (Ranked by Frequency)
+--------------------------------------------------
+Total bigrams created: 83
+
+TOP 10 RANKED BIGRAMS (by frequency):
+Rank  Bigram                    Frequency  NER Score   
+-------------------------------------------------------
+1     'Donald Trump'            2340       97.76       
+2     'Of The'                  1435       97.27       
+3     '3G S'                    20         99.04       
+4     'From Earth911'           8          98.20       
+5     '11-Year-Old Girl'        5          100.79      
+6     'My 2-Year-Old'           5          100.79      
+7     'My 4-Year-Old'           5          100.79      
+8     'H7N9 Bird'               5          97.79       
+9     '12-Year-Old Girl'        4          100.61      
+10    'My 3-Year-Old'           4          100.61      
+
+BOTTOM 10 RANKED BIGRAMS (by frequency):
+Rank  Bigram                    Frequency  NER Score   
+-------------------------------------------------------
+74    'The 28-Year-Old'         2          100.10      
+75    'The 5-Minute'            2          100.10      
+76    'The 7-Year-Old'          2          100.10      
+77    'This 2-Year-Old'         2          100.10      
+78    'This 4-Year-Old'         2          100.10      
+79    'This 5-Minute'           2          100.10      
+80    'This 6-Year-Old'         2          100.10      
+81    'This 9-Year-Old'         2          100.10      
+82    'Way 4-Year-Olds'         2          100.10      
+83    '3D Concert'              2          97.10       
+
+SPECIAL TOKENS
+--------------------------------------------------
+Count: 2
+Tokens (up to 20):
+   1. '[UNK]'                        (freq: 0)
+   2. ' '                            (freq: 0)
+
+PREPROCESSING TOKENS
+--------------------------------------------------
+Count: 1
+Tokens (up to 20):
+   1. '<EMOJI>'                      (freq: 757)
+
+CHARACTERS TOKENS
+--------------------------------------------------
+Count: 105
+Tokens (up to 20):
+   1. 'e'                            (freq: 674)
+   2. 'o'                            (freq: 546)
+   3. 't'                            (freq: 527)
+   4. 'a'                            (freq: 467)
+   5. 'i'                            (freq: 410)
+   6. 'n'                            (freq: 397)
+   7. 's'                            (freq: 380)
+   8. 'r'                            (freq: 316)
+   9. 'l'                            (freq: 298)
+  10. 'h'                            (freq: 288)
+  11. 'd'                            (freq: 218)
+  12. 'u'                            (freq: 196)
+  13. 'y'                            (freq: 180)
+  14. 'm'                            (freq: 150)
+  15. 'c'                            (freq: 147)
+  16. 'g'                            (freq: 138)
+  17. 'p'                            (freq: 125)
+  18. 'w'                            (freq: 109)
+  19. 'f'                            (freq: 99)
+  20. 'b'                            (freq: 95)
+
+WORDS TOKENS
+--------------------------------------------------
+Count: 427
+Tokens (up to 20):
+   1. 'Trump'                        (freq: 7037)
+   2. 'About'                        (freq: 2873)
+   3. 'After'                        (freq: 2729)
+   4. 'Donald'                       (freq: 2468)
+   5. 'There'                        (freq: 2229)
+   6. 'Twitter'                      (freq: 2087)
+   7. 'Thanks'                       (freq: 1765)
+   8. 'World'                        (freq: 1561)
+   9. 'House'                        (freq: 1527)
+  10. 'America'                      (freq: 1517)
+  11. 'Women'                        (freq: 1497)
+  12. 'Obama'                        (freq: 1479)
+  13. 'People'                       (freq: 1454)
+  14. 'First'                        (freq: 1338)
+  15. 'These'                        (freq: 1336)
+  16. 'Clinton'                      (freq: 1188)
+  17. 'Should'                       (freq: 1164)
+  18. 'White'                        (freq: 1157)
+  19. 'Still'                        (freq: 1106)
+  20. 'Black'                        (freq: 1105)
+
+BIGRAMS TOKENS
+--------------------------------------------------
+Count: 83
+Tokens (up to 20):
+   1. 'A 13-Year-Old'                (freq: 2)
+   2. 'A 3-Step'                     (freq: 2)
+   3. 'A 3-Year-Old'                 (freq: 2)
+   4. 'A 3D'                         (freq: 2)
+   5. '11-Year-Old Girl'             (freq: 5)
+   6. 'My 2-Year-Old'                (freq: 5)
+   7. 'My 4-Year-Old'                (freq: 5)
+   8. '12-Year-Old Girl'             (freq: 4)
+   9. 'My 3-Year-Old'                (freq: 4)
+  10. '11-Year-Old Boy'              (freq: 3)
+  11. '20-Week Abortion'             (freq: 3)
+  12. '3-Year-Old Boy'               (freq: 3)
+  13. '3-Year-Old Daughter'          (freq: 3)
+  14. '3-Year-Old With'              (freq: 3)
+  15. '5-Year-Old Boy'               (freq: 3)
+  16. '5-Year-Old Girl'              (freq: 3)
+  17. '5-Year-Old Son'               (freq: 3)
+  18. '6-Year-Old Boy'               (freq: 3)
+  19. '8-Year-Old Boy'               (freq: 3)
+  20. 'For 3-Year-Old'               (freq: 3)
+
+SUBWORDS TOKENS
+--------------------------------------------------
+Count: 382
+Tokens (up to 20):
+   1. 'Jay-Z'                        (freq: 54)
+   2. 'X-Men'                        (freq: 29)
+   3. 'Hip-Hop'                      (freq: 22)
+   4. 'T-Shirt'                      (freq: 19)
+   5. 'Spot-On'                      (freq: 18)
+   6. 'Ex-Wife'                      (freq: 14)
+   7. 'Sci-Fi'                       (freq: 13)
+   8. 'D-Day'                        (freq: 12)
+   9. 'At-Home'                      (freq: 11)
+  10. '-Themed'                      (freq: 9)
+  11. 'Ex-Cop'                       (freq: 9)
+  12. 'Go-To'                        (freq: 9)
+  13. 'Op-Ed'                        (freq: 9)
+  14. 'Pop-Up'                       (freq: 9)
+  15. 'X-Files'                      (freq: 9)
+  16. '-Mexico'                      (freq: 8)
+  17. '-Cuba'                        (freq: 7)
+  18. '-Russia'                      (freq: 7)
+  19. 'A-Sides'                      (freq: 7)
+  20. 'Ant-Man'                      (freq: 7)
+
+COMPLETE TOKEN VOCABULARY
+--------------------------------------------------
+ID     Token                               Frequency  Type        
+----------------------------------------------------------------------
+0      '[UNK]'                             0          special     
+1      ' '                                 0          special     
+2      '<EMOJI>'                           757        preprocessing
+3      'e'                                 674        character   
+4      'o'                                 546        character   
+5      't'                                 527        character   
+6      'a'                                 467        character   
+7      'i'                                 410        character   
+8      'n'                                 397        character   
+9      's'                                 380        character   
+10     'r'                                 316        character   
+11     'l'                                 298        character   
+12     'h'                                 288        character   
+13     'd'                                 218        character   
+14     'u'                                 196        character   
+15     'y'                                 180        character   
+16     'm'                                 150        character   
+17     'c'                                 147        character   
+18     'g'                                 138        character   
+19     'p'                                 125        character   
+20     'w'                                 109        character   
+21     'f'                                 99         character   
+22     'b'                                 95         character   
+23     '.'                                 72         character   
+24     'k'                                 67         character   
+25     'v'                                 60         character   
+26     'I'                                 51         character   
+27     'T'                                 49         character   
+28     "'"                                 48         character   
+29     '!'                                 44         character   
+30     'S'                                 42         character   
+31     'A'                                 35         character   
+32     ','                                 34         character   
+33     'W'                                 30         character   
+34     '@'                                 28         character   
+35     'O'                                 26         character   
+36     'M'                                 26         character   
+37     'H'                                 25         character   
+38     'P'                                 25         character   
+39     'D'                                 23         character   
+40     'L'                                 22         character   
+41     'C'                                 21         character   
+42     'N'                                 21         character   
+43     'B'                                 21         character   
+44     '-'                                 19         character   
+45     'R'                                 19         character   
+46     'E'                                 19         character   
+47     '?'                                 17         character   
+48     'F'                                 16         character   
+49     'j'                                 14         character   
+50     '0'                                 14         character   
+51     ':'                                 14         character   
+52     'q'                                 13         character   
+53     'x'                                 11         character   
+54     '~'                                 11         character   
+55     ';'                                 10         character   
+56     'Y'                                 10         character   
+57     'K'                                 10         character   
+58     '"'                                 9          character   
+59     'G'                                 9          character   
+60     '2'                                 8          character   
+61     'J'                                 7          character   
+62     '/'                                 7          character   
+63     '&'                                 6          character   
+64     '1'                                 6          character   
+65     ')'                                 5          character   
+66     '('                                 5          character   
+67     'z'                                 5          character   
+68     '4'                                 4          character   
+69     'V'                                 4          character   
+70     '9'                                 4          character   
+71     '*'                                 4          character   
+72     '3'                                 3          character   
+73     '8'                                 3          character   
+74     '5'                                 3          character   
+75     'U'                                 2          character   
+76     '#'                                 2          character   
+77     '$'                                 2          character   
+78     'Q'                                 1          character   
+79     '|'                                 1          character   
+80     '<'                                 1          character   
+81     '>'                                 1          character   
+82     '️'                                 1          character   
+83     '7'                                 1          character   
+84     'Z'                                 1          character   
+85     '_'                                 1          character   
+86     '='                                 1          character   
+87     'X'                                 1          character   
+88     '+'                                 0          character   
+89     '6'                                 0          character   
+90     '\x99'                              0          character   
+91     '\x9b'                              0          character   
+92     '¡'                                 0          character   
+93     '£'                                 0          character   
+94     '¥'                                 0          character   
+95     '\xad'                              0          character   
+96     '½'                                 0          character   
+97     '¾'                                 0          character   
+98     '¿'                                 0          character   
+99     'Â'                                 0          character   
+100    'Ã'                                 0          character   
+101    'Ä'                                 0          character   
+102    'Å'                                 0          character   
+103    'â'                                 0          character   
+104    'è'                                 0          character   
+105    'é'                                 0          character   
+106    'ï'                                 0          character   
+107    '\u200e'                            0          character   
+108    'A 13-Year-Old'                     2          bigram      
+109    'A 3-Step'                          2          bigram      
+110    'A 3-Year-Old'                      2          bigram      
+111    'A 3D'                              2          bigram      
+112    '11-Year-Old Girl'                  5          bigram      
+113    'My 2-Year-Old'                     5          bigram      
+114    'My 4-Year-Old'                     5          bigram      
+115    '12-Year-Old Girl'                  4          bigram      
+116    'My 3-Year-Old'                     4          bigram      
+117    '11-Year-Old Boy'                   3          bigram      
+118    '20-Week Abortion'                  3          bigram      
+119    '3-Year-Old Boy'                    3          bigram      
+120    '3-Year-Old Daughter'               3          bigram      
+121    '3-Year-Old With'                   3          bigram      
+122    '5-Year-Old Boy'                    3          bigram      
+123    '5-Year-Old Girl'                   3          bigram      
+124    '5-Year-Old Son'                    3          bigram      
+125    '6-Year-Old Boy'                    3          bigram      
+126    '8-Year-Old Boy'                    3          bigram      
+127    'For 3-Year-Old'                    3          bigram      
+128    '13-Year-Old Boy'                   2          bigram      
+129    '13-Year-Old Daughter'              2          bigram      
+130    '13-Year-Old Girl'                  2          bigram      
+131    '14-Year-Old Boy'                   2          bigram      
+132    '15-Year-Old Boy'                   2          bigram      
+133    '16-Year-Old Niece'                 2          bigram      
+134    '2-Year-Old Has'                    2          bigram      
+135    '2-Year-Old Season'                 2          bigram      
+136    '20-Year-Old Self'                  2          bigram      
+137    '24-Hour Boob'                      2          bigram      
+138    '28-Year-Old Who'                   2          bigram      
+139    '3-Year-Old Girl'                   2          bigram      
+140    '4-Year-Old Boy'                    2          bigram      
+141    '4-Year-Old Daughter'               2          bigram      
+142    '4-Year-Olds Do'                    2          bigram      
+143    '5-Hour Energy'                     2          bigram      
+144    '5-Year-Old Daughter'               2          bigram      
+145    '6-Year-Old Girl'                   2          bigram      
+146    '7-Minute Workout'                  2          bigram      
+147    '7-Year-Old Girl'                   2          bigram      
+148    '75-Year Study'                     2          bigram      
+149    '8-Year-Old Girl'                   2          bigram      
+150    '81-Year-Old Man'                   2          bigram      
+151    '9-Year-Old To'                     2          bigram      
+152    '@Bo_44 I'                          2          bigram      
+153    '@The_Block_2009 I'                 2          bigram      
+154    'After 2-Year'                      2          bigram      
+155    'Announces 12-City'                 2          bigram      
+156    'For 17-Year-Old'                   2          bigram      
+157    'Her 4-Year-Old'                    2          bigram      
+158    'June 25-July'                      2          bigram      
+159    'My 11-Year-Old'                    2          bigram      
+160    'My 13-Year-Old'                    2          bigram      
+161    'My 20-Year-Old'                    2          bigram      
+162    'My 5-Year-Old'                     2          bigram      
+163    'My 6-Year-Old'                     2          bigram      
+164    'My 8-Year-Old'                     2          bigram      
+165    'My 9-Year-Old'                     2          bigram      
+166    'Omega-3 Fatty'                     2          bigram      
+167    'The 24-Hour'                       2          bigram      
+168    'The 28-Year-Old'                   2          bigram      
+169    'The 5-Minute'                      2          bigram      
+170    'The 7-Year-Old'                    2          bigram      
+171    'This 2-Year-Old'                   2          bigram      
+172    'This 4-Year-Old'                   2          bigram      
+173    'This 5-Minute'                     2          bigram      
+174    'This 6-Year-Old'                   2          bigram      
+175    'This 9-Year-Old'                   2          bigram      
+176    'Way 4-Year-Olds'                   2          bigram      
+177    '3G S'                              20         bigram      
+178    'From Earth911'                     8          bigram      
+179    'H7N9 Bird'                         5          bigram      
+180    'Donald Trump'                      2340       bigram      
+181    '3D Printing'                       4          bigram      
+182    '@Phee78 I'                         4          bigram      
+183    'Q10 With'                          4          bigram      
+184    '@Koppite4004 I'                    3          bigram      
+185    'D23 Expo'                          3          bigram      
+186    'Galaxy Note7'                      3          bigram      
+187    'The H7N9'                          3          bigram      
+188    'Valentine 3D'                      3          bigram      
+189    'Of The'                            1435       bigram      
+190    '3D Concert'                        2          bigram      
+191    'Trump'                             7037       word        
+192    'Jay-Z'                             54         subword     
+193    'About'                             2873       word        
+194    'After'                             2729       word        
+195    'Donald'                            2468       word        
+196    'There'                             2229       word        
+197    'Twitter'                           2087       word        
+198    'Thanks'                            1765       word        
+199    'X-Men'                             29         subword     
+200    'World'                             1561       word        
+201    'House'                             1527       word        
+202    'America'                           1517       word        
+203    'Women'                             1497       word        
+204    'Obama'                             1479       word        
+205    'People'                            1454       word        
+206    'First'                             1338       word        
+207    'These'                             1336       word        
+208    'Hip-Hop'                           22         subword     
+209    'Clinton'                           1188       word        
+210    'Should'                            1164       word        
+211    'White'                             1157       word        
+212    'Still'                             1106       word        
+213    'Black'                             1105       word        
+214    'T-Shirt'                           19         subword     
+215    'Health'                            1078       word        
+216    'Going'                             1056       word        
+217    'Could'                             1042       word        
+218    'Their'                             1037       word        
+219    'Spot-On'                           18         subword     
+220    'Happy'                             1036       word        
+221    'While'                             1008       word        
+222    'Friday'                            946        word        
+223    'Morning'                           897        word        
+224    'Today'                             894        word        
+225    'Things'                            888        word        
+226    'Sunday'                            875        word        
+227    'Hillary'                           868        word        
+228    'Great'                             864        word        
+229    'State'                             852        word        
+230    'Really'                            837        word        
+231    'Thank'                             835        word        
+232    'Ex-Wife'                           14         subword     
+233    'School'                            812        word        
+234    'Style'                             802        word        
+235    'Police'                            784        word        
+236    'Wedding'                           777        word        
+237    'Sci-Fi'                            13         subword     
+238    'Where'                             756        word        
+239    'Being'                             750        word        
+240    'Getting'                           738        word        
+241    'D-Day'                             12         subword     
+242    'Family'                            706        word        
+243    'Check'                             704        word        
+244    'Monday'                            702        word        
+245    'Watch'                             700        word        
+246    'Court'                             692        word        
+247    'Sorry'                             690        word        
+248    'Every'                             682        word        
+249    'Video'                             674        word        
+250    'Mother'                            665        word        
+251    'Against'                           659        word        
+252    'At-Home'                           11         subword     
+253    'Night'                             652        word        
+254    'Fashion'                           650        word        
+255    'Woman'                             643        word        
+256    'Never'                             641        word        
+257    'Change'                            640        word        
+258    'North'                             639        word        
+259    'Divorce'                           633        word        
+260    'Before'                            632        word        
+261    'Another'                           630        word        
+262    'Would'                             625        word        
+263    'Study'                             616        word        
+264    'Years'                             608        word        
+265    'Senate'                            603        word        
+266    'Right'                             599        word        
+267    'Because'                           598        word        
+268    'During'                            598        word        
+269    'States'                            597        word        
+270    'Maybe'                             586        word        
+271    'Summer'                            585        word        
+272    'Think'                             583        word        
+273    'Better'                            581        word        
+274    'Party'                             562        word        
+275    'United'                            562        word        
+276    '-Themed'                           9          subword     
+277    'Ex-Cop'                            9          subword     
+278    'Go-To'                             9          subword     
+279    'Op-Ed'                             9          subword     
+280    'Pop-Up'                            9          subword     
+281    'X-Files'                           9          subword     
+282    'Death'                             543        word        
+283    'London'                            543        word        
+284    'Finally'                           541        word        
+285    'David'                             540        word        
+286    'Parents'                           531        word        
+287    'South'                             529        word        
+288    'Shows'                             525        word        
+289    'Travel'                            519        word        
+290    'James'                             515        word        
+291    'Looks'                             514        word        
+292    'Michael'                           506        word        
+293    'Please'                            506        word        
+294    'Other'                             496        word        
+295    'Makes'                             491        word        
+296    '-Mexico'                           8          subword     
+297    'Cancer'                            490        word        
+298    'Texas'                             490        word        
+299    'Climate'                           488        word        
+300    'Super'                             488        word        
+301    'Sanders'                           483        word        
+302    'Paris'                             481        word        
+303    'Photos'                            477        word        
+304    'Little'                            469        word        
+305    'Wants'                             468        word        
+306    'Russia'                            467        word        
+307    'Sleep'                             467        word        
+308    'Having'                            459        word        
+309    'Again'                             458        word        
+310    'Supreme'                           455        word        
+311    'Report'                            453        word        
+312    'Florida'                           450        word        
+313    'China'                             448        word        
+314    'Making'                            446        word        
+315    'Season'                            442        word        
+316    '-Cuba'                             7          subword     
+317    '-Russia'                           7          subword     
+318    'A-Sides'                           7          subword     
+319    'Ant-Man'                           7          subword     
+320    'At-Risk'                           7          subword     
+321    'N-Word'                            7          subword     
+322    'To-Do'                             7          subword     
+323    'Wake-Up'                           7          subword     
+324    'X-Ray'                             7          subword     
+325    'Movie'                             434        word        
+326    'Tuesday'                           432        word        
+327    'Finds'                             426        word        
+328    'Child'                             424        word        
+329    'Doesn'                             423        word        
+330    'Times'                             423        word        
+331    'Fight'                             418        word        
+332    'Photo'                             415        word        
+333    'Without'                           412        word        
+334    'College'                           409        word        
+335    'Street'                            405        word        
+336    'March'                             398        word        
+337    'History'                           397        word        
+338    'Working'                           394        word        
+339    'Awards'                            393        word        
+340    'Perfect'                           392        word        
+341    'Bernie'                            390        word        
+342    'Music'                             386        word        
+343    'Chris'                             385        word        
+344    'Former'                            384        word        
+345    'A-List'                            6          subword     
+346    'A-Rod'                             6          subword     
+347    'D-Calif'                           6          subword     
+348    'Do-Over'                           6          subword     
+349    'F-Bomb'                            6          subword     
+350    'Sit-In'                            6          subword     
+351    'Wi-Fi'                             6          subword     
+352    'Calls'                             381        word        
+353    'Guide'                             381        word        
+354    'Money'                             380        word        
+355    'Reasons'                           380        word        
+356    'Through'                           380        word        
+357    'Girls'                             378        word        
+358    'Nothing'                           375        word        
+359    'Story'                             370        word        
+360    'Looking'                           368        word        
+361    'Might'                             368        word        
+362    'Welcome'                           368        word        
+363    'Rights'                            366        word        
+364    'Million'                           364        word        
+365    'Takes'                             364        word        
+366    'Tweets'                            364        word        
+367    'Beauty'                            363        word        
+368    'Social'                            363        word        
+369    'Trying'                            361        word        
+370    'Whether'                           360        word        
+371    'Apple'                             359        word        
+372    'Holiday'                           358        word        
+373    'Media'                             357        word        
+374    'Recipes'                           352        word        
+375    'Since'                             350        word        
+376    'Taylor'                            350        word        
+377    'Tumblr'                            349        word        
+378    'Living'                            345        word        
+379    'Taking'                            345        word        
+380    'Eating'                            342        word        
+381    'Found'                             342        word        
+382    'French'                            342        word        
+383    'Power'                             340        word        
+384    'Jimmy'                             336        word        
+385    'Young'                             333        word        
+386    'Russian'                           331        word        
+387    'Sexual'                            330        word        
+388    'Awesome'                           328        word        
+389    'George'                            327        word        
+390    '-Style'                            5          subword     
+391    'Co-Host'                           5          subword     
+392    'Jell-O'                            5          subword     
+393    'Ne-Yo'                             5          subword     
+394    'On-Air'                            5          subword     
+395    'Pro-Gun'                           5          subword     
+396    'R-Ariz'                            5          subword     
+397    'Slow-Mo'                           5          subword     
+398    'T-Rex'                             5          subword     
+399    'Dress'                             326        word        
+400    'Father'                            326        word        
+401    'Justice'                           325        word        
+402    'Korea'                             325        word        
+403    'Biden'                             323        word        
+404    'Google'                            322        word        
+405    'Office'                            320        word        
+406    'Weekend'                           319        word        
+407    'Daily'                             318        word        
+408    'Attack'                            316        word        
+409    'Secret'                            316        word        
+410    'Under'                             316        word        
+411    'Support'                           313        word        
+412    'Email'                             312        word        
+413    'Healthy'                           311        word        
+414    'April'                             310        word        
+415    'France'                            310        word        
+416    'Worst'                             310        word        
+417    'Heart'                             308        word        
+418    'Prince'                            305        word        
+419    'Weight'                            305        word        
+420    'Scott'                             304        word        
+421    'Those'                             304        word        
+422    'Around'                            303        word        
+423    'Europe'                            302        word        
+424    'Mexico'                            301        word        
+425    'Missing'                           296        word        
+426    'Kelly'                             295        word        
+427    'Spring'                            293        word        
+428    'Future'                            290        word        
+429    'Sweet'                             290        word        
+430    'Despite'                           289        word        
+431    'Public'                            289        word        
+432    'Which'                             289        word        
+433    'Disney'                            288        word        
+434    'Brown'                             287        word        
+435    'Chicago'                           286        word        
+436    'Thing'                             286        word        
+437    'Three'                             286        word        
+438    'Letter'                            284        word        
+439    'Someone'                           282        word        
+440    'Green'                             280        word        
+441    'Debate'                            279        word        
+442    'Harry'                             278        word        
+443    'Hello'                             278        word        
+444    'Reveals'                           277        word        
+445    'Behind'                            276        word        
+446    'British'                           276        word        
+447    'Lives'                             273        word        
+448    'Country'                           272        word        
+449    '10-Year'                           4          subword     
+450    '24-Hour'                           4          subword     
+451    '5-Hour'                            4          subword     
+452    'A-Team'                            4          subword     
+453    'All-Day'                           4          subword     
+454    'B-Day'                             4          subword     
+455    'Blu-Ray'                           4          subword     
+456    'Co-Star'                           4          subword     
+457    'Cut-Out'                           4          subword     
+458    'Jong-Un'                           4          subword     
+459    'Mid-Air'                           4          subword     
+460    'One-Day'                           4          subword     
+461    'Pac-Man'                           4          subword     
+462    'Sign-Up'                           4          subword     
+463    'Szep-'                             4          subword     
+464    'Tex-Mex'                           4          subword     
+465    'V-Day'                             4          subword     
+466    'X-Rays'                            4          subword     
+467    'However'                           270        word        
+468    'Between'                           267        word        
+469    'Coming'                            267        word        
+470    'Stephen'                           267        word        
+471    'Talks'                             264        word        
+472    'Ideas'                             263        word        
+473    'Killed'                            263        word        
+474    'Vegas'                             263        word        
+475    'Friends'                           262        word        
+476    'Waiting'                           260        word        
+477    'Pretty'                            259        word        
+478    'Winter'                            259        word        
+479    'Earth'                             258        word        
+480    'Hotel'                             258        word        
+481    'Instead'                           257        word        
+482    'Doing'                             255        word        
+483    'Feeling'                           255        word        
+484    'Enjoy'                             254        word        
+485    'Stars'                             253        word        
+486    'Needs'                             252        word        
+487    'Judge'                             251        word        
+488    'Amazing'                           250        word        
+489    'Gives'                             250        word        
+490    'Muslim'                            250        word        
+491    'Rules'                             250        word        
+492    'Water'                             250        word        
+493    'Group'                             248        word        
+494    'Wrong'                             247        word        
+495    'Science'                           245        word        
+496    'Olympic'                           244        word        
+497    'Robert'                            243        word        
+498    'Syria'                             243        word        
+499    'Crisis'                            242        word        
+500    'Break'                             241        word        
+501    'Steve'                             241        word        
+502    'Center'                            239        word        
+503    'Miley'                             239        word        
+504    'Month'                             239        word        
+505    'Leave'                             238        word        
+506    'Start'                             238        word        
+507    'Swift'                             238        word        
+508    'Follow'                            237        word        
+509    'Speech'                            237        word        
+510    'Bring'                             236        word        
+511    'Claims'                            236        word        
+512    'Learned'                           235        word        
+513    'Church'                            234        word        
+514    'Boston'                            233        word        
+515    'Israel'                            233        word        
+516    'Tweet'                             231        word        
+517    'Human'                             230        word        
+518    'Inside'                            230        word        
+519    'Anyone'                            229        word        
+520    'Beach'                             227        word        
+521    'The'                               33789      word        
+522    'Jones'                             226        word        
+523    'Ready'                             226        word        
+524    'Sounds'                            226        word        
+525    'Student'                           226        word        
+526    'Almost'                            225        word        
+527    'Major'                             225        word        
+528    'Chinese'                           224        word        
+529    'Global'                            224        word        
+530    'Netflix'                           224        word        
+531    'Steps'                             224        word        
+532    'Island'                            223        word        
+533    'Problem'                           222        word        
+534    'Martin'                            220        word        
+535    'Oscar'                             220        word        
+536    'Online'                            218        word        
+537    '-Backed'                           3          subword     
+538    '-Born'                             3          subword     
+539    '-China'                            3          subword     
+540    '12-Step'                           3          subword     
+541    '2-Year'                            3          subword     
+542    '20-Week'                           3          subword     
+543    '5-Year'                            3          subword     
+544    '8-Bit'                             3          subword     
+545    'All-Out'                           3          subword     
+546    'D-Mass'                            3          subword     
+547    'Die-Off'                           3          subword     
+548    'Ex-Bush'                           3          subword     
+549    'Fro-Yo'                            3          subword     
+550    'Full-On'                           3          subword     
+551    'Go-Go'                             3          subword     
+552    'How-To'                            3          subword     
+553    'In-Laws'                           3          subword     
+554    'Low-Cut'                           3          subword     
+555    'Low-Key'                           3          subword     
+556    'M-V-P'                             3          subword     
+557    'Mini-Me'                           3          subword     
+558    'No-Bake'                           3          subword     
+559    'Omega-3'                           3          subword     
+560    'Pick-Up'                           3          subword     
+561    'Post-'                             3          subword     
+562    'Push-Up'                           3          subword     
+563    'R-Rated'                           3          subword     
+564    'R-Texas'                           3          subword     
+565    'Rom-Com'                           3          subword     
+566    'Run-Ins'                           3          subword     
+567    'T-Boz'                             3          subword     
+568    'Wall-E'                            3          subword     
+569    'X-Rated'                           3          subword     
+570    'Angeles'                           216        word        
+571    'Colbert'                           216        word        
+572    'Queen'                             216        word        
+573    'Chief'                             215        word        
+574    'Talking'                           215        word        
+575    'Control'                           214        word        
+576    'Giving'                            214        word        
+577    'Middle'                            214        word        
+578    'Johnson'                           213        word        
+579    'Lessons'                           213        word        
+580    'August'                            212        word        
+581    'Federal'                           212        word        
+582    'Single'                            212        word        
+583    'Smith'                             212        word        
+584    'Totally'                           212        word        
+585    'Turkey'                            212        word        
+586    'Africa'                            211        word        
+587    'Brain'                             211        word        
+588    'Sarah'                             209        word        
+589    'Second'                            209        word        
+590    'Advice'                            208        word        
+591    'Always'                            208        word        
+592    'Model'                             208        word        
+593    'Space'                             208        word        
+594    'English'                           206        word        
+595    'Justin'                            206        word        
+596    'Gonna'                             203        word        
+597    'Using'                             203        word        
+598    'Foods'                             202        word        
+599    'Germany'                           202        word        
+600    'e</w>'                             457077     subword     
+601    's</w>'                             335978     subword     
+602    't</w>'                             310023     subword     
+603    '.</w>'                             195576     subword     
+604    'n</w>'                             215320     subword     
+605    'd</w>'                             203441     subword     
+606    'y</w>'                             188391     subword     
+607    ' I'                                38985      word        
+608    'r</w>'                             157082     subword     
+609    'Th'                                37241      word        
+610    'o</w>'                             143933     subword     
+611    ' S'                                28022      word        
+612    'g</w>'                             112506     subword     
+613    ' A'                                26576      word        
+614    ' .</w>'                            97711      subword     
+615    "'</w>"                             95801      subword     
+616    'ng</w>'                            105357     subword     
+617    ' t'                                140401     word        
+618    'ing</w>'                           98521      subword     
+619    ',</w>'                             88110      subword     
+620    'l</w>'                             88276      subword     
+621    ' C'                                20459      word        
+622    'he</w>'                            86948      subword     
+623    ' T'                                20261      word        
+624    'a</w>'                             83707      subword     
+625    ' W'                                18858      word        
+626    ' M'                                18138      word        
+627    ' B'                                18028      word        
+628    'er</w>'                            72436      subword     
+629    ' H'                                16255      word        
+630    'nd</w>'                            69946      subword     
+631    ' P'                                15673      word        
+632    '!</w>'                             60361      subword     
+633    'h</w>'                             65878      subword     
+634    'ed</w>'                            65623      subword     
+635    ' F'                                15127      word        
+636    ' Th'                               14806      word        
+637    ' D'                                14757      word        
+638    'f</w>'                             61348      subword     
+639    'on</w>'                            60014      subword     
+640    ' O'                                13473      word        
+641    'I</w>'                             27379      subword     
+642    're</w>'                            56019      subword     
+643    ' a'                                77249      word        
+644    'Re'                                12518      word        
+645    " '</w>"                            47572      subword     
+646    'm</w>'                             52824      subword     
+647    'es</w>'                            51841      subword     
+648    'ou'                                121076     word        
+649    ' L'                                11393      word        
+650    ' ,</w>'                            44055      subword     
+651    ' I</w>'                            23055      subword     
+652    'k</w>'                             48069      subword     
+653    'is</w>'                            46542      subword     
+654    ' s'                                65839      word        
+655    ' G'                                10410      word        
+656    'in</w>'                            45260      subword     
+657    'at</w>'                            45247      subword     
+658    ' N'                                10053      word        
+659    'w</w>'                             44249      subword     
+660    ' w'                                61733      word        
+661    'st</w>'                            43359      subword     
+662    'or</w>'                            43087      subword     
+663    'You'                               9687       word        
+664    'p</w>'                             40759      subword     
+665    'me</w>'                            39595      subword     
+666    'the</w>'                           39242      subword     
+667    'of</w>'                            38997      subword     
+668    'll</w>'                            38571      subword     
+669    'to</w>'                            38383      subword     
+670    've</w>'                            38376      subword     
+671    'ay</w>'                            36708      subword     
+672    'ly</w>'                            35528      subword     
+673    'an</w>'                            34591      subword     
+674    'en</w>'                            33954      subword     
+675    ' !</w>'                            30179      subword     
+676    ' to</w>'                           33775      subword     
+677    'it</w>'                            33538      subword     
+678    ' E'                                7498       word        
+679    ' b'                                45174      word        
+680    ' h'                                45084      word        
+681    're'                                77242      word        
+682    ' f'                                42668      word        
+683    ' m'                                42611      word        
+684    'ts</w>'                            29431      subword     
+685    'er'                                72613      word        
+686    ' c'                                42019      word        
+687    'in'                                72237      word        
+688    'hat</w>'                           29122      subword     
+689    'ow</w>'                            28761      subword     
+690    'St'                                6178       word        
+691    'nt</w>'                            27829      subword     
+692    ' R'                                6149       word        
+693    'th</w>'                            27669      subword     
+694    'Co'                                6028       word        
+695    ' the</w>'                          38956      subword     
+696    'Ma'                                5865       word        
+697    'ot</w>'                            26383      subword     
+698    '?</w>'                             23413      subword     
+699    'and</w>'                           26198      subword     
+700    'le</w>'                            26158      subword     
+701    'ou</w>'                            25852      subword     
+702    ' Re'                               5696       word        
+703    'you</w>'                           25713      subword     
+704    'on'                                63681      word        
+705    'The</w>'                           11751      subword     
+706    'or'                                62748      word        
+707    'as</w>'                            24788      subword     
+708    ' a</w>'                            24650      subword     
+709    'i</w>'                             24625      subword     
+710    ':</w>'                             21021      subword     
+711    'at'                                58883      word        
+712    ' J'                                5118       word        
+713    'se</w>'                            22966      subword     
+714    ' St'                               5039       word        
+715    'ce</w>'                            22785      subword     
+716    'Tr'                                4986       word        
+717    'ar'                                57164      word        
+718    'an'                                56885      word        
+719    ' d'                                32160      word        
+720    'al</w>'                            22088      subword     
+721    ' U'                                4616       word        
+722    ' You'                              4585       word        
+723    'Ch'                                4570       word        
+724    ' l'                                29885      word        
+725    'Wh'                                4435       word        
+726    'ld</w>'                            20233      subword     
+727    ' p'                                29277      word        
+728    'ion</w>'                           19822      subword     
+729    'th'                                50478      word        
+730    ' K'                                4298       word        
+731    'et</w>'                            19594      subword     
+732    ' of</w>'                           19342      subword     
+733    'De'                                4159       word        
+734    ' Tr'                               4095       word        
+735    'out</w>'                           18833      subword     
+736    'ke</w>'                            18653      subword     
+737    'Wi'                                4037       word        
+738    'Be'                                4033       word        
+739    ' g'                                26830      word        
+740    'Ne'                                4001       word        
+741    '"</w>'                             18386      subword     
+742    ' th'                               26322      word        
+743    'ave</w>'                           17474      subword     
+744    ' s</w>'                            17348      subword     
+745    ' n'                                25086      word        
+746    ' V'                                3720       word        
+747    'ic'                                43117      word        
+748    'ut</w>'                            16596      subword     
+749    ' Ch'                               3578       word        
+750    'ss</w>'                            16514      subword     
+751    'ter</w>'                           16461      subword     
+752    ' Wi'                               3507       word        
+753    'ad</w>'                            16122      subword     
+754    'Mo'                                3459       word        
+755    'Se'                                3447       word        
+756    'ht</w>'                            15811      subword     
+757    ' De'                               3398       word        
+758    'ght</w>'                           15760      subword     
+759    'al'                                40989      word        
+760    'it'                                40869      word        
+761    'He'                                3351       word        
+762    'en'                                40265      word        
+763    ' Ne'                               3296       word        
+764    'In'                                3278       word        
+765    'day</w>'                           15119      subword     
+766    'st'                                39396      word        
+767    'A</w>'                             6873       subword     
+768    ' Co'                               3214       word        
+769    'Sh'                                3210       word        
+770    ' in</w>'                           14947      subword     
+771    ' and</w>'                          21717      subword     
+772    'Po'                                3166       word        
+773    'S</w>'                             6746       subword     
+774    'ere</w>'                           14604      subword     
+775    'om</w>'                            14586      subword     
+776    'Su'                                3088       word        
+777    ' Be'                               3074       word        
+778    'one</w>'                           14300      subword     
+779    'ith</w>'                           14010      subword     
+780    'ome</w>'                           13981      subword     
+781    'ch</w>'                            13951      subword     
+782    'our</w>'                           13928      subword     
+783    'ers</w>'                           13859      subword     
+784    'ent</w>'                           13597      subword     
+785    'Lo'                                2863       word        
+786    ' ?</w>'                            11702      subword     
+787    'Tru'                               2815       word        
+788    'Go'                                2800       word        
+789    'ey</w>'                            13050      subword     
+790    'ck</w>'                            12907      subword     
+791    ' Wh'                               2748       word        
+792    'ds</w>'                            12893      subword     
+793    ' Y'                                2742       word        
+794    ' The</w>'                          6924       subword     
+795    ';</w>'                             11304      subword     
+796    'Fr'                                2709       word        
+797    ' In'                               2701       word        
+798    'ar</w>'                            12547      subword     
+799    ' is</w>'                           12482      subword     
+800    ' Sh'                               2637       word        
+801    'my</w>'                            12393      subword     
+802    'ill</w>'                           12381      subword     
+803    ' Mo'                               2623       word        
+804    'We'                                2602       word        
+805    ' it</w>'                           12124      subword     
+806    'for</w>'                           12068      subword     
+807    ' Su'                               2534       word        
+808    'Di'                                2532       word        
+809    'Li'                                2532       word        
+810    'Pr'                                2531       word        
+811    ' :</w>'                            10501      subword     
+812    'To</w>'                            5393       subword     
+813    'Trum'                              2504       word        
+814    'ust</w>'                           11613      subword     
+815    ' To</w>'                           5247       subword     
+816    '-</w>'                             10041      subword     
+817    'oo'                                30496      word        
+818    ' Ma'                               2393       word        
+819    ' Se'                               2347       word        
+820    'ate</w>'                           11044      subword     
+821    'Mi'                                2295       word        
+822    ' Tru'                              2280       word        
+823    'ver</w>'                           10658      subword     
+824    'Le'                                2236       word        
+825    ' Fr'                               2235       word        
+826    ' e'                                15490      word        
+827    'om'                                28418      word        
+828    'ks</w>'                            10438      subword     
+829    ' Trum'                             2042       word        
+830    'Fa'                                2170       word        
+831    'ic</w>'                            10309      subword     
+832    'An'                                2165       word        
+833    'Ca'                                2160       word        
+834    ' my</w>'                           10234      subword     
+835    ' We'                               2137       word        
+836    ' Pr'                               2132       word        
+837    ' Di'                               2127       word        
+838    'ys</w>'                            10099      subword     
+839    'ge</w>'                            10045      subword     
+840    'Br'                                2102       word        
+841    'ore</w>'                           9939       subword     
+842    'Me'                                2046       word        
+843    'Am'                                2015       word        
+844    'Ha'                                2012       word        
+845    'In</w>'                            4297       subword     
+846    ' Li'                               1972       word        
+847    'ood</w>'                           9376       subword     
+848    ')</w>'                             9351       subword     
+849    'le'                                25599      word        
+850    'is'                                25432      word        
+851    ' on</w>'                           9205       subword     
+852    'Con'                               1909       word        
+853    ' t</w>'                            9040       subword     
+854    ' Fa'                               1887       word        
+855    '(</w>'                             8985       subword     
+856    'up</w>'                            8984       subword     
+857    ' He'                               1876       word        
+858    'ight</w>'                          13238      subword     
+859    'Ho'                                1831       word        
+860    'La'                                1827       word        
+861    'de</w>'                            8695       subword     
+862    ' Po'                               1807       word        
+863    'are</w>'                           8666       subword     
+864    'O</w>'                             3870       subword     
+865    ' you</w>'                          12783      subword     
+866    'It</w>'                            3862       subword     
+867    ' Lo'                               1779       word        
+868    'To'                                1779       word        
+869    'Ba'                                1772       word        
+870    'be</w>'                            8496       subword     
+871    ' Le'                               1764       word        
+872    'Sp'                                1762       word        
+873    ' re'                               12582      word        
+874    'ant</w>'                           8452       subword     
+875    'now</w>'                           8435       subword     
+876    'E</w>'                             3765       subword     
+877    ' i</w>'                            8334       subword     
+878    'Al'                                1722       word        
+879    'Tw'                                1713       word        
+880    'id</w>'                            8138       subword     
+881    ' "</w>'                            8132       subword     
+882    'ies</w>'                           8122       subword     
+883    'Sa'                                1685       word        
+884    ' for</w>'                          12049      subword     
+885    ' In</w>'                           3626       subword     
+886    'OT'                                3409       word        
+887    'ive</w>'                           8053       subword     
+888    'Wor'                               1666       word        
+889    'Ro'                                1659       word        
+890    'Pa'                                1656       word        
+891    'ime</w>'                           7921       subword     
+892    'el'                                22057      word        
+893    'ry</w>'                            7850       subword     
+894    ' Br'                               1625       word        
+895    ' Am'                               1621       word        
+896    ' A</w>'                            3487       subword     
+897    ' Ha'                               1598       word        
+898    'Sc'                                1594       word        
+899    'rom</w>'                           7689       subword     
+900    'Cl'                                1591       word        
+901    'Fi'                                1579       word        
+902    'all</w>'                           7583       subword     
+903    'ake</w>'                           7516       subword     
+904    ' An'                               1553       word        
+905    'ro'                                21054      word        
+906    'ack</w>'                           7482       subword     
+907    'Mar'                               1541       word        
+908    'Ab'                                1539       word        
+909    ' Con'                              1537       word        
+910    'Do'                                1536       word        
+911    'el</w>'                            7394       subword     
+912    'ons</w>'                           7385       subword     
+913    'Of</w>'                            3287       subword     
+914    'ays</w>'                           7331       subword     
+915    ' Ho'                               1513       word        
+916    ' Me'                               1510       word        
+917    'ike</w>'                           7311       subword     
+918    'Te'                                1508       word        
+919    'dy</w>'                            7297       subword     
+920    'And</w>'                           3255       subword     
+921    ' Of</w>'                           3243       subword     
+922    'Un'                                1488       word        
+923    'ity</w>'                           7206       subword     
+924    'Bu'                                1479       word        
+925    'oo</w>'                            7115       subword     
+926    'ra'                                20067      word        
+927    'You</w>'                           3154       subword     
+928    'ew</w>'                            7065       subword     
+929    ' st'                               10548      word        
+930    ' Sp'                               1452       word        
+931    'Hu'                                1451       word        
+932    'Amer'                              1449       word        
+933    'Americ'                            1445       word        
+934    'Bl'                                1443       word        
+935    'gh</w>'                            6957       subword     
+936    'ice</w>'                           6917       subword     
+937    'Pre'                               1421       word        
+938    '0</w>'                             6892       subword     
+939    'ast</w>'                           6888       subword     
+940    'ally</w>'                          10272      subword     
+941    'so</w>'                            6844       subword     
+942    'that</w>'                          10230      subword     
+943    'king</w>'                          10229      subword     
+944    ' that</w>'                         10199      subword     
+945    'ir</w>'                            6784       subword     
+946    ' y'                                10137      word        
+947    ' Wor'                              1390       word        
+948    'For</w>'                           3008       subword     
+949    ' Ab'                               1381       word        
+950    ' o'                                10055      word        
+951    'Qu'                                1378       word        
+952    'Hi'                                1376       word        
+953    'Af'                                1364       word        
+954    'ch'                                18900      word        
+955    'Pro'                               1362       word        
+956    ' Cl'                               1362       word        
+957    'x</w>'                             6605       subword     
+958    ' Tw'                               1355       word        
+959    'T</w>'                             2914       subword     
+960    'On'                                1338       word        
+961    'Ar'                                1337       word        
+962    'D</w>'                             2876       subword     
+963    'L</w>'                             2865       subword     
+964    'Bo'                                1319       word        
+965    'il'                                18374      word        
+966    ' ;</w>'                            5651       subword     
+967    'HOT'                               2683       word        
+968    ' It</w>'                           2850       subword     
+969    ' Ca'                               1310       word        
+970    'ork</w>'                           6386       subword     
+971    'gs</w>'                            6367       subword     
+972    ' be'                               9556       word        
+973    'Ph'                                1296       word        
+974    ' Amer'                             1205       word        
+975    'ee</w>'                            6307       subword     
+976    ' Americ'                           1202       word        
+977    'Ra'                                1290       word        
+978    'ur'                                18012      word        
+979    'Da'                                1283       word        
+980    'Jo'                                1280       word        
+981    ' Un'                               1280       word        
+982    'Ex'                                1277       word        
+983    'Cou'                               1270       word        
+984    'Ye'                                1268       word        
+985    'lo'                                17751      word        
+986    'ple</w>'                           6178       subword     
+987    ' Ro'                               1262       word        
+988    'ted</w>'                           6168       subword     
+989    ' be</w>'                           6142       subword     
+990    'ine</w>'                           6076       subword     
+991    'Ac'                                1223       word        
+992    'Com'                               1223       word        
+993    ' Al'                               1220       word        
+994    'am'                                17219      word        
+995    'Is</w>'                            2650       subword     
+996    ' Te'                               1215       word        
+997    'ould</w>'                          8922       subword     
+998    'un'                                17063      word        
+999    'ty</w>'                            5915       subword     

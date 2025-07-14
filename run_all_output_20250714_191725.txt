@@ -1,0 +1,178 @@
+Select domain:
+1. Domain 1 (Twitter)
+2. Domain 2 (Headlines)
+3. Unknown domain (Mixed)
+Selected domain: domain_2
+
+Do you want to train a new tokenizer or load an existing one?
+1. Train new tokenizer
+2. Load existing tokenizer
+Loading existing tokenizer for domain_2...
+
+Testing tokenizer for domain_2...
+Using tokenizer at tokenizers/domain_2/tokenizer.pkl
+Loading tokenizer from tokenizers/domain_2/tokenizer.pkl
+Vocabulary size: 1000
+Loading training texts from data/domain_2_train.txt
+Loading test texts from data/domain_2_dev.txt
+
+Testing encoding speed...
+Encoding speed: 152982.76 tokens/second
+Total encoding time for test set: 18.9482 seconds
+Total tokens used for test set: 2914482
+
+Testing tokenization efficiency...
+Tokens per character: 0.8072
+
+Testing text reconstruction...
+Reconstruction success rate: 90.00%
+
+Sample encoding/decoding:
+Original: Danny's mom, Dina, said the overwhelming support from her community has been helpful. "Like everyone always says, 'It doesn't
+Encoded: [957, 9, 9, 17, 1, 26, 1, 8, 1, 16, 943, 1, 30, 1, 766, 9, 5, 1, 30, 1, 8, 5, 7, 14, 1, 625, 3, 1, 4, 23, 667, 21, 12, 3, 11, 16, 688, 19, 1, 8, 13, 20, 20, 712, 6, 1, 18, 910, 16, 1]...
+Decoded: Danny ' s mom , Dina , said the overwhelming support from her community has been helpful . " Like everyone always says , ' It doesn ' t
+
+Training NER model for domain_2...
+Using device: cuda
+Loading tokenizer from tokenizers/domain_2/tokenizer.pkl
+Loading training data from data/ner_data/train_2_binary.tagged
+Loading dev data from data/ner_data/dev_2_binary.tagged
+Creating datasets
+Processing texts:   0%|          | 0/14041 [00:00<?, ?it/s]Processing texts:   0%|          | 17/14041 [00:00<01:28, 158.01it/s]Processing texts:   0%|          | 36/14041 [00:00<01:22, 169.32it/s]Processing texts:   1%|          | 71/14041 [00:00<00:56, 248.50it/s]Processing texts:   1%|          | 108/14041 [00:00<00:47, 294.41it/s]Processing texts:   1%|          | 138/14041 [00:00<00:51, 267.89it/s]Processing texts:   1%|          | 166/14041 [00:00<00:54, 254.92it/s]Processing texts:   1%|▏         | 192/14041 [00:00<00:55, 249.58it/s]Processing texts:   2%|▏         | 235/14041 [00:00<00:46, 297.53it/s]Processing texts:   2%|▏         | 277/14041 [00:00<00:41, 331.99it/s]Processing texts:   2%|▏         | 311/14041 [00:01<00:45, 300.61it/s]Processing texts:   3%|▎         | 353/14041 [00:01<00:41, 332.38it/s]Processing texts:   3%|▎         | 394/14041 [00:01<00:38, 354.02it/s]Processing texts:   3%|▎         | 459/14041 [00:01<00:30, 438.32it/s]Processing texts:   4%|▎         | 510/14041 [00:01<00:29, 452.57it/s]Processing texts:   4%|▍         | 608/14041 [00:01<00:22, 603.88it/s]Processing texts:   5%|▍         | 670/14041 [00:01<00:23, 569.57it/s]Processing texts:   5%|▌         | 746/14041 [00:01<00:21, 622.51it/s]Processing texts:   6%|▌         | 832/14041 [00:01<00:19, 689.72it/s]Processing texts:   6%|▋         | 903/14041 [00:02<00:26, 500.22it/s]Processing texts:   7%|▋         | 962/14041 [00:02<00:26, 492.83it/s]Processing texts:   7%|▋         | 1017/14041 [00:02<00:26, 491.88it/s]Processing texts:   8%|▊         | 1071/14041 [00:02<00:30, 421.45it/s]Processing texts:   8%|▊         | 1118/14041 [00:02<00:37, 345.43it/s]Processing texts:   8%|▊         | 1158/14041 [00:03<00:45, 281.81it/s]Processing texts:   8%|▊         | 1191/14041 [00:03<00:44, 290.73it/s]Processing texts:   9%|▊         | 1224/14041 [00:03<00:44, 289.83it/s]Processing texts:   9%|▉         | 1256/14041 [00:03<00:45, 281.22it/s]Processing texts:   9%|▉         | 1286/14041 [00:03<00:46, 272.49it/s]Processing texts:   9%|▉         | 1315/14041 [00:03<00:50, 252.60it/s]Processing texts:  10%|▉         | 1342/14041 [00:03<00:50, 251.34it/s]Processing texts:  10%|▉         | 1368/14041 [00:03<00:53, 238.71it/s]Processing texts:  10%|▉         | 1396/14041 [00:03<00:50, 248.69it/s]Processing texts:  10%|█         | 1422/14041 [00:04<00:52, 239.19it/s]Processing texts:  10%|█         | 1457/14041 [00:04<00:47, 264.40it/s]Processing texts:  11%|█         | 1484/14041 [00:04<00:54, 231.83it/s]Processing texts:  11%|█         | 1529/14041 [00:04<00:43, 286.29it/s]Processing texts:  11%|█         | 1560/14041 [00:04<00:48, 255.42it/s]Processing texts:  11%|█▏        | 1588/14041 [00:04<00:50, 248.72it/s]Processing texts:  11%|█▏        | 1614/14041 [00:04<00:50, 245.35it/s]Processing texts:  12%|█▏        | 1640/14041 [00:04<00:51, 240.66it/s]Processing texts:  12%|█▏        | 1665/14041 [00:05<00:51, 240.12it/s]Processing texts:  12%|█▏        | 1690/14041 [00:05<00:53, 229.71it/s]Processing texts:  12%|█▏        | 1721/14041 [00:05<00:49, 248.79it/s]Processing texts:  13%|█▎        | 1760/14041 [00:05<00:43, 285.54it/s]Processing texts:  13%|█▎        | 1809/14041 [00:05<00:36, 338.54it/s]Processing texts:  13%|█▎        | 1844/14041 [00:05<00:44, 273.75it/s]Processing texts:  13%|█▎        | 1874/14041 [00:05<00:48, 250.94it/s]Processing texts:  14%|█▍        | 1938/14041 [00:05<00:35, 343.18it/s]Processing texts:  14%|█▍        | 1994/14041 [00:06<00:30, 393.52it/s]Processing texts:  15%|█▍        | 2037/14041 [00:06<00:34, 349.39it/s]Processing texts:  15%|█▍        | 2075/14041 [00:06<00:33, 356.37it/s]Processing texts:  15%|█▌        | 2161/14041 [00:06<00:24, 485.43it/s]Processing texts:  16%|█▌        | 2213/14041 [00:06<00:31, 377.07it/s]Processing texts:  16%|█▌        | 2257/14041 [00:06<00:30, 386.26it/s]Processing texts:  16%|█▋        | 2300/14041 [00:06<00:30, 383.76it/s]Processing texts:  17%|█▋        | 2342/14041 [00:06<00:30, 384.67it/s]Processing texts:  17%|█▋        | 2447/14041 [00:07<00:20, 557.54it/s]Processing texts:  18%|█▊        | 2518/14041 [00:07<00:19, 597.88it/s]Processing texts:  18%|█▊        | 2582/14041 [00:07<00:24, 464.58it/s]Processing texts:  19%|█▉        | 2636/14041 [00:07<00:25, 455.76it/s]Processing texts:  19%|█▉        | 2687/14041 [00:07<00:25, 437.54it/s]Processing texts:  19%|█▉        | 2734/14041 [00:07<00:32, 344.80it/s]Processing texts:  20%|█▉        | 2774/14041 [00:07<00:34, 323.33it/s]Processing texts:  20%|██        | 2810/14041 [00:08<00:39, 283.02it/s]Processing texts:  20%|██        | 2841/14041 [00:08<00:46, 242.19it/s]Processing texts:  20%|██        | 2868/14041 [00:08<00:47, 233.66it/s]Processing texts:  21%|██        | 2901/14041 [00:08<00:43, 253.76it/s]Processing texts:  21%|██        | 2930/14041 [00:08<00:42, 258.64it/s]Processing texts:  21%|██        | 2958/14041 [00:08<00:48, 230.01it/s]Processing texts:  21%|██▏       | 2984/14041 [00:08<00:47, 232.16it/s]Processing texts:  21%|██▏       | 3009/14041 [00:09<00:48, 228.18it/s]Processing texts:  22%|██▏       | 3037/14041 [00:09<00:46, 238.91it/s]Processing texts:  22%|██▏       | 3062/14041 [00:09<00:50, 219.09it/s]Processing texts:  22%|██▏       | 3085/14041 [00:09<00:58, 188.55it/s]Processing texts:  22%|██▏       | 3106/14041 [00:09<00:57, 190.82it/s]Processing texts:  22%|██▏       | 3131/14041 [00:09<00:54, 201.49it/s]Processing texts:  23%|██▎       | 3160/14041 [00:09<00:48, 223.64it/s]Processing texts:  23%|██▎       | 3186/14041 [00:09<00:46, 231.24it/s]Processing texts:  23%|██▎       | 3218/14041 [00:10<00:42, 253.87it/s]Processing texts:  23%|██▎       | 3244/14041 [00:10<00:42, 255.55it/s]Processing texts:  23%|██▎       | 3283/14041 [00:10<00:37, 290.40it/s]Processing texts:  24%|██▎       | 3313/14041 [00:10<00:39, 270.43it/s]Processing texts:  24%|██▍       | 3345/14041 [00:10<00:37, 281.54it/s]Processing texts:  24%|██▍       | 3374/14041 [00:10<00:39, 269.26it/s]Processing texts:  24%|██▍       | 3416/14041 [00:10<00:34, 310.11it/s]Processing texts:  25%|██▍       | 3480/14041 [00:10<00:26, 402.99it/s]Processing texts:  25%|██▌       | 3540/14041 [00:10<00:23, 451.10it/s]Processing texts:  26%|██▌       | 3586/14041 [00:10<00:24, 434.06it/s]Processing texts:  26%|██▌       | 3646/14041 [00:11<00:21, 477.58it/s]Processing texts:  27%|██▋       | 3732/14041 [00:11<00:17, 577.34it/s]Processing texts:  28%|██▊       | 3870/14041 [00:11<00:12, 807.12it/s]Processing texts:  28%|██▊       | 3953/14041 [00:11<00:12, 808.03it/s]Processing texts:  29%|██▉       | 4110/14041 [00:11<00:09, 1029.28it/s]Processing texts:  30%|███       | 4215/14041 [00:11<00:17, 547.22it/s] Processing texts:  31%|███       | 4296/14041 [00:12<00:26, 365.53it/s]Processing texts:  31%|███       | 4358/14041 [00:12<00:30, 321.25it/s]Processing texts:  31%|███▏      | 4409/14041 [00:12<00:34, 279.05it/s]Processing texts:  32%|███▏      | 4450/14041 [00:13<00:38, 247.02it/s]Processing texts:  32%|███▏      | 4484/14041 [00:13<00:42, 225.15it/s]Processing texts:  32%|███▏      | 4560/14041 [00:13<00:31, 303.34it/s]Processing texts:  33%|███▎      | 4679/14041 [00:13<00:20, 456.49it/s]Processing texts:  34%|███▍      | 4795/14041 [00:13<00:15, 595.01it/s]Processing texts:  35%|███▍      | 4876/14041 [00:13<00:14, 637.96it/s]Processing texts:  35%|███▌      | 4956/14041 [00:13<00:14, 627.20it/s]Processing texts:  36%|███▌      | 5046/14041 [00:14<00:13, 684.30it/s]Processing texts:  36%|███▋      | 5124/14041 [00:14<00:13, 671.59it/s]Processing texts:  37%|███▋      | 5242/14041 [00:14<00:11, 799.33it/s]Processing texts:  38%|███▊      | 5354/14041 [00:14<00:09, 883.86it/s]Processing texts:  39%|███▉      | 5448/14041 [00:14<00:13, 617.53it/s]Processing texts:  39%|███▉      | 5525/14041 [00:14<00:15, 540.75it/s]Processing texts:  40%|████      | 5634/14041 [00:14<00:12, 648.11it/s]Processing texts:  41%|████      | 5712/14041 [00:15<00:13, 639.35it/s]Processing texts:  41%|████      | 5787/14041 [00:15<00:12, 663.24it/s]Processing texts:  42%|████▏     | 5861/14041 [00:15<00:13, 593.19it/s]Processing texts:  42%|████▏     | 5927/14041 [00:15<00:16, 490.98it/s]Processing texts:  43%|████▎     | 5983/14041 [00:15<00:22, 351.88it/s]Processing texts:  43%|████▎     | 6028/14041 [00:15<00:25, 316.56it/s]Processing texts:  43%|████▎     | 6066/14041 [00:16<00:24, 324.23it/s]Processing texts:  43%|████▎     | 6104/14041 [00:16<00:27, 289.37it/s]Processing texts:  44%|████▎     | 6137/14041 [00:16<00:27, 283.45it/s]Processing texts:  44%|████▍     | 6168/14041 [00:16<00:30, 257.68it/s]Processing texts:  44%|████▍     | 6196/14041 [00:16<00:31, 249.29it/s]Processing texts:  44%|████▍     | 6222/14041 [00:16<00:36, 212.55it/s]Processing texts:  45%|████▍     | 6249/14041 [00:16<00:35, 222.41it/s]Processing texts:  45%|████▍     | 6274/14041 [00:17<00:33, 228.53it/s]Processing texts:  45%|████▍     | 6300/14041 [00:17<00:32, 235.70it/s]Processing texts:  45%|████▌     | 6332/14041 [00:17<00:30, 252.93it/s]Processing texts:  46%|████▌     | 6433/14041 [00:17<00:16, 455.24it/s]Processing texts:  46%|████▋     | 6527/14041 [00:17<00:12, 587.73it/s]Processing texts:  47%|████▋     | 6589/14041 [00:17<00:14, 529.19it/s]Processing texts:  47%|████▋     | 6651/14041 [00:17<00:13, 539.21it/s]Processing texts:  48%|████▊     | 6786/14041 [00:17<00:09, 742.78it/s]Processing texts:  49%|████▉     | 6864/14041 [00:17<00:10, 712.44it/s]Processing texts:  49%|████▉     | 6938/14041 [00:18<00:10, 652.17it/s]Processing texts:  50%|████▉     | 7006/14041 [00:18<00:16, 422.31it/s]Processing texts:  50%|█████     | 7060/14041 [00:18<00:15, 439.60it/s]Processing texts:  51%|█████     | 7113/14041 [00:18<00:16, 410.52it/s]Processing texts:  51%|█████     | 7162/14041 [00:18<00:16, 425.28it/s]Processing texts:  52%|█████▏    | 7234/14041 [00:18<00:13, 491.49it/s]Processing texts:  52%|█████▏    | 7289/14041 [00:19<00:16, 408.89it/s]Processing texts:  52%|█████▏    | 7336/14041 [00:19<00:23, 282.79it/s]Processing texts:  53%|█████▎    | 7373/14041 [00:19<00:24, 267.28it/s]Processing texts:  53%|█████▎    | 7406/14041 [00:19<00:26, 251.07it/s]Processing texts:  53%|█████▎    | 7435/14041 [00:19<00:27, 237.21it/s]Processing texts:  53%|█████▎    | 7470/14041 [00:19<00:25, 255.36it/s]Processing texts:  53%|█████▎    | 7501/14041 [00:20<00:24, 265.23it/s]Processing texts:  54%|█████▎    | 7535/14041 [00:20<00:23, 277.49it/s]Processing texts:  54%|█████▍    | 7565/14041 [00:20<00:24, 262.21it/s]Processing texts:  54%|█████▍    | 7595/14041 [00:20<00:23, 271.28it/s]Processing texts:  54%|█████▍    | 7646/14041 [00:20<00:19, 327.98it/s]Processing texts:  55%|█████▍    | 7681/14041 [00:20<00:22, 277.45it/s]Processing texts:  55%|█████▍    | 7711/14041 [00:20<00:24, 260.80it/s]Processing texts:  55%|█████▌    | 7739/14041 [00:20<00:27, 231.14it/s]Processing texts:  55%|█████▌    | 7765/14041 [00:21<00:26, 236.96it/s]Processing texts:  55%|█████▌    | 7791/14041 [00:21<00:25, 242.25it/s]Processing texts:  56%|█████▌    | 7861/14041 [00:21<00:17, 353.30it/s]Processing texts:  56%|█████▌    | 7898/14041 [00:21<00:21, 283.29it/s]Processing texts:  56%|█████▋    | 7930/14041 [00:21<00:21, 282.69it/s]Processing texts:  57%|█████▋    | 7961/14041 [00:21<00:21, 287.58it/s]Processing texts:  57%|█████▋    | 7999/14041 [00:21<00:19, 308.99it/s]Processing texts:  57%|█████▋    | 8035/14041 [00:21<00:18, 320.31it/s]Processing texts:  57%|█████▋    | 8069/14041 [00:22<00:22, 266.90it/s]Processing texts:  58%|█████▊    | 8098/14041 [00:22<00:24, 239.80it/s]Processing texts:  58%|█████▊    | 8128/14041 [00:22<00:23, 251.10it/s]Processing texts:  58%|█████▊    | 8159/14041 [00:22<00:22, 262.70it/s]Processing texts:  59%|█████▉    | 8270/14041 [00:22<00:11, 482.75it/s]Processing texts:  60%|█████▉    | 8367/14041 [00:22<00:09, 608.65it/s]Processing texts:  60%|██████    | 8432/14041 [00:22<00:11, 482.16it/s]Processing texts:  61%|██████    | 8505/14041 [00:22<00:10, 539.71it/s]Processing texts:  61%|██████    | 8576/14041 [00:23<00:09, 578.19it/s]Processing texts:  62%|██████▏   | 8639/14041 [00:23<00:13, 413.43it/s]Processing texts:  62%|██████▏   | 8691/14041 [00:23<00:12, 424.44it/s]Processing texts:  62%|██████▏   | 8758/14041 [00:23<00:11, 478.93it/s]Processing texts:  63%|██████▎   | 8813/14041 [00:23<00:12, 406.77it/s]Processing texts:  63%|██████▎   | 8868/14041 [00:23<00:11, 434.87it/s]Processing texts:  64%|██████▎   | 8917/14041 [00:24<00:14, 342.25it/s]Processing texts:  64%|██████▍   | 8958/14041 [00:24<00:18, 273.15it/s]Processing texts:  64%|██████▍   | 8992/14041 [00:24<00:20, 252.21it/s]Processing texts:  64%|██████▍   | 9022/14041 [00:24<00:19, 251.07it/s]Processing texts:  64%|██████▍   | 9050/14041 [00:24<00:20, 240.12it/s]Processing texts:  65%|██████▍   | 9076/14041 [00:24<00:20, 237.51it/s]Processing texts:  65%|██████▍   | 9101/14041 [00:25<00:22, 224.24it/s]Processing texts:  65%|██████▍   | 9125/14041 [00:25<00:22, 219.93it/s]Processing texts:  65%|██████▌   | 9148/14041 [00:25<00:22, 221.95it/s]Processing texts:  65%|██████▌   | 9171/14041 [00:25<00:22, 217.03it/s]Processing texts:  66%|██████▌   | 9197/14041 [00:25<00:21, 227.03it/s]Processing texts:  66%|██████▌   | 9225/14041 [00:25<00:20, 239.73it/s]Processing texts:  66%|██████▌   | 9257/14041 [00:25<00:18, 259.43it/s]Processing texts:  66%|██████▋   | 9319/14041 [00:25<00:13, 360.91it/s]Processing texts:  67%|██████▋   | 9356/14041 [00:25<00:14, 313.02it/s]Processing texts:  67%|██████▋   | 9389/14041 [00:26<00:15, 299.18it/s]Processing texts:  67%|██████▋   | 9421/14041 [00:26<00:16, 273.26it/s]Processing texts:  67%|██████▋   | 9452/14041 [00:26<00:16, 280.30it/s]Processing texts:  68%|██████▊   | 9481/14041 [00:26<00:18, 248.85it/s]Processing texts:  68%|██████▊   | 9507/14041 [00:26<00:18, 241.19it/s]Processing texts:  68%|██████▊   | 9560/14041 [00:26<00:14, 311.52it/s]Processing texts:  68%|██████▊   | 9597/14041 [00:26<00:13, 320.53it/s]Processing texts:  69%|██████▊   | 9631/14041 [00:26<00:13, 323.41it/s]Processing texts:  69%|██████▉   | 9666/14041 [00:26<00:13, 330.56it/s]Processing texts:  69%|██████▉   | 9700/14041 [00:27<00:13, 319.57it/s]Processing texts:  69%|██████▉   | 9733/14041 [00:27<00:14, 301.85it/s]Processing texts:  70%|██████▉   | 9769/14041 [00:27<00:13, 310.26it/s]Processing texts:  70%|██████▉   | 9801/14041 [00:27<00:15, 268.31it/s]Processing texts:  70%|███████   | 9829/14041 [00:27<00:16, 256.44it/s]Processing texts:  70%|███████   | 9856/14041 [00:27<00:18, 222.98it/s]Processing texts:  70%|███████   | 9880/14041 [00:27<00:18, 219.49it/s]Processing texts:  71%|███████   | 9903/14041 [00:27<00:18, 219.92it/s]Processing texts:  71%|███████   | 9926/14041 [00:28<00:21, 190.03it/s]Processing texts:  71%|███████   | 9949/14041 [00:28<00:20, 199.00it/s]Processing texts:  71%|███████▏  | 10035/14041 [00:28<00:10, 365.92it/s]Processing texts:  72%|███████▏  | 10135/14041 [00:28<00:07, 532.86it/s]Processing texts:  73%|███████▎  | 10193/14041 [00:28<00:07, 544.51it/s]Processing texts:  73%|███████▎  | 10251/14041 [00:28<00:08, 435.15it/s]Processing texts:  73%|███████▎  | 10301/14041 [00:29<00:11, 320.65it/s]Processing texts:  74%|███████▍  | 10358/14041 [00:29<00:09, 369.11it/s]Processing texts:  74%|███████▍  | 10403/14041 [00:29<00:10, 351.09it/s]Processing texts:  75%|███████▍  | 10509/14041 [00:29<00:07, 501.05it/s]Processing texts:  75%|███████▌  | 10568/14041 [00:29<00:09, 363.85it/s]Processing texts:  76%|███████▌  | 10616/14041 [00:29<00:09, 350.02it/s]Processing texts:  76%|███████▌  | 10661/14041 [00:29<00:09, 366.23it/s]Processing texts:  77%|███████▋  | 10760/14041 [00:29<00:06, 502.71it/s]Processing texts:  77%|███████▋  | 10820/14041 [00:30<00:06, 511.95it/s]Processing texts:  77%|███████▋  | 10878/14041 [00:30<00:06, 478.26it/s]Processing texts:  78%|███████▊  | 10931/14041 [00:30<00:09, 345.29it/s]Processing texts:  78%|███████▊  | 10974/14041 [00:30<00:09, 326.13it/s]Processing texts:  78%|███████▊  | 11013/14041 [00:30<00:09, 316.15it/s]Processing texts:  79%|███████▊  | 11049/14041 [00:30<00:10, 286.13it/s]Processing texts:  79%|███████▉  | 11081/14041 [00:31<00:11, 268.55it/s]Processing texts:  79%|███████▉  | 11110/14041 [00:31<00:11, 263.40it/s]Processing texts:  79%|███████▉  | 11138/14041 [00:31<00:11, 245.84it/s]Processing texts:  80%|███████▉  | 11164/14041 [00:31<00:13, 208.68it/s]Processing texts:  80%|███████▉  | 11186/14041 [00:31<00:13, 207.56it/s]Processing texts:  80%|███████▉  | 11208/14041 [00:31<00:13, 209.65it/s]Processing texts:  80%|███████▉  | 11230/14041 [00:31<00:14, 193.53it/s]Processing texts:  80%|████████  | 11251/14041 [00:32<00:14, 195.49it/s]Processing texts:  80%|████████  | 11272/14041 [00:32<00:14, 197.64it/s]Processing texts:  80%|████████  | 11293/14041 [00:32<00:14, 188.39it/s]Processing texts:  81%|████████  | 11330/14041 [00:32<00:11, 234.88it/s]Processing texts:  81%|████████  | 11355/14041 [00:32<00:12, 220.14it/s]Processing texts:  81%|████████  | 11383/14041 [00:32<00:11, 233.96it/s]Processing texts:  81%|████████▏ | 11409/14041 [00:32<00:10, 240.59it/s]Processing texts:  82%|████████▏ | 11459/14041 [00:32<00:08, 304.57it/s]Processing texts:  82%|████████▏ | 11490/14041 [00:32<00:09, 267.58it/s]Processing texts:  82%|████████▏ | 11518/14041 [00:33<00:10, 235.20it/s]Processing texts:  82%|████████▏ | 11555/14041 [00:33<00:09, 266.97it/s]Processing texts:  83%|████████▎ | 11584/14041 [00:33<00:09, 251.89it/s]Processing texts:  83%|████████▎ | 11611/14041 [00:33<00:10, 239.84it/s]Processing texts:  83%|████████▎ | 11638/14041 [00:33<00:09, 245.58it/s]Processing texts:  83%|████████▎ | 11664/14041 [00:33<00:10, 220.76it/s]Processing texts:  83%|████████▎ | 11693/14041 [00:33<00:09, 236.86it/s]Processing texts:  83%|████████▎ | 11718/14041 [00:33<00:09, 235.81it/s]Processing texts:  84%|████████▎ | 11749/14041 [00:34<00:09, 254.21it/s]Processing texts:  84%|████████▍ | 11796/14041 [00:34<00:07, 305.07it/s]Processing texts:  84%|████████▍ | 11827/14041 [00:34<00:08, 257.49it/s]Processing texts:  84%|████████▍ | 11863/14041 [00:34<00:07, 278.60it/s]Processing texts:  85%|████████▍ | 11893/14041 [00:34<00:07, 269.40it/s]Processing texts:  85%|████████▍ | 11926/14041 [00:34<00:07, 283.17it/s]Processing texts:  85%|████████▌ | 11956/14041 [00:34<00:07, 277.90it/s]Processing texts:  85%|████████▌ | 11985/14041 [00:34<00:08, 251.77it/s]Processing texts:  86%|████████▌ | 12011/14041 [00:35<00:09, 224.06it/s]Processing texts:  86%|████████▌ | 12035/14041 [00:35<00:10, 193.54it/s]Processing texts:  86%|████████▌ | 12075/14041 [00:35<00:08, 239.01it/s]Processing texts:  86%|████████▌ | 12101/14041 [00:35<00:09, 211.76it/s]Processing texts:  86%|████████▋ | 12136/14041 [00:35<00:07, 243.56it/s]Processing texts:  87%|████████▋ | 12163/14041 [00:35<00:08, 215.22it/s]Processing texts:  87%|████████▋ | 12187/14041 [00:35<00:08, 218.25it/s]Processing texts:  87%|████████▋ | 12211/14041 [00:35<00:08, 203.63it/s]Processing texts:  87%|████████▋ | 12272/14041 [00:36<00:05, 298.45it/s]Processing texts:  88%|████████▊ | 12305/14041 [00:36<00:05, 302.44it/s]Processing texts:  88%|████████▊ | 12377/14041 [00:36<00:04, 409.14it/s]Processing texts:  88%|████████▊ | 12421/14041 [00:36<00:04, 349.57it/s]Processing texts:  89%|████████▉ | 12499/14041 [00:36<00:03, 455.06it/s]Processing texts:  90%|████████▉ | 12572/14041 [00:36<00:02, 523.82it/s]Processing texts:  90%|████████▉ | 12629/14041 [00:36<00:02, 476.94it/s]Processing texts:  90%|█████████ | 12682/14041 [00:36<00:02, 482.60it/s]Processing texts:  91%|█████████ | 12733/14041 [00:37<00:03, 358.18it/s]Processing texts:  91%|█████████ | 12775/14041 [00:37<00:03, 335.25it/s]Processing texts:  91%|█████████▏| 12813/14041 [00:37<00:03, 316.00it/s]Processing texts:  92%|█████████▏| 12848/14041 [00:37<00:04, 273.63it/s]Processing texts:  92%|█████████▏| 12878/14041 [00:37<00:04, 270.84it/s]Processing texts:  92%|█████████▏| 12907/14041 [00:37<00:04, 273.78it/s]Processing texts:  92%|█████████▏| 12936/14041 [00:38<00:04, 244.15it/s]Processing texts:  92%|█████████▏| 12962/14041 [00:38<00:04, 220.12it/s]Processing texts:  92%|█████████▏| 12985/14041 [00:38<00:05, 204.09it/s]Processing texts:  93%|█████████▎| 13007/14041 [00:38<00:05, 203.06it/s]Processing texts:  93%|█████████▎| 13034/14041 [00:38<00:04, 218.81it/s]Processing texts:  93%|█████████▎| 13057/14041 [00:38<00:04, 219.45it/s]Processing texts:  93%|█████████▎| 13080/14041 [00:38<00:05, 185.77it/s]Processing texts:  93%|█████████▎| 13108/14041 [00:38<00:04, 205.49it/s]Processing texts:  94%|█████████▎| 13133/14041 [00:39<00:04, 215.51it/s]Processing texts:  94%|█████████▎| 13156/14041 [00:39<00:04, 215.13it/s]Processing texts:  94%|█████████▍| 13187/14041 [00:39<00:03, 240.60it/s]Processing texts:  94%|█████████▍| 13215/14041 [00:39<00:03, 251.20it/s]Processing texts:  94%|█████████▍| 13241/14041 [00:39<00:03, 224.54it/s]Processing texts:  94%|█████████▍| 13265/14041 [00:39<00:03, 227.38it/s]Processing texts:  95%|█████████▍| 13290/14041 [00:39<00:03, 229.68it/s]Processing texts:  95%|█████████▌| 13342/14041 [00:39<00:02, 308.83it/s]Processing texts:  95%|█████████▌| 13374/14041 [00:39<00:02, 252.25it/s]Processing texts:  95%|█████████▌| 13402/14041 [00:40<00:02, 232.55it/s]Processing texts:  96%|█████████▌| 13429/14041 [00:40<00:02, 239.87it/s]Processing texts:  96%|█████████▌| 13464/14041 [00:40<00:02, 266.76it/s]Processing texts:  96%|█████████▌| 13493/14041 [00:40<00:02, 258.97it/s]Processing texts:  96%|█████████▋| 13520/14041 [00:40<00:02, 225.99it/s]Processing texts:  96%|█████████▋| 13544/14041 [00:40<00:02, 208.73it/s]Processing texts:  97%|█████████▋| 13566/14041 [00:40<00:02, 208.65it/s]Processing texts:  97%|█████████▋| 13594/14041 [00:40<00:01, 225.05it/s]Processing texts:  97%|█████████▋| 13618/14041 [00:41<00:01, 222.34it/s]Processing texts:  97%|█████████▋| 13641/14041 [00:41<00:01, 215.00it/s]Processing texts:  97%|█████████▋| 13665/14041 [00:41<00:01, 219.03it/s]Processing texts:  97%|█████████▋| 13688/14041 [00:41<00:01, 197.33it/s]Processing texts:  98%|█████████▊| 13710/14041 [00:41<00:01, 203.03it/s]Processing texts:  98%|█████████▊| 13739/14041 [00:41<00:01, 226.33it/s]Processing texts:  98%|█████████▊| 13784/14041 [00:41<00:00, 288.02it/s]Processing texts:  98%|█████████▊| 13814/14041 [00:41<00:00, 273.13it/s]Processing texts:  99%|█████████▉| 13888/14041 [00:41<00:00, 401.54it/s]Processing texts:  99%|█████████▉| 13930/14041 [00:42<00:00, 276.66it/s]Processing texts:  99%|█████████▉| 13965/14041 [00:42<00:00, 291.15it/s]Processing texts: 100%|█████████▉| 14013/14041 [00:42<00:00, 335.01it/s]Processing texts: 100%|██████████| 14041/14041 [00:42<00:00, 330.79it/s]
+Processing texts:   0%|          | 0/3250 [00:00<?, ?it/s]Processing texts:   0%|          | 14/3250 [00:00<00:23, 136.76it/s]Processing texts:   2%|▏         | 80/3250 [00:00<00:07, 417.72it/s]Processing texts:   4%|▎         | 121/3250 [00:00<00:08, 358.56it/s]Processing texts:   6%|▌         | 188/3250 [00:00<00:06, 464.37it/s]Processing texts:   9%|▊         | 283/3250 [00:00<00:04, 621.77it/s]Processing texts:  11%|█         | 348/3250 [00:00<00:06, 465.19it/s]Processing texts:  12%|█▏        | 401/3250 [00:00<00:07, 392.25it/s]Processing texts:  15%|█▌        | 502/3250 [00:01<00:05, 532.55it/s]Processing texts:  18%|█▊        | 570/3250 [00:01<00:04, 561.47it/s]Processing texts:  20%|█▉        | 634/3250 [00:01<00:05, 510.21it/s]Processing texts:  21%|██▏       | 691/3250 [00:01<00:05, 502.68it/s]Processing texts:  23%|██▎       | 745/3250 [00:01<00:07, 344.47it/s]Processing texts:  24%|██▍       | 789/3250 [00:01<00:08, 288.16it/s]Processing texts:  25%|██▌       | 825/3250 [00:02<00:08, 284.86it/s]Processing texts:  26%|██▋       | 859/3250 [00:02<00:09, 262.85it/s]Processing texts:  27%|██▋       | 889/3250 [00:02<00:09, 240.27it/s]Processing texts:  28%|██▊       | 916/3250 [00:02<00:10, 231.95it/s]Processing texts:  29%|██▉       | 941/3250 [00:02<00:10, 226.44it/s]Processing texts:  30%|██▉       | 965/3250 [00:02<00:10, 223.11it/s]Processing texts:  30%|███       | 988/3250 [00:02<00:10, 217.33it/s]Processing texts:  31%|███       | 1010/3250 [00:03<00:11, 198.48it/s]Processing texts:  32%|███▏      | 1031/3250 [00:03<00:11, 199.97it/s]Processing texts:  32%|███▏      | 1052/3250 [00:03<00:12, 173.87it/s]Processing texts:  33%|███▎      | 1072/3250 [00:03<00:12, 178.06it/s]Processing texts:  34%|███▎      | 1091/3250 [00:03<00:12, 172.23it/s]Processing texts:  34%|███▍      | 1109/3250 [00:03<00:12, 173.42it/s]Processing texts:  35%|███▍      | 1127/3250 [00:03<00:12, 169.02it/s]Processing texts:  35%|███▌      | 1145/3250 [00:03<00:12, 168.47it/s]Processing texts:  36%|███▌      | 1168/3250 [00:03<00:11, 183.41it/s]Processing texts:  37%|███▋      | 1188/3250 [00:04<00:10, 187.91it/s]Processing texts:  37%|███▋      | 1207/3250 [00:04<00:10, 186.60it/s]Processing texts:  38%|███▊      | 1226/3250 [00:04<00:11, 175.95it/s]Processing texts:  39%|███▊      | 1256/3250 [00:04<00:09, 209.55it/s]Processing texts:  40%|███▉      | 1285/3250 [00:04<00:08, 231.49it/s]Processing texts:  41%|████      | 1329/3250 [00:04<00:06, 283.54it/s]Processing texts:  42%|████▏     | 1358/3250 [00:04<00:06, 283.36it/s]Processing texts:  43%|████▎     | 1411/3250 [00:04<00:05, 346.34it/s]Processing texts:  44%|████▍     | 1446/3250 [00:04<00:05, 314.44it/s]Processing texts:  45%|████▌     | 1478/3250 [00:05<00:07, 230.51it/s]Processing texts:  46%|████▋     | 1505/3250 [00:05<00:07, 220.05it/s]Processing texts:  47%|████▋     | 1530/3250 [00:05<00:08, 214.18it/s]Processing texts:  48%|████▊     | 1558/3250 [00:05<00:07, 228.70it/s]Processing texts:  49%|████▊     | 1584/3250 [00:05<00:07, 232.98it/s]Processing texts:  50%|████▉     | 1619/3250 [00:05<00:06, 261.76it/s]Processing texts:  51%|█████     | 1647/3250 [00:05<00:06, 233.44it/s]Processing texts:  51%|█████▏    | 1672/3250 [00:06<00:06, 227.76it/s]Processing texts:  53%|█████▎    | 1712/3250 [00:06<00:05, 271.68it/s]Processing texts:  55%|█████▌    | 1794/3250 [00:06<00:03, 418.09it/s]Processing texts:  57%|█████▋    | 1839/3250 [00:06<00:03, 394.64it/s]Processing texts:  58%|█████▊    | 1881/3250 [00:06<00:04, 330.99it/s]Processing texts:  60%|█████▉    | 1942/3250 [00:06<00:03, 395.88it/s]Processing texts:  64%|██████▍   | 2093/3250 [00:06<00:01, 678.71it/s]Processing texts:  67%|██████▋   | 2169/3250 [00:06<00:01, 684.23it/s]Processing texts:  69%|██████▉   | 2243/3250 [00:07<00:02, 483.84it/s]Processing texts:  71%|███████   | 2304/3250 [00:07<00:01, 509.23it/s]Processing texts:  73%|███████▎  | 2365/3250 [00:07<00:02, 422.19it/s]Processing texts:  74%|███████▍  | 2416/3250 [00:07<00:02, 407.22it/s]Processing texts:  77%|███████▋  | 2501/3250 [00:07<00:01, 494.65it/s]Processing texts:  79%|███████▊  | 2558/3250 [00:07<00:01, 388.23it/s]Processing texts:  80%|████████  | 2605/3250 [00:08<00:02, 302.06it/s]Processing texts:  81%|████████▏ | 2643/3250 [00:08<00:02, 281.48it/s]Processing texts:  82%|████████▏ | 2681/3250 [00:08<00:01, 299.14it/s]Processing texts:  84%|████████▎ | 2716/3250 [00:08<00:01, 302.37it/s]Processing texts:  85%|████████▍ | 2750/3250 [00:08<00:01, 296.81it/s]Processing texts:  86%|████████▌ | 2782/3250 [00:08<00:01, 274.70it/s]Processing texts:  87%|████████▋ | 2812/3250 [00:08<00:01, 271.65it/s]Processing texts:  87%|████████▋ | 2841/3250 [00:09<00:01, 241.32it/s]Processing texts:  88%|████████▊ | 2867/3250 [00:09<00:01, 231.03it/s]Processing texts:  89%|████████▉ | 2891/3250 [00:09<00:01, 212.98it/s]Processing texts:  90%|████████▉ | 2914/3250 [00:09<00:01, 214.34it/s]Processing texts:  90%|█████████ | 2936/3250 [00:09<00:01, 206.84it/s]Processing texts:  91%|█████████ | 2957/3250 [00:09<00:01, 205.86it/s]Processing texts:  92%|█████████▏| 2978/3250 [00:09<00:01, 203.14it/s]Processing texts:  92%|█████████▏| 3005/3250 [00:09<00:01, 220.99it/s]Processing texts:  93%|█████████▎| 3028/3250 [00:10<00:01, 208.76it/s]Processing texts:  94%|█████████▍| 3057/3250 [00:10<00:00, 223.91it/s]Processing texts:  95%|█████████▍| 3080/3250 [00:10<00:00, 222.05it/s]Processing texts:  96%|█████████▌| 3106/3250 [00:10<00:00, 225.59it/s]Processing texts:  96%|█████████▋| 3129/3250 [00:10<00:00, 223.35it/s]Processing texts:  97%|█████████▋| 3152/3250 [00:10<00:00, 207.19it/s]Processing texts:  98%|█████████▊| 3173/3250 [00:10<00:00, 199.58it/s]Processing texts:  98%|█████████▊| 3194/3250 [00:10<00:00, 195.45it/s]Processing texts:  99%|█████████▉| 3220/3250 [00:10<00:00, 209.16it/s]Processing texts: 100%|█████████▉| 3242/3250 [00:11<00:00, 205.51it/s]Processing texts: 100%|██████████| 3250/3250 [00:11<00:00, 293.96it/s]
+[DBG]  share of positive-label subtokens in train set: 3.7441%
+[DBG]  share of [UNK] subtokens in train set: 0.0240%
+Initializing model
+Starting training for 20 epochs
+Epoch 1/20:
+  Train loss: 0.0934
+  Dev accuracy: 0.9789
+  Dev precision: 0.9566
+  Dev recall: 0.9156
+  Dev F1: 0.9357
+  Saved new best model with F1: 0.9357
+  Top 10 False Negatives: [('of', 34), ('(', 17), ("'s", 16), (')', 15), ('WORLD', 14), ('and', 10), ('U.S.', 10), ('Iraqi', 10), ('Reuters', 8), ('96', 7)]
+  Top 10 False Positives: [(',', 21), ('(', 10), (')', 9), ('A', 9), ('.', 8), ('Teams', 5), ('AUGUST', 4), ('King', 4), ("'s", 4), ('Aug', 3)]
+Epoch 2/20:
+  Train loss: 0.0562
+  Dev accuracy: 0.9783
+  Dev precision: 0.9555
+  Dev recall: 0.9127
+  Dev F1: 0.9336
+Epoch 3/20:
+  Train loss: 0.0514
+  Dev accuracy: 0.9812
+  Dev precision: 0.9598
+  Dev recall: 0.9263
+  Dev F1: 0.9427
+  Saved new best model with F1: 0.9427
+  Top 10 False Negatives: [('(', 17), ('of', 14), (')', 14), ("'s", 13), ('U.S.', 9), ('96', 8), ('and', 7), ('Fed', 7), ('Iraqi', 7), ('Chicago', 5)]
+  Top 10 False Positives: [(',', 26), ("'s", 13), ('(', 10), ('.', 10), (')', 8), ('of', 6), ('and', 4), ('is', 3), ('Next', 3), ('Seven', 3)]
+Epoch 4/20:
+  Train loss: 0.0476
+  Dev accuracy: 0.9798
+  Dev precision: 0.9457
+  Dev recall: 0.9329
+  Dev F1: 0.9393
+Epoch 5/20:
+  Train loss: 0.0478
+  Dev accuracy: 0.9806
+  Dev precision: 0.9599
+  Dev recall: 0.9228
+  Dev F1: 0.9410
+Epoch 6/20:
+  Train loss: 0.0463
+  Dev accuracy: 0.9797
+  Dev precision: 0.9554
+  Dev recall: 0.9219
+  Dev F1: 0.9384
+Epoch 7/20:
+  Train loss: 0.0461
+  Dev accuracy: 0.9794
+  Dev precision: 0.9499
+  Dev recall: 0.9258
+  Dev F1: 0.9377
+Epoch 8/20:
+  Train loss: 0.0449
+  Dev accuracy: 0.9810
+  Dev precision: 0.9569
+  Dev recall: 0.9284
+  Dev F1: 0.9424
+Epoch 9/20:
+  Train loss: 0.0435
+  Dev accuracy: 0.9803
+  Dev precision: 0.9489
+  Dev recall: 0.9325
+  Dev F1: 0.9406
+Epoch 10/20:
+  Train loss: 0.0475
+  Dev accuracy: 0.9799
+  Dev precision: 0.9507
+  Dev recall: 0.9282
+  Dev F1: 0.9393
+Epoch 11/20:
+  Train loss: 0.0482
+  Dev accuracy: 0.9799
+  Dev precision: 0.9610
+  Dev recall: 0.9175
+  Dev F1: 0.9387
+Epoch 12/20:
+  Train loss: 0.0479
+  Dev accuracy: 0.9793
+  Dev precision: 0.9522
+  Dev recall: 0.9226
+  Dev F1: 0.9372
+Epoch 13/20:
+  Train loss: 0.0493
+  Dev accuracy: 0.9799
+  Dev precision: 0.9492
+  Dev recall: 0.9297
+  Dev F1: 0.9393
+Epoch 14/20:
+  Train loss: 0.0461
+  Dev accuracy: 0.9798
+  Dev precision: 0.9519
+  Dev recall: 0.9264
+  Dev F1: 0.9390
+Epoch 15/20:
+  Train loss: 0.0472
+  Dev accuracy: 0.9801
+  Dev precision: 0.9485
+  Dev recall: 0.9319
+  Dev F1: 0.9401
+Epoch 16/20:
+  Train loss: 0.0481
+  Dev accuracy: 0.9786
+  Dev precision: 0.9526
+  Dev recall: 0.9181
+  Dev F1: 0.9350
+Epoch 17/20:
+  Train loss: 0.0469
+  Dev accuracy: 0.9810
+  Dev precision: 0.9482
+  Dev recall: 0.9377
+  Dev F1: 0.9429
+  Saved new best model with F1: 0.9429
+  Top 10 False Negatives: [('(', 17), ("'s", 16), (')', 14), ('of', 10), ('WORLD', 9), ('96', 7), ('U.S.', 7), ('The', 6), ('Iraqi', 5), ('and', 4)]
+  Top 10 False Positives: [(',', 27), ('of', 13), ('.', 10), ('and', 10), ('the', 7), ('(', 6), ('in', 6), ("'s", 5), ('World', 5), ('"', 4)]
+Epoch 18/20:
+  Train loss: 0.0475
+  Dev accuracy: 0.9798
+  Dev precision: 0.9487
+  Dev recall: 0.9299
+  Dev F1: 0.9392
+Epoch 19/20:
+  Train loss: 0.0446
+  Dev accuracy: 0.9800
+  Dev precision: 0.9457
+  Dev recall: 0.9346
+  Dev F1: 0.9401
+Epoch 20/20:
+  Train loss: 0.0434
+  Dev accuracy: 0.9800
+  Dev precision: 0.9574
+  Dev recall: 0.9215
+  Dev F1: 0.9391
+Training complete. Best F1: 0.9429
+
+All steps completed.

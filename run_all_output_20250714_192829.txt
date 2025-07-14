@@ -1,0 +1,864 @@
+Select domain:
+1. Domain 1 (Twitter)
+2. Domain 2 (Headlines)
+3. Unknown domain (Mixed)
+Selected domain: unknown
+
+Do you want to train a new tokenizer or load an existing one?
+1. Train new tokenizer
+2. Load existing tokenizer
+Training tokenizer for unknown...
+Reading domain data from data/unknown_train.txt
+Read 288000 lines of text
+Training BPE tokenizer with 1000 merges for domain 'unknown'
+Initializing NERBPETokenizer for domain: unknown
+Added preprocessing tokens for domain 'unknown': ['<EMOJI>']
+Training tokenizer:   0%|          | 0/7 [00:00<?, ?step/s]Computing frequencies:   0%|          | 0/7 [00:00<?, ?step/s]
+Computing frequencies:   0%|          | 0/288000 [00:00<?, ?it/s][A
+Computing frequencies:   1%|▏         | 3671/288000 [00:00<00:07, 36705.22it/s][A
+Computing frequencies:   3%|▎         | 7342/288000 [00:00<00:07, 36463.01it/s][A
+Computing frequencies:   4%|▍         | 10989/288000 [00:00<00:07, 35753.34it/s][A
+Computing frequencies:   5%|▌         | 14566/288000 [00:00<00:07, 35688.34it/s][A
+Computing frequencies:   6%|▋         | 18136/288000 [00:00<00:07, 35203.12it/s][A
+Computing frequencies:   8%|▊         | 21658/288000 [00:00<00:07, 33614.39it/s][A
+Computing frequencies:   9%|▊         | 25060/288000 [00:00<00:07, 33738.17it/s][A
+Computing frequencies:  10%|▉         | 28443/288000 [00:00<00:07, 33595.00it/s][A
+Computing frequencies:  11%|█         | 31991/288000 [00:00<00:07, 34168.46it/s][A
+Computing frequencies:  12%|█▏        | 35413/288000 [00:01<00:07, 34051.26it/s][A
+Computing frequencies:  13%|█▎        | 38848/288000 [00:01<00:07, 34135.00it/s][A
+Computing frequencies:  15%|█▍        | 42264/288000 [00:01<00:07, 34042.95it/s][A
+Computing frequencies:  16%|█▌        | 45670/288000 [00:01<00:07, 32644.42it/s][A
+Computing frequencies:  17%|█▋        | 49019/288000 [00:01<00:07, 32889.97it/s][A
+Computing frequencies:  18%|█▊        | 52487/288000 [00:01<00:07, 33413.34it/s][A
+Computing frequencies:  19%|█▉        | 56038/288000 [00:01<00:06, 34029.45it/s][A
+Computing frequencies:  21%|██        | 59497/288000 [00:01<00:06, 34194.59it/s][A
+Computing frequencies:  22%|██▏       | 62922/288000 [00:01<00:06, 33911.26it/s][A
+Computing frequencies:  23%|██▎       | 66317/288000 [00:01<00:06, 33913.67it/s][A
+Computing frequencies:  24%|██▍       | 69711/288000 [00:02<00:06, 33679.14it/s][A
+Computing frequencies:  25%|██▌       | 73165/288000 [00:02<00:06, 33933.61it/s][A
+Computing frequencies:  27%|██▋       | 76589/288000 [00:02<00:06, 34021.66it/s][A
+Computing frequencies:  28%|██▊       | 80074/288000 [00:02<00:06, 34268.24it/s][A
+Computing frequencies:  29%|██▉       | 83579/288000 [00:02<00:05, 34498.14it/s][A
+Computing frequencies:  30%|███       | 87030/288000 [00:02<00:05, 34379.06it/s][A
+Computing frequencies:  31%|███▏      | 90469/288000 [00:02<00:05, 34305.65it/s][A
+Computing frequencies:  33%|███▎      | 93901/288000 [00:02<00:05, 34049.47it/s][A
+Computing frequencies:  34%|███▍      | 97307/288000 [00:02<00:05, 33758.83it/s][A
+Computing frequencies:  35%|███▍      | 100797/288000 [00:02<00:05, 34096.46it/s][A
+Computing frequencies:  36%|███▌      | 104329/288000 [00:03<00:05, 34459.89it/s][A
+Computing frequencies:  37%|███▋      | 107900/288000 [00:03<00:05, 34830.84it/s][A
+Computing frequencies:  39%|███▊      | 111384/288000 [00:03<00:05, 32958.61it/s][A
+Computing frequencies:  40%|███▉      | 114979/288000 [00:03<00:05, 33816.52it/s][A
+Computing frequencies:  41%|████      | 118537/288000 [00:03<00:04, 34329.51it/s][A
+Computing frequencies:  42%|████▏     | 121985/288000 [00:03<00:04, 34362.45it/s][A
+Computing frequencies:  44%|████▎     | 125503/288000 [00:03<00:04, 34603.02it/s][A
+Computing frequencies:  45%|████▍     | 128971/288000 [00:03<00:04, 34151.31it/s][A
+Computing frequencies:  46%|████▌     | 132541/288000 [00:03<00:04, 34606.63it/s][A
+Computing frequencies:  47%|████▋     | 136120/288000 [00:03<00:04, 34955.15it/s][A
+Computing frequencies:  48%|████▊     | 139641/288000 [00:04<00:04, 35030.42it/s][A
+Computing frequencies:  50%|████▉     | 143164/288000 [00:04<00:04, 35088.48it/s][A
+Computing frequencies:  51%|█████     | 146675/288000 [00:04<00:04, 35041.68it/s][A
+Computing frequencies:  52%|█████▏    | 150181/288000 [00:04<00:03, 34899.31it/s][A
+Computing frequencies:  53%|█████▎    | 153673/288000 [00:04<00:03, 34195.91it/s][A
+Computing frequencies:  55%|█████▍    | 157097/288000 [00:04<00:03, 33706.36it/s][A
+Computing frequencies:  56%|█████▌    | 160471/288000 [00:04<00:03, 33338.19it/s][A
+Computing frequencies:  57%|█████▋    | 163995/288000 [00:04<00:03, 33894.11it/s][A
+Computing frequencies:  58%|█████▊    | 167500/288000 [00:04<00:03, 34231.55it/s][A
+Computing frequencies:  59%|█████▉    | 170989/288000 [00:04<00:03, 34421.29it/s][A
+Computing frequencies:  61%|██████    | 174491/288000 [00:05<00:03, 34598.83it/s][A
+Computing frequencies:  62%|██████▏   | 177962/288000 [00:05<00:03, 34628.94it/s][A
+Computing frequencies:  63%|██████▎   | 181517/288000 [00:05<00:03, 34902.49it/s][A
+Computing frequencies:  64%|██████▍   | 185104/288000 [00:05<00:02, 35186.75it/s][A
+Computing frequencies:  65%|██████▌   | 188624/288000 [00:05<00:02, 35086.56it/s][A
+Computing frequencies:  67%|██████▋   | 192134/288000 [00:05<00:02, 35010.15it/s][A
+Computing frequencies:  68%|██████▊   | 195636/288000 [00:05<00:02, 35001.78it/s][A
+Computing frequencies:  69%|██████▉   | 199137/288000 [00:05<00:02, 34811.64it/s][A
+Computing frequencies:  70%|███████   | 202619/288000 [00:05<00:02, 33872.88it/s][A
+Computing frequencies:  72%|███████▏  | 206058/288000 [00:06<00:02, 34021.78it/s][A
+Computing frequencies:  73%|███████▎  | 209465/288000 [00:06<00:02, 34025.89it/s][A
+Computing frequencies:  74%|███████▍  | 212871/288000 [00:06<00:02, 33723.21it/s][A
+Computing frequencies:  75%|███████▌  | 216246/288000 [00:06<00:02, 33498.93it/s][A
+Computing frequencies:  76%|███████▋  | 219674/288000 [00:06<00:02, 33728.48it/s][A
+Computing frequencies:  77%|███████▋  | 223054/288000 [00:06<00:01, 33748.02it/s][A
+Computing frequencies:  79%|███████▊  | 226430/288000 [00:06<00:01, 33667.80it/s][A
+Computing frequencies:  80%|███████▉  | 229798/288000 [00:06<00:01, 33572.54it/s][A
+Computing frequencies:  81%|████████  | 233156/288000 [00:06<00:01, 32934.38it/s][A
+Computing frequencies:  82%|████████▏ | 236529/288000 [00:06<00:01, 33167.36it/s][A
+Computing frequencies:  83%|████████▎ | 239849/288000 [00:07<00:01, 32661.19it/s][A
+Computing frequencies:  84%|████████▍ | 243251/288000 [00:07<00:01, 33058.70it/s][A
+Computing frequencies:  86%|████████▌ | 246639/288000 [00:07<00:01, 33298.67it/s][A
+Computing frequencies:  87%|████████▋ | 250012/288000 [00:07<00:01, 33424.85it/s][A
+Computing frequencies:  88%|████████▊ | 253403/288000 [00:07<00:01, 33567.47it/s][A
+Computing frequencies:  89%|████████▉ | 256762/288000 [00:07<00:00, 33536.21it/s][A
+Computing frequencies:  90%|█████████ | 260117/288000 [00:07<00:00, 33456.68it/s][A
+Computing frequencies:  91%|█████████▏| 263487/288000 [00:07<00:00, 33525.81it/s][A
+Computing frequencies:  93%|█████████▎| 266841/288000 [00:07<00:00, 28517.14it/s][A
+Computing frequencies:  94%|█████████▍| 270243/288000 [00:07<00:00, 29982.11it/s][A
+Computing frequencies:  95%|█████████▍| 273562/288000 [00:08<00:00, 30865.99it/s][A
+Computing frequencies:  96%|█████████▌| 276858/288000 [00:08<00:00, 31455.21it/s][A
+Computing frequencies:  97%|█████████▋| 280203/288000 [00:08<00:00, 32025.90it/s][A
+Computing frequencies:  99%|█████████▊| 283712/288000 [00:08<00:00, 32917.45it/s][A
+Computing frequencies: 100%|█████████▉| 287172/288000 [00:08<00:00, 33410.27it/s][A
+                                                                                 [AComputing frequencies:  14%|█▍        | 1/7 [00:08<00:51,  8.52s/step]Adding characters:  14%|█▍        | 1/7 [00:08<00:51,  8.52s/step]    
+Discovering characters:   0%|          | 0/1000 [00:00<?, ?it/s][A
+                                                                [AScoring entities:  29%|██▊       | 2/7 [00:08<00:42,  8.52s/step] 
+Scoring words:   0%|          | 0/222115 [00:00<?, ?it/s][A
+Scoring words:   3%|▎         | 7060/222115 [00:00<00:03, 70593.84it/s][A
+Scoring words:   7%|▋         | 16656/222115 [00:00<00:02, 85507.55it/s][A
+Scoring words:  11%|█▏        | 25473/222115 [00:00<00:02, 86716.35it/s][A
+Scoring words:  16%|█▌        | 34939/222115 [00:00<00:02, 89848.20it/s][A
+Scoring words:  20%|█▉        | 44072/222115 [00:00<00:01, 90377.72it/s][A
+Scoring words:  24%|██▍       | 53110/222115 [00:00<00:01, 90225.31it/s][A
+Scoring words:  28%|██▊       | 62340/222115 [00:00<00:01, 90900.24it/s][A
+Scoring words:  32%|███▏      | 71431/222115 [00:00<00:01, 90415.71it/s][A
+Scoring words:  36%|███▌      | 80474/222115 [00:00<00:01, 90132.95it/s][A
+Scoring words:  40%|████      | 89488/222115 [00:01<00:01, 89036.69it/s][A
+Scoring words:  44%|████▍     | 98395/222115 [00:01<00:01, 87575.67it/s][A
+Scoring words:  48%|████▊     | 107487/222115 [00:01<00:01, 88570.68it/s][A
+Scoring words:  52%|█████▏    | 116350/222115 [00:01<00:01, 85589.71it/s][A
+Scoring words:  56%|█████▋    | 125359/222115 [00:01<00:01, 86902.13it/s][A
+Scoring words:  61%|██████    | 134411/222115 [00:01<00:00, 87964.47it/s][A
+Scoring words:  64%|██████▍   | 143224/222115 [00:01<00:00, 87927.80it/s][A
+Scoring words:  69%|██████▊   | 152191/222115 [00:01<00:00, 88443.26it/s][A
+Scoring words:  73%|███████▎  | 161045/222115 [00:01<00:00, 82532.73it/s][A
+Scoring words:  76%|███████▋  | 169381/222115 [00:01<00:00, 81418.99it/s][A
+Scoring words:  80%|████████  | 178343/222115 [00:02<00:00, 83757.11it/s][A
+Scoring words:  84%|████████▍ | 187284/222115 [00:02<00:00, 85391.51it/s][A
+Scoring words:  88%|████████▊ | 196217/222115 [00:02<00:00, 86541.85it/s][A
+Scoring words:  92%|█████████▏| 205042/222115 [00:02<00:00, 87042.39it/s][A
+Scoring words:  96%|█████████▋| 214010/222115 [00:02<00:00, 87821.92it/s][A
+                                                                         [A
+Scoring bigrams:   0%|          | 0/1491797 [00:00<?, ?it/s][A
+Scoring bigrams:   1%|          | 18035/1491797 [00:00<00:08, 180333.40it/s][A
+Scoring bigrams:   2%|▏         | 36198/1491797 [00:00<00:08, 181089.07it/s][A
+Scoring bigrams:   4%|▎         | 54307/1491797 [00:00<00:07, 181054.10it/s][A
+Scoring bigrams:   5%|▍         | 72726/1491797 [00:00<00:07, 182287.89it/s][A
+Scoring bigrams:   6%|▌         | 90955/1491797 [00:00<00:07, 180278.48it/s][A
+Scoring bigrams:   7%|▋         | 109241/1491797 [00:00<00:07, 181146.72it/s][A
+Scoring bigrams:   9%|▊         | 127391/1491797 [00:00<00:07, 181258.32it/s][A
+Scoring bigrams:  10%|▉         | 145671/1491797 [00:00<00:07, 181743.92it/s][A
+Scoring bigrams:  11%|█         | 163848/1491797 [00:00<00:07, 181528.45it/s][A
+Scoring bigrams:  12%|█▏        | 182111/1491797 [00:01<00:07, 181864.66it/s][A
+Scoring bigrams:  13%|█▎        | 200771/1491797 [00:01<00:07, 183307.85it/s][A
+Scoring bigrams:  15%|█▍        | 219429/1491797 [00:01<00:06, 184299.04it/s][A
+Scoring bigrams:  16%|█▌        | 237908/1491797 [00:01<00:06, 184443.03it/s][A
+Scoring bigrams:  17%|█▋        | 256640/1491797 [00:01<00:06, 185307.93it/s][A
+Scoring bigrams:  18%|█▊        | 275207/1491797 [00:01<00:06, 185413.21it/s][A
+Scoring bigrams:  20%|█▉        | 294066/1491797 [00:01<00:06, 186362.88it/s][A
+Scoring bigrams:  21%|██        | 312703/1491797 [00:01<00:06, 186136.54it/s][A
+Scoring bigrams:  22%|██▏       | 331514/1491797 [00:01<00:06, 186725.64it/s][A
+Scoring bigrams:  23%|██▎       | 350227/1491797 [00:01<00:06, 186841.71it/s][A
+Scoring bigrams:  25%|██▍       | 368912/1491797 [00:02<00:06, 186621.01it/s][A
+Scoring bigrams:  26%|██▌       | 387658/1491797 [00:02<00:05, 186865.65it/s][A
+Scoring bigrams:  27%|██▋       | 406405/1491797 [00:02<00:05, 187043.71it/s][A
+Scoring bigrams:  29%|██▊       | 425315/1491797 [00:02<00:05, 187657.89it/s][A
+Scoring bigrams:  30%|██▉       | 444624/1491797 [00:02<00:05, 189283.51it/s][A
+Scoring bigrams:  31%|███       | 464050/1491797 [00:02<00:05, 190772.27it/s][A
+Scoring bigrams:  32%|███▏      | 483161/1491797 [00:02<00:05, 190870.76it/s][A
+Scoring bigrams:  34%|███▎      | 502249/1491797 [00:02<00:05, 188310.85it/s][A
+Scoring bigrams:  35%|███▍      | 521840/1491797 [00:02<00:05, 190564.10it/s][A
+Scoring bigrams:  36%|███▋      | 541517/1491797 [00:02<00:04, 192408.81it/s][A
+Scoring bigrams:  38%|███▊      | 561079/1491797 [00:03<00:04, 193364.24it/s][A
+Scoring bigrams:  39%|███▉      | 580733/1491797 [00:03<00:04, 194309.01it/s][A
+Scoring bigrams:  40%|████      | 600560/1491797 [00:03<00:04, 195491.51it/s][A
+Scoring bigrams:  42%|████▏     | 620113/1491797 [00:03<00:04, 195293.22it/s][A
+Scoring bigrams:  43%|████▎     | 639862/1491797 [00:03<00:04, 195946.72it/s][A
+Scoring bigrams:  44%|████▍     | 659459/1491797 [00:03<00:04, 193779.53it/s][A
+Scoring bigrams:  46%|████▌     | 679262/1491797 [00:03<00:04, 195040.13it/s][A
+Scoring bigrams:  47%|████▋     | 699272/1491797 [00:03<00:04, 196545.75it/s][A
+Scoring bigrams:  48%|████▊     | 719184/1491797 [00:03<00:03, 197302.38it/s][A
+Scoring bigrams:  50%|████▉     | 739330/1491797 [00:03<00:03, 198541.79it/s][A
+Scoring bigrams:  51%|█████     | 759420/1491797 [00:04<00:03, 199244.79it/s][A
+Scoring bigrams:  52%|█████▏    | 779655/1491797 [00:04<00:03, 200172.56it/s][A
+Scoring bigrams:  54%|█████▎    | 800211/1491797 [00:04<00:03, 201778.46it/s][A
+Scoring bigrams:  55%|█████▍    | 820391/1491797 [00:04<00:03, 200348.94it/s][A
+Scoring bigrams:  56%|█████▋    | 841129/1491797 [00:04<00:03, 202438.13it/s][A
+Scoring bigrams:  58%|█████▊    | 861695/1491797 [00:04<00:03, 203397.06it/s][A
+Scoring bigrams:  59%|█████▉    | 882038/1491797 [00:04<00:03, 202727.05it/s][A
+Scoring bigrams:  60%|██████    | 902313/1491797 [00:04<00:02, 198984.14it/s][A
+Scoring bigrams:  62%|██████▏   | 923427/1491797 [00:04<00:02, 202569.36it/s][A
+Scoring bigrams:  63%|██████▎   | 944222/1491797 [00:04<00:02, 204161.54it/s][A
+Scoring bigrams:  65%|██████▍   | 965272/1491797 [00:05<00:02, 206043.69it/s][A
+Scoring bigrams:  66%|██████▌   | 986470/1491797 [00:05<00:02, 207806.74it/s][A
+Scoring bigrams:  68%|██████▊   | 1007661/1491797 [00:05<00:02, 209029.66it/s][A
+Scoring bigrams:  69%|██████▉   | 1028571/1491797 [00:05<00:02, 208836.56it/s][A
+Scoring bigrams:  70%|███████   | 1049787/1491797 [00:05<00:02, 209828.01it/s][A
+Scoring bigrams:  72%|███████▏  | 1071249/1491797 [00:05<00:01, 211258.45it/s][A
+Scoring bigrams:  73%|███████▎  | 1092647/1491797 [00:05<00:01, 212069.96it/s][A
+Scoring bigrams:  75%|███████▍  | 1113856/1491797 [00:05<00:01, 208833.43it/s][A
+Scoring bigrams:  76%|███████▌  | 1135413/1491797 [00:05<00:01, 210826.04it/s][A
+Scoring bigrams:  78%|███████▊  | 1157047/1491797 [00:05<00:01, 212461.88it/s][A
+Scoring bigrams:  79%|███████▉  | 1179024/1491797 [00:06<00:01, 214637.26it/s][A
+Scoring bigrams:  80%|████████  | 1200496/1491797 [00:06<00:01, 214471.97it/s][A
+Scoring bigrams:  82%|████████▏ | 1222577/1491797 [00:06<00:01, 216362.95it/s][A
+Scoring bigrams:  83%|████████▎ | 1244660/1491797 [00:06<00:01, 217694.01it/s][A
+Scoring bigrams:  85%|████████▍ | 1267096/1491797 [00:06<00:01, 219686.08it/s][A
+Scoring bigrams:  86%|████████▋ | 1289480/1491797 [00:06<00:00, 220925.93it/s][A
+Scoring bigrams:  88%|████████▊ | 1312093/1491797 [00:06<00:00, 222481.74it/s][A
+Scoring bigrams:  89%|████████▉ | 1334343/1491797 [00:06<00:00, 217294.58it/s][A
+Scoring bigrams:  91%|█████████ | 1356731/1491797 [00:06<00:00, 219232.45it/s][A
+Scoring bigrams:  92%|█████████▏| 1379614/1491797 [00:06<00:00, 222071.90it/s][A
+Scoring bigrams:  94%|█████████▍| 1402476/1491797 [00:07<00:00, 224014.87it/s][A
+Scoring bigrams:  96%|█████████▌| 1425493/1491797 [00:07<00:00, 225846.26it/s][A
+Scoring bigrams:  97%|█████████▋| 1448645/1491797 [00:07<00:00, 227534.59it/s][A
+Scoring bigrams:  99%|█████████▊| 1471921/1491797 [00:07<00:00, 229093.77it/s][A
+                                                                              [AScoring entities:  43%|████▎     | 3/7 [00:18<00:23,  5.91s/step]Adding top entities:  43%|████▎     | 3/7 [00:18<00:23,  5.91s/step]Adding top entities:  57%|█████▋    | 4/7 [00:19<00:12,  4.21s/step]Running BPE merges:  57%|█████▋    | 4/7 [00:19<00:12,  4.21s/step] Average word score: 22.67
+Average bigram score: 81.35
+Adding top entities: 83 bigrams, 409 words (total 692 slots remaining)
+Found 98086 bigram candidates and 98322 word candidates
+Added 83 bigrams and 409 words
+
+Building word frequencies:   0%|          | 0/100000 [00:00<?, ?it/s][A
+Building word frequencies:   3%|▎         | 2921/100000 [00:00<00:03, 29087.07it/s][A
+Building word frequencies:   6%|▌         | 5830/100000 [00:00<00:03, 28772.63it/s][A
+Building word frequencies:   9%|▉         | 8786/100000 [00:00<00:03, 29127.43it/s][A
+Building word frequencies:  12%|█▏        | 11839/100000 [00:00<00:02, 29676.07it/s][A
+Building word frequencies:  15%|█▍        | 14852/100000 [00:00<00:02, 29837.07it/s][A
+Building word frequencies:  18%|█▊        | 17848/100000 [00:00<00:02, 29876.57it/s][A
+Building word frequencies:  21%|██        | 20843/100000 [00:00<00:02, 29898.86it/s][A
+Building word frequencies:  24%|██▍       | 23834/100000 [00:00<00:02, 29768.64it/s][A
+Building word frequencies:  27%|██▋       | 26812/100000 [00:00<00:02, 29333.35it/s][A
+Building word frequencies:  30%|██▉       | 29754/100000 [00:01<00:02, 29352.68it/s][A
+Building word frequencies:  33%|███▎      | 32753/100000 [00:01<00:02, 29543.39it/s][A
+Building word frequencies:  36%|███▌      | 35709/100000 [00:01<00:02, 29447.83it/s][A
+Building word frequencies:  39%|███▊      | 38655/100000 [00:01<00:02, 29200.52it/s][A
+Building word frequencies:  42%|████▏     | 41597/100000 [00:01<00:01, 29264.65it/s][A
+Building word frequencies:  45%|████▍     | 44553/100000 [00:01<00:01, 29352.16it/s][A
+Building word frequencies:  48%|████▊     | 47532/100000 [00:01<00:01, 29479.95it/s][A
+Building word frequencies:  51%|█████     | 50506/100000 [00:01<00:01, 29556.13it/s][A
+Building word frequencies:  54%|█████▎    | 53594/100000 [00:01<00:01, 29951.91it/s][A
+Building word frequencies:  57%|█████▋    | 56590/100000 [00:01<00:01, 29350.59it/s][A
+Building word frequencies:  60%|█████▉    | 59528/100000 [00:02<00:01, 28961.99it/s][A
+Building word frequencies:  62%|██████▏   | 62431/100000 [00:02<00:01, 28981.36it/s][A
+Building word frequencies:  65%|██████▌   | 65344/100000 [00:02<00:01, 29022.60it/s][A
+Building word frequencies:  68%|██████▊   | 68248/100000 [00:02<00:01, 28860.16it/s][A
+Building word frequencies:  71%|███████   | 71136/100000 [00:02<00:01, 28859.91it/s][A
+Building word frequencies:  74%|███████▍  | 74023/100000 [00:02<00:00, 28654.76it/s][A
+Building word frequencies:  77%|███████▋  | 76949/100000 [00:02<00:00, 28712.66it/s][A
+Building word frequencies:  80%|███████▉  | 79821/100000 [00:02<00:00, 28437.69it/s][A
+Building word frequencies:  83%|████████▎ | 82813/100000 [00:02<00:00, 28875.75it/s][A
+Building word frequencies:  86%|████████▌ | 85798/100000 [00:02<00:00, 29164.28it/s][A
+Building word frequencies:  89%|████████▉ | 88755/100000 [00:03<00:00, 29280.42it/s][A
+Building word frequencies:  92%|█████████▏| 91786/100000 [00:03<00:00, 29584.20it/s][A
+Building word frequencies:  95%|█████████▍| 94820/100000 [00:03<00:00, 29807.89it/s][A
+Building word frequencies:  98%|█████████▊| 97802/100000 [00:03<00:00, 29453.21it/s][A
+                                                                                    [ACreated 202650 unique words for BPE processing
+
+BPE merges:   0%|          | 0/400 [00:00<?, ?it/s][A
+BPE merges:   0%|          | 1/400 [00:01<09:59,  1.50s/it][A
+BPE merges:   0%|          | 2/400 [00:02<09:53,  1.49s/it][A
+BPE merges:   1%|          | 3/400 [00:04<09:46,  1.48s/it][A
+BPE merges:   1%|          | 4/400 [00:05<09:43,  1.47s/it][A
+BPE merges:   1%|▏         | 5/400 [00:07<09:40,  1.47s/it][A
+BPE merges:   2%|▏         | 6/400 [00:08<09:36,  1.46s/it][A
+BPE merges:   2%|▏         | 7/400 [00:10<09:30,  1.45s/it][A
+BPE merges:   2%|▏         | 8/400 [00:11<09:27,  1.45s/it][A
+BPE merges:   2%|▏         | 9/400 [00:13<09:24,  1.44s/it][A
+BPE merges:   2%|▎         | 10/400 [00:14<09:20,  1.44s/it][A
+BPE merges:   3%|▎         | 11/400 [00:16<09:20,  1.44s/it][A
+BPE merges:   3%|▎         | 12/400 [00:17<09:19,  1.44s/it][A
+BPE merges:   3%|▎         | 13/400 [00:18<09:15,  1.44s/it][A
+BPE merges:   4%|▎         | 14/400 [00:20<09:14,  1.44s/it][A
+BPE merges:   4%|▍         | 15/400 [00:21<09:10,  1.43s/it][A
+BPE merges:   4%|▍         | 16/400 [00:23<09:08,  1.43s/it][A
+BPE merges:   4%|▍         | 17/400 [00:24<09:05,  1.42s/it][A
+BPE merges:   4%|▍         | 18/400 [00:25<09:04,  1.43s/it][A
+BPE merges:   5%|▍         | 19/400 [00:27<09:01,  1.42s/it][A
+BPE merges:   5%|▌         | 20/400 [00:28<08:56,  1.41s/it][A
+BPE merges:   5%|▌         | 21/400 [00:30<08:55,  1.41s/it][A
+BPE merges:   6%|▌         | 22/400 [00:31<08:52,  1.41s/it][A
+BPE merges:   6%|▌         | 23/400 [00:33<08:49,  1.41s/it][A
+BPE merges:   6%|▌         | 24/400 [00:34<08:48,  1.41s/it][A
+BPE merges:   6%|▋         | 25/400 [00:35<08:45,  1.40s/it][A
+BPE merges:   6%|▋         | 26/400 [00:37<08:43,  1.40s/it][A
+BPE merges:   7%|▋         | 27/400 [00:38<08:41,  1.40s/it][A
+BPE merges:   7%|▋         | 28/400 [00:39<08:39,  1.40s/it][A
+BPE merges:   7%|▋         | 29/400 [00:41<08:36,  1.39s/it][A
+BPE merges:   8%|▊         | 30/400 [00:42<08:33,  1.39s/it][A
+BPE merges:   8%|▊         | 31/400 [00:44<08:30,  1.38s/it][A
+BPE merges:   8%|▊         | 32/400 [00:45<08:28,  1.38s/it][A
+BPE merges:   8%|▊         | 33/400 [00:46<08:28,  1.38s/it][A
+BPE merges:   8%|▊         | 34/400 [00:48<08:25,  1.38s/it][A
+BPE merges:   9%|▉         | 35/400 [00:49<08:24,  1.38s/it][A
+BPE merges:   9%|▉         | 36/400 [00:51<08:21,  1.38s/it][A
+BPE merges:   9%|▉         | 37/400 [00:52<08:17,  1.37s/it][A
+BPE merges:  10%|▉         | 38/400 [00:53<08:15,  1.37s/it][A
+BPE merges:  10%|▉         | 39/400 [00:55<08:13,  1.37s/it][A
+BPE merges:  10%|█         | 40/400 [00:56<08:13,  1.37s/it][A
+BPE merges:  10%|█         | 41/400 [00:57<08:12,  1.37s/it][A
+BPE merges:  10%|█         | 42/400 [00:59<08:10,  1.37s/it][A
+BPE merges:  11%|█         | 43/400 [01:00<08:08,  1.37s/it][A
+BPE merges:  11%|█         | 44/400 [01:01<08:07,  1.37s/it][A
+BPE merges:  11%|█▏        | 45/400 [01:03<08:07,  1.37s/it][A
+BPE merges:  12%|█▏        | 46/400 [01:04<08:07,  1.38s/it][A
+BPE merges:  12%|█▏        | 47/400 [01:06<08:06,  1.38s/it][A
+BPE merges:  12%|█▏        | 48/400 [01:07<08:07,  1.38s/it][A
+BPE merges:  12%|█▏        | 49/400 [01:08<08:03,  1.38s/it][A
+BPE merges:  12%|█▎        | 50/400 [01:10<07:59,  1.37s/it][A
+BPE merges:  12%|█▎        | 50/400 [01:10<07:59,  1.37s/it, merge=' '+''L', freq=11393, remaining=350][A
+BPE merges:  13%|█▎        | 51/400 [01:11<07:55,  1.36s/it, merge=' '+''L', freq=11393, remaining=350][A
+BPE merges:  13%|█▎        | 52/400 [01:12<07:52,  1.36s/it, merge=' '+''L', freq=11393, remaining=350][A
+BPE merges:  13%|█▎        | 53/400 [01:14<07:48,  1.35s/it, merge=' '+''L', freq=11393, remaining=350][A
+BPE merges:  14%|█▎        | 54/400 [01:15<07:46,  1.35s/it, merge=' '+''L', freq=11393, remaining=350][A
+BPE merges:  14%|█▍        | 55/400 [01:16<07:46,  1.35s/it, merge=' '+''L', freq=11393, remaining=350][A
+BPE merges:  14%|█▍        | 56/400 [01:18<07:44,  1.35s/it, merge=' '+''L', freq=11393, remaining=350][A
+BPE merges:  14%|█▍        | 57/400 [01:19<07:45,  1.36s/it, merge=' '+''L', freq=11393, remaining=350][A
+BPE merges:  14%|█▍        | 58/400 [01:21<07:44,  1.36s/it, merge=' '+''L', freq=11393, remaining=350][A
+BPE merges:  15%|█▍        | 59/400 [01:22<07:42,  1.36s/it, merge=' '+''L', freq=11393, remaining=350][A
+BPE merges:  15%|█▌        | 60/400 [01:23<07:41,  1.36s/it, merge=' '+''L', freq=11393, remaining=350][A
+BPE merges:  15%|█▌        | 61/400 [01:25<07:41,  1.36s/it, merge=' '+''L', freq=11393, remaining=350][A
+BPE merges:  16%|█▌        | 62/400 [01:26<07:39,  1.36s/it, merge=' '+''L', freq=11393, remaining=350][A
+BPE merges:  16%|█▌        | 63/400 [01:27<07:39,  1.36s/it, merge=' '+''L', freq=11393, remaining=350][A
+BPE merges:  16%|█▌        | 64/400 [01:29<07:38,  1.36s/it, merge=' '+''L', freq=11393, remaining=350][A
+BPE merges:  16%|█▋        | 65/400 [01:30<07:34,  1.36s/it, merge=' '+''L', freq=11393, remaining=350][A
+BPE merges:  16%|█▋        | 66/400 [01:31<07:31,  1.35s/it, merge=' '+''L', freq=11393, remaining=350][A
+BPE merges:  17%|█▋        | 67/400 [01:33<07:30,  1.35s/it, merge=' '+''L', freq=11393, remaining=350][A
+BPE merges:  17%|█▋        | 68/400 [01:34<07:28,  1.35s/it, merge=' '+''L', freq=11393, remaining=350][A
+BPE merges:  17%|█▋        | 69/400 [01:35<07:26,  1.35s/it, merge=' '+''L', freq=11393, remaining=350][A
+BPE merges:  18%|█▊        | 70/400 [01:37<07:24,  1.35s/it, merge=' '+''L', freq=11393, remaining=350][A
+BPE merges:  18%|█▊        | 71/400 [01:38<07:20,  1.34s/it, merge=' '+''L', freq=11393, remaining=350][A
+BPE merges:  18%|█▊        | 72/400 [01:39<07:19,  1.34s/it, merge=' '+''L', freq=11393, remaining=350][A
+BPE merges:  18%|█▊        | 73/400 [01:41<07:19,  1.34s/it, merge=' '+''L', freq=11393, remaining=350][A
+BPE merges:  18%|█▊        | 74/400 [01:42<07:18,  1.34s/it, merge=' '+''L', freq=11393, remaining=350][A
+BPE merges:  19%|█▉        | 75/400 [01:43<07:17,  1.35s/it, merge=' '+''L', freq=11393, remaining=350][A
+BPE merges:  19%|█▉        | 76/400 [01:45<07:15,  1.34s/it, merge=' '+''L', freq=11393, remaining=350][A
+BPE merges:  19%|█▉        | 77/400 [01:46<07:12,  1.34s/it, merge=' '+''L', freq=11393, remaining=350][A
+BPE merges:  20%|█▉        | 78/400 [01:47<07:11,  1.34s/it, merge=' '+''L', freq=11393, remaining=350][A
+BPE merges:  20%|█▉        | 79/400 [01:49<07:10,  1.34s/it, merge=' '+''L', freq=11393, remaining=350][A
+BPE merges:  20%|██        | 80/400 [01:50<07:08,  1.34s/it, merge=' '+''L', freq=11393, remaining=350][A
+BPE merges:  20%|██        | 81/400 [01:52<07:06,  1.34s/it, merge=' '+''L', freq=11393, remaining=350][A
+BPE merges:  20%|██        | 82/400 [01:53<07:04,  1.33s/it, merge=' '+''L', freq=11393, remaining=350][A
+BPE merges:  21%|██        | 83/400 [01:54<07:01,  1.33s/it, merge=' '+''L', freq=11393, remaining=350][A
+BPE merges:  21%|██        | 84/400 [01:55<07:00,  1.33s/it, merge=' '+''L', freq=11393, remaining=350][A
+BPE merges:  21%|██▏       | 85/400 [01:57<06:59,  1.33s/it, merge=' '+''L', freq=11393, remaining=350][A
+BPE merges:  22%|██▏       | 86/400 [01:58<06:59,  1.33s/it, merge=' '+''L', freq=11393, remaining=350][A
+BPE merges:  22%|██▏       | 87/400 [02:00<07:00,  1.34s/it, merge=' '+''L', freq=11393, remaining=350][A
+BPE merges:  22%|██▏       | 88/400 [02:01<06:57,  1.34s/it, merge=' '+''L', freq=11393, remaining=350][A
+BPE merges:  22%|██▏       | 89/400 [02:02<06:52,  1.33s/it, merge=' '+''L', freq=11393, remaining=350][A
+BPE merges:  22%|██▎       | 90/400 [02:03<06:49,  1.32s/it, merge=' '+''L', freq=11393, remaining=350][A
+BPE merges:  23%|██▎       | 91/400 [02:05<06:47,  1.32s/it, merge=' '+''L', freq=11393, remaining=350][A
+BPE merges:  23%|██▎       | 92/400 [02:06<06:49,  1.33s/it, merge=' '+''L', freq=11393, remaining=350][A
+BPE merges:  23%|██▎       | 93/400 [02:07<06:47,  1.33s/it, merge=' '+''L', freq=11393, remaining=350][A
+BPE merges:  24%|██▎       | 94/400 [02:09<06:44,  1.32s/it, merge=' '+''L', freq=11393, remaining=350][A
+BPE merges:  24%|██▍       | 95/400 [02:10<06:40,  1.31s/it, merge=' '+''L', freq=11393, remaining=350][A
+BPE merges:  24%|██▍       | 96/400 [02:11<06:38,  1.31s/it, merge=' '+''L', freq=11393, remaining=350][A
+BPE merges:  24%|██▍       | 97/400 [02:13<06:37,  1.31s/it, merge=' '+''L', freq=11393, remaining=350][A
+BPE merges:  24%|██▍       | 98/400 [02:14<06:35,  1.31s/it, merge=' '+''L', freq=11393, remaining=350][A
+BPE merges:  25%|██▍       | 99/400 [02:15<06:32,  1.30s/it, merge=' '+''L', freq=11393, remaining=350][A
+BPE merges:  25%|██▌       | 100/400 [02:17<06:33,  1.31s/it, merge=' '+''L', freq=11393, remaining=350][A
+BPE merges:  25%|██▌       | 100/400 [02:17<06:33,  1.31s/it, merge='a'+''nd</w>', freq=26198, remaining=300][A
+BPE merges:  25%|██▌       | 101/400 [02:18<06:31,  1.31s/it, merge='a'+''nd</w>', freq=26198, remaining=300][A
+BPE merges:  26%|██▌       | 102/400 [02:19<06:27,  1.30s/it, merge='a'+''nd</w>', freq=26198, remaining=300][A
+BPE merges:  26%|██▌       | 103/400 [02:20<06:26,  1.30s/it, merge='a'+''nd</w>', freq=26198, remaining=300][A
+BPE merges:  26%|██▌       | 104/400 [02:22<06:25,  1.30s/it, merge='a'+''nd</w>', freq=26198, remaining=300][A
+BPE merges:  26%|██▋       | 105/400 [02:23<06:23,  1.30s/it, merge='a'+''nd</w>', freq=26198, remaining=300][A
+BPE merges:  26%|██▋       | 106/400 [02:24<06:20,  1.30s/it, merge='a'+''nd</w>', freq=26198, remaining=300][A
+BPE merges:  27%|██▋       | 107/400 [02:26<06:19,  1.30s/it, merge='a'+''nd</w>', freq=26198, remaining=300][A
+BPE merges:  27%|██▋       | 108/400 [02:27<06:17,  1.29s/it, merge='a'+''nd</w>', freq=26198, remaining=300][A
+BPE merges:  27%|██▋       | 109/400 [02:28<06:14,  1.29s/it, merge='a'+''nd</w>', freq=26198, remaining=300][A
+BPE merges:  28%|██▊       | 110/400 [02:30<06:14,  1.29s/it, merge='a'+''nd</w>', freq=26198, remaining=300][A
+BPE merges:  28%|██▊       | 111/400 [02:31<06:13,  1.29s/it, merge='a'+''nd</w>', freq=26198, remaining=300][A
+BPE merges:  28%|██▊       | 112/400 [02:32<06:12,  1.29s/it, merge='a'+''nd</w>', freq=26198, remaining=300][A
+BPE merges:  28%|██▊       | 113/400 [02:33<06:10,  1.29s/it, merge='a'+''nd</w>', freq=26198, remaining=300][A
+BPE merges:  28%|██▊       | 114/400 [02:35<06:08,  1.29s/it, merge='a'+''nd</w>', freq=26198, remaining=300][A
+BPE merges:  29%|██▉       | 115/400 [02:36<06:06,  1.28s/it, merge='a'+''nd</w>', freq=26198, remaining=300][A
+BPE merges:  29%|██▉       | 116/400 [02:37<06:05,  1.29s/it, merge='a'+''nd</w>', freq=26198, remaining=300][A
+BPE merges:  29%|██▉       | 117/400 [02:39<06:02,  1.28s/it, merge='a'+''nd</w>', freq=26198, remaining=300][A
+BPE merges:  30%|██▉       | 118/400 [02:40<06:00,  1.28s/it, merge='a'+''nd</w>', freq=26198, remaining=300][A
+BPE merges:  30%|██▉       | 119/400 [02:41<06:02,  1.29s/it, merge='a'+''nd</w>', freq=26198, remaining=300][A
+BPE merges:  30%|███       | 120/400 [02:42<06:00,  1.29s/it, merge='a'+''nd</w>', freq=26198, remaining=300][A
+BPE merges:  30%|███       | 121/400 [02:44<05:57,  1.28s/it, merge='a'+''nd</w>', freq=26198, remaining=300][A
+BPE merges:  30%|███       | 122/400 [02:45<05:56,  1.28s/it, merge='a'+''nd</w>', freq=26198, remaining=300][A
+BPE merges:  31%|███       | 123/400 [02:46<05:53,  1.28s/it, merge='a'+''nd</w>', freq=26198, remaining=300][A
+BPE merges:  31%|███       | 124/400 [02:47<05:50,  1.27s/it, merge='a'+''nd</w>', freq=26198, remaining=300][A
+BPE merges:  31%|███▏      | 125/400 [02:49<05:50,  1.27s/it, merge='a'+''nd</w>', freq=26198, remaining=300][A
+BPE merges:  32%|███▏      | 126/400 [02:50<05:49,  1.28s/it, merge='a'+''nd</w>', freq=26198, remaining=300][A
+BPE merges:  32%|███▏      | 127/400 [02:51<05:48,  1.28s/it, merge='a'+''nd</w>', freq=26198, remaining=300][A
+BPE merges:  32%|███▏      | 128/400 [02:53<05:46,  1.27s/it, merge='a'+''nd</w>', freq=26198, remaining=300][A
+BPE merges:  32%|███▏      | 129/400 [02:54<05:46,  1.28s/it, merge='a'+''nd</w>', freq=26198, remaining=300][A
+BPE merges:  32%|███▎      | 130/400 [02:55<05:46,  1.28s/it, merge='a'+''nd</w>', freq=26198, remaining=300][A
+BPE merges:  33%|███▎      | 131/400 [02:56<05:43,  1.28s/it, merge='a'+''nd</w>', freq=26198, remaining=300][A
+BPE merges:  33%|███▎      | 132/400 [02:58<05:41,  1.28s/it, merge='a'+''nd</w>', freq=26198, remaining=300][A
+BPE merges:  33%|███▎      | 133/400 [02:59<05:39,  1.27s/it, merge='a'+''nd</w>', freq=26198, remaining=300][A
+BPE merges:  34%|███▎      | 134/400 [03:00<05:38,  1.27s/it, merge='a'+''nd</w>', freq=26198, remaining=300][A
+BPE merges:  34%|███▍      | 135/400 [03:02<05:37,  1.28s/it, merge='a'+''nd</w>', freq=26198, remaining=300][A
+BPE merges:  34%|███▍      | 136/400 [03:03<05:36,  1.27s/it, merge='a'+''nd</w>', freq=26198, remaining=300][A
+BPE merges:  34%|███▍      | 137/400 [03:04<05:33,  1.27s/it, merge='a'+''nd</w>', freq=26198, remaining=300][A
+BPE merges:  34%|███▍      | 138/400 [03:05<05:32,  1.27s/it, merge='a'+''nd</w>', freq=26198, remaining=300][A
+BPE merges:  35%|███▍      | 139/400 [03:07<05:30,  1.27s/it, merge='a'+''nd</w>', freq=26198, remaining=300][A
+BPE merges:  35%|███▌      | 140/400 [03:08<05:28,  1.26s/it, merge='a'+''nd</w>', freq=26198, remaining=300][A
+BPE merges:  35%|███▌      | 141/400 [03:09<05:27,  1.26s/it, merge='a'+''nd</w>', freq=26198, remaining=300][A
+BPE merges:  36%|███▌      | 142/400 [03:10<05:24,  1.26s/it, merge='a'+''nd</w>', freq=26198, remaining=300][A
+BPE merges:  36%|███▌      | 143/400 [03:12<05:23,  1.26s/it, merge='a'+''nd</w>', freq=26198, remaining=300][A
+BPE merges:  36%|███▌      | 144/400 [03:13<05:22,  1.26s/it, merge='a'+''nd</w>', freq=26198, remaining=300][A
+BPE merges:  36%|███▋      | 145/400 [03:14<05:20,  1.26s/it, merge='a'+''nd</w>', freq=26198, remaining=300][A
+BPE merges:  36%|███▋      | 146/400 [03:15<05:20,  1.26s/it, merge='a'+''nd</w>', freq=26198, remaining=300][A
+BPE merges:  37%|███▋      | 147/400 [03:17<05:18,  1.26s/it, merge='a'+''nd</w>', freq=26198, remaining=300][A
+BPE merges:  37%|███▋      | 148/400 [03:18<05:17,  1.26s/it, merge='a'+''nd</w>', freq=26198, remaining=300][A
+BPE merges:  37%|███▋      | 149/400 [03:19<05:15,  1.26s/it, merge='a'+''nd</w>', freq=26198, remaining=300][A
+BPE merges:  38%|███▊      | 150/400 [03:20<05:14,  1.26s/it, merge='a'+''nd</w>', freq=26198, remaining=300][A
+BPE merges:  38%|███▊      | 150/400 [03:20<05:14,  1.26s/it, merge=' C'+''h', freq=3578, remaining=250]     [A
+BPE merges:  38%|███▊      | 151/400 [03:22<05:14,  1.26s/it, merge=' C'+''h', freq=3578, remaining=250][A
+BPE merges:  38%|███▊      | 152/400 [03:23<05:13,  1.26s/it, merge=' C'+''h', freq=3578, remaining=250][A
+BPE merges:  38%|███▊      | 153/400 [03:24<05:12,  1.26s/it, merge=' C'+''h', freq=3578, remaining=250][A
+BPE merges:  38%|███▊      | 154/400 [03:25<05:10,  1.26s/it, merge=' C'+''h', freq=3578, remaining=250][A
+BPE merges:  39%|███▉      | 155/400 [03:27<05:08,  1.26s/it, merge=' C'+''h', freq=3578, remaining=250][A
+BPE merges:  39%|███▉      | 156/400 [03:28<05:07,  1.26s/it, merge=' C'+''h', freq=3578, remaining=250][A
+BPE merges:  39%|███▉      | 157/400 [03:29<05:06,  1.26s/it, merge=' C'+''h', freq=3578, remaining=250][A
+BPE merges:  40%|███▉      | 158/400 [03:31<05:05,  1.26s/it, merge=' C'+''h', freq=3578, remaining=250][A
+BPE merges:  40%|███▉      | 159/400 [03:32<05:06,  1.27s/it, merge=' C'+''h', freq=3578, remaining=250][A
+BPE merges:  40%|████      | 160/400 [03:33<05:04,  1.27s/it, merge=' C'+''h', freq=3578, remaining=250][A
+BPE merges:  40%|████      | 161/400 [03:34<05:03,  1.27s/it, merge=' C'+''h', freq=3578, remaining=250][A
+BPE merges:  40%|████      | 162/400 [03:36<05:01,  1.27s/it, merge=' C'+''h', freq=3578, remaining=250][A
+BPE merges:  41%|████      | 163/400 [03:37<05:00,  1.27s/it, merge=' C'+''h', freq=3578, remaining=250][A
+BPE merges:  41%|████      | 164/400 [03:38<04:57,  1.26s/it, merge=' C'+''h', freq=3578, remaining=250][A
+BPE merges:  41%|████▏     | 165/400 [03:39<04:56,  1.26s/it, merge=' C'+''h', freq=3578, remaining=250][A
+BPE merges:  42%|████▏     | 166/400 [03:41<04:54,  1.26s/it, merge=' C'+''h', freq=3578, remaining=250][A
+BPE merges:  42%|████▏     | 167/400 [03:42<04:52,  1.26s/it, merge=' C'+''h', freq=3578, remaining=250][A
+BPE merges:  42%|████▏     | 168/400 [03:43<04:51,  1.26s/it, merge=' C'+''h', freq=3578, remaining=250][A
+BPE merges:  42%|████▏     | 169/400 [03:44<04:49,  1.25s/it, merge=' C'+''h', freq=3578, remaining=250][A
+BPE merges:  42%|████▎     | 170/400 [03:46<04:49,  1.26s/it, merge=' C'+''h', freq=3578, remaining=250][A
+BPE merges:  43%|████▎     | 171/400 [03:47<04:47,  1.25s/it, merge=' C'+''h', freq=3578, remaining=250][A
+BPE merges:  43%|████▎     | 172/400 [03:48<04:45,  1.25s/it, merge=' C'+''h', freq=3578, remaining=250][A
+BPE merges:  43%|████▎     | 173/400 [03:49<04:43,  1.25s/it, merge=' C'+''h', freq=3578, remaining=250][A
+BPE merges:  44%|████▎     | 174/400 [03:51<04:43,  1.25s/it, merge=' C'+''h', freq=3578, remaining=250][A
+BPE merges:  44%|████▍     | 175/400 [03:52<04:41,  1.25s/it, merge=' C'+''h', freq=3578, remaining=250][A
+BPE merges:  44%|████▍     | 176/400 [03:53<04:39,  1.25s/it, merge=' C'+''h', freq=3578, remaining=250][A
+BPE merges:  44%|████▍     | 177/400 [03:54<04:39,  1.25s/it, merge=' C'+''h', freq=3578, remaining=250][A
+BPE merges:  44%|████▍     | 178/400 [03:56<04:37,  1.25s/it, merge=' C'+''h', freq=3578, remaining=250][A
+BPE merges:  45%|████▍     | 179/400 [03:57<04:35,  1.25s/it, merge=' C'+''h', freq=3578, remaining=250][A
+BPE merges:  45%|████▌     | 180/400 [03:58<04:34,  1.25s/it, merge=' C'+''h', freq=3578, remaining=250][A
+BPE merges:  45%|████▌     | 181/400 [03:59<04:33,  1.25s/it, merge=' C'+''h', freq=3578, remaining=250][A
+BPE merges:  46%|████▌     | 182/400 [04:01<04:32,  1.25s/it, merge=' C'+''h', freq=3578, remaining=250][A
+BPE merges:  46%|████▌     | 183/400 [04:02<04:30,  1.25s/it, merge=' C'+''h', freq=3578, remaining=250][A
+BPE merges:  46%|████▌     | 184/400 [04:03<04:29,  1.25s/it, merge=' C'+''h', freq=3578, remaining=250][A
+BPE merges:  46%|████▋     | 185/400 [04:04<04:27,  1.25s/it, merge=' C'+''h', freq=3578, remaining=250][A
+BPE merges:  46%|████▋     | 186/400 [04:06<04:27,  1.25s/it, merge=' C'+''h', freq=3578, remaining=250][A
+BPE merges:  47%|████▋     | 187/400 [04:07<04:26,  1.25s/it, merge=' C'+''h', freq=3578, remaining=250][A
+BPE merges:  47%|████▋     | 188/400 [04:08<04:24,  1.25s/it, merge=' C'+''h', freq=3578, remaining=250][A
+BPE merges:  47%|████▋     | 189/400 [04:09<04:22,  1.24s/it, merge=' C'+''h', freq=3578, remaining=250][A
+BPE merges:  48%|████▊     | 190/400 [04:11<04:22,  1.25s/it, merge=' C'+''h', freq=3578, remaining=250][A
+BPE merges:  48%|████▊     | 191/400 [04:12<04:20,  1.25s/it, merge=' C'+''h', freq=3578, remaining=250][A
+BPE merges:  48%|████▊     | 192/400 [04:13<04:18,  1.24s/it, merge=' C'+''h', freq=3578, remaining=250][A
+BPE merges:  48%|████▊     | 193/400 [04:14<04:18,  1.25s/it, merge=' C'+''h', freq=3578, remaining=250][A
+BPE merges:  48%|████▊     | 194/400 [04:16<04:17,  1.25s/it, merge=' C'+''h', freq=3578, remaining=250][A
+BPE merges:  49%|████▉     | 195/400 [04:17<04:15,  1.25s/it, merge=' C'+''h', freq=3578, remaining=250][A
+BPE merges:  49%|████▉     | 196/400 [04:18<04:13,  1.24s/it, merge=' C'+''h', freq=3578, remaining=250][A
+BPE merges:  49%|████▉     | 197/400 [04:19<04:11,  1.24s/it, merge=' C'+''h', freq=3578, remaining=250][A
+BPE merges:  50%|████▉     | 198/400 [04:21<04:10,  1.24s/it, merge=' C'+''h', freq=3578, remaining=250][A
+BPE merges:  50%|████▉     | 199/400 [04:22<04:10,  1.25s/it, merge=' C'+''h', freq=3578, remaining=250][A
+BPE merges:  50%|█████     | 200/400 [04:23<04:07,  1.24s/it, merge=' C'+''h', freq=3578, remaining=250][A
+BPE merges:  50%|█████     | 200/400 [04:23<04:07,  1.24s/it, merge=' '+''is</w>', freq=12482, remaining=200][A
+BPE merges:  50%|█████     | 201/400 [04:24<04:05,  1.23s/it, merge=' '+''is</w>', freq=12482, remaining=200][A
+BPE merges:  50%|█████     | 202/400 [04:26<04:05,  1.24s/it, merge=' '+''is</w>', freq=12482, remaining=200][A
+BPE merges:  51%|█████     | 203/400 [04:27<04:05,  1.25s/it, merge=' '+''is</w>', freq=12482, remaining=200][A
+BPE merges:  51%|█████     | 204/400 [04:28<04:04,  1.25s/it, merge=' '+''is</w>', freq=12482, remaining=200][A
+BPE merges:  51%|█████▏    | 205/400 [04:29<04:02,  1.25s/it, merge=' '+''is</w>', freq=12482, remaining=200][A
+BPE merges:  52%|█████▏    | 206/400 [04:31<04:03,  1.25s/it, merge=' '+''is</w>', freq=12482, remaining=200][A
+BPE merges:  52%|█████▏    | 207/400 [04:32<04:00,  1.25s/it, merge=' '+''is</w>', freq=12482, remaining=200][A
+BPE merges:  52%|█████▏    | 208/400 [04:33<03:59,  1.25s/it, merge=' '+''is</w>', freq=12482, remaining=200][A
+BPE merges:  52%|█████▏    | 209/400 [04:34<03:57,  1.25s/it, merge=' '+''is</w>', freq=12482, remaining=200][A
+BPE merges:  52%|█████▎    | 210/400 [04:35<03:56,  1.24s/it, merge=' '+''is</w>', freq=12482, remaining=200][A
+BPE merges:  53%|█████▎    | 211/400 [04:37<03:55,  1.25s/it, merge=' '+''is</w>', freq=12482, remaining=200][A
+BPE merges:  53%|█████▎    | 212/400 [04:38<03:54,  1.25s/it, merge=' '+''is</w>', freq=12482, remaining=200][A
+BPE merges:  53%|█████▎    | 213/400 [04:39<03:52,  1.24s/it, merge=' '+''is</w>', freq=12482, remaining=200][A
+BPE merges:  54%|█████▎    | 214/400 [04:40<03:50,  1.24s/it, merge=' '+''is</w>', freq=12482, remaining=200][A
+BPE merges:  54%|█████▍    | 215/400 [04:42<03:49,  1.24s/it, merge=' '+''is</w>', freq=12482, remaining=200][A
+BPE merges:  54%|█████▍    | 216/400 [04:43<03:47,  1.24s/it, merge=' '+''is</w>', freq=12482, remaining=200][A
+BPE merges:  54%|█████▍    | 217/400 [04:44<03:46,  1.24s/it, merge=' '+''is</w>', freq=12482, remaining=200][A
+BPE merges:  55%|█████▍    | 218/400 [04:45<03:45,  1.24s/it, merge=' '+''is</w>', freq=12482, remaining=200][A
+BPE merges:  55%|█████▍    | 219/400 [04:47<03:44,  1.24s/it, merge=' '+''is</w>', freq=12482, remaining=200][A
+BPE merges:  55%|█████▌    | 220/400 [04:48<03:43,  1.24s/it, merge=' '+''is</w>', freq=12482, remaining=200][A
+BPE merges:  55%|█████▌    | 221/400 [04:49<03:42,  1.24s/it, merge=' '+''is</w>', freq=12482, remaining=200][A
+BPE merges:  56%|█████▌    | 222/400 [04:50<03:40,  1.24s/it, merge=' '+''is</w>', freq=12482, remaining=200][A
+BPE merges:  56%|█████▌    | 223/400 [04:52<03:38,  1.24s/it, merge=' '+''is</w>', freq=12482, remaining=200][A
+BPE merges:  56%|█████▌    | 224/400 [04:53<03:37,  1.23s/it, merge=' '+''is</w>', freq=12482, remaining=200][A
+BPE merges:  56%|█████▋    | 225/400 [04:54<03:35,  1.23s/it, merge=' '+''is</w>', freq=12482, remaining=200][A
+BPE merges:  56%|█████▋    | 226/400 [04:55<03:34,  1.23s/it, merge=' '+''is</w>', freq=12482, remaining=200][A
+BPE merges:  57%|█████▋    | 227/400 [04:57<03:33,  1.23s/it, merge=' '+''is</w>', freq=12482, remaining=200][A
+BPE merges:  57%|█████▋    | 228/400 [04:58<03:32,  1.24s/it, merge=' '+''is</w>', freq=12482, remaining=200][A
+BPE merges:  57%|█████▋    | 229/400 [04:59<03:31,  1.24s/it, merge=' '+''is</w>', freq=12482, remaining=200][A
+BPE merges:  57%|█████▊    | 230/400 [05:00<03:29,  1.23s/it, merge=' '+''is</w>', freq=12482, remaining=200][A
+BPE merges:  58%|█████▊    | 231/400 [05:01<03:27,  1.23s/it, merge=' '+''is</w>', freq=12482, remaining=200][A
+BPE merges:  58%|█████▊    | 232/400 [05:03<03:26,  1.23s/it, merge=' '+''is</w>', freq=12482, remaining=200][A
+BPE merges:  58%|█████▊    | 233/400 [05:04<03:25,  1.23s/it, merge=' '+''is</w>', freq=12482, remaining=200][A
+BPE merges:  58%|█████▊    | 234/400 [05:05<03:24,  1.23s/it, merge=' '+''is</w>', freq=12482, remaining=200][A
+BPE merges:  59%|█████▉    | 235/400 [05:06<03:25,  1.25s/it, merge=' '+''is</w>', freq=12482, remaining=200][A
+BPE merges:  59%|█████▉    | 236/400 [05:08<03:24,  1.25s/it, merge=' '+''is</w>', freq=12482, remaining=200][A
+BPE merges:  59%|█████▉    | 237/400 [05:09<03:22,  1.24s/it, merge=' '+''is</w>', freq=12482, remaining=200][A
+BPE merges:  60%|█████▉    | 238/400 [05:10<03:20,  1.24s/it, merge=' '+''is</w>', freq=12482, remaining=200][A
+BPE merges:  60%|█████▉    | 239/400 [05:11<03:19,  1.24s/it, merge=' '+''is</w>', freq=12482, remaining=200][A
+BPE merges:  60%|██████    | 240/400 [05:13<03:18,  1.24s/it, merge=' '+''is</w>', freq=12482, remaining=200][A
+BPE merges:  60%|██████    | 241/400 [05:14<03:16,  1.24s/it, merge=' '+''is</w>', freq=12482, remaining=200][A
+BPE merges:  60%|██████    | 242/400 [05:15<03:15,  1.24s/it, merge=' '+''is</w>', freq=12482, remaining=200][A
+BPE merges:  61%|██████    | 243/400 [05:16<03:14,  1.24s/it, merge=' '+''is</w>', freq=12482, remaining=200][A
+BPE merges:  61%|██████    | 244/400 [05:18<03:12,  1.24s/it, merge=' '+''is</w>', freq=12482, remaining=200][A
+BPE merges:  61%|██████▏   | 245/400 [05:19<03:11,  1.23s/it, merge=' '+''is</w>', freq=12482, remaining=200][A
+BPE merges:  62%|██████▏   | 246/400 [05:20<03:10,  1.23s/it, merge=' '+''is</w>', freq=12482, remaining=200][A
+BPE merges:  62%|██████▏   | 247/400 [05:21<03:08,  1.23s/it, merge=' '+''is</w>', freq=12482, remaining=200][A
+BPE merges:  62%|██████▏   | 248/400 [05:22<03:06,  1.23s/it, merge=' '+''is</w>', freq=12482, remaining=200][A
+BPE merges:  62%|██████▏   | 249/400 [05:24<03:05,  1.23s/it, merge=' '+''is</w>', freq=12482, remaining=200][A
+BPE merges:  62%|██████▎   | 250/400 [05:25<03:04,  1.23s/it, merge=' '+''is</w>', freq=12482, remaining=200][A
+BPE merges:  62%|██████▎   | 250/400 [05:25<03:04,  1.23s/it, merge='l'+''e', freq=25599, remaining=150]     [A
+BPE merges:  63%|██████▎   | 251/400 [05:26<03:03,  1.23s/it, merge='l'+''e', freq=25599, remaining=150][A
+BPE merges:  63%|██████▎   | 252/400 [05:27<03:02,  1.23s/it, merge='l'+''e', freq=25599, remaining=150][A
+BPE merges:  63%|██████▎   | 253/400 [05:29<03:01,  1.23s/it, merge='l'+''e', freq=25599, remaining=150][A
+BPE merges:  64%|██████▎   | 254/400 [05:30<02:59,  1.23s/it, merge='l'+''e', freq=25599, remaining=150][A
+BPE merges:  64%|██████▍   | 255/400 [05:31<02:59,  1.24s/it, merge='l'+''e', freq=25599, remaining=150][A
+BPE merges:  64%|██████▍   | 256/400 [05:32<02:59,  1.25s/it, merge='l'+''e', freq=25599, remaining=150][A
+BPE merges:  64%|██████▍   | 257/400 [05:34<02:58,  1.25s/it, merge='l'+''e', freq=25599, remaining=150][A
+BPE merges:  64%|██████▍   | 258/400 [05:35<02:57,  1.25s/it, merge='l'+''e', freq=25599, remaining=150][A
+BPE merges:  65%|██████▍   | 259/400 [05:36<02:56,  1.25s/it, merge='l'+''e', freq=25599, remaining=150][A
+BPE merges:  65%|██████▌   | 260/400 [05:37<02:54,  1.25s/it, merge='l'+''e', freq=25599, remaining=150][A
+BPE merges:  65%|██████▌   | 261/400 [05:39<02:53,  1.25s/it, merge='l'+''e', freq=25599, remaining=150][A
+BPE merges:  66%|██████▌   | 262/400 [05:40<02:51,  1.25s/it, merge='l'+''e', freq=25599, remaining=150][A
+BPE merges:  66%|██████▌   | 263/400 [05:41<02:50,  1.25s/it, merge='l'+''e', freq=25599, remaining=150][A
+BPE merges:  66%|██████▌   | 264/400 [05:42<02:49,  1.24s/it, merge='l'+''e', freq=25599, remaining=150][A
+BPE merges:  66%|██████▋   | 265/400 [05:44<02:48,  1.25s/it, merge='l'+''e', freq=25599, remaining=150][A
+BPE merges:  66%|██████▋   | 266/400 [05:45<02:46,  1.24s/it, merge='l'+''e', freq=25599, remaining=150][A
+BPE merges:  67%|██████▋   | 267/400 [05:46<02:44,  1.24s/it, merge='l'+''e', freq=25599, remaining=150][A
+BPE merges:  67%|██████▋   | 268/400 [05:47<02:43,  1.24s/it, merge='l'+''e', freq=25599, remaining=150][A
+BPE merges:  67%|██████▋   | 269/400 [05:49<02:42,  1.24s/it, merge='l'+''e', freq=25599, remaining=150][A
+BPE merges:  68%|██████▊   | 270/400 [05:50<02:41,  1.24s/it, merge='l'+''e', freq=25599, remaining=150][A
+BPE merges:  68%|██████▊   | 271/400 [05:51<02:39,  1.24s/it, merge='l'+''e', freq=25599, remaining=150][A
+BPE merges:  68%|██████▊   | 272/400 [05:52<02:38,  1.24s/it, merge='l'+''e', freq=25599, remaining=150][A
+BPE merges:  68%|██████▊   | 273/400 [05:53<02:37,  1.24s/it, merge='l'+''e', freq=25599, remaining=150][A
+BPE merges:  68%|██████▊   | 274/400 [05:55<02:35,  1.24s/it, merge='l'+''e', freq=25599, remaining=150][A
+BPE merges:  69%|██████▉   | 275/400 [05:56<02:34,  1.24s/it, merge='l'+''e', freq=25599, remaining=150][A
+BPE merges:  69%|██████▉   | 276/400 [05:57<02:33,  1.24s/it, merge='l'+''e', freq=25599, remaining=150][A
+BPE merges:  69%|██████▉   | 277/400 [05:58<02:32,  1.24s/it, merge='l'+''e', freq=25599, remaining=150][A
+BPE merges:  70%|██████▉   | 278/400 [06:00<02:31,  1.24s/it, merge='l'+''e', freq=25599, remaining=150][A
+BPE merges:  70%|██████▉   | 279/400 [06:01<02:30,  1.24s/it, merge='l'+''e', freq=25599, remaining=150][A
+BPE merges:  70%|███████   | 280/400 [06:02<02:28,  1.24s/it, merge='l'+''e', freq=25599, remaining=150][A
+BPE merges:  70%|███████   | 281/400 [06:03<02:28,  1.25s/it, merge='l'+''e', freq=25599, remaining=150][A
+BPE merges:  70%|███████   | 282/400 [06:05<02:28,  1.25s/it, merge='l'+''e', freq=25599, remaining=150][A
+BPE merges:  71%|███████   | 283/400 [06:06<02:26,  1.25s/it, merge='l'+''e', freq=25599, remaining=150][A
+BPE merges:  71%|███████   | 284/400 [06:07<02:24,  1.25s/it, merge='l'+''e', freq=25599, remaining=150][A
+BPE merges:  71%|███████▏  | 285/400 [06:08<02:23,  1.25s/it, merge='l'+''e', freq=25599, remaining=150][A
+BPE merges:  72%|███████▏  | 286/400 [06:10<02:21,  1.24s/it, merge='l'+''e', freq=25599, remaining=150][A
+BPE merges:  72%|███████▏  | 287/400 [06:11<02:19,  1.23s/it, merge='l'+''e', freq=25599, remaining=150][A
+BPE merges:  72%|███████▏  | 288/400 [06:12<02:18,  1.23s/it, merge='l'+''e', freq=25599, remaining=150][A
+BPE merges:  72%|███████▏  | 289/400 [06:13<02:16,  1.23s/it, merge='l'+''e', freq=25599, remaining=150][A
+BPE merges:  72%|███████▎  | 290/400 [06:15<02:16,  1.24s/it, merge='l'+''e', freq=25599, remaining=150][A
+BPE merges:  73%|███████▎  | 291/400 [06:16<02:14,  1.24s/it, merge='l'+''e', freq=25599, remaining=150][A
+BPE merges:  73%|███████▎  | 292/400 [06:17<02:14,  1.24s/it, merge='l'+''e', freq=25599, remaining=150][A
+BPE merges:  73%|███████▎  | 293/400 [06:18<02:12,  1.24s/it, merge='l'+''e', freq=25599, remaining=150][A
+BPE merges:  74%|███████▎  | 294/400 [06:20<02:11,  1.24s/it, merge='l'+''e', freq=25599, remaining=150][A
+BPE merges:  74%|███████▍  | 295/400 [06:21<02:10,  1.24s/it, merge='l'+''e', freq=25599, remaining=150][A
+BPE merges:  74%|███████▍  | 296/400 [06:22<02:08,  1.24s/it, merge='l'+''e', freq=25599, remaining=150][A
+BPE merges:  74%|███████▍  | 297/400 [06:23<02:07,  1.24s/it, merge='l'+''e', freq=25599, remaining=150][A
+BPE merges:  74%|███████▍  | 298/400 [06:25<02:06,  1.24s/it, merge='l'+''e', freq=25599, remaining=150][A
+BPE merges:  75%|███████▍  | 299/400 [06:26<02:05,  1.24s/it, merge='l'+''e', freq=25599, remaining=150][A
+BPE merges:  75%|███████▌  | 300/400 [06:27<02:03,  1.24s/it, merge='l'+''e', freq=25599, remaining=150][A
+BPE merges:  75%|███████▌  | 300/400 [06:27<02:03,  1.24s/it, merge='r'+''om</w>', freq=7689, remaining=100][A
+BPE merges:  75%|███████▌  | 301/400 [06:28<02:02,  1.24s/it, merge='r'+''om</w>', freq=7689, remaining=100][A
+BPE merges:  76%|███████▌  | 302/400 [06:29<02:01,  1.24s/it, merge='r'+''om</w>', freq=7689, remaining=100][A
+BPE merges:  76%|███████▌  | 303/400 [06:31<02:00,  1.24s/it, merge='r'+''om</w>', freq=7689, remaining=100][A
+BPE merges:  76%|███████▌  | 304/400 [06:32<01:58,  1.24s/it, merge='r'+''om</w>', freq=7689, remaining=100][A
+BPE merges:  76%|███████▋  | 305/400 [06:33<01:57,  1.24s/it, merge='r'+''om</w>', freq=7689, remaining=100][A
+BPE merges:  76%|███████▋  | 306/400 [06:34<01:56,  1.24s/it, merge='r'+''om</w>', freq=7689, remaining=100][A
+BPE merges:  77%|███████▋  | 307/400 [06:36<01:54,  1.24s/it, merge='r'+''om</w>', freq=7689, remaining=100][A
+BPE merges:  77%|███████▋  | 308/400 [06:37<01:53,  1.23s/it, merge='r'+''om</w>', freq=7689, remaining=100][A
+BPE merges:  77%|███████▋  | 309/400 [06:38<01:52,  1.24s/it, merge='r'+''om</w>', freq=7689, remaining=100][A
+BPE merges:  78%|███████▊  | 310/400 [06:39<01:51,  1.24s/it, merge='r'+''om</w>', freq=7689, remaining=100][A
+BPE merges:  78%|███████▊  | 311/400 [06:41<01:50,  1.24s/it, merge='r'+''om</w>', freq=7689, remaining=100][A
+BPE merges:  78%|███████▊  | 312/400 [06:42<01:48,  1.23s/it, merge='r'+''om</w>', freq=7689, remaining=100][A
+BPE merges:  78%|███████▊  | 313/400 [06:43<01:46,  1.23s/it, merge='r'+''om</w>', freq=7689, remaining=100][A
+BPE merges:  78%|███████▊  | 314/400 [06:44<01:45,  1.23s/it, merge='r'+''om</w>', freq=7689, remaining=100][A
+BPE merges:  79%|███████▉  | 315/400 [06:46<01:44,  1.23s/it, merge='r'+''om</w>', freq=7689, remaining=100][A
+BPE merges:  79%|███████▉  | 316/400 [06:47<01:43,  1.23s/it, merge='r'+''om</w>', freq=7689, remaining=100][A
+BPE merges:  79%|███████▉  | 317/400 [06:48<01:42,  1.23s/it, merge='r'+''om</w>', freq=7689, remaining=100][A
+BPE merges:  80%|███████▉  | 318/400 [06:49<01:40,  1.23s/it, merge='r'+''om</w>', freq=7689, remaining=100][A
+BPE merges:  80%|███████▉  | 319/400 [06:50<01:39,  1.23s/it, merge='r'+''om</w>', freq=7689, remaining=100][A
+BPE merges:  80%|████████  | 320/400 [06:52<01:38,  1.23s/it, merge='r'+''om</w>', freq=7689, remaining=100][A
+BPE merges:  80%|████████  | 321/400 [06:53<01:36,  1.23s/it, merge='r'+''om</w>', freq=7689, remaining=100][A
+BPE merges:  80%|████████  | 322/400 [06:54<01:35,  1.22s/it, merge='r'+''om</w>', freq=7689, remaining=100][A
+BPE merges:  81%|████████  | 323/400 [06:55<01:34,  1.22s/it, merge='r'+''om</w>', freq=7689, remaining=100][A
+BPE merges:  81%|████████  | 324/400 [06:57<01:33,  1.22s/it, merge='r'+''om</w>', freq=7689, remaining=100][A
+BPE merges:  81%|████████▏ | 325/400 [06:58<01:32,  1.23s/it, merge='r'+''om</w>', freq=7689, remaining=100][A
+BPE merges:  82%|████████▏ | 326/400 [06:59<01:32,  1.24s/it, merge='r'+''om</w>', freq=7689, remaining=100][A
+BPE merges:  82%|████████▏ | 327/400 [07:00<01:30,  1.24s/it, merge='r'+''om</w>', freq=7689, remaining=100][A
+BPE merges:  82%|████████▏ | 328/400 [07:02<01:28,  1.24s/it, merge='r'+''om</w>', freq=7689, remaining=100][A
+BPE merges:  82%|████████▏ | 329/400 [07:03<01:27,  1.24s/it, merge='r'+''om</w>', freq=7689, remaining=100][A
+BPE merges:  82%|████████▎ | 330/400 [07:04<01:25,  1.23s/it, merge='r'+''om</w>', freq=7689, remaining=100][A
+BPE merges:  83%|████████▎ | 331/400 [07:05<01:25,  1.24s/it, merge='r'+''om</w>', freq=7689, remaining=100][A
+BPE merges:  83%|████████▎ | 332/400 [07:06<01:24,  1.24s/it, merge='r'+''om</w>', freq=7689, remaining=100][A
+BPE merges:  83%|████████▎ | 333/400 [07:08<01:22,  1.23s/it, merge='r'+''om</w>', freq=7689, remaining=100][A
+BPE merges:  84%|████████▎ | 334/400 [07:09<01:21,  1.23s/it, merge='r'+''om</w>', freq=7689, remaining=100][A
+BPE merges:  84%|████████▍ | 335/400 [07:10<01:20,  1.23s/it, merge='r'+''om</w>', freq=7689, remaining=100][A
+BPE merges:  84%|████████▍ | 336/400 [07:11<01:19,  1.23s/it, merge='r'+''om</w>', freq=7689, remaining=100][A
+BPE merges:  84%|████████▍ | 337/400 [07:13<01:18,  1.24s/it, merge='r'+''om</w>', freq=7689, remaining=100][A
+BPE merges:  84%|████████▍ | 338/400 [07:14<01:16,  1.24s/it, merge='r'+''om</w>', freq=7689, remaining=100][A
+BPE merges:  85%|████████▍ | 339/400 [07:15<01:15,  1.24s/it, merge='r'+''om</w>', freq=7689, remaining=100][A
+BPE merges:  85%|████████▌ | 340/400 [07:16<01:14,  1.23s/it, merge='r'+''om</w>', freq=7689, remaining=100][A
+BPE merges:  85%|████████▌ | 341/400 [07:18<01:12,  1.23s/it, merge='r'+''om</w>', freq=7689, remaining=100][A
+BPE merges:  86%|████████▌ | 342/400 [07:19<01:11,  1.23s/it, merge='r'+''om</w>', freq=7689, remaining=100][A
+BPE merges:  86%|████████▌ | 343/400 [07:20<01:10,  1.23s/it, merge='r'+''om</w>', freq=7689, remaining=100][A
+BPE merges:  86%|████████▌ | 344/400 [07:21<01:09,  1.23s/it, merge='r'+''om</w>', freq=7689, remaining=100][A
+BPE merges:  86%|████████▋ | 345/400 [07:23<01:08,  1.24s/it, merge='r'+''om</w>', freq=7689, remaining=100][A
+BPE merges:  86%|████████▋ | 346/400 [07:24<01:06,  1.24s/it, merge='r'+''om</w>', freq=7689, remaining=100][A
+BPE merges:  87%|████████▋ | 347/400 [07:25<01:05,  1.24s/it, merge='r'+''om</w>', freq=7689, remaining=100][A
+BPE merges:  87%|████████▋ | 348/400 [07:26<01:04,  1.23s/it, merge='r'+''om</w>', freq=7689, remaining=100][A
+BPE merges:  87%|████████▋ | 349/400 [07:28<01:03,  1.24s/it, merge='r'+''om</w>', freq=7689, remaining=100][A
+BPE merges:  88%|████████▊ | 350/400 [07:29<01:02,  1.24s/it, merge='r'+''om</w>', freq=7689, remaining=100][A
+BPE merges:  88%|████████▊ | 350/400 [07:29<01:02,  1.24s/it, merge=' A'+''b', freq=1381, remaining=50]     [A
+BPE merges:  88%|████████▊ | 351/400 [07:30<01:00,  1.24s/it, merge=' A'+''b', freq=1381, remaining=50][A
+BPE merges:  88%|████████▊ | 352/400 [07:31<00:59,  1.24s/it, merge=' A'+''b', freq=1381, remaining=50][A
+BPE merges:  88%|████████▊ | 353/400 [07:32<00:58,  1.24s/it, merge=' A'+''b', freq=1381, remaining=50][A
+BPE merges:  88%|████████▊ | 354/400 [07:34<00:56,  1.24s/it, merge=' A'+''b', freq=1381, remaining=50][A
+BPE merges:  89%|████████▉ | 355/400 [07:35<00:55,  1.23s/it, merge=' A'+''b', freq=1381, remaining=50][A
+BPE merges:  89%|████████▉ | 356/400 [07:36<00:54,  1.24s/it, merge=' A'+''b', freq=1381, remaining=50][A
+BPE merges:  89%|████████▉ | 357/400 [07:37<00:52,  1.23s/it, merge=' A'+''b', freq=1381, remaining=50][A
+BPE merges:  90%|████████▉ | 358/400 [07:39<00:51,  1.24s/it, merge=' A'+''b', freq=1381, remaining=50][A
+BPE merges:  90%|████████▉ | 359/400 [07:40<00:50,  1.23s/it, merge=' A'+''b', freq=1381, remaining=50][A
+BPE merges:  90%|█████████ | 360/400 [07:41<00:49,  1.23s/it, merge=' A'+''b', freq=1381, remaining=50][A
+BPE merges:  90%|█████████ | 361/400 [07:42<00:47,  1.23s/it, merge=' A'+''b', freq=1381, remaining=50][A
+BPE merges:  90%|█████████ | 362/400 [07:44<00:46,  1.23s/it, merge=' A'+''b', freq=1381, remaining=50][A
+BPE merges:  91%|█████████ | 363/400 [07:45<00:45,  1.23s/it, merge=' A'+''b', freq=1381, remaining=50][A
+BPE merges:  91%|█████████ | 364/400 [07:46<00:44,  1.23s/it, merge=' A'+''b', freq=1381, remaining=50][A
+BPE merges:  91%|█████████▏| 365/400 [07:47<00:42,  1.22s/it, merge=' A'+''b', freq=1381, remaining=50][A
+BPE merges:  92%|█████████▏| 366/400 [07:48<00:41,  1.23s/it, merge=' A'+''b', freq=1381, remaining=50][A
+BPE merges:  92%|█████████▏| 367/400 [07:50<00:40,  1.23s/it, merge=' A'+''b', freq=1381, remaining=50][A
+BPE merges:  92%|█████████▏| 368/400 [07:51<00:39,  1.23s/it, merge=' A'+''b', freq=1381, remaining=50][A
+BPE merges:  92%|█████████▏| 369/400 [07:52<00:38,  1.23s/it, merge=' A'+''b', freq=1381, remaining=50][A
+BPE merges:  92%|█████████▎| 370/400 [07:53<00:36,  1.23s/it, merge=' A'+''b', freq=1381, remaining=50][A
+BPE merges:  93%|█████████▎| 371/400 [07:55<00:35,  1.24s/it, merge=' A'+''b', freq=1381, remaining=50][A
+BPE merges:  93%|█████████▎| 372/400 [07:56<00:34,  1.23s/it, merge=' A'+''b', freq=1381, remaining=50][A
+BPE merges:  93%|█████████▎| 373/400 [07:57<00:33,  1.23s/it, merge=' A'+''b', freq=1381, remaining=50][A
+BPE merges:  94%|█████████▎| 374/400 [07:58<00:31,  1.23s/it, merge=' A'+''b', freq=1381, remaining=50][A
+BPE merges:  94%|█████████▍| 375/400 [08:00<00:30,  1.23s/it, merge=' A'+''b', freq=1381, remaining=50][A
+BPE merges:  94%|█████████▍| 376/400 [08:01<00:29,  1.23s/it, merge=' A'+''b', freq=1381, remaining=50][A
+BPE merges:  94%|█████████▍| 377/400 [08:02<00:28,  1.23s/it, merge=' A'+''b', freq=1381, remaining=50][A
+BPE merges:  94%|█████████▍| 378/400 [08:03<00:27,  1.23s/it, merge=' A'+''b', freq=1381, remaining=50][A
+BPE merges:  95%|█████████▍| 379/400 [08:04<00:25,  1.23s/it, merge=' A'+''b', freq=1381, remaining=50][A
+BPE merges:  95%|█████████▌| 380/400 [08:06<00:24,  1.25s/it, merge=' A'+''b', freq=1381, remaining=50][A
+BPE merges:  95%|█████████▌| 381/400 [08:07<00:23,  1.25s/it, merge=' A'+''b', freq=1381, remaining=50][A
+BPE merges:  96%|█████████▌| 382/400 [08:08<00:22,  1.24s/it, merge=' A'+''b', freq=1381, remaining=50][A
+BPE merges:  96%|█████████▌| 383/400 [08:09<00:21,  1.24s/it, merge=' A'+''b', freq=1381, remaining=50][A
+BPE merges:  96%|█████████▌| 384/400 [08:11<00:19,  1.23s/it, merge=' A'+''b', freq=1381, remaining=50][A
+BPE merges:  96%|█████████▋| 385/400 [08:12<00:18,  1.23s/it, merge=' A'+''b', freq=1381, remaining=50][A
+BPE merges:  96%|█████████▋| 386/400 [08:13<00:17,  1.23s/it, merge=' A'+''b', freq=1381, remaining=50][A
+BPE merges:  97%|█████████▋| 387/400 [08:14<00:16,  1.24s/it, merge=' A'+''b', freq=1381, remaining=50][A
+BPE merges:  97%|█████████▋| 388/400 [08:16<00:14,  1.24s/it, merge=' A'+''b', freq=1381, remaining=50][A
+BPE merges:  97%|█████████▋| 389/400 [08:17<00:13,  1.24s/it, merge=' A'+''b', freq=1381, remaining=50][A
+BPE merges:  98%|█████████▊| 390/400 [08:18<00:12,  1.24s/it, merge=' A'+''b', freq=1381, remaining=50][A
+BPE merges:  98%|█████████▊| 391/400 [08:19<00:11,  1.23s/it, merge=' A'+''b', freq=1381, remaining=50][A
+BPE merges:  98%|█████████▊| 392/400 [08:21<00:09,  1.24s/it, merge=' A'+''b', freq=1381, remaining=50][A
+BPE merges:  98%|█████████▊| 393/400 [08:22<00:08,  1.24s/it, merge=' A'+''b', freq=1381, remaining=50][A
+BPE merges:  98%|█████████▊| 394/400 [08:23<00:07,  1.24s/it, merge=' A'+''b', freq=1381, remaining=50][A
+BPE merges:  99%|█████████▉| 395/400 [08:24<00:06,  1.23s/it, merge=' A'+''b', freq=1381, remaining=50][A
+BPE merges:  99%|█████████▉| 396/400 [08:25<00:04,  1.23s/it, merge=' A'+''b', freq=1381, remaining=50][A
+BPE merges:  99%|█████████▉| 397/400 [08:27<00:03,  1.23s/it, merge=' A'+''b', freq=1381, remaining=50][A
+BPE merges: 100%|█████████▉| 398/400 [08:28<00:02,  1.25s/it, merge=' A'+''b', freq=1381, remaining=50][A
+BPE merges: 100%|█████████▉| 399/400 [08:29<00:01,  1.24s/it, merge=' A'+''b', freq=1381, remaining=50][A
+BPE merges: 100%|██████████| 400/400 [08:30<00:00,  1.25s/it, merge=' A'+''b', freq=1381, remaining=50][A
+BPE merges: 100%|██████████| 400/400 [08:30<00:00,  1.25s/it, merge='t'+''y</w>', freq=5915, remaining=0][A
+                                                                                                         [ARunning BPE merges:  71%|███████▏  | 5/7 [08:53<05:45, 172.98s/step]Final diagnostics:  71%|███████▏  | 5/7 [08:53<05:45, 172.98s/step] Final diagnostics:  86%|████████▌ | 6/7 [08:54<01:57, 117.61s/step]Analyzing tokens:  86%|████████▌ | 6/7 [08:54<01:57, 117.61s/step] Analyzing tokens: 100%|██████████| 7/7 [08:54<00:00, 76.34s/step] 
+BPE completed after 400 iterations, 0 slots remaining
+Token analysis saved to: token_analysis_20250714_193728.txt
+
+Top 5 Ranked Bigrams (by frequency):
+  1. "Donald Trump" (freq: 2340, score: 97.76)
+  2. "Of The" (freq: 1435, score: 97.27)
+  3. "3G S" (freq: 20, score: 99.04)
+  4. "From Earth911" (freq: 8, score: 98.20)
+  5. "11-Year-Old Girl" (freq: 5, score: 100.79)
+
+Bottom 5 Ranked Bigrams (by frequency):
+  79. "This 5-Minute" (freq: 2, score: 100.10)
+  80. "This 6-Year-Old" (freq: 2, score: 100.10)
+  81. "This 9-Year-Old" (freq: 2, score: 100.10)
+  82. "Way 4-Year-Olds" (freq: 2, score: 100.10)
+  83. "3D Concert" (freq: 2, score: 97.10)
+Training complete!
+Vocabulary size: 1000
+Bigrams added: 83
+Words added: 409
+Total bigrams: 83
+Tokenizer training complete
+Saving tokenizer to tokenizers/unknown/tokenizer.pkl
+Tokenizer trained with 1000 tokens
+
+Sample encode/decode:
+Original: @Dannymcfly i really love ya  i just wanna hold you, and say how much i love you, but i did the best to see you, but its ok ;)
+Encoded: [34, 979, 8, 8, 15, 16, 17, 21, 11, 15, 1, 7, 1, 681, 759, 11, 15, 1, 985, 25, 3, 1, 15, 6, 1, 7, 1, 49, 14, 766, 1, 20, 718, 8, 6, 1, 12, 4, 11, 13, 1, 15, 648, 1, 32, 1, 718, 13, 1, 9, 6, 15, 1, 12, 4, 20, 1, 16, 14, 954, 1, 7, 1, 985, 25, 3, 1, 15, 648, 1, 32, 1, 22, 14, 5, 1, 7, 1, 13, 7, 13, 1, 729, 3, 1, 22, 3, 766, 1, 5, 4, 1, 9, 3, 3, 1, 15, 648, 1, 32, 1, 22, 14, 5, 1, 760, 9, 1, 4, 24, 1, 55, 1, 65]
+Decoded: @Dannymcfly i really love ya i just wanna hold you , and say how much i love you , but i did the best to see you , but its ok ; )
+
+Testing tokenizer for unknown...
+Using tokenizer at tokenizers/unknown/tokenizer.pkl
+Loading tokenizer from tokenizers/unknown/tokenizer.pkl
+Vocabulary size: 1000
+Loading training texts from data/unknown_train.txt
+Loading test texts from data/unknown_dev.txt
+
+Testing encoding speed...
+Encoding speed: 162952.41 tokens/second
+Total encoding time for test set: 30.2800 seconds
+Total tokens used for test set: 4931142
+
+Testing tokenization efficiency...
+Tokens per character: 0.8349
+
+Testing text reconstruction...
+Reconstruction success rate: 95.00%
+
+Sample encoding/decoding:
+Original: Missed first 20 mins of E3
+Encoded: [821, 9, 9, 3, 13, 1, 21, 7, 10, 766, 1, 60, 50, 1, 16, 687, 9, 1, 4, 21, 1, 46, 72]
+Decoded: Missed first 20 mins of E3
+
+Training NER model for unknown...
+Using device: cuda
+Loading tokenizer from tokenizers/unknown/tokenizer.pkl
+Loading training data from data/ner_data/train_1_binary.tagged
+Loading dev data from data/ner_data/dev_1_binary.tagged
+Creating datasets
+Processing texts:   0%|          | 0/3394 [00:00<?, ?it/s]Processing texts:   1%|          | 33/3394 [00:00<00:10, 316.89it/s]Processing texts:   2%|▏         | 65/3394 [00:00<00:13, 253.51it/s]Processing texts:   3%|▎         | 92/3394 [00:00<00:13, 247.49it/s]Processing texts:   3%|▎         | 118/3394 [00:00<00:13, 240.68it/s]Processing texts:   4%|▍         | 145/3394 [00:00<00:13, 246.88it/s]Processing texts:   5%|▌         | 170/3394 [00:00<00:13, 239.45it/s]Processing texts:   6%|▌         | 198/3394 [00:00<00:12, 249.79it/s]Processing texts:   7%|▋         | 229/3394 [00:00<00:12, 262.95it/s]Processing texts:   8%|▊         | 256/3394 [00:01<00:12, 258.44it/s]Processing texts:   8%|▊         | 282/3394 [00:01<00:12, 244.07it/s]Processing texts:   9%|▉         | 307/3394 [00:01<00:13, 227.85it/s]Processing texts:  10%|▉         | 331/3394 [00:01<00:13, 225.72it/s]Processing texts:  10%|█         | 354/3394 [00:01<00:13, 224.87it/s]Processing texts:  11%|█         | 380/3394 [00:01<00:12, 234.01it/s]Processing texts:  12%|█▏        | 405/3394 [00:01<00:12, 237.85it/s]Processing texts:  13%|█▎        | 429/3394 [00:01<00:12, 237.90it/s]Processing texts:  13%|█▎        | 453/3394 [00:01<00:12, 228.71it/s]Processing texts:  14%|█▍        | 476/3394 [00:01<00:12, 227.28it/s]Processing texts:  15%|█▍        | 502/3394 [00:02<00:12, 236.12it/s]Processing texts:  16%|█▌        | 528/3394 [00:02<00:11, 241.00it/s]Processing texts:  16%|█▋        | 553/3394 [00:02<00:12, 233.11it/s]Processing texts:  17%|█▋        | 579/3394 [00:02<00:11, 238.14it/s]Processing texts:  18%|█▊        | 603/3394 [00:02<00:11, 233.54it/s]Processing texts:  18%|█▊        | 627/3394 [00:02<00:12, 226.54it/s]Processing texts:  19%|█▉        | 650/3394 [00:02<00:12, 227.02it/s]Processing texts:  20%|█▉        | 678/3394 [00:02<00:11, 239.71it/s]Processing texts:  21%|██        | 704/3394 [00:02<00:10, 245.03it/s]Processing texts:  21%|██▏       | 729/3394 [00:03<00:11, 236.75it/s]Processing texts:  22%|██▏       | 755/3394 [00:03<00:10, 241.83it/s]Processing texts:  23%|██▎       | 782/3394 [00:03<00:10, 246.80it/s]Processing texts:  24%|██▍       | 807/3394 [00:03<00:10, 236.91it/s]Processing texts:  24%|██▍       | 831/3394 [00:03<00:10, 236.50it/s]Processing texts:  25%|██▌       | 855/3394 [00:03<00:10, 231.71it/s]Processing texts:  26%|██▌       | 879/3394 [00:03<00:11, 220.78it/s]Processing texts:  27%|██▋       | 904/3394 [00:03<00:11, 225.89it/s]Processing texts:  27%|██▋       | 928/3394 [00:03<00:10, 227.89it/s]Processing texts:  28%|██▊       | 951/3394 [00:04<00:10, 224.57it/s]Processing texts:  29%|██▉       | 980/3394 [00:04<00:09, 242.92it/s]Processing texts:  30%|██▉       | 1005/3394 [00:04<00:09, 240.71it/s]Processing texts:  30%|███       | 1030/3394 [00:04<00:09, 242.15it/s]Processing texts:  31%|███       | 1057/3394 [00:04<00:09, 246.66it/s]Processing texts:  32%|███▏      | 1085/3394 [00:04<00:09, 254.60it/s]Processing texts:  33%|███▎      | 1111/3394 [00:04<00:09, 249.68it/s]Processing texts:  34%|███▎      | 1137/3394 [00:04<00:09, 250.51it/s]Processing texts:  34%|███▍      | 1163/3394 [00:04<00:08, 249.74it/s]Processing texts:  35%|███▌      | 1190/3394 [00:04<00:08, 253.82it/s]Processing texts:  36%|███▌      | 1216/3394 [00:05<00:08, 251.03it/s]Processing texts:  37%|███▋      | 1245/3394 [00:05<00:08, 258.49it/s]Processing texts:  37%|███▋      | 1271/3394 [00:05<00:08, 250.26it/s]Processing texts:  38%|███▊      | 1297/3394 [00:05<00:08, 252.89it/s]Processing texts:  39%|███▉      | 1323/3394 [00:05<00:08, 245.68it/s]Processing texts:  40%|███▉      | 1348/3394 [00:05<00:08, 240.93it/s]Processing texts:  41%|████      | 1377/3394 [00:05<00:07, 254.02it/s]Processing texts:  41%|████▏     | 1405/3394 [00:05<00:07, 259.94it/s]Processing texts:  42%|████▏     | 1432/3394 [00:05<00:07, 253.17it/s]Processing texts:  43%|████▎     | 1458/3394 [00:06<00:07, 247.35it/s]Processing texts:  44%|████▍     | 1485/3394 [00:06<00:07, 250.74it/s]Processing texts:  45%|████▍     | 1511/3394 [00:06<00:07, 247.09it/s]Processing texts:  45%|████▌     | 1542/3394 [00:06<00:07, 261.71it/s]Processing texts:  46%|████▌     | 1569/3394 [00:06<00:07, 256.02it/s]Processing texts:  47%|████▋     | 1598/3394 [00:06<00:06, 262.50it/s]Processing texts:  48%|████▊     | 1625/3394 [00:06<00:06, 253.83it/s]Processing texts:  49%|████▊     | 1651/3394 [00:06<00:07, 241.63it/s]Processing texts:  49%|████▉     | 1676/3394 [00:06<00:07, 243.11it/s]Processing texts:  50%|█████     | 1702/3394 [00:06<00:06, 246.35it/s]Processing texts:  51%|█████     | 1727/3394 [00:07<00:06, 243.27it/s]Processing texts:  52%|█████▏    | 1757/3394 [00:07<00:06, 255.89it/s]Processing texts:  53%|█████▎    | 1784/3394 [00:07<00:06, 259.32it/s]Processing texts:  53%|█████▎    | 1813/3394 [00:07<00:05, 266.88it/s]Processing texts:  54%|█████▍    | 1840/3394 [00:07<00:06, 254.55it/s]Processing texts:  55%|█████▍    | 1866/3394 [00:07<00:06, 248.51it/s]Processing texts:  56%|█████▌    | 1894/3394 [00:07<00:05, 253.08it/s]Processing texts:  57%|█████▋    | 1920/3394 [00:07<00:05, 246.48it/s]Processing texts:  57%|█████▋    | 1946/3394 [00:07<00:05, 249.75it/s]Processing texts:  58%|█████▊    | 1973/3394 [00:08<00:05, 254.57it/s]Processing texts:  59%|█████▉    | 1999/3394 [00:08<00:05, 250.66it/s]Processing texts:  60%|█████▉    | 2025/3394 [00:08<00:05, 253.31it/s]Processing texts:  60%|██████    | 2051/3394 [00:08<00:05, 252.77it/s]Processing texts:  61%|██████    | 2077/3394 [00:08<00:05, 245.56it/s]Processing texts:  62%|██████▏   | 2102/3394 [00:08<00:05, 243.92it/s]Processing texts:  63%|██████▎   | 2128/3394 [00:08<00:05, 248.24it/s]Processing texts:  63%|██████▎   | 2153/3394 [00:08<00:05, 243.07it/s]Processing texts:  64%|██████▍   | 2178/3394 [00:08<00:05, 240.45it/s]Processing texts:  65%|██████▍   | 2205/3394 [00:09<00:04, 246.66it/s]Processing texts:  66%|██████▌   | 2231/3394 [00:09<00:04, 249.49it/s]Processing texts:  66%|██████▋   | 2256/3394 [00:09<00:04, 247.79it/s]Processing texts:  67%|██████▋   | 2281/3394 [00:09<00:04, 237.02it/s]Processing texts:  68%|██████▊   | 2310/3394 [00:09<00:04, 251.78it/s]Processing texts:  69%|██████▉   | 2336/3394 [00:09<00:04, 242.66it/s]Processing texts:  70%|██████▉   | 2361/3394 [00:09<00:04, 244.01it/s]Processing texts:  70%|███████   | 2387/3394 [00:09<00:04, 246.73it/s]Processing texts:  71%|███████▏  | 2419/3394 [00:09<00:03, 264.06it/s]Processing texts:  72%|███████▏  | 2447/3394 [00:09<00:03, 268.23it/s]Processing texts:  73%|███████▎  | 2479/3394 [00:10<00:03, 280.57it/s]Processing texts:  74%|███████▍  | 2508/3394 [00:10<00:03, 274.64it/s]Processing texts:  75%|███████▍  | 2536/3394 [00:10<00:03, 272.53it/s]Processing texts:  76%|███████▌  | 2567/3394 [00:10<00:02, 282.62it/s]Processing texts:  76%|███████▋  | 2596/3394 [00:10<00:02, 281.96it/s]Processing texts:  77%|███████▋  | 2627/3394 [00:10<00:02, 286.33it/s]Processing texts:  78%|███████▊  | 2656/3394 [00:10<00:02, 282.23it/s]Processing texts:  79%|███████▉  | 2685/3394 [00:10<00:02, 278.99it/s]Processing texts:  80%|████████  | 2716/3394 [00:10<00:02, 285.26it/s]Processing texts:  81%|████████  | 2745/3394 [00:11<00:02, 276.04it/s]Processing texts:  82%|████████▏ | 2773/3394 [00:11<00:02, 274.47it/s]Processing texts:  83%|████████▎ | 2805/3394 [00:11<00:02, 287.40it/s]Processing texts:  84%|████████▎ | 2834/3394 [00:11<00:02, 278.20it/s]Processing texts:  84%|████████▍ | 2867/3394 [00:11<00:01, 289.26it/s]Processing texts:  85%|████████▌ | 2897/3394 [00:11<00:01, 279.06it/s]Processing texts:  86%|████████▌ | 2926/3394 [00:11<00:01, 278.52it/s]Processing texts:  87%|████████▋ | 2955/3394 [00:11<00:01, 281.53it/s]Processing texts:  88%|████████▊ | 2984/3394 [00:11<00:01, 270.64it/s]Processing texts:  89%|████████▊ | 3012/3394 [00:11<00:01, 263.25it/s]Processing texts:  90%|████████▉ | 3043/3394 [00:12<00:01, 275.42it/s]Processing texts:  90%|█████████ | 3071/3394 [00:12<00:01, 274.20it/s]Processing texts:  91%|█████████▏| 3102/3394 [00:12<00:01, 283.49it/s]Processing texts:  92%|█████████▏| 3131/3394 [00:12<00:00, 278.57it/s]Processing texts:  93%|█████████▎| 3159/3394 [00:12<00:00, 265.53it/s]Processing texts:  94%|█████████▍| 3188/3394 [00:12<00:00, 268.71it/s]Processing texts:  95%|█████████▍| 3215/3394 [00:12<00:00, 262.93it/s]Processing texts:  96%|█████████▌| 3243/3394 [00:12<00:00, 267.61it/s]Processing texts:  96%|█████████▋| 3271/3394 [00:12<00:00, 269.58it/s]Processing texts:  97%|█████████▋| 3299/3394 [00:13<00:00, 265.74it/s]Processing texts:  98%|█████████▊| 3330/3394 [00:13<00:00, 277.88it/s]Processing texts:  99%|█████████▉| 3358/3394 [00:13<00:00, 269.93it/s]Processing texts: 100%|█████████▉| 3386/3394 [00:13<00:00, 265.38it/s]Processing texts: 100%|██████████| 3394/3394 [00:13<00:00, 253.48it/s]
+Processing texts:   0%|          | 0/1009 [00:00<?, ?it/s]Processing texts:   3%|▎         | 35/1009 [00:00<00:02, 348.60it/s]Processing texts:   7%|▋         | 70/1009 [00:00<00:02, 336.00it/s]Processing texts:  11%|█         | 107/1009 [00:00<00:02, 349.29it/s]Processing texts:  15%|█▌        | 154/1009 [00:00<00:02, 391.25it/s]Processing texts:  20%|█▉        | 199/1009 [00:00<00:01, 409.84it/s]Processing texts:  24%|██▍       | 247/1009 [00:00<00:01, 431.78it/s]Processing texts:  29%|██▉       | 291/1009 [00:00<00:01, 392.68it/s]Processing texts:  33%|███▎      | 334/1009 [00:00<00:01, 388.90it/s]Processing texts:  37%|███▋      | 374/1009 [00:00<00:01, 360.56it/s]Processing texts:  41%|████      | 411/1009 [00:01<00:01, 354.18it/s]Processing texts:  44%|████▍     | 448/1009 [00:01<00:01, 355.65it/s]Processing texts:  48%|████▊     | 485/1009 [00:01<00:01, 352.22it/s]Processing texts:  52%|█████▏    | 521/1009 [00:01<00:01, 343.54it/s]Processing texts:  57%|█████▋    | 571/1009 [00:01<00:01, 378.60it/s]Processing texts:  60%|██████    | 609/1009 [00:01<00:01, 356.64it/s]Processing texts:  64%|██████▍   | 645/1009 [00:01<00:01, 316.80it/s]Processing texts:  67%|██████▋   | 679/1009 [00:01<00:01, 322.66it/s]Processing texts:  71%|███████   | 714/1009 [00:02<00:00, 328.91it/s]Processing texts:  75%|███████▍  | 755/1009 [00:02<00:00, 350.11it/s]Processing texts:  79%|███████▉  | 800/1009 [00:02<00:00, 377.37it/s]Processing texts:  83%|████████▎ | 839/1009 [00:02<00:00, 371.46it/s]Processing texts:  87%|████████▋ | 877/1009 [00:02<00:00, 349.76it/s]Processing texts:  92%|█████████▏| 926/1009 [00:02<00:00, 385.36it/s]Processing texts:  96%|█████████▌| 968/1009 [00:02<00:00, 393.05it/s]Processing texts: 100%|█████████▉| 1008/1009 [00:02<00:00, 389.36it/s]Processing texts: 100%|██████████| 1009/1009 [00:02<00:00, 367.28it/s]
+[DBG]  share of positive-label subtokens in train set: 1.0903%
+[DBG]  share of [UNK] subtokens in train set: 0.0466%
+Initializing model
+Starting training for 20 epochs
+Epoch 1/20:
+  Train loss: 0.1678
+  Dev accuracy: 0.9239
+  Dev precision: 0.5726
+  Dev recall: 0.1732
+  Dev F1: 0.2659
+  Saved new best model with F1: 0.2659
+  Top 10 False Negatives: [('Trump', 12), ('the', 11), ('trump', 10), ('and', 8), ('s', 7), ('8', 7), ('of', 7), ('.', 7), ("'", 6), ('7', 5)]
+  Top 10 False Positives: [('😂', 33), ('😀', 7), ('🔥', 6), ('😉', 4), ('💜', 4), ('😭', 3), ('Like', 3), ('👍', 2), ('Good', 2), ('Go', 2)]
+Epoch 2/20:
+  Train loss: 0.1197
+  Dev accuracy: 0.9296
+  Dev precision: 0.7066
+  Dev recall: 0.1979
+  Dev F1: 0.3092
+  Saved new best model with F1: 0.3092
+  Top 10 False Negatives: [('Trump', 11), ('the', 11), ('trump', 10), ('and', 8), ('s', 7), ('8', 7), ('of', 7), ('.', 7), ("'", 6), ('The', 6)]
+  Top 10 False Positives: [('🔥', 5), ('😉', 4), ('💜', 4), ('😂', 4), ('😀', 3), ('😭', 3), ('Pussy', 2), ('X', 2), ('Happen', 2), ('Vizsla', 2)]
+Epoch 3/20:
+  Train loss: 0.1009
+  Dev accuracy: 0.9299
+  Dev precision: 0.7083
+  Dev recall: 0.2035
+  Dev F1: 0.3162
+  Saved new best model with F1: 0.3162
+  Top 10 False Negatives: [('Trump', 12), ('the', 11), ('trump', 10), ('and', 8), ('s', 7), ('8', 7), ('of', 7), ('.', 7), ("'", 6), ('7', 5)]
+  Top 10 False Positives: [('😂', 7), ('😀', 3), ('😭', 3), ('Pussy', 2), ('X', 2), ('Vizsla', 2), ("'", 2), ('😗', 1), ('😘', 1), ('i', 1)]
+Epoch 4/20:
+  Train loss: 0.0893
+  Dev accuracy: 0.9300
+  Dev precision: 0.7390
+  Dev recall: 0.1875
+  Dev F1: 0.2992
+Epoch 5/20:
+  Train loss: 0.0724
+  Dev accuracy: 0.9329
+  Dev precision: 0.6794
+  Dev recall: 0.2977
+  Dev F1: 0.4140
+  Saved new best model with F1: 0.4140
+  Top 10 False Negatives: [('Trump', 11), ('the', 11), ('trump', 10), ('and', 8), ('8', 7), ('of', 7), ('.', 7), ("'", 6), ('7', 5), ('s', 5)]
+  Top 10 False Positives: [('😂', 7), ('🔥', 5), ('😀', 3), ('😭', 3), ('LOVE', 3), ('The', 3), ('&', 2), ('Pussy', 2), ('Was', 2), ('Where', 2)]
+Epoch 6/20:
+  Train loss: 0.0597
+  Dev accuracy: 0.9318
+  Dev precision: 0.6737
+  Dev recall: 0.2785
+  Dev F1: 0.3941
+Epoch 7/20:
+  Train loss: 0.0553
+  Dev accuracy: 0.9326
+  Dev precision: 0.6943
+  Dev recall: 0.2737
+  Dev F1: 0.3927
+Epoch 8/20:
+  Train loss: 0.0525
+  Dev accuracy: 0.9319
+  Dev precision: 0.6531
+  Dev recall: 0.3081
+  Dev F1: 0.4187
+  Saved new best model with F1: 0.4187
+  Top 10 False Negatives: [('Trump', 12), ('the', 11), ('trump', 10), ('and', 8), ('s', 7), ('8', 7), ('of', 7), ('.', 7), ("'", 6), ('7', 5)]
+  Top 10 False Positives: [('s', 6), ('😀', 3), ('so', 3), ('dark', 3), ('Nice', 3), ('😂', 3), ('LOVE', 2), ('Dude', 2), ('&', 2), ('rock', 2)]
+Epoch 9/20:
+  Train loss: 0.0450
+  Dev accuracy: 0.9288
+  Dev precision: 0.5982
+  Dev recall: 0.3232
+  Dev F1: 0.4197
+  Saved new best model with F1: 0.4197
+  Top 10 False Negatives: [('Trump', 12), ('the', 11), ('trump', 9), ('and', 8), ('s', 7), ('8', 7), ('.', 7), ("'", 6), ('of', 6), ('7', 5)]
+  Top 10 False Positives: [('of', 5), ('🔥', 5), ('people', 4), ('The', 4), ('😀', 3), ('😭', 3), ('LOVE', 3), ('"', 3), ("'", 3), ('😂', 3)]
+Epoch 10/20:
+  Train loss: 0.0494
+  Dev accuracy: 0.9307
+  Dev precision: 0.6393
+  Dev recall: 0.2985
+  Dev F1: 0.4070
+Epoch 11/20:
+  Train loss: 0.0516
+  Dev accuracy: 0.9296
+  Dev precision: 0.6430
+  Dev recall: 0.2602
+  Dev F1: 0.3705
+Epoch 12/20:
+  Train loss: 0.0412
+  Dev accuracy: 0.9310
+  Dev precision: 0.6422
+  Dev recall: 0.3009
+  Dev F1: 0.4098
+Epoch 13/20:
+  Train loss: 0.0333
+  Dev accuracy: 0.9329
+  Dev precision: 0.7296
+  Dev recall: 0.2498
+  Dev F1: 0.3722
+Epoch 14/20:
+  Train loss: 0.0267
+  Dev accuracy: 0.9316
+  Dev precision: 0.6725
+  Dev recall: 0.2753
+  Dev F1: 0.3907
+Epoch 15/20:
+  Train loss: 0.0263
+  Dev accuracy: 0.9342
+  Dev precision: 0.6926
+  Dev recall: 0.3128
+  Dev F1: 0.4310
+  Saved new best model with F1: 0.4310
+  Top 10 False Negatives: [('Trump', 11), ('the', 11), ('trump', 10), ('and', 8), ('s', 7), ('8', 7), ('.', 7), ("'", 6), ('7', 5), ('S', 5)]
+  Top 10 False Positives: [('in', 5), ('#', 4), ('.', 4), ('The', 4), ('&', 3), ('"', 3), ('😂', 3), ('story', 2), ('Dude', 2), ('the', 2)]
+Epoch 16/20:
+  Train loss: 0.0270
+  Dev accuracy: 0.9322
+  Dev precision: 0.6788
+  Dev recall: 0.2817
+  Dev F1: 0.3982
+Epoch 17/20:
+  Train loss: 0.0398
+  Dev accuracy: 0.9304
+  Dev precision: 0.6508
+  Dev recall: 0.2721
+  Dev F1: 0.3838
+Epoch 18/20:
+  Train loss: 0.0480
+  Dev accuracy: 0.9305
+  Dev precision: 0.6465
+  Dev recall: 0.2817
+  Dev F1: 0.3924
+Epoch 19/20:
+  Train loss: 0.0464
+  Dev accuracy: 0.9292
+  Dev precision: 0.6410
+  Dev recall: 0.2522
+  Dev F1: 0.3620
+Epoch 20/20:
+  Train loss: 0.0343
+  Dev accuracy: 0.9319
+  Dev precision: 0.6542
+  Dev recall: 0.3081
+  Dev F1: 0.4189
+Training complete. Best F1: 0.4310
+
+All steps completed.

@@ -1,0 +1,155 @@
+Select domain:
+1. Domain 1 (Twitter)
+2. Domain 2 (Headlines)
+3. Unknown domain (Mixed)
+Selected domain: domain_1
+
+Do you want to train a new tokenizer or load an existing one?
+1. Train new tokenizer
+2. Load existing tokenizer
+Loading existing tokenizer for domain_1...
+
+Training NER model for domain_1...
+Using device: cuda
+Loading tokenizer from tokenizers/domain_1/tokenizer.pkl
+Loading training data from data/ner_data/train_1_binary.tagged
+Loading dev data from data/ner_data/dev_1_binary.tagged
+Creating datasets
+Processing texts:   0%|          | 0/3394 [00:00<?, ?it/s]Processing texts:   1%|          | 34/3394 [00:00<00:10, 335.88it/s]Processing texts:   2%|▏         | 68/3394 [00:00<00:11, 281.02it/s]Processing texts:   3%|▎         | 97/3394 [00:00<00:12, 273.41it/s]Processing texts:   4%|▎         | 125/3394 [00:00<00:12, 270.03it/s]Processing texts:   5%|▍         | 153/3394 [00:00<00:12, 268.44it/s]Processing texts:   5%|▌         | 180/3394 [00:00<00:12, 267.47it/s]Processing texts:   6%|▌         | 209/3394 [00:00<00:11, 274.35it/s]Processing texts:   7%|▋         | 240/3394 [00:00<00:11, 285.11it/s]Processing texts:   8%|▊         | 269/3394 [00:00<00:11, 277.17it/s]Processing texts:   9%|▉         | 297/3394 [00:01<00:11, 264.20it/s]Processing texts:  10%|▉         | 324/3394 [00:01<00:12, 255.50it/s]Processing texts:  10%|█         | 352/3394 [00:01<00:11, 261.34it/s]Processing texts:  11%|█▏        | 382/3394 [00:01<00:11, 267.94it/s]Processing texts:  12%|█▏        | 409/3394 [00:01<00:11, 265.39it/s]Processing texts:  13%|█▎        | 436/3394 [00:01<00:11, 263.42it/s]Processing texts:  14%|█▎        | 463/3394 [00:01<00:11, 256.95it/s]Processing texts:  14%|█▍        | 489/3394 [00:01<00:11, 253.91it/s]Processing texts:  15%|█▌        | 518/3394 [00:01<00:10, 261.58it/s]Processing texts:  16%|█▌        | 545/3394 [00:02<00:10, 262.09it/s]Processing texts:  17%|█▋        | 572/3394 [00:02<00:11, 254.20it/s]Processing texts:  18%|█▊        | 599/3394 [00:02<00:10, 256.96it/s]Processing texts:  18%|█▊        | 625/3394 [00:02<00:10, 251.83it/s]Processing texts:  19%|█▉        | 651/3394 [00:02<00:10, 249.94it/s]Processing texts:  20%|██        | 681/3394 [00:02<00:10, 261.11it/s]Processing texts:  21%|██        | 710/3394 [00:02<00:09, 268.58it/s]Processing texts:  22%|██▏       | 737/3394 [00:02<00:10, 261.97it/s]Processing texts:  23%|██▎       | 766/3394 [00:02<00:09, 267.92it/s]Processing texts:  23%|██▎       | 793/3394 [00:02<00:09, 261.71it/s]Processing texts:  24%|██▍       | 820/3394 [00:03<00:10, 244.17it/s]Processing texts:  25%|██▍       | 845/3394 [00:03<00:10, 244.91it/s]Processing texts:  26%|██▌       | 870/3394 [00:03<00:10, 245.48it/s]Processing texts:  26%|██▋       | 897/3394 [00:03<00:09, 249.99it/s]Processing texts:  27%|██▋       | 923/3394 [00:03<00:09, 247.85it/s]Processing texts:  28%|██▊       | 948/3394 [00:03<00:09, 247.99it/s]Processing texts:  29%|██▉       | 979/3394 [00:03<00:09, 263.25it/s]Processing texts:  30%|██▉       | 1006/3394 [00:03<00:09, 256.05it/s]Processing texts:  30%|███       | 1035/3394 [00:03<00:09, 261.32it/s]Processing texts:  31%|███▏      | 1063/3394 [00:04<00:08, 265.57it/s]Processing texts:  32%|███▏      | 1097/3394 [00:04<00:08, 285.03it/s]Processing texts:  33%|███▎      | 1126/3394 [00:04<00:08, 271.77it/s]Processing texts:  34%|███▍      | 1156/3394 [00:04<00:08, 275.95it/s]Processing texts:  35%|███▍      | 1185/3394 [00:04<00:08, 276.11it/s]Processing texts:  36%|███▌      | 1213/3394 [00:04<00:08, 268.68it/s]Processing texts:  37%|███▋      | 1245/3394 [00:04<00:07, 282.17it/s]Processing texts:  38%|███▊      | 1274/3394 [00:04<00:07, 278.30it/s]Processing texts:  38%|███▊      | 1302/3394 [00:04<00:07, 276.72it/s]Processing texts:  39%|███▉      | 1330/3394 [00:05<00:07, 271.78it/s]Processing texts:  40%|████      | 1358/3394 [00:05<00:07, 260.94it/s]Processing texts:  41%|████      | 1390/3394 [00:05<00:07, 275.47it/s]Processing texts:  42%|████▏     | 1418/3394 [00:05<00:07, 271.21it/s]Processing texts:  43%|████▎     | 1446/3394 [00:05<00:07, 271.21it/s]Processing texts:  43%|████▎     | 1474/3394 [00:05<00:07, 266.75it/s]Processing texts:  44%|████▍     | 1502/3394 [00:05<00:07, 266.74it/s]Processing texts:  45%|████▌     | 1530/3394 [00:05<00:06, 269.17it/s]Processing texts:  46%|████▌     | 1562/3394 [00:05<00:06, 283.81it/s]Processing texts:  47%|████▋     | 1591/3394 [00:05<00:06, 278.26it/s]Processing texts:  48%|████▊     | 1619/3394 [00:06<00:06, 274.35it/s]Processing texts:  49%|████▊     | 1647/3394 [00:06<00:06, 259.65it/s]Processing texts:  49%|████▉     | 1674/3394 [00:06<00:06, 260.45it/s]Processing texts:  50%|█████     | 1701/3394 [00:06<00:06, 262.77it/s]Processing texts:  51%|█████     | 1728/3394 [00:06<00:06, 258.22it/s]Processing texts:  52%|█████▏    | 1760/3394 [00:06<00:05, 275.53it/s]Processing texts:  53%|█████▎    | 1790/3394 [00:06<00:05, 280.43it/s]Processing texts:  54%|█████▎    | 1823/3394 [00:06<00:05, 293.57it/s]Processing texts:  55%|█████▍    | 1853/3394 [00:06<00:05, 272.30it/s]Processing texts:  55%|█████▌    | 1881/3394 [00:07<00:05, 262.82it/s]Processing texts:  56%|█████▌    | 1909/3394 [00:07<00:05, 265.20it/s]Processing texts:  57%|█████▋    | 1936/3394 [00:07<00:05, 254.81it/s]Processing texts:  58%|█████▊    | 1968/3394 [00:07<00:05, 272.29it/s]Processing texts:  59%|█████▉    | 1996/3394 [00:07<00:05, 268.97it/s]Processing texts:  60%|█████▉    | 2027/3394 [00:07<00:04, 278.03it/s]Processing texts:  61%|██████    | 2056/3394 [00:07<00:04, 278.78it/s]Processing texts:  61%|██████▏   | 2084/3394 [00:07<00:04, 275.25it/s]Processing texts:  62%|██████▏   | 2112/3394 [00:07<00:04, 271.32it/s]Processing texts:  63%|██████▎   | 2142/3394 [00:08<00:04, 277.65it/s]Processing texts:  64%|██████▍   | 2170/3394 [00:08<00:04, 262.97it/s]Processing texts:  65%|██████▍   | 2197/3394 [00:08<00:04, 264.31it/s]Processing texts:  66%|██████▌   | 2227/3394 [00:08<00:04, 273.07it/s]Processing texts:  66%|██████▋   | 2255/3394 [00:08<00:04, 270.80it/s]Processing texts:  67%|██████▋   | 2283/3394 [00:08<00:04, 260.29it/s]Processing texts:  68%|██████▊   | 2314/3394 [00:08<00:03, 271.73it/s]Processing texts:  69%|██████▉   | 2342/3394 [00:08<00:04, 258.11it/s]Processing texts:  70%|██████▉   | 2372/3394 [00:08<00:03, 265.11it/s]Processing texts:  71%|███████   | 2402/3394 [00:08<00:03, 272.31it/s]Processing texts:  72%|███████▏  | 2439/3394 [00:09<00:03, 293.78it/s]Processing texts:  73%|███████▎  | 2472/3394 [00:09<00:03, 301.89it/s]Processing texts:  74%|███████▎  | 2503/3394 [00:09<00:02, 300.16it/s]Processing texts:  75%|███████▍  | 2541/3394 [00:09<00:02, 319.74it/s]Processing texts:  76%|███████▌  | 2576/3394 [00:09<00:02, 327.71it/s]Processing texts:  77%|███████▋  | 2610/3394 [00:09<00:02, 328.75it/s]Processing texts:  78%|███████▊  | 2644/3394 [00:09<00:02, 330.93it/s]Processing texts:  79%|███████▉  | 2678/3394 [00:09<00:02, 328.41it/s]Processing texts:  80%|████████  | 2716/3394 [00:09<00:01, 341.52it/s]Processing texts:  81%|████████  | 2751/3394 [00:10<00:01, 334.96it/s]Processing texts:  82%|████████▏ | 2785/3394 [00:10<00:01, 332.86it/s]Processing texts:  83%|████████▎ | 2819/3394 [00:10<00:01, 325.86it/s]Processing texts:  84%|████████▍ | 2854/3394 [00:10<00:01, 332.32it/s]Processing texts:  85%|████████▌ | 2888/3394 [00:10<00:01, 332.49it/s]Processing texts:  86%|████████▌ | 2923/3394 [00:10<00:01, 331.55it/s]Processing texts:  87%|████████▋ | 2957/3394 [00:10<00:01, 326.94it/s]Processing texts:  88%|████████▊ | 2990/3394 [00:10<00:01, 314.27it/s]Processing texts:  89%|████████▉ | 3022/3394 [00:10<00:01, 310.93it/s]Processing texts:  90%|█████████ | 3058/3394 [00:10<00:01, 322.40it/s]Processing texts:  91%|█████████ | 3092/3394 [00:11<00:00, 326.72it/s]Processing texts:  92%|█████████▏| 3125/3394 [00:11<00:00, 325.62it/s]Processing texts:  93%|█████████▎| 3158/3394 [00:11<00:00, 317.79it/s]Processing texts:  94%|█████████▍| 3190/3394 [00:11<00:00, 302.91it/s]Processing texts:  95%|█████████▍| 3222/3394 [00:11<00:00, 305.17it/s]Processing texts:  96%|█████████▌| 3258/3394 [00:11<00:00, 318.23it/s]Processing texts:  97%|█████████▋| 3290/3394 [00:11<00:00, 313.90it/s]Processing texts:  98%|█████████▊| 3327/3394 [00:11<00:00, 327.41it/s]Processing texts:  99%|█████████▉| 3361/3394 [00:11<00:00, 329.98it/s]Processing texts: 100%|██████████| 3394/3394 [00:12<00:00, 281.78it/s]
+Processing texts:   0%|          | 0/1009 [00:00<?, ?it/s]Processing texts:   3%|▎         | 34/1009 [00:00<00:02, 337.51it/s]Processing texts:   7%|▋         | 68/1009 [00:00<00:02, 322.60it/s]Processing texts:  11%|█         | 107/1009 [00:00<00:02, 349.38it/s]Processing texts:  15%|█▌        | 154/1009 [00:00<00:02, 394.58it/s]Processing texts:  20%|█▉        | 197/1009 [00:00<00:01, 407.05it/s]Processing texts:  24%|██▍       | 244/1009 [00:00<00:01, 426.80it/s]Processing texts:  28%|██▊       | 287/1009 [00:00<00:01, 377.25it/s]Processing texts:  32%|███▏      | 326/1009 [00:00<00:01, 378.21it/s]Processing texts:  36%|███▌      | 365/1009 [00:00<00:01, 366.46it/s]Processing texts:  40%|███▉      | 403/1009 [00:01<00:01, 354.22it/s]Processing texts:  44%|████▎     | 439/1009 [00:01<00:01, 349.51it/s]Processing texts:  47%|████▋     | 475/1009 [00:01<00:01, 349.41it/s]Processing texts:  51%|█████     | 511/1009 [00:01<00:01, 327.59it/s]Processing texts:  54%|█████▍    | 548/1009 [00:01<00:01, 338.97it/s]Processing texts:  58%|█████▊    | 588/1009 [00:01<00:01, 355.75it/s]Processing texts:  62%|██████▏   | 624/1009 [00:01<00:01, 340.01it/s]Processing texts:  65%|██████▌   | 659/1009 [00:01<00:01, 307.02it/s]Processing texts:  69%|██████▉   | 694/1009 [00:01<00:00, 317.24it/s]Processing texts:  73%|███████▎  | 732/1009 [00:02<00:00, 333.79it/s]Processing texts:  76%|███████▌  | 767/1009 [00:02<00:00, 338.16it/s]Processing texts:  80%|████████  | 809/1009 [00:02<00:00, 361.01it/s]Processing texts:  84%|████████▍ | 846/1009 [00:02<00:00, 359.34it/s]Processing texts:  88%|████████▊ | 883/1009 [00:02<00:00, 340.23it/s]Processing texts:  93%|█████████▎| 934/1009 [00:02<00:00, 383.38it/s]Processing texts:  97%|█████████▋| 975/1009 [00:02<00:00, 385.80it/s]Processing texts: 100%|██████████| 1009/1009 [00:02<00:00, 359.06it/s]
+[DBG]  share of positive-label subtokens in train set: 1.2587%
+[DBG]  share of [UNK] subtokens in train set: 0.0383%
+Initializing model
+Starting training for 20 epochs
+Epoch 1/20:
+  Train loss: 0.1840
+  Dev accuracy: 0.9319
+  Dev precision: 0.7521
+  Dev recall: 0.2155
+  Dev F1: 0.3350
+  Saved new best model with F1: 0.3350
+  Top 10 False Negatives: [('Trump', 12), ('the', 11), ('trump', 10), ('and', 8), ('s', 7), ('8', 7), ('The', 7), ('of', 7), ('.', 7), ("'", 6)]
+  Top 10 False Positives: [('Literally', 2), ('Much', 2), ('Subscribe', 2), ('Lol', 2), ('Happen', 2), ('Vizsla', 2), ('Kremlin', 1), ('Like', 1), ('Punjabiya', 1), ('LoL', 1)]
+Epoch 2/20:
+  Train loss: 0.1467
+  Dev accuracy: 0.9274
+  Dev precision: 0.7558
+  Dev recall: 0.1309
+  Dev F1: 0.2231
+Epoch 3/20:
+  Train loss: 0.1331
+  Dev accuracy: 0.9270
+  Dev precision: 0.7354
+  Dev recall: 0.1309
+  Dev F1: 0.2222
+Epoch 4/20:
+  Train loss: 0.1203
+  Dev accuracy: 0.9326
+  Dev precision: 0.7105
+  Dev recall: 0.2586
+  Dev F1: 0.3792
+  Saved new best model with F1: 0.3792
+  Top 10 False Negatives: [('the', 11), ('trump', 10), ('and', 8), ('8', 7), ('.', 7), ("'", 6), ('s', 6), ('of', 6), ('7', 5), ('S', 5)]
+  Top 10 False Positives: [('The', 6), ('&', 5), ('is', 3), ('Much', 3), ('s', 3), ('Plz', 3), ('!', 2), ('a', 2), ('2', 2), ('Bruh', 2)]
+Epoch 5/20:
+  Train loss: 0.1086
+  Dev accuracy: 0.9297
+  Dev precision: 0.7248
+  Dev recall: 0.1891
+  Dev F1: 0.3000
+Epoch 6/20:
+  Train loss: 0.0976
+  Dev accuracy: 0.9309
+  Dev precision: 0.7085
+  Dev recall: 0.2251
+  Dev F1: 0.3416
+Epoch 7/20:
+  Train loss: 0.0873
+  Dev accuracy: 0.9293
+  Dev precision: 0.6934
+  Dev recall: 0.2003
+  Dev F1: 0.3108
+Epoch 8/20:
+  Train loss: 0.0741
+  Dev accuracy: 0.9325
+  Dev precision: 0.6627
+  Dev recall: 0.3105
+  Dev F1: 0.4228
+  Saved new best model with F1: 0.4228
+  Top 10 False Negatives: [('the', 11), ('trump', 10), ('and', 8), ('8', 7), ('of', 7), ('.', 7), ("'", 6), ('s', 6), ('The', 6), ('7', 5)]
+  Top 10 False Positives: [('.', 6), ('Like', 4), ('s', 4), ('&', 4), ('The', 3), ('?', 3), ('"', 3), ('Plz', 3), ('LOVE', 2), ('himself', 2)]
+Epoch 9/20:
+  Train loss: 0.0757
+  Dev accuracy: 0.9284
+  Dev precision: 0.6624
+  Dev recall: 0.2067
+  Dev F1: 0.3151
+Epoch 10/20:
+  Train loss: 0.0665
+  Dev accuracy: 0.9303
+  Dev precision: 0.6847
+  Dev recall: 0.2322
+  Dev F1: 0.3468
+Epoch 11/20:
+  Train loss: 0.0560
+  Dev accuracy: 0.9268
+  Dev precision: 0.5854
+  Dev recall: 0.2761
+  Dev F1: 0.3753
+Epoch 12/20:
+  Train loss: 0.0552
+  Dev accuracy: 0.9276
+  Dev precision: 0.6239
+  Dev recall: 0.2291
+  Dev F1: 0.3351
+Epoch 13/20:
+  Train loss: 0.0539
+  Dev accuracy: 0.9251
+  Dev precision: 0.5720
+  Dev recall: 0.2378
+  Dev F1: 0.3360
+Epoch 14/20:
+  Train loss: 0.0483
+  Dev accuracy: 0.9274
+  Dev precision: 0.6231
+  Dev recall: 0.2243
+  Dev F1: 0.3298
+Epoch 15/20:
+  Train loss: 0.0442
+  Dev accuracy: 0.9274
+  Dev precision: 0.6109
+  Dev recall: 0.2418
+  Dev F1: 0.3465
+Epoch 16/20:
+  Train loss: 0.0469
+  Dev accuracy: 0.9271
+  Dev precision: 0.6221
+  Dev recall: 0.2155
+  Dev F1: 0.3201
+Epoch 17/20:
+  Train loss: 0.0472
+  Dev accuracy: 0.9286
+  Dev precision: 0.6377
+  Dev recall: 0.2402
+  Dev F1: 0.3490
+Epoch 18/20:
+  Train loss: 0.0470
+  Dev accuracy: 0.9272
+  Dev precision: 0.6031
+  Dev recall: 0.2498
+  Dev F1: 0.3533
+Epoch 19/20:
+  Train loss: 0.0504
+  Dev accuracy: 0.9285
+  Dev precision: 0.6600
+  Dev recall: 0.2107
+  Dev F1: 0.3194
+Epoch 20/20:
+  Train loss: 0.0522
+  Dev accuracy: 0.9282
+  Dev precision: 0.6462
+  Dev recall: 0.2187
+  Dev F1: 0.3268
+Training complete. Best F1: 0.4228
+
+All steps completed.
